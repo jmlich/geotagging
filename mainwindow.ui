@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>665</width>
+    <height>458</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralWidget">
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="PicturesScrollArea" name="scrollAreaPictures">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
+      <property name="widgetResizable">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="scrollAreaWidgetContents">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>643</width>
+         <height>380</height>
+        </rect>
+       </property>
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>665</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuOpen">
+    <property name="title">
+     <string>Files</string>
+    </property>
+    <addaction name="actionOpen_Picture"/>
+    <addaction name="actionOpen_Gps"/>
+    <addaction name="actionSave_Datetime"/>
+    <addaction name="actionSave_Gps"/>
+   </widget>
+   <widget class="QMenu" name="menuEdit">
+    <property name="title">
+     <string>Edit</string>
+    </property>
+    <addaction name="actionNastavit_zpo_d_n"/>
+   </widget>
+   <widget class="QMenu" name="menuView">
+    <property name="title">
+     <string>View</string>
+    </property>
+    <widget class="QMenu" name="menuGpsFormat">
+     <property name="title">
+      <string>GPS format</string>
+     </property>
+     <addaction name="actionDegree"/>
+     <addaction name="actionDegreeMin"/>
+     <addaction name="actionDegreeMinSec"/>
+    </widget>
+    <widget class="QMenu" name="menuDateTimeFormat">
+     <property name="title">
+      <string>Date and time format</string>
+     </property>
+    </widget>
+    <widget class="QMenu" name="menuDisplayedImageInformations">
+     <property name="title">
+      <string>Displayed informations about image</string>
+     </property>
+     <addaction name="actionDate_and_Time"/>
+     <addaction name="actionLatitude_and_Longitude"/>
+     <addaction name="actionAltitude"/>
+    </widget>
+    <addaction name="menuGpsFormat"/>
+    <addaction name="menuDateTimeFormat"/>
+    <addaction name="menuDisplayedImageInformations"/>
+   </widget>
+   <widget class="QMenu" name="menuPicture">
+    <property name="title">
+     <string>Picture</string>
+    </property>
+    <addaction name="actionSynchronize_with_GPS_route"/>
+   </widget>
+   <widget class="QMenu" name="menuLanguage">
+    <property name="title">
+     <string>Language</string>
+    </property>
+    <addaction name="action_cs_CZ"/>
+    <addaction name="action_en"/>
+   </widget>
+   <addaction name="menuOpen"/>
+   <addaction name="menuEdit"/>
+   <addaction name="menuView"/>
+   <addaction name="menuPicture"/>
+   <addaction name="menuLanguage"/>
+  </widget>
+  <widget class="QToolBar" name="mainToolBar">
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
+  <widget class="QStatusBar" name="statusBar"/>
+  <action name="actionNastavit_zpo_d_n">
+   <property name="text">
+    <string>Change picture time</string>
+   </property>
+  </action>
+  <action name="actionOpen_Picture">
+   <property name="text">
+    <string>Open Pictures</string>
+   </property>
+  </action>
+  <action name="actionOpen_Gps">
+   <property name="text">
+    <string>Open Gps route</string>
+   </property>
+  </action>
+  <action name="actionSave_Datetime">
+   <property name="text">
+    <string>Save dates and times in pictures</string>
+   </property>
+  </action>
+  <action name="actionSave_Gps">
+   <property name="text">
+    <string>Save gps in pictures</string>
+   </property>
+  </action>
+  <action name="actionDegreeMin">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>degrees minutes</string>
+   </property>
+  </action>
+  <action name="actionDegree">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>degrees </string>
+   </property>
+  </action>
+  <action name="actionSynchronize_with_GPS_route">
+   <property name="text">
+    <string>Synchronize with GPS route</string>
+   </property>
+  </action>
+  <action name="action_cs_CZ">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Čeština</string>
+   </property>
+  </action>
+  <action name="action_en">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>English</string>
+   </property>
+  </action>
+  <action name="actionDegreeMinSec">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>degrees minutes seconds</string>
+   </property>
+  </action>
+  <action name="actionDate_and_Time">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Date and Time</string>
+   </property>
+  </action>
+  <action name="actionLatitude_and_Longitude">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Latitude and Longitude</string>
+   </property>
+  </action>
+  <action name="actionAltitude">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Altitude</string>
+   </property>
+  </action>
+ </widget>
+ <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>PicturesScrollArea</class>
+   <extends>QScrollArea</extends>
+   <header>picturesscrollarea.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+	<meta content="text/html; charset=ISO-8859-2" http-equiv="content-type">
+	<meta name="keywords" content="Autosalon u Šneka, autosalon, automobil, prodej aut">
+	<meta name="description" content="Stránky prodejny automobilů Autosalon U Šneka. 
+  Obsahují informace o autech, ceny, kontakty a otevírací dobu.">
+
+	<link rel="stylesheet" type="text/css" href="style.css" media="screen">
+	<link rel="stylesheet" type="text/css" href="print.css" media="print">
+	<title>Autsalon u šneka</title>
+	
+	<script type="text/javascript">
+	
+	function setVisibility(content, fieldset) {
+		var cookieList = document.cookie.split("; ");
+		var item = document.getElementById(content);
+		var box = document.getElementById(fieldset);
+		
+		for(var i=0; i<cookieList.length; i++)
+		{
+			if(cookieList[i].substring(0,content.length + 1) == content + "=") {
+				if(cookieList[i].split("=")[1] == "0")
+				{
+					item.style.display="none";					
+					box.style.backgroundColor = "#ffffff";
+				}	
+				else
+				{
+					item.style.display="block";
+					box.style.backgroundColor = "#e4f5fc";
+				}
+				return;
+			}
+		}
+		item.style.display="none";					
+		box.style.backgroundColor = "#ffffff";
+	}
+
+	function changeVisibility(content, fieldset) {
+		//document.cookie=";";
+		var cookieList = document.cookie.split("; ");
+		var currentVis = "0";
+		for(var i=0; i<cookieList.length; i++)
+		{
+			if(cookieList[i].substring(0,content.length + 1) == content + "=") {
+				currentVis = cookieList[i].split("=")[1];
+				cookieList[i] = content + "=" + ( currentVis == "0" ? "1" : "0");
+				break;
+			}
+		}
+		if(currentVis == "0")
+		{
+			var item = document.getElementById(content);
+			item.style.display="block";
+		
+			var box = document.getElementById(fieldset);
+			//box.style.border="1px solid";
+			box.style.backgroundColor = "#e4f5fc";
+			currentVis = "1";
+		}
+		else
+		{
+			var item = document.getElementById(content);
+			item.style.display="none";
+		
+			var box = document.getElementById(fieldset);
+			//box.style.border="none";
+			box.style.backgroundColor = "#ffffff";
+			currentVis = "0";
+
+		}
+		
+		var time = new Date();
+		time.setTime(time.getTime() + 100 * 3600);
+		document.cookie = content + "=" + currentVis + ";" + "EXPIRES=" + time.toGMTString();
+		//alert(document.cookie);
+	}
+	
+  </script>
+</head>
+<body onload="setVisibility('aktualita1', 'fieldAktualita1'); setVisibility('aktualita2', 'fieldAktualita2');">
+
+<h1><a href="http://www.stud.fit.vutbr.cz/~xpavel19/ITW/index.html" id="logo">Autsalon u šneka</a></h1>
+
+<div id="menuLine">
+	<div id="menu" class="menu">
+		<ul>
+		<li class="current"><a href="index.html">Úvod</a></li>
+		<li><a href="products.html">Produkty</a></li>
+		<li><a href="prices.html">Ceník</a></li>
+		<li><a href="tradeConditions.html">Obchodní podmínky</a></li>
+		<li><a href="aboutUs.html">O nás</a></li>
+		</ul>
+	</div>
+</div>
+
+<div class="content">
+	
+	<fieldset id="aktuality" class="aktualityBox">
+	<legend>Aktuality</legend>
+		<fieldset id="fieldAktualita1" class="aktualityItem">
+			<legend onclick="changeVisibility('aktualita1', 'fieldAktualita1');" >Aktualita 1</legend>
+			<div  class="box" id="aktualita1">
+			<p>
+				Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Etiam tristique malesuada porta. Curabitur a 
+				sagittis enim. 
+			</p>
+	
+			</div>
+		</fieldset>
+		<fieldset id="fieldAktualita2" class="aktualityItem">
+			<legend onclick="changeVisibility('aktualita2', 'fieldAktualita2');">Aktualita 2</legend>
+			<div  class="box" id="aktualita2">
+			<p>
+				Vestibulum tincidunt nibh sodales risus cursus aliquam ut nec ante. Etiam ut varius lectus. Nam et fringilla est. Donec ante leo, 
+				semper ut suscipit sed, congue vel tortor.
+			</p>
+			</div>
+		</fieldset>	
+	</fieldset>
+
+	
+	<p>Vítejte v autosalonu U Šneka.</p>
+	<p>Phasellus eget felis ipsum. Curabitur tincidunt nibh a ipsum vulputate adipiscing. Morbi mattis velit vel 
+		magna adipiscing vulputate. Aenean viverra nisl sed libero convallis sed aliquam augue hendrerit. Morbi laoreet tincidunt urna non 
+		consequat. Maecenas eget nulla mauris. Donec dictum, nisl eget varius luctus, lorem magna facilisis lacus, ullamcorper tempus dui a
+		nte sed tellus. Nam ut hendrerit erat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris orci quam, 
+		vehicula nec congue et, tempus nec nibh.
+	</p>
+	<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse libero massa, ultricies et molestie quis, 
+			sodales eget lectus. Phasellus eget felis ipsum. Curabitur tincidunt nibh a ipsum vulputate adipiscing. Morbi mattis velit vel 
+			magna adipiscing vulputate.
+	</p>
+
+	<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse libero massa, ultricies et molestie quis, 
+			sodales eget lectus. Phasellus eget felis ipsum. Curabitur tincidunt nibh a ipsum vulputate adipiscing. Morbi mattis velit vel 
+			magna adipiscing vulputate. Aenean viverra nisl sed libero convallis sed aliquam augue hendrerit. Morbi laoreet tincidunt urna non 
+			consequat. Maecenas eget nulla mauris. Donec dictum, nisl eget varius luctus, lorem magna facilisis lacus, ullamcorper tempus dui a
+			nte sed tellus. Nam ut hendrerit erat. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris orci quam, 
+			vehicula nec congue et, tempus nec nibh.
+	</p>
+	
+	
+
+</div>
+<div id="footer">
+	<p><a href="webmap.html">mapa webu</a></p>
+	<p>Tel.: +420 999 9999, 
+	E-mail: <a href="mailto:nikdo@nikdo.cz">nikdo@nikdo.cz</a></p>
+	<p><a href="opatreni.html">Opatření pro zlepšení faktorů prezentace</a></p>
+	<p><a href="http://www.stud.fit.vutbr.cz/~xsvecj01/ITW/index.html">SWAB-MOTORS</a></p>
+</div>
+</body>
+</html>

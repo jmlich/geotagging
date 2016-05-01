@@ -1,0 +1,26 @@
+<RCC>
+    <qresource prefix="/">
+        <file>icons/openGps.png</file>
+        <file>icons/closeX.png</file>
+        <file>icons/chodec.png</file>
+        <file>icons/marker-yellow.png</file>
+        <file>icons/marker-red.png</file>
+        <file>icons/synch.png</file>
+        <file>icons/saveTimeIcon.png</file>
+        <file>icons/iconW.png</file>
+        <file>icons/handIcon.png</file>
+        <file>icons/chodecMini.png</file>
+        <file>icons/clock.png</file>
+        <file>icons/openImage.png</file>
+        <file>icons/saveGpsIcon.png</file>
+        <file>icons/markerShowR.png</file>
+        <file>icons/relief.png</file>
+        <file>icons/chodecMapa.png</file>
+        <file>icons/routeFull.png</file>
+        <file>icons/terc.png</file>
+        <file>icons/saveGpsIconS.png</file>
+        <file>googleMapsV3.html</file>
+        <file>translation/geotagging_cs_CZ.qm</file>
+        <file>translation/qt_cs_CZ.qm</file>
+    </qresource>
+</RCC>
