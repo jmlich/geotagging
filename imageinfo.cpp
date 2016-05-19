@@ -240,6 +240,8 @@ void ImageInfo::setAltitude(double alt)
 void ImageInfo::setGpsFromMap(int iid, double lat, double lon, double alt)
 {
 
+//    qDebug()  << "setGpsFromMap" << iid << lat << lon << alt;
+
     if(iid == imageData->id)
     {
         imageData->latitude = lat;

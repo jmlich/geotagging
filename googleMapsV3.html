@@ -187,23 +187,26 @@ function setOldMarkerPosition(id) {
 }
 
 function setNewMarkerPosition(id) {
-	for (var i in markers) {
-		if(id==markers[i].id){
-			markers[i].oldPosition = markers[i].position;
-			//markers[i].setMap(map);
-			//return markers[i].position;
+	for (var markerIdx in markers) {
+		if(id==markers[markerIdx].id){
+			markers[markerIdx].oldPosition = markers[markerIdx].position;
+
+			var newLat = markers[markerIdx].position.lat();
+			var newLng = markers[markerIdx].position.lng();
+
+			//markers[markerIdx].setMap(map);
+			//return markers[markerIdx].position;
 			
 			////////////////////////
 
 			var ele = -1000;
 			var locations = [];
-			locations.push(markers[i].position);
+			locations.push(markers[markerIdx].getPosition());
 
 			// Create a LocationElevationRequest object using the array's one value
 			var positionalRequest = {
 				'locations': locations
 			}
-			
 			// Initiate the location request
 			elevator.getElevationForLocations(positionalRequest, function(results, status) {
 				if (status == google.maps.ElevationStatus.OK) {	
@@ -212,11 +215,13 @@ function setNewMarkerPosition(id) {
 						ele = results[0].elevation;
 					}
 				}
-				mapWidget.newMarkerAdded(id, markers[i].position.lat(),markers[i].position.lng(), ele);
+//				alert(newLat+ ", " +newLng + " != " + markers[markerIdx].position.lat()+ " " + markers[markerIdx].position.lng() + " " + ele);
+
+				mapWidget.newMarkerAdded(id, newLat, newLng, ele);
 			});
 		}
     }
-    //return [markers[i].position.lat(),markers[i].position.lng(), ele];
+    //return [markers[markerIdx].position.lat(),markers[markerIdx].position.lng(), ele];
 }
 
 

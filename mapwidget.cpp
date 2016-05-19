@@ -103,6 +103,8 @@ void MapWidget::endSettingNewMarker(QCursor cursor)
 void MapWidget::newMarkerAdded(int id, double lat, double lon, double ele)
 {
 
+//    qDebug() << "newMarkerAdded" << id << lat << lon << ele;
+
     emit(settingNewMarkerFinished());
     emit(setGpsInImage(id, lat, lon, ele));
 }
