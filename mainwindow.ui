@@ -34,8 +34,8 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>643</width>
-         <height>380</height>
+         <width>647</width>
+         <height>384</height>
         </rect>
        </property>
        <property name="sizePolicy">
@@ -55,12 +55,12 @@
      <x>0</x>
      <y>0</y>
      <width>665</width>
-     <height>23</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuOpen">
     <property name="title">
-     <string>Files</string>
+     <string>&amp;Files</string>
     </property>
     <addaction name="actionOpen_Picture"/>
     <addaction name="actionOpen_Gps"/>
@@ -69,13 +69,13 @@
    </widget>
    <widget class="QMenu" name="menuEdit">
     <property name="title">
-     <string>Edit</string>
+     <string>&amp;Edit</string>
     </property>
     <addaction name="actionNastavit_zpo_d_n"/>
    </widget>
    <widget class="QMenu" name="menuView">
     <property name="title">
-     <string>View</string>
+     <string>&amp;View</string>
     </property>
     <widget class="QMenu" name="menuGpsFormat">
      <property name="title">
@@ -104,13 +104,13 @@
    </widget>
    <widget class="QMenu" name="menuPicture">
     <property name="title">
-     <string>Picture</string>
+     <string>&amp;Picture</string>
     </property>
     <addaction name="actionSynchronize_with_GPS_route"/>
    </widget>
    <widget class="QMenu" name="menuLanguage">
     <property name="title">
-     <string>Language</string>
+     <string>&amp;Language</string>
     </property>
     <addaction name="action_cs_CZ"/>
     <addaction name="action_en"/>
