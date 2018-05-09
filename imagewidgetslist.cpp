@@ -1,6 +1,6 @@
 /** @file imagewidgetslist.cpp
   * Soubor s tridou ImageWidgetsList dedici ze trid QObject a QList<ImageInfo *>
-  * obsahujici seznam widgetù s fotografiemi
+  * obsahujici seznam widgetu s fotografiemi
   */
 
 #include "imagewidgetslist.h"
@@ -117,10 +117,13 @@ void ImageWidgetsList::saveExifDateTimeInSelected()
 }
 void ImageWidgetsList::saveExifGpsInAll()
 {
+    qDebug() << "saveExifGPSInAll";
     for(int i=0; i<this->length(); i++)
     {
-        if(!this->at(i)->imageData->isGpsSaved)
+        if(!this->at(i)->imageData->isGpsSaved) {
+            qDebug() << "saveExifGPSIn" << i;
             this->at(i)->saveGps();
+        }
     }
 }
 void ImageWidgetsList::saveExifDateTimeInAll()

@@ -3,6 +3,7 @@
   */
 
 #include "exifreaderwriter.h"
+#include <QDebug>
 
 ExifReaderWriter::ExifReaderWriter(QObject *parent) :
         QObject(parent)
@@ -162,6 +163,7 @@ QString ExifReaderWriter::exifLatLonString(double l)
 
 void ExifReaderWriter::saveExifGps(QString pictureName, double latitude, double longitude, double altitude)
 {
+    qDebug() << "saveExifGps" << pictureName << latitude << longitude << altitude;
     Exiv2::Image::AutoPtr image = openExif(pictureName);
     if(image.get() == 0)
         return;

@@ -334,6 +334,9 @@ void MainWindow::addNewMarker()
     this->setCursor(cursor);
     map->settingNewMarker(cursor, idList);
     isNewMarkerSetting = 1;
+
+    qDebug() << "addNewMarker" << idList << cursor;
+
 }
 void MainWindow::addNewMarkerFinished()
 {

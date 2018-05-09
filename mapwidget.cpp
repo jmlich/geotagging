@@ -300,6 +300,7 @@ void MapWidget::markerDragged(int id)
 }
 void MapWidget::setNewGpsInImage()
 {
+    qDebug() << "setNewGpsInImage" << idDragged;
     QString scriptStr = QString("setNewMarkerPosition(%1);").arg(idDragged);
     mapView->page()->mainFrame()->evaluateJavaScript( scriptStr).toList();
 }
