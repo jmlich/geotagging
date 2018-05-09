@@ -296,34 +296,6 @@ void MainWindow::saveSetting()
 }
 
 
-
-
-void MainWindow::switchLanguage(QAction *action)
-{
-    QString locale = action->data().toString();
-    translator->load(":/translation/geotagging_" + locale);
-
-    //qtTranslator->load("qt_" + locale, QLibraryInfo::location(QLibraryInfo::TranslationsPath));
-    qtTranslator->load(":/translation/qt_" + locale);
-    if(qtTranslator->isEmpty())
-        qtTranslator->load(":/translation/qt_" + locale.split("_")[0]);
-
-    retranslateUi();
-    emit(retranslateUiSignal());
-}
-void MainWindow::retranslateUi()
-{
-    ui->retranslateUi(this);
-    setWindowTitle(tr("Geotagging"));
-
-    localDateTimeAction->setText(tr("Local setting") + " ("
-                                               + QDateTime::currentDateTime().toString(QLocale::system().dateTimeFormat(QLocale::LongFormat))
-                                               + ")");
-    localShortDateTimeAction->setText(tr("Local setting - short") + " ("
-                                                    + QDateTime::currentDateTime().toString(QLocale::system().dateTimeFormat(QLocale::ShortFormat))
-                                                    + ")");
-}
-
 void MainWindow::addNewMarker()
 {
     QCursor cursor;

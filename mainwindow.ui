@@ -108,18 +108,10 @@
     </property>
     <addaction name="actionSynchronize_with_GPS_route"/>
    </widget>
-   <widget class="QMenu" name="menuLanguage">
-    <property name="title">
-     <string>&amp;Language</string>
-    </property>
-    <addaction name="action_cs_CZ"/>
-    <addaction name="action_en"/>
-   </widget>
    <addaction name="menuOpen"/>
    <addaction name="menuEdit"/>
    <addaction name="menuView"/>
    <addaction name="menuPicture"/>
-   <addaction name="menuLanguage"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -153,6 +145,9 @@
   <action name="actionSave_Gps">
    <property name="text">
     <string>Save gps in pictures</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
    </property>
   </action>
   <action name="actionDegreeMin">

@@ -53,7 +53,6 @@ public:
   // QSlider *sizeSlider;
     QTime t;
 
-    void retranslateUi();
     void saveSetting();
     void loadSetting();
 
@@ -167,7 +166,6 @@ public slots:
     void addNewMarker();
     void addNewMarkerFinished();
     void mousePressEvent( QMouseEvent * event);
-    void switchLanguage(QAction *action);
     //void switchDateTimeFormat(QAction *action);
     void deleteRoute(int id);
     void setRoute(GpsRoute *gpsRoute);
