@@ -2,15 +2,15 @@ Name:           geotagging
 Version:        0.2.0
 Release:        %(date +%Y%m%d%H)%{?dist}
 Summary:        Photography geotagging tool
-
 Group:          Applications/Internet
-License:        custom
+License:        GNU GPLv3
 URL:            https://github.com/jmlich/geotagging
 Source0:        https://github.com/jmlich/geotagging/archive/master.tar.gz#/%{name}-%{version}.tar.gz
 
 BuildRequires:  desktop-file-utils
 BuildRequires:  qt5-devel >= 5.10.0
 BuildRequires:  qt5-linguist
+BuildRequires:  exiv2-devel
 
 %description
 Photography geotagging tool
