@@ -1,5 +1,6 @@
 
 ![build status](https://copr.fedorainfracloud.org/coprs/jmlich/laa/package/geotagging/status_image/last_build.png)
+[Copr builds](https://copr.fedorainfracloud.org/coprs/jmlich/laa/package/geotagging/)
 
 www.fit.vutbr.cz/study/DP/BP.php.cs?id=11578
 
