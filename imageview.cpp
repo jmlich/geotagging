@@ -1,6 +1,6 @@
 /** @file imageview.cpp
   * SOubor s tridou tridy ImageView dedici ze tridy QWidget
-  * pro zobrazeni noveho okna s fotografií v puvodni velikosti
+  * pro zobrazeni noveho okna s fotografii v puvodni velikosti
   */
 
 #include "imageview.h"
