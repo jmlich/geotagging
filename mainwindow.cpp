@@ -72,17 +72,6 @@ MainWindow::MainWindow(QWidget *parent) :
     ui->actionSynchronize_with_GPS_route->setIconVisibleInMenu(true);
 
 
-    ui->action_en->setActionGroup(groupTranslate);
-    ui->action_en->setData("en");
-    ui->action_cs_CZ->setActionGroup(groupTranslate);
-    ui->action_cs_CZ->setData("cs_CZ");
-    if(QLocale::system().name() == ui->action_cs_CZ->data())
-        ui->action_cs_CZ->setChecked(true);
-    else
-        ui->action_en->setChecked(true);
-    connect(groupTranslate, SIGNAL(triggered(QAction *)),
-            this, SLOT(switchLanguage(QAction *)));
-
     setWindowTitle(tr("Geotagging"));
     setWindowIcon(QIcon(":/icons/iconW.png"));
 
