@@ -25,13 +25,12 @@ make %{?_smp_mflags}
 
 %install
 make INSTALL_ROOT=$RPM_BUILD_ROOT install
-
-#desktop-file-install --dir $RPM_BUILD_ROOT/opt/%{name}/share/applications\
-#      $RPM_BUILD_ROOT%{_datadir}/applications/%{name}.desktop
+desktop-file-install --dir=${RPM_BUILD_ROOT}%{_datadir}/applications %{name}.desktop
 
 %files
-#/opt/geotagging/*
 %{_bindir}/geotagging
+%{_datadir}/applications/%{name}.desktop
+%{_datadir}/icons/hicolor/64x64/apps/geotagging.png
 
 
 %changelog

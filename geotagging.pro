@@ -92,7 +92,7 @@ unix: !andorid: {
     icons.CONFIG += no_check_exist
     INSTALLS += icons
 
-    desktop.files = editor.desktop
+    desktop.files = geotagging.desktop
     desktop.path = $$PREFIX/share/applications
     desktop.CONFIG += no_check_exist
     INSTALLS += desktop
