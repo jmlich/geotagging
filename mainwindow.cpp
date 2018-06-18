@@ -37,7 +37,6 @@ MainWindow::MainWindow(QWidget *parent) :
     imageWidgetsList = new ImageWidgetsList;
     picturesFrame = new PicturesFrame();
     picturesFrame = new PicturesFrame(ui->scrollAreaPictures);
-    QActionGroup* groupTranslate = new QActionGroup( this );
 
     dateTimeChange = new ChangeDateTime();
     synchDialog = new SynchDialog(gpsRoutesList, this,dateTimeChange, this );
@@ -419,7 +418,6 @@ MainWindow::~MainWindow()
     /*  delete gpsRoutesList;
     delete imageWidgetsList;
     delete picturesFrame;
-    //delete groupTranslate;
     delete map;
     delete dateTimeChange;
     delete synchDialog;
