@@ -2,6 +2,7 @@
   * Soubor s trifou ImageInfo dedici ze tridy QWidget zobrazujici fotografii a popisky
   */
 
+#include <QAction>
 #include "imageinfo.h"
 #include "ui_imageinfo.h"
 
