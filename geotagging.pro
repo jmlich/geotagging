@@ -97,7 +97,10 @@ unix: !andorid: {
     desktop.CONFIG += no_check_exist
     INSTALLS += desktop
 
-
+    metainfo.files = geotagging.appdata.xml
+    metainfo.path = $$PREFIX/share/metainfo
+    metainfo.CONFIG += no_check_exist
+    INSTALLS += metainfo
 
 }
 win32 {
