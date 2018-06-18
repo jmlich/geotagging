@@ -73,7 +73,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
 
     setWindowTitle(tr("Geotagging"));
-    setWindowIcon(QIcon(":/icons/iconW.png"));
+    setWindowIcon(QIcon(":/icons/geotagging.png"));
 
     //mapa
     connect(this, SIGNAL(retranslateUiSignal()), map, SLOT(retranslateUi()));

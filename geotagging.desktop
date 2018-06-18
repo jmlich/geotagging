@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=geotagging
+Name[en_US]=geotagging
+Comment=Photography geotagging tool
+GenericName=geotagging
+Exec=geotagging %u
+Terminal=false
+Type=Application
+Icon=/usr/share/icons/hicolor/64x64/apps/geotagging.png
+Categories=Graphics;Application;Qt;Network;
+StartupNotify=true

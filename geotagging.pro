@@ -76,7 +76,7 @@ TRANSLATIONS = translation/geotagging_cs_CZ.ts
 
 CONFIG += static
 
-unix {
+unix: !andorid: {
     CONFIG += link_pkgconfig
     PKGCONFIG += exiv2
     isEmpty(PREFIX) {
@@ -87,7 +87,17 @@ unix {
     INSTALLS += target
     target.path = $$BINDIR
 
-    DATADIR = $$PREFIX/share
+    icons.files = ./icons/geotagging.png
+    icons.path = $$PREFIX/share/icons/hicolor/64x64/apps/
+    icons.CONFIG += no_check_exist
+    INSTALLS += icons
+
+    desktop.files = editor.desktop
+    desktop.path = $$PREFIX/share/applications
+    desktop.CONFIG += no_check_exist
+    INSTALLS += desktop
+
+
 
 }
 win32 {
