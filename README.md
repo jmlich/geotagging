@@ -1,6 +1,5 @@
 
-![build status](https://copr.fedorainfracloud.org/coprs/jmlich/laa/package/geotagging/status_image/last_build.png)
-[Copr builds](https://copr.fedorainfracloud.org/coprs/jmlich/laa/package/geotagging/)
+[![Copr build status](https://copr.fedorainfracloud.org/coprs/jmlich/laa/package/geotagging/status_image/last_build.png)](https://copr.fedorainfracloud.org/coprs/jmlich/laa/package/geotagging/)
 
 ![screenshot](./data/geotagging.png)
 
