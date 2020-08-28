@@ -24,6 +24,7 @@
         <file>./js/jquery.min.js</file>
         <file>./js/leaflet.js</file>
         <file>./js/geotagging.js</file>
+        <file>./js/qwebchannel.js</file>
         <file>./css/leaflet.css</file>
         <file>./css/images/layers-2x.png</file>
         <file>./css/images/layers.png</file>

@@ -7,7 +7,8 @@
 QT       += core gui \
         network \
         widgets \
-        webenginewidgets
+        webenginewidgets \
+        webchannel
 
 TARGET = geotagging
 TEMPLATE = app

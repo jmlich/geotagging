@@ -52,7 +52,7 @@ var hill = new L.TileLayer(
 ///////////////////
 
 
-
+var mapWidget;
 var map;
 var markers = [];
 var routes = [];
@@ -63,6 +63,18 @@ var defaultMarker;
 var elevator;
 
 function initialize() {
+
+        new QWebChannel(qt.webChannelTransport, function (channel) {
+            // now you retrieve your object
+            window.mapWidget = channel.objects.mapWidget;
+
+        });
+
+
+//    new QWebChannel(qt.webChannelTransport, function (channel) {
+//                // now you retrieve your object
+//                window.mapWidget = channel.objects.mapWidget;
+//            });
 
     map = L.map('map', {
                     zoomAnimation: false,
@@ -118,63 +130,69 @@ function setMapType(mapType) {
         osmCycle.addTo(map);
         break;
     default:
-        break;
+        return false;
     }
+    return true;
 }
 
 
 function flipRelief(setVisible) {
 
     if (setVisible) {
-        map.overlayMapTypes.insertAt(0, mapTuristCykloRelief);
+
+        console.log("add hillshading")
+//        map.overlayMapTypes.insertAt(0, mapTuristCykloRelief);
     } else {
-        map.overlayMapTypes.removeAt(0);
+        console.log("remove hillshading")
+//        map.overlayMapTypes.removeAt(0);
     }
     return true;
 }
 
 function setOldMarkerPosition(id) {
     for (var i in markers) {
-        if(id === markers[i].id){
-            markers[i].position = markers[i].oldPosition;
-            markers[i].setMap(map);
+        if(id === markers[i].options.id){
+            console.log("FIXME")
+//            markers[i].position = markers[i].oldPosition;
+//            markers[i].setMap(map);
         }
     }
 }
 
 function setNewMarkerPosition(id) {
+    console.log("setNewMarkerPosition " + id)
     for (var markerIdx in markers) {
-        if(id === markers[markerIdx].id){
+        if(id === markers[markerIdx].options.id){
             markers[markerIdx].oldPosition = markers[markerIdx].position;
 
             var newLat = markers[markerIdx].position.lat();
             var newLng = markers[markerIdx].position.lng();
 
-            //markers[markerIdx].setMap(map);
-            //return markers[markerIdx].position;
+            markers[markerIdx].setMap(map);
+            return markers[markerIdx].position;
 
             ////////////////////////
 
-            var ele = -1000;
-            var locations = [];
-            locations.push(markers[markerIdx].getPosition());
+//            var ele = -1000;
+//            var locations = [];
+//            locations.push(markers[markerIdx].getPosition());
 
-            // Create a LocationElevationRequest object using the array's one value
-            var positionalRequest = {
-                'locations': locations
-            }
-            // Initiate the location request
-            elevator.getElevationForLocations(positionalRequest, function(results, status) {
-                if (status == google.maps.ElevationStatus.OK) {
-                    // Retrieve the first result
-                    if (results[0]) {
-                        ele = results[0].elevation;
-                    }
-                }
-                //				alert(newLat+ ", " +newLng + " != " + markers[markerIdx].position.lat()+ " " + markers[markerIdx].position.lng() + " " + ele);
+//            // Create a LocationElevationRequest object using the array's one value
+//            var positionalRequest = {
+//                'locations': locations
+//            }
+//            // Initiate the location request
+//            elevator.getElevationForLocations(positionalRequest, function(results, status) {
+//                if (status === google.maps.ElevationStatus.OK) {
+//                    // Retrieve the first result
+//                    if (results[0]) {
+//                        ele = results[0].elevation;
+//                    }
+//                }
+//                //				alert(newLat+ ", " +newLng + " != " + markers[markerIdx].position.lat()+ " " + markers[markerIdx].position.lng() + " " + ele);
 
-                newMarkerAdded(id, newLat, newLng, ele);
-            });
+//                newMarkerAdded(id, newLat, newLng, ele);
+//            });
         }
     }
     //return [markers[markerIdx].position.lat(),markers[markerIdx].position.lng(), ele];
@@ -257,20 +275,25 @@ function addMarker(lat, lon, iid, isVisible) {
                               draggable: true,
                               icon: defaultMarker,
                               //title:"Muj puntik!",
-                              id:iid
+                              id: iid,
+                              title: iid
                           });
 
     if(isVisible) {
         marker.addTo(map);
     }
-    marker.on('click', function() {
-        markerClicked(marker.id)
+    marker.on('click', function(e) {
+        markerClicked(marker.options.id)
     });
-    marker.on('dragstart',function() {
-        markerClicked(marker.id);
+    marker.on('movestart',function() {
+        console.log('dragstart');
+//        markerClicked(marker.options.id);
     });
-    marker.on('dragend',function() {
-        markerDragged(marker.id, marker.position.lat(), marker.position.lng());
+    marker.on('moveend',function() {
+        console.log('markerDragged( ' + marker.options.id+ ")");
+        window.mapWidget.markerDragged(marker.options.id);
+
+        //        markerDragged(marker.id, marker.position.lat(), marker.position.lng());
     });
     markers.push(marker);
 
@@ -430,7 +453,7 @@ function setRoutesVisibility(setVisible) {
 
 function deleteMarker(id) {
     for (var i in markers) {
-        if (id === markers[i].id){
+        if (id === markers[i].options.id){
             markers[i].setMap(null);
             markers.splice(i,1);
             break;

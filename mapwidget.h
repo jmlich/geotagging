@@ -80,7 +80,6 @@ public slots:
     //void setMarkersVisibilityC();
     void setRoutesVisibility();
     //void setRoutesVisibilityC();
-    void populateJavaScriptWindowObject();
     void deleteMarker(int id);
     void changeMap(int mapI);
     void setNewGpsInImage();
