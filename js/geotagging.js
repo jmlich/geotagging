@@ -1,9 +1,3 @@
-var icao =  L.tileLayer('http://193.0.231.23/tiles/cz/icao/{z}/{x}/{y}.png', {
-                            'tms': true,
-                            'maxZoom': 11,
-                        });
-var cza = L.tileLayer('https://pcmlich.fit.vutbr.cz/map/tiles/{z}/{x}/{y}.png');
-
 
 var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                           attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
@@ -12,10 +6,26 @@ var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                           subdomains:['a', 'b', 'c'],
                       });
 
+var osmCycle = L.tileLayer(
+            'http://{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png', {
+                subdomains:['a', 'b', 'c'],
+                attribution: '&copy; OpenCycleMap, ' + 'Map data ' + osm
+            });
+
 var google = L.tileLayer('https://{s}.google.com/vt/lyrs=m@248407269&hl=x-local&x={x}&y={y}&z={z}&s=Galileo', {
                              attribution: 'Map data &copy; Google 2012',
                              subdomains:['mt0','mt1','mt2','mt3'],
                          });
+
+var googleTerrain = L.tileLayer('http://{s}.google.com/vt/lyrs=p&x={x}&y={y}&z={z}',{
+                                    maxZoom: 20,
+                                    subdomains:['mt0','mt1','mt2','mt3']
+                                });
+
+var googleHybrid = L.tileLayer('http://{s}.google.com/vt/lyrs=s,h&x={x}&y={y}&z={z}',{
+                                   maxZoom: 20,
+                                   subdomains:['mt0','mt1','mt2','mt3']
+                               });
 
 var satelite  = L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}',{
                                 maxZoom: 20,
@@ -26,16 +36,18 @@ var prosoar = L.tileLayer('https://skylines.aero/mapproxy/tiles/1.0.0/airspace+a
                               attribution: 'skylines.aero'
                           });
 
-var baseMaps = {
-    "Openstreetmap": osm,
-    "Google Roadmap" : google,
-    "Google Satelite" : satelite,
-    //      "ICAO": icao,
-    //      "Aviation": cza,
-};
-var overlayMaps = {
-    "Airspace" : prosoar
-}
+var hikebikemapv1 = new L.TileLayer('http://{s}.tiles.wmflabs.org/hikebike/{z}/{x}/{y}.png', {
+                                        subdomains:['a', 'b', 'c'],
+                                        maxZoom: 17,
+                                        attribution: 'Map Data © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                                    });
+
+var hill = new L.TileLayer(
+            'http://{s}.tiles.wmflabs.org/hillshading/{z}/{x}/{y}.png',
+            {
+                maxZoom: 17,
+                attribution: 'Hillshading: SRTM3 v2 (<a href="http://www2.jpl.nasa.gov/srtm/">NASA</a>)'
+            });
 
 ///////////////////
 
@@ -46,22 +58,32 @@ var markers = [];
 var routes = [];
 var joinedSegments = [];
 var clickListener;
-//var yellowMarker = "http://esa.ilmari.googlepages.com/markeryellow.png";
-var yellowMarker = "./icons/marker-yellow.png";
-var defaultMarker = "./icons/marker-red.png";
+var yellowMarker;
+var defaultMarker;
 var elevator;
 
 function initialize() {
 
     map = L.map('map', {
-                        zoomAnimation: false,
-                        fadeAnimation: false,
-                        //            layers: [ osm, google, satelite, icao, cza ],
-                        layers: [ osm ],
-                    } ).setView([49.8043055, 15.4768055], 8);
+                    zoomAnimation: false,
+                    fadeAnimation: false,
+                    layers: [ osm ],
+                } ).setView([49.8043055, 15.4768055], 8);
 
-    L.control.layers(baseMaps, overlayMaps).addTo(map);
     L.control.scale().addTo(map);
+
+    yellowMarker = L.icon({
+                              iconUrl: "qrc:///js/images/marker-icon-gold.png",
+                              shadowUrl: "qrc:///js/images/marker-shadow.png",
+                          });
+
+
+    defaultMarker = L.icon({
+                               iconUrl: "qrc:///js/images/marker-icon-red.png",
+                               shadowUrl: "qrc:///js/images/marker-shadow.png",
+                           });
+
+    //    test_add_marker();
 }
 
 function test_add_marker() {
@@ -70,27 +92,30 @@ function test_add_marker() {
 
 
 function setMapType(mapType) {
+    map.eachLayer(function(layer){
+        layer.remove();
+    });
     switch (mapType){
     case "ROADMAP":
-        map.setMapTypeId(google.maps.MapTypeId.ROADMAP);
+        google.addTo(map);
         break;
     case "TERRAIN":
-        map.setMapTypeId(google.maps.MapTypeId.TERRAIN);
+        googleTerrain.addTo(map);
         break;
     case "SATELLITE":
-        map.setMapTypeId(google.maps.MapTypeId.SATELLITE);
+        satelite.addTo(map);
         break;
     case "HYBRID":
-        map.setMapTypeId(google.maps.MapTypeId.HYBRID);
+        googleHybrid.addTo(map);
         break;
     case "Cykloturist":
-        map.setMapTypeId('CykloTurist');
+        hikebikemapv1.addTo(map);
         break;
     case "OSMMapnik":
-        map.setMapTypeId('OSMMapnik');
+        osm.addTo(map);
         break;
     case "OSMCyklo":
-        map.setMapTypeId('OSMCycleMap');
+        osmCycle.addTo(map);
         break;
     default:
         break;
@@ -99,6 +124,7 @@ function setMapType(mapType) {
 
 
 function flipRelief(setVisible) {
+
     if (setVisible) {
         map.overlayMapTypes.insertAt(0, mapTuristCykloRelief);
     } else {
@@ -147,7 +173,7 @@ function setNewMarkerPosition(id) {
                 }
                 //				alert(newLat+ ", " +newLng + " != " + markers[markerIdx].position.lat()+ " " + markers[markerIdx].position.lng() + " " + ele);
 
-                mapWidget.newMarkerAdded(id, newLat, newLng, ele);
+                newMarkerAdded(id, newLat, newLng, ele);
             });
         }
     }
@@ -194,7 +220,7 @@ function addNewMarkers(LatLng) {
         {
             addMarker(LatLng.lat(), LatLng.lng(), idList[i], 1);
             markerClicked(idList[i], 1);
-            mapWidget.newMarkerAdded(idList[i], LatLng.lat(), LatLng.lng(), ele);
+            newMarkerAdded(idList[i], LatLng.lat(), LatLng.lng(), ele);
 
         }
     });
@@ -229,7 +255,7 @@ function addMarker(lat, lon, iid, isVisible) {
 
     var marker = L.marker([lat, lon], {
                               draggable: true,
-//                              icon: defaultMarker,
+                              icon: defaultMarker,
                               //title:"Muj puntik!",
                               id:iid
                           });
@@ -238,13 +264,13 @@ function addMarker(lat, lon, iid, isVisible) {
         marker.addTo(map);
     }
     marker.on('click', function() {
-        mapWidget.markerClicked(marker.id)
+        markerClicked(marker.id)
     });
     marker.on('dragstart',function() {
-        mapWidget.markerClicked(marker.id);
+        markerClicked(marker.id);
     });
     marker.on('dragend',function() {
-        mapWidget.markerDragged(marker.id, marker.position.lat(), marker.position.lng());
+        markerDragged(marker.id, marker.position.lat(), marker.position.lng());
     });
     markers.push(marker);
 
@@ -374,10 +400,10 @@ function markerClicked(id, isCtrl) {
     for (var i in markers) {
         if (id === markers[i].id){
             markers[i].setIcon(yellowMarker);
-            markers[i].setZIndex(1);
+            markers[i].setZIndexOffset(1);
         } else if(!isCtrl){
             markers[i].setIcon(defaultMarker);
-            markers[i].setZIndex(0);
+            markers[i].setZIndexOffset(0);
         }
     }
 }
