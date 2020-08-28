@@ -7,9 +7,10 @@
 
 
 #include <QDockWidget>
-#include <QWebView>
-#include <QWebPage>
-#include <QWebFrame>
+#include <QWebEngineHistory>
+#include <QWebEngineHistoryItem>
+#include <QWebEnginePage>
+#include <QWebEngineView>
 #include <QToolButton>
 #include <QPushButton>
 #include <QComboBox>
@@ -48,8 +49,8 @@ class MapWidget : public QDockWidget
 public:
     explicit MapWidget(QWidget *parent = 0);
     QUrl *url;
-    QWebView *mapView;
-    QWebPage *mapPage;
+    QWebEngineView *mapView;
+    QWebEnginePage *mapPage;
     bool markersVisible;
     bool routesVisible;
     bool newMarkerCandidade;

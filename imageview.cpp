@@ -3,6 +3,7 @@
   * pro zobrazeni noveho okna s fotografii v puvodni velikosti
   */
 
+#include <QDebug>
 #include "imageview.h"
 
 ImageView::ImageView(QWidget *parent):
@@ -38,7 +39,7 @@ void ImageView::setImage(QString pictureName)
         isExif = true;
     }
     catch (Exiv2::Error& e) {
-        std::cerr << "Caught Exiv2 exception 2 '" << e.what() << "'\n";
+        qDebug() << "Caught Exiv2 exception 2 '" << e.what() << "'";
         isExif = false;
     }
 

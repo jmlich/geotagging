@@ -6,9 +6,8 @@
 
 QT       += core gui \
         network \
-        webkit \
         widgets \
-        webkitwidgets
+        webenginewidgets
 
 TARGET = geotagging
 TEMPLATE = app
@@ -74,7 +73,8 @@ FORMS    += mainwindow.ui \
 
 TRANSLATIONS = translation/geotagging_cs_CZ.ts
 
-CONFIG += static
+#CONFIG += static
+#CONFIG+=use_lld_linker
 
 unix: !andorid: {
     CONFIG += link_pkgconfig

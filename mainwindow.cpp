@@ -59,6 +59,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     ui->actionOpen_Gps->setIcon(QIcon(":/icons/openGps.png"));
     ui->actionOpen_Picture->setIcon(QIcon(":/icons/openImage.png"));
+    ui->actionOpen_Picture->setShortcut(QKeySequence::Open);
     ui->actionSave_Gps->setIcon(QIcon(":/icons/saveGpsIcon.png"));
     ui->actionSave_Datetime->setIcon(QIcon(":/icons/saveTimeIcon.png"));
     ui->actionNastavit_zpo_d_n->setIcon(QIcon(":/icons/clock.png"));
