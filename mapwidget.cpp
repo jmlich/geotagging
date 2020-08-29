@@ -267,10 +267,11 @@ void MapWidget::markerSelected(int id, bool isSelected)
 {
     QStringList scriptStr;
     scriptStr <<"for (i in markers) {"
-            <<    QString("if(%1 == -1 || %1==markers[i].id){").arg(id)
+            <<    QString("if(%1 == -1 || %1==markers[i].options.id){").arg(id)
             <<    QString("markerSelected(%1, i, %2);").arg(isSelected).arg(markersVisible)
             <<  " }"
             << " }";
+    qDebug() << scriptStr;
     mapView->page()->runJavaScript(scriptStr.join("\n"), [](const QVariant &result){ qDebug() << result.toString(); });
 }
 
