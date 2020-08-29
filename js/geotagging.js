@@ -64,17 +64,11 @@ var elevator;
 
 function initialize() {
 
-        new QWebChannel(qt.webChannelTransport, function (channel) {
-            // now you retrieve your object
-            window.mapWidget = channel.objects.mapWidget;
+    new QWebChannel(qt.webChannelTransport, function (channel) {
+        // now you retrieve your object
+        window.mapWidget = channel.objects.mapWidget;
 
-        });
-
-
-//    new QWebChannel(qt.webChannelTransport, function (channel) {
-//                // now you retrieve your object
-//                window.mapWidget = channel.objects.mapWidget;
-//            });
+    });
 
     map = L.map('map', {
                     zoomAnimation: false,
@@ -152,10 +146,8 @@ function flipRelief(setVisible) {
 function setOldMarkerPosition(id) {
     for (var i in markers) {
         if(id === markers[i].options.id){
-            console.log("FIXME")
-//            markers[i].position = markers[i].oldPosition;
-//            markers[i].setMap(map);
-        }
+            markers[i].setLatLng(markers[i].oldPosition);
+            map.panTo(markers[i].oldPosition)        }
     }
 }
 
@@ -163,13 +155,11 @@ function setNewMarkerPosition(id) {
     console.log("setNewMarkerPosition " + id)
     for (var markerIdx in markers) {
         if(id === markers[markerIdx].options.id){
-            markers[markerIdx].oldPosition = markers[markerIdx].position;
-
-            var newLat = markers[markerIdx].position.lat();
-            var newLng = markers[markerIdx].position.lng();
-
-            markers[markerIdx].setMap(map);
-            return markers[markerIdx].position;
+            markers[markerIdx].oldPosition = markers[markerIdx].getLatLng();
+//            var newLat = markers[markerIdx].getLatLng();
+//            var newLng = markers[markerIdx].position.lng();
+//            markers[markerIdx].setMap(map);
+            return markers[markerIdx].getLatLng();
 
             ////////////////////////
 
@@ -209,13 +199,15 @@ function settingNewMarker(iidList) {
 
 }
 function endSettingNewMarker() {
-    map.draggableCursor = 'auto';
-    google.maps.event.removeListener(clickListener);
+    console.log("FIXME endSettingNewMarker()")
+//    map.draggableCursor = 'auto';
+//    google.maps.event.removeListener(clickListener);
 }
 
 
-function addNewMarkers(LatLng) {
-
+function addNewMarkers(coord) {
+    console.log("FIXME addNewMarkers(" + coord + ")")
+/*
     var ele = -1000;
     var locations = [];
     locations.push(LatLng);
@@ -236,22 +228,25 @@ function addNewMarkers(LatLng) {
 
         for (var i = 0; i< idList.length; i=i+1)
         {
-            addMarker(LatLng.lat(), LatLng.lng(), idList[i], 1);
+            addMarker(coord.lat(), coord.lng(), idList[i], 1);
             markerClicked(idList[i], 1);
-            newMarkerAdded(idList[i], LatLng.lat(), LatLng.lng(), ele);
+            newMarkerAdded(idList[i], coord.lat(), coord.lng(), ele);
 
         }
     });
-
+*/
 }
 
 function addMarker(lat, lon, iid, isVisible) {
+    console.log("addMarker("+lat+","+lon+","+iid+ ","+ isVisible+ ")")
     var location = L.latLng(lat, lon);
 
     for (var i in markers) {
-        if (iid === markers[i].id){
+        if (iid === markers[i].options.id){
             if(lat >90 || lat > 90 || lon < -180 || lon > 180) {
-                markers[i].setMap(null);
+//                markers[i].setMap(null);
+                console.log("setMap(null)")
+                // FIXME
                 markers.splice(i,1);
                 return;
             }
@@ -259,7 +254,8 @@ function addMarker(lat, lon, iid, isVisible) {
             markers[i].position = location;
             markers[i].oldPosition = location;
             if(isVisible) {
-                markers[i].setMap(map);
+//                markers[i].setMap(map);
+                console.log("setMap")
             }
             //centerInBounds(1,0);
             return;
@@ -267,7 +263,7 @@ function addMarker(lat, lon, iid, isVisible) {
     }
 
     
-    if(lat >90 || lat > 90 || lon < -180 || lon > 180) {
+    if (lat >90 || lat > 90 || lon < -180 || lon > 180) {
         return;
     }
 
@@ -279,7 +275,7 @@ function addMarker(lat, lon, iid, isVisible) {
                               title: iid
                           });
 
-    if(isVisible) {
+    if (isVisible) {
         marker.addTo(map);
     }
     marker.on('click', function(e) {
@@ -287,13 +283,11 @@ function addMarker(lat, lon, iid, isVisible) {
     });
     marker.on('movestart',function() {
         console.log('dragstart');
-//        markerClicked(marker.options.id);
+        markerClicked(marker.options.id);
     });
     marker.on('moveend',function() {
-        console.log('markerDragged( ' + marker.options.id+ ")");
+        console.log('markerDragged(' + marker.options.id+ ")");
         window.mapWidget.markerDragged(marker.options.id);
-
-        //        markerDragged(marker.id, marker.position.lat(), marker.position.lng());
     });
     markers.push(marker);
 
@@ -348,29 +342,36 @@ function setJoinSegments(setVisible) {
 
 //////////
 
-function addRoute(routeCoordinatesList, iid, isVisible, color, isValid) {
+function addRoute(routeCoordinatesList, iid, isVisible, var_color, isValid) {
     path = [];
     routeCoordinatesList.forEach(function(e) {
-        path.push(new google.maps.LatLng(e[0], e[1]));
+        path.push(L.latLng(e[0], e[1]));
     });
     
-    var route = new google.maps.Polyline({
-                                             path: path,
-                                             strokeColor: color,
-                                             strokeOpacity: 1.0,
-                                             strokeWeight: 3,
-                                             id: iid
-                                         });
-    if(isVisible)
-        route.setMap(map);
 
-    var bounds = new google.maps.LatLngBounds;
-    for (i in path) {
-        bounds.extend(path[i]);
+    var route = L.polyline(path, {
+                                color: var_color,
+                                id: iid
+                            })
+//    var route = new google.maps.Polyline({
+//                                             path: path,
+//                                             strokeColor: color,
+//                                             strokeOpacity: 1.0,
+//                                             strokeWeight: 3,
+//                                             id: iid
+//                                         });
+    if(isVisible) {
+        route.addTo(map);
     }
-    map.fitBounds(bounds);
+
+    map.fitBounds(route.getBounds());
+    var bounds = new google.maps.LatLngBounds;
+//    for (i in path) {
+//        bounds.extend(path[i]);
+//    }
+//    map.fitBounds(bounds);
     //map.panToBounds(bounds);
-    if(isValid) {
+    if (isValid) {
         routes.push(route);
     } else {
         joinedSegments.push(route);
@@ -404,24 +405,30 @@ function centerInBounds(fitMarkers, fitRoutes){
     map.fitBounds(bounds);
     //map.panToBounds(bounds);
 }
-function markerSelected(isSelected, i, markersVisible){
+function markerSelected(isSelected, i, markersVisible) {
+    console.log("markerSelected("+isSelected+", "+i+", "+markersVisible+")")
     if (isSelected) {
         //map.setCenter(markers[i].position);
-        map.panTo(markers[i].position);
+        map.panTo(markers[i].getLatLng());
         markers[i].setIcon(yellowMarker);
-        markers[i].setZIndex(1);
-        if(!markersVisible)
-            markers[i].setMap(map);
+        markers[i].setZIndexOffset(1);
+        if(!markersVisible) {
+//            markers[i].setMap(map);
+            console.log("setMap")
+        }
     } else {
         markers[i].setIcon(defaultMarker);
-        markers[i].setZIndex(0);
-        if(!markersVisible)
-            markers[i].setMap(null);
+        markers[i].setZIndexOffset(0);
+        if(!markersVisible) {
+            console.log("setMap(null)")
+//            markers[i].setMap(null);
+        }
     }
 }
 function markerClicked(id, isCtrl) {
+    console.log("markerClicked("+id+", "+isCtrl+")")
     for (var i in markers) {
-        if (id === markers[i].id){
+        if (id === markers[i].options.id){
             markers[i].setIcon(yellowMarker);
             markers[i].setZIndexOffset(1);
         } else if(!isCtrl){
