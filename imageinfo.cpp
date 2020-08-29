@@ -24,11 +24,11 @@ ImageInfo::ImageInfo(ImageData *newImageData,QWidget *parent) :
     *candidatePointTime =  QDateTime::fromString(QString("0000:00:00 00:00:00"), "yyyy:MM:dd hh:mm:ss");
 
     markerLabel = new QLabel(ui->imageLabel);
-    markerLabel->setPixmap(QPixmap::fromImage(QImage(":/icons/marker-red.png")));
+    markerLabel->setPixmap(QPixmap::fromImage(QImage(":/js/images/marker-icon-red.png")));
     markerLabel->setVisible(false);
 
     markerSelectedLabel = new QLabel(ui->imageLabel);
-    markerSelectedLabel->setPixmap(QPixmap::fromImage(QImage(":/icons/marker-yellow.png")));
+    markerSelectedLabel->setPixmap(QPixmap::fromImage(QImage(":/js/images/marker-icon-gold.png")));
     markerSelectedLabel->setVisible(false);
 
     setSizePolicy(QSizePolicy::Maximum,QSizePolicy::Maximum);

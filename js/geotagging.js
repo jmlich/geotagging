@@ -32,22 +32,39 @@ var satelite  = L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}'
                                 subdomains:['mt0','mt1','mt2','mt3']
                             });
 
-var prosoar = L.tileLayer('https://skylines.aero/mapproxy/tiles/1.0.0/airspace+airports/EPSG3857/{z}/{x}/{y}.png',{
-                              attribution: 'skylines.aero'
-                          });
-
-var hikebikemapv1 = new L.TileLayer('http://{s}.tiles.wmflabs.org/hikebike/{z}/{x}/{y}.png', {
+var hikebikemapv1 = L.tileLayer('http://{s}.tiles.wmflabs.org/hikebike/{z}/{x}/{y}.png', {
                                         subdomains:['a', 'b', 'c'],
                                         maxZoom: 17,
                                         attribution: 'Map Data © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
                                     });
 
-var hill = new L.TileLayer(
+var prosoar = L.tileLayer('https://skylines.aero/mapproxy/tiles/1.0.0/airspace+airports/EPSG3857/{z}/{x}/{y}.png',{
+                              attribution: 'skylines.aero'
+                          });
+
+var hill = L.tileLayer(
             'http://{s}.tiles.wmflabs.org/hillshading/{z}/{x}/{y}.png',
             {
                 maxZoom: 17,
                 attribution: 'Hillshading: SRTM3 v2 (<a href="http://www2.jpl.nasa.gov/srtm/">NASA</a>)'
             });
+
+var baseMaps = {
+    osm,
+    osmCycle,
+    google,
+    googleTerrain,
+    googleHybrid,
+    satelite,
+    hikebikemapv1
+}
+
+var selectedBaseLayer = osm;
+
+var overlayMaps = {
+    prosoar,
+    hill
+}
 
 ///////////////////
 
@@ -77,6 +94,7 @@ function initialize() {
                 } ).setView([49.8043055, 15.4768055], 8);
 
     L.control.scale().addTo(map);
+    L.control.layers(baseMaps, overlayMaps).addTo(map);
 
     yellowMarker = L.icon({
                               iconUrl: "qrc:///js/images/marker-icon-gold.png",
@@ -98,34 +116,37 @@ function test_add_marker() {
 
 
 function setMapType(mapType) {
-    map.eachLayer(function(layer){
-        layer.remove();
-    });
+
+    map.removeLayer(selectedBaseLayer);
+
     switch (mapType){
     case "ROADMAP":
-        google.addTo(map);
+        selectedBaseLayer = google;
         break;
     case "TERRAIN":
-        googleTerrain.addTo(map);
+        selectedBaseLayer = googleTerrain;
         break;
     case "SATELLITE":
-        satelite.addTo(map);
+        selectedBaseLayer = satelite;
         break;
     case "HYBRID":
-        googleHybrid.addTo(map);
+        selectedBaseLayer = googleHybrid;
         break;
     case "Cykloturist":
-        hikebikemapv1.addTo(map);
+        selectedBaseLayer = hikebikemapv1;
         break;
     case "OSMMapnik":
-        osm.addTo(map);
+        selectedBaseLayer = osm;
         break;
     case "OSMCyklo":
-        osmCycle.addTo(map);
+        selectedBaseLayer = osmCycle;
         break;
     default:
         return false;
     }
+
+    map.addLayer(selectedBaseLayer);
+
     return true;
 }
 
@@ -135,9 +156,12 @@ function flipRelief(setVisible) {
     if (setVisible) {
 
         console.log("add hillshading")
+        map.addLayer(hill);
+
 //        map.overlayMapTypes.insertAt(0, mapTuristCykloRelief);
     } else {
         console.log("remove hillshading")
+        map.removeLayer(hill)
 //        map.overlayMapTypes.removeAt(0);
     }
     return true;
