@@ -307,7 +307,7 @@ function addMarker(lat, lon, iid, isVisible) {
     });
     marker.on('movestart',function() {
         console.log('dragstart');
-        markerClicked(marker.options.id);
+//        markerClicked(marker.options.id);
     });
     marker.on('moveend',function() {
         console.log('markerDragged(' + marker.options.id+ ")");
@@ -319,37 +319,39 @@ function addMarker(lat, lon, iid, isVisible) {
 }
 function changeRouteOpacity(id, value) {
     for (var i in routes) {
-        if (id === routes[i].id)
-            routes[i].setOptions({strokeOpacity: value});
+        console.log(i)
+        console.log(routes[i].options.id)
+        if (id === routes[i].options.id)
+            routes[i].setStyle({opacity: value});
     }
     for (var i in joinedSegments) {
-        if (id === joinedSegments[i].id) {
-            joinedSegments[i].setOptions({strokeOpacity: value});
+        if (id === joinedSegments[i].options.id) {
+            joinedSegments[i].setStyle({opacity: value});
         }
     }
 }
 function lineWidthChanged(id, value) {
     for (var i in routes) {
-        if (id === routes[i].id) {
-            routes[i].setOptions({strokeWeight: value});
+        if (id === routes[i].options.id) {
+            routes[i].setStyle({weight: value});
         }
     }
     for (var i in joinedSegments) {
-        if (id === joinedSegments[i].id) {
-            joinedSegments[i].setOptions({strokeWeight: value});
+        if (id === joinedSegments[i].options.id) {
+            joinedSegments[i].setStyle({weight: value});
         }
     }
 }
 
 function changeRouteColor(id, value) {
     for (var i in routes) {
-        if(id === routes[i].id) {
-            routes[i].setOptions({strokeColor: value});
+        if(id === routes[i].options.id) {
+            routes[i].setStyle({color: value});
         }
     }
     for (var i in joinedSegments) {
-        if(id === joinedSegments[i].id) {
-            joinedSegments[i].setOptions({strokeColor: value});
+        if(id === joinedSegments[i].options.id) {
+            joinedSegments[i].setStyle({color: value});
         }
     }
 }
@@ -389,7 +391,7 @@ function addRoute(routeCoordinatesList, iid, isVisible, var_color, isValid) {
     }
 
     map.fitBounds(route.getBounds());
-    var bounds = new google.maps.LatLngBounds;
+//    var bounds = new google.maps.LatLngBounds;
 //    for (i in path) {
 //        bounds.extend(path[i]);
 //    }
@@ -467,7 +469,7 @@ function setMarkersVisibility(setVisible) {
             markers[i].setMap(map);
         } else {
             if( markers[i].icon === defaultMarker) {
-                markers[i].setMap(null);
+//                markers[i].setMap(null);
             }
         }
     }
@@ -485,7 +487,7 @@ function setRoutesVisibility(setVisible) {
 function deleteMarker(id) {
     for (var i in markers) {
         if (id === markers[i].options.id){
-            markers[i].setMap(null);
+//            markers[i].setMap(null);
             markers.splice(i,1);
             break;
         }
@@ -494,14 +496,14 @@ function deleteMarker(id) {
 
 function deleteRoute(id) {
     for(var i=routes.length - 1; i>=0; i--) {
-        if (id === routes[i].id){
-            routes[i].setMap(null);
+        if (id === routes[i].options.id){
+//            routes[i].setMap(null);
             routes.splice(i,1);
         }
     }
     for(var i=joinedSegments.length - 1; i>=0; i--) {
-        if (id === joinedSegments[i].id) {
-            joinedSegments[i].setMap(null);
+        if (id === joinedSegments[i].options.id) {
+//            joinedSegments[i].setMap(null);
             joinedSegments.splice(i,1);
         }
     }
