@@ -94,7 +94,7 @@ function initialize() {
                 } ).setView([49.8043055, 15.4768055], 8);
 
     L.control.scale().addTo(map);
-    L.control.layers(baseMaps, overlayMaps).addTo(map);
+//    L.control.layers(baseMaps, overlayMaps).addTo(map);
 
     yellowMarker = L.icon({
                               iconUrl: "qrc:///js/images/marker-icon-gold.png",
@@ -172,9 +172,9 @@ function flipRelief(setVisible) {
 
 function setOldMarkerPosition(id) {
     for (var i in markers) {
-        if(id === markers[i].options.id){
-            markers[i].setLatLng(markers[i].oldPosition);
-            map.panTo(markers[i].oldPosition)        }
+        if(id === markers[i].options.id) {
+            markers[i].setLatLng(markers[i].options.oldPosition);
+            map.panTo(markers[i].options.oldPosition)        }
     }
 }
 
@@ -182,10 +182,8 @@ function setNewMarkerPosition(id) {
     console.log("setNewMarkerPosition " + id)
     for (var markerIdx in markers) {
         if(id === markers[markerIdx].options.id){
-            markers[markerIdx].oldPosition = markers[markerIdx].getLatLng();
-//            var newLat = markers[markerIdx].getLatLng();
-//            var newLng = markers[markerIdx].position.lng();
-//            markers[markerIdx].setMap(map);
+            markers[markerIdx].options.oldPosition = markers[markerIdx].getLatLng();
+            map.addLayer(markers[markerIdx]);
             return markers[markerIdx].getLatLng();
 
             ////////////////////////
@@ -219,7 +217,7 @@ function setNewMarkerPosition(id) {
 var idList;
 function settingNewMarker(iidList) {
     idList = iidList;
-    map.draggableCursor = 'crosshair';
+//    map.draggableCursor = 'crosshair';
     clickListener = google.maps.event.addListener(map, 'click', function(event) {
         addNewMarkers(event.latLng);
     });
@@ -271,18 +269,15 @@ function addMarker(lat, lon, iid, isVisible) {
     for (var i in markers) {
         if (iid === markers[i].options.id){
             if(lat >90 || lat > 90 || lon < -180 || lon > 180) {
-//                markers[i].setMap(null);
-                console.log("setMap(null)")
-                // FIXME
+                map.removeLayer(markers[i]);
                 markers.splice(i,1);
                 return;
             }
 
-            markers[i].position = location;
-            markers[i].oldPosition = location;
+            markers[i].setLatLng(location);
+            markers[i].options.oldPosition = location;
             if(isVisible) {
-//                markers[i].setMap(map);
-                console.log("setMap")
+                map.addLayer(markers[i]);
             }
             //centerInBounds(1,0);
             return;
@@ -297,7 +292,6 @@ function addMarker(lat, lon, iid, isVisible) {
     var marker = L.marker([lat, lon], {
                               draggable: true,
                               icon: defaultMarker,
-                              //title:"Muj puntik!",
                               id: iid,
                               title: iid
                           });
@@ -308,13 +302,13 @@ function addMarker(lat, lon, iid, isVisible) {
     marker.on('click', function(e) {
         markerClicked(marker.options.id)
     });
-    marker.on('movestart',function() {
-        console.log('dragstart');
-//        markerClicked(marker.options.id);
+    marker.on('dragstart',function() { // 'dragstart'
+//        markerClicked(marker.options.id, false); // FIXME: doesn't work https://github.com/Leaflet/Leaflet/issues/4484
     });
-    marker.on('moveend',function() {
-        console.log('markerDragged(' + marker.options.id+ ")");
+    marker.on('dragend',function() { // 'dragend'
+//        console.log('markerDragged(' + marker.options.id+ ")");
         window.mapWidget.markerDragged(marker.options.id);
+        markerClicked(marker.options.id, false); // FIXME: workaround for https://github.com/Leaflet/Leaflet/issues/4484
     });
     markers.push(marker);
 
@@ -425,13 +419,13 @@ function markerSelected(isSelected, i, markersVisible) {
         map.panTo(markers[i].getLatLng());
         markers[i].setIcon(yellowMarker);
         markers[i].setZIndexOffset(1);
-        if(!markersVisible) {
+        if (!markersVisible) {
             map.addLayer(markers[i]);
         }
     } else {
         markers[i].setIcon(defaultMarker);
         markers[i].setZIndexOffset(0);
-        if(!markersVisible) {
+        if (!markersVisible) {
             map.removeLayer(markers[i]);
         }
     }
@@ -442,11 +436,12 @@ function markerClicked(id, isCtrl) {
         if (id === markers[i].options.id){
             markers[i].setIcon(yellowMarker);
             markers[i].setZIndexOffset(1);
-        } else if(!isCtrl){
+        } else if(!isCtrl) {
             markers[i].setIcon(defaultMarker);
             markers[i].setZIndexOffset(0);
         }
     }
+
 }
 function setMarkersVisibility(setVisible) {
     for (var i in markers) {

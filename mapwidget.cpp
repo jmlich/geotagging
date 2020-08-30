@@ -271,7 +271,7 @@ void MapWidget::markerSelected(int id, bool isSelected)
             <<    QString("markerSelected(%1, i, %2);").arg(isSelected).arg(markersVisible)
             <<  " }"
             << " }";
-    qDebug() << scriptStr;
+//    qDebug() << scriptStr;
     mapView->page()->runJavaScript(scriptStr.join("\n"), [](const QVariant &result){ qDebug() << result.toString(); });
 }
 
@@ -349,7 +349,6 @@ void MapWidget::addRoute(GpsRoute *route)
         if(!loadIsFinished) {
             scriptsToRun << scriptStr.join("\n");
         } else {
-//            qDebug() << scriptStr.join("\n");
             mapView->page()->runJavaScript(scriptStr.join("\n"), [](const QVariant &result){ qDebug() << result.toString(); });
         }
     }
