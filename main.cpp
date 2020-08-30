@@ -17,11 +17,11 @@ void myMessageHandler(QtMsgType type, const QMessageLogContext& context, const Q
     if (!QDir(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation)).exists()) {
         QDir().mkpath(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation));
     }
-    QFile outFile(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + QDir::separator() +"editor.log");
+    QFile outFile(QStandardPaths::writableLocation(QStandardPaths::AppDataLocation) + QDir::separator() +"geotagging.log");
 #elif (defined (Q_OS_WIN) || defined (Q_OS_WIN32) || defined (Q_OS_WIN64))
-    QFile outFile("editor.log");
+    QFile outFile("geotagging.log");
 #else
-    QFile outfile("editor.log");
+    QFile outfile("geotagging.log");
 #endif
     outFile.open(QIODevice::WriteOnly | QIODevice::Append | QIODevice::Text);
     QTextStream ts(&outFile);

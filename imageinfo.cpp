@@ -65,8 +65,8 @@ ImageInfo::ImageInfo(ImageData *newImageData,QWidget *parent) :
     connect(this, SIGNAL(saveExifGps(QString, double, double, double)), imageData->exifRW, SLOT(saveExifGps(QString,double,double, double)));
     connect(this, SIGNAL(saveExifTime(QString,QDateTime*)), imageData->exifRW, SLOT(saveExifTime(QString,QDateTime*)));
 }
-void ImageInfo::retranslateUi()
-{
+
+void ImageInfo::retranslateUi() {
     setGpsLabel();
     setTimeLabel();
 
@@ -76,10 +76,10 @@ void ImageInfo::retranslateUi()
     synchAction->setText(tr("Synchronize with GPS route"));
 }
 
-ImageInfo::~ImageInfo()
-{
-    if(imageData->isGps)
+ImageInfo::~ImageInfo() {
+    if(imageData->isGps) {
         emit(deleteMarker(imageData->id));
+    }
     delete candidatePointTime;
     delete saveDateTimeAction;
     delete saveGpsAction;
@@ -88,27 +88,23 @@ ImageInfo::~ImageInfo()
     delete ui;
 }
 
-QString ImageInfo::currentStyleSheet()
-{
+QString ImageInfo::currentStyleSheet() {
     if(isClicked){
         markerLabel->setVisible(0);
         markerSelectedLabel->setVisible(imageData->isGps);
-    }
-    else{
+    } else {
         markerSelectedLabel->setVisible(0);
         markerLabel->setVisible(imageData->isGps);
     }
 
     QString borderColor;
-    if(imageData->isGpsSaved == 0 || imageData->isDateTimeSaved == 0) //neco neni ulozene
-    {
+    if(imageData->isGpsSaved == 0 || imageData->isDateTimeSaved == 0) { //neco neni ulozene
         borderColor = "#FF4444";
-    }
-    else if(isClicked)
+    } else if(isClicked) {
         borderColor = "#232323";    //tmavsi seda
-    else
+    } else {
         borderColor =  "#838383";   //svetlejsi seda
-
+    }
     QString sSheet;
     sSheet += ".QFrame { "
               + QString("background-color: %1;").arg(isClicked ? "#D0D0E7" : "#FFFFFF")
@@ -133,31 +129,25 @@ QString ImageInfo::currentStyleSheet()
 }
 
 
-QString ImageInfo::gpsString()
-{
+QString ImageInfo::gpsString() {
 
-    if(imageData->latitude == 1000)
-    {
+    if(imageData->latitude == 1000) {
         return tr("-");
-    }
-    else
-    {
+    } else {
         return formatHandler->gpsAllInFormat(imageData->latitude, imageData->longitude);
     }
 }
-QString ImageInfo::gpsCandidadesString()
-{
+
+QString ImageInfo::gpsCandidadesString() {
     return formatHandler->gpsAllInFormat(latitudeCandidate, longitudeCandidate);
 }
-void ImageInfo::setGpsLabel()
-{
-    if(imageData->isGps)
-    {
+
+void ImageInfo::setGpsLabel() {
+    if(imageData->isGps) {
         if(isClicked){
             markerLabel->setVisible(0);
             markerSelectedLabel->setVisible(imageData->isGps);
-        }
-        else{
+        } else {
             markerSelectedLabel->setVisible(0);
             markerLabel->setVisible(imageData->isGps);
         }
@@ -177,21 +167,21 @@ void ImageInfo::setGpsLabel()
     default:
         break;
     }
-    if(imageData->latitude > 999)
+
+    if(imageData->latitude > 999) {
         ui->gpsLabel->setToolTip(tr("Unknown GPS coordinates"));
-    else
+    } else {
         ui->gpsLabel->setToolTip(ui->gpsLabel->text());
+    }
     ui->gpsLabel->repaint();
 }
-void ImageInfo::setAltitudeLabel()
-{
-    if(imageData->altitude < -999)
-    {
+
+void ImageInfo::setAltitudeLabel() {
+    if(imageData->altitude < -999) {
         ui->altitudeLabel->setText(tr("-"));
         ui->altitudeLabel->setToolTip(tr("Unknown altitude"));
         return;
-    }
-    else {
+    } else {
         switch (imageData->gpsSource) {
         case 1:
             ui->altitudeLabel->setText(QString(tr("%1m")).arg(imageData->altitude));
@@ -211,20 +201,17 @@ void ImageInfo::setAltitudeLabel()
     ui->altitudeLabel->setToolTip(ui->altitudeLabel->text());
 }
 
-void ImageInfo::setIconSize(int iconS)
-{
+void ImageInfo::setIconSize(int iconS) {
     iconSize = iconS;
 }
 
-void ImageInfo::setTextLabels()
-{
+void ImageInfo::setTextLabels() {
     ui->nameLabel->setText(QFileInfo(imageData->pictureName).fileName());
     ui->nameLabel->setToolTip(QFileInfo(imageData->pictureName).fileName());
     setTimeLabel();
     setGpsLabel();
     setAltitudeLabel();
 }
-
 
 void ImageInfo::mouseDoubleClickEvent(QMouseEvent * event )
 {
@@ -233,18 +220,16 @@ void ImageInfo::mouseDoubleClickEvent(QMouseEvent * event )
     i->setImage(imageData->pictureName);
     i->show();
 }
-void ImageInfo::setAltitude(double alt)
-{
+
+void ImageInfo::setAltitude(double alt) {
     imageData->altitude = alt;
 }
 
-void ImageInfo::setGpsFromMap(int iid, double lat, double lon, double alt)
-{
+void ImageInfo::setGpsFromMap(int iid, double lat, double lon, double alt) {
 
 //    qDebug()  << "setGpsFromMap" << iid << lat << lon << alt;
 
-    if(iid == imageData->id)
-    {
+    if(iid == imageData->id) {
         imageData->latitude = lat;
         imageData->longitude = lon;
         imageData->altitude = alt;
@@ -257,30 +242,29 @@ void ImageInfo::setGpsFromMap(int iid, double lat, double lon, double alt)
 
     }
 }
-void ImageInfo::setGpsCandidates(double lat, double lon, double alt, QDateTime pointTime, int method)
-{
+
+void ImageInfo::setGpsCandidates(double lat, double lon, double alt, QDateTime pointTime, int method) {
     latitudeCandidate = lat;
     longitudeCandidate = lon;
     altitudeCandidate = alt;
 
     *candidatePointTime = pointTime;
     approxMethod = method;
-
 }
-void ImageInfo::setCandidateIsCorrect(bool isCorrect)
-{
+
+void ImageInfo::setCandidateIsCorrect(bool isCorrect) {
     candidateIsCorrect = isCorrect;
 }
 
-void ImageInfo::setCandidateRouteName(QString routeN)
-{
+void ImageInfo::setCandidateRouteName(QString routeN) {
     routeName = routeN;
 }
 
-void ImageInfo::changeDateTime(int timeShift, bool isSaveTime)
-{
-    if(imageData->dateTime->isNull() || imageData->dateTime->toTime_t() == QDateTime::fromString(QString("0000:00:00 00:00:00"), "yyyy:MM:dd hh:mm:ss").toTime_t())
+void ImageInfo::changeDateTime(int timeShift, bool isSaveTime) {
+    if (imageData->dateTime->isNull()
+            || imageData->dateTime->toTime_t() == QDateTime::fromString(QString("0000:00:00 00:00:00"), "yyyy:MM:dd hh:mm:ss").toTime_t()) {
         return;
+    }
 
     *imageData->dateTime = imageData->dateTime->addSecs(timeShift);
     imageData->isDateTimeChanged = 1;
@@ -288,41 +272,30 @@ void ImageInfo::changeDateTime(int timeShift, bool isSaveTime)
     setTimeLabel();
     ui->timeLabel->repaint();
 
-    if(isSaveTime)
-    {
+    if(isSaveTime) {
         saveDateTime();
-    }
-    else
-    {
+    } else {
         imageData->isDateTimeSaved = 0;
         setStyleSheet(currentStyleSheet());
     }
 }
 
-void ImageInfo::setTimeLabel()
-{
-    if(!imageData->dateTime->isNull())
-    {
-        if(imageData->isDateTimeChanged)
-        {
+void ImageInfo::setTimeLabel() {
+    if (!imageData->dateTime->isNull()) {
+        if(imageData->isDateTimeChanged) {
             ui->timeLabel->setText("<img src=:/icons/clock.png> " + imageData->dateTime->toString(formatHandler->formatDateTime));
-        }
-        else
-        {
+        } else {
             ui->timeLabel->setText(imageData->dateTime->toString(formatHandler->formatDateTime));
         }
         ui->timeLabel->setToolTip(ui->timeLabel->text());
-    }
-    else
-    {
+    } else {
         ui->timeLabel->setText(tr("-"));
         ui->timeLabel->setToolTip(tr("Unknown time"));
     }
 
 }
 
-void ImageInfo::resizeWidget(int size)
-{
+void ImageInfo::resizeWidget(int size) {
     iconSize = size;
 
     ui->imageLabel->setFixedSize(imageSizeHint());
@@ -333,109 +306,103 @@ void ImageInfo::resizeWidget(int size)
 
     ui->imageLabel->resize(imageSizeHint());    //setPixmap(QPixmap::fromImage(*image_small->resize(100,100)));
 
-    if(imageData->image_small->width() > imageData->image_small->height() )
+    if(imageData->image_small->width() > imageData->image_small->height() ) {
         ui->imageLabel->setPixmap(QPixmap::fromImage(*imageData->image_small).scaledToWidth(imageSizeHint().width(), Qt::SmoothTransformation));
-    else
+    } else {
         ui->imageLabel->setPixmap(QPixmap::fromImage(*imageData->image_small).scaledToHeight(imageSizeHint().height(), Qt::SmoothTransformation));
+    }
 
     markerLabel->setVisible(imageData->isGps);
 }
 
-void ImageInfo::scaleFinished(bool ret)
-{
-    if(ret)
-    {
+void ImageInfo::scaleFinished(bool ret) {
+    if (ret) {
         ui->imageLabel->setPixmap(QPixmap::fromImage(*imageData->image_small));
         resizeWidget(iconSize);
 
         ui->imageLabel->repaint();
-    }
-    else
+    } else {
         deleteLater();
+    }
 }
-void ImageInfo::rescaleFinished(QPixmap *p)
-{
+void ImageInfo::rescaleFinished(QPixmap *p) {
     ui->imageLabel->setPixmap(*p);
 }
-QSize ImageInfo::sizeHint()
-{
+
+QSize ImageInfo::sizeHint() {
     return QSize(0,0);
 }
 
-QSize ImageInfo::imageSizeHint()
-{
+QSize ImageInfo::imageSizeHint() {
     int x = imageData->scaleSize.width() * (0.3 + (iconSize*0.1));
     int y = imageData->scaleSize.height() * (0.3 + (iconSize*0.1));
     return QSize(x,y);
 }
 
-void ImageInfo::setLabels()
-{
+void ImageInfo::setLabels() {
     setTextLabels();
     resizeWidget(iconSize);
-    if(imageData->isGps)
+    if(imageData->isGps) {
         emit(mapAddMarker(imageData->id, imageData->latitude, imageData->longitude));
+    }
     markerLabel->setVisible(imageData->isGps);
 }
 
-void ImageInfo::select()
-{
+void ImageInfo::select() {
     isClickedOrig = 1;
     click(0);
-    if(imageData->isGps)
+    if(imageData->isGps) {
         emit(selected(imageData->id,1));
+    }
 }
-void ImageInfo::unselect()
-{
+
+void ImageInfo::unselect() {
     isClickedOrig = 0;
     unclick();
-    if(imageData->isGps)
+    if(imageData->isGps) {
         emit(selected(imageData->id,0));
+    }
 }
-void ImageInfo::click(bool focus)
-{
+
+void ImageInfo::click(bool focus) {
     isClicked = 1;
     this->setStyleSheet(currentStyleSheet());
 
-    if(focus)
+    if(focus) {
         emit(getFocus(this->pos().y(), this->height()));
+    }
 }
-void ImageInfo::unclick()
-{
+
+void ImageInfo::unclick() {
     isClicked = 0;
     this->setStyleSheet(currentStyleSheet());
 }
 
-
-
-void ImageInfo::checkMarkerClickedId(int iid)
-{
-    if(iid == imageData->id)
+void ImageInfo::checkMarkerClickedId(int iid) {
+    if(iid == imageData->id) {
         click(1);
-    else if(!(QApplication::keyboardModifiers() & Qt::ControlModifier))
+    } else if(!(QApplication::keyboardModifiers() & Qt::ControlModifier)) {
         unclick();
+    }
 }
-int ImageInfo::actualWidth()
-{
+
+int ImageInfo::actualWidth() {
     return imageSizeHint().width() + ui->frameImage->layout()->margin() * 2;
 }
 
 
-void ImageInfo::setGpsFormat(QAction *action)
-{
+void ImageInfo::setGpsFormat(QAction *action) {
     formatHandler->formatGps = action->data().toString();
     setGpsLabel();
 }
-void ImageInfo::setDateTimeFormat(QAction *action)
-{
+
+void ImageInfo::setDateTimeFormat(QAction *action) {
     formatHandler->formatDateTime = action->data().toString();
     setTimeLabel();
 }
 
-void ImageInfo::saveNewData(bool isSaveExif)
-{
-    if(synchCheckBox->isChecked())
-    {
+void ImageInfo::saveNewData(bool isSaveExif) {
+    if(synchCheckBox->isChecked()) {
         //////
         imageData->latitude = latitudeCandidate;
         imageData->longitude = longitudeCandidate;
@@ -445,12 +412,9 @@ void ImageInfo::saveNewData(bool isSaveExif)
         emit(mapAddMarker(imageData->id, imageData->latitude, imageData->longitude));
         //////////
 
-        if(isSaveExif)
-        {
+        if (isSaveExif) {
             emit(saveExifGps(imageData->pictureName, imageData->latitude, imageData->longitude, imageData->altitude));
-        }
-        else
-        {
+        } else {
             imageData->isGpsSaved = 0;
             setStyleSheet(currentStyleSheet());
         }
@@ -459,20 +423,17 @@ void ImageInfo::saveNewData(bool isSaveExif)
 
     }
 }
-void ImageInfo::saveGps()
-{
-    if(imageData->isGps)
-    {
+void ImageInfo::saveGps() {
+    if(imageData->isGps) {
         emit(saveExifGps(imageData->pictureName, imageData->latitude, imageData->longitude, imageData->altitude));
         imageData->isGpsSaved = 1;
         setStyleSheet(currentStyleSheet());
     }
 }
 
-void ImageInfo::saveDateTime()
-{
-    if(!imageData->dateTime->isNull() && imageData->dateTime->toTime_t() != QDateTime::fromString(QString("0000:00:00 00:00:00"), "yyyy:MM:dd hh:mm:ss").toTime_t())
-    {
+void ImageInfo::saveDateTime() {
+    if (!imageData->dateTime->isNull()
+            && imageData->dateTime->toTime_t() != QDateTime::fromString(QString("0000:00:00 00:00:00"), "yyyy:MM:dd hh:mm:ss").toTime_t()) {
         emit(saveExifTime(imageData->pictureName, imageData->dateTime));
         imageData->isDateTimeSaved = 1;
         imageData->lastDateTimeSaved = *imageData->dateTime;
@@ -480,25 +441,23 @@ void ImageInfo::saveDateTime()
     }
 }
 
-void ImageInfo::setOrigDateTime( bool isSaveTime)
-{
+void ImageInfo::setOrigDateTime (bool isSaveTime) {
     *imageData->dateTime = imageData->originalDateTime;
     imageData->isDateTimeChanged = 0;
-    if(imageData->dateTime->toTime_t() != imageData->lastDateTimeSaved.toTime_t())
-    {
-        if(isSaveTime)
+    if(imageData->dateTime->toTime_t() != imageData->lastDateTimeSaved.toTime_t()) {
+        if(isSaveTime) {
             saveDateTime();
-        else
+        } else {
             imageData->isDateTimeSaved = 0;
-    }
-    else
+        }
+    } else {
         imageData->isDateTimeSaved = 1;
+    }
     setTimeLabel();
     setStyleSheet(currentStyleSheet());
 }
 
-QStringList ImageInfo::exifInformation()
-{
+QStringList ImageInfo::exifInformation() {
     QStringList exifList;
     exifList << QFileInfo(imageData->pictureName).fileName()
             << QFileInfo(imageData->pictureName).absolutePath() + "/";
@@ -506,12 +465,12 @@ QStringList ImageInfo::exifInformation()
     return exifList;
 }
 
-void ImageInfo::changeLabelVisibility(QAction *a)
-{
-    if(a->data().toString() == "dateTime")
+void ImageInfo::changeLabelVisibility(QAction *a) {
+    if(a->data().toString() == "dateTime") {
         ui->timeLabel->setVisible(a->isChecked());
-    else if(a->data().toString() == "latLon")
+    } else if(a->data().toString() == "latLon") {
         ui->gpsLabel->setVisible(a->isChecked());
-    else if(a->data().toString() == "alt")
+    } else if(a->data().toString() == "alt") {
         ui->altitudeLabel->setVisible(a->isChecked());
+    }
 }

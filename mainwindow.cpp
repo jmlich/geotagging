@@ -199,8 +199,7 @@ MainWindow::MainWindow(QWidget *parent) :
     loadSetting();
 }
 
-void MainWindow::loadSetting()
-{
+void MainWindow::loadSetting() {
     QSettings settings("Geotagging", "VUT FIT");
 
     settings.beginGroup("menu");
@@ -211,24 +210,20 @@ void MainWindow::loadSetting()
     QString gpsFormat = settings.value("gpsFormat", "dm").toString();
     QString timeFormat = settings.value("timeFormat", "d.M.yyyy hh:mm:ss").toString();
 
-    foreach(QAction *a, groupGpsFormat->actions())
-    {
-        if(a->data() == gpsFormat)
-        {
+    foreach(QAction *a, groupGpsFormat->actions()) {
+        if(a->data() == gpsFormat) {
             a->setChecked(true);
             break;
         }
     }
-    foreach(QAction *a, groupDateTimeFormat->actions())
-    {
-        if(a->data() == timeFormat)
-        {
+
+    foreach(QAction *a, groupDateTimeFormat->actions()) {
+        if(a->data() == timeFormat) {
             a->setChecked(true);
             break;
         }
     }
     settings.endGroup();
-
 
     settings.beginGroup("synchDialog");
 
@@ -251,24 +246,19 @@ void MainWindow::saveSetting()
     settings.setValue("timeVisible", ui->actionDate_and_Time->isChecked());
     settings.setValue("latLonVisible", ui->actionLatitude_and_Longitude->isChecked());
     settings.setValue("altVisible", ui->actionAltitude->isChecked());
-    foreach(QAction *a, groupGpsFormat->actions())
-    {
-        if(a->isChecked())
-        {
+    foreach(QAction *a, groupGpsFormat->actions()) {
+        if(a->isChecked()) {
             settings.setValue("gpsFormat", a->data());
             break;
         }
     }
-    foreach(QAction *a, groupDateTimeFormat->actions())
-    {
-        if(a->isChecked())
-        {
+    foreach(QAction *a, groupDateTimeFormat->actions()) {
+        if(a->isChecked()) {
             settings.setValue("timeFormat", a->data());
             break;
         }
     }
     settings.endGroup();
-
 
     settings.beginGroup("synchDialog");
 
@@ -285,8 +275,7 @@ void MainWindow::saveSetting()
 }
 
 
-void MainWindow::addNewMarker()
-{
+void MainWindow::addNewMarker() {
     QCursor cursor;
     cursor.setShape(Qt::CrossCursor);
 
@@ -299,38 +288,35 @@ void MainWindow::addNewMarker()
     qDebug() << "addNewMarker" << idList << cursor;
 
 }
-void MainWindow::addNewMarkerFinished()
-{
+
+void MainWindow::addNewMarkerFinished() {
     QCursor cursor;
     cursor.setShape(Qt::ArrowCursor);
 
     this->setCursor(cursor);
     map->endSettingNewMarker(cursor);
     isNewMarkerSetting = 0;
-
 }
 
-void MainWindow::importFinished(QStringList *unrecognizedList)
-{
-    if(progressBar != NULL)
-    {
+void MainWindow::importFinished(QStringList *unrecognizedList) {
+    if(progressBar != NULL) {
         delete progressBar;
         progressBar = NULL;
     }
-    if(unrecognizedList->length() > 0)
+
+    if(unrecognizedList->length() > 0) {
         openUnrecognizedDialog(unrecognizedList);
+    }
     delete unrecognizedList;
 
-    if(synchDialog->isVisible())
+    if(synchDialog->isVisible()) {
         synchDialog->showGpsRoutes();
-    else if(gpsRoutesList->length() > 0 && imageWidgetsList->length() > 0)
-    {
+    } else if(gpsRoutesList->length() > 0 && imageWidgetsList->length() > 0) {
         synchAsk();
     }
 }
 
-void MainWindow::openUnrecognizedDialog(QStringList *unrecognizedList)
-{
+void MainWindow::openUnrecognizedDialog(QStringList *unrecognizedList) {
 
     QDialog * dialog = new QDialog(this);
     QDialogButtonBox *buttonBox = new QDialogButtonBox(QDialogButtonBox::Close);
@@ -356,8 +342,7 @@ void MainWindow::openUnrecognizedDialog(QStringList *unrecognizedList)
     l->setContentsMargins(QMargins(5,5,5,5));
     l->setVerticalSpacing(3);
 
-    foreach(QString file, *unrecognizedList)
-    {
+    foreach(QString file, *unrecognizedList) {
         l->addWidget(new QLabel(file));
     }
     sa->widget()->setLayout(l);
@@ -370,8 +355,8 @@ void MainWindow::openUnrecognizedDialog(QStringList *unrecognizedList)
     dialog->exec();
 
 }
-void MainWindow::setProgressRange(int maxValue)
-{
+
+void MainWindow::setProgressRange(int maxValue) {
     progressBar = new QProgressBar;
 
     ui->statusBar->addWidget(progressBar);
@@ -381,14 +366,12 @@ void MainWindow::setProgressRange(int maxValue)
 }
 
 
-void MainWindow::dropEvent(QDropEvent *event)
-{
+void MainWindow::dropEvent(QDropEvent *event) {
     const QMimeData *mimeData = event->mimeData();
     event->acceptProposedAction();
     picturesFrame->setBackgroundRole(QPalette::Light);
 
-    if(mimeData->hasUrls())
-    {
+    if(mimeData->hasUrls()) {
 
         importThread->start();
 
@@ -398,23 +381,22 @@ void MainWindow::dropEvent(QDropEvent *event)
         emit(processDropUrls(urlList));
     }
 }
-void MainWindow::dragEnterEvent(QDragEnterEvent *event)
-{
+
+void MainWindow::dragEnterEvent(QDragEnterEvent *event) {
     ui->scrollAreaPictures->setWidgetResizable(true);
     picturesFrame->setBackgroundRole(QPalette::Midlight);
 
     event->acceptProposedAction();
 
 }
-void MainWindow::dragLeaveEvent(QDragLeaveEvent *event)
-{
+
+void MainWindow::dragLeaveEvent(QDragLeaveEvent *event) {
     event->accept();
     picturesFrame->setBackgroundRole(QPalette::Light);
 }
 
 
-MainWindow::~MainWindow()
-{
+MainWindow::~MainWindow() {
     saveSetting();
     /*  delete gpsRoutesList;
     delete imageWidgetsList;
@@ -431,11 +413,9 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-void MainWindow::closeEvent(QCloseEvent *event)
-{
+void MainWindow::closeEvent(QCloseEvent *event) {
 
-    if(imageWidgetsList->isNotSaved())
-    {
+    if(imageWidgetsList->isNotSaved()) {
         QMessageBox *mb = new QMessageBox(QMessageBox::Question, tr("Save changes"),
                                           tr("Some changes in EXIF metadata weren't saved. Do you wish to save them now?"),
                                           QMessageBox::Cancel | QMessageBox::No  | QMessageBox::Yes);
@@ -444,35 +424,33 @@ void MainWindow::closeEvent(QCloseEvent *event)
         pal.setColor(QPalette::Window, "#D0D0E7");
         mb->setPalette(pal);
         int ret = mb->exec();
-        if(ret == QMessageBox::Yes)
-        {
+        if (ret == QMessageBox::Yes) {
             imageWidgetsList->saveExifDateTimeInAll();
             imageWidgetsList->saveExifGpsInAll();
             event->accept();
-        }
-        else if(ret == QMessageBox::No)
+        } else if(ret == QMessageBox::No) {
             event->accept();
-        else if(ret == QMessageBox::Cancel)
+        } else if(ret == QMessageBox::Cancel) {
             event->ignore();
-    }
-    else
+        }
+    } else {
         event->accept();
+    }
 }
 
 void MainWindow::setGpsInImages()
 {
     bool all = synchDialog->isSynchAll();
     int existingGpsMode = synchDialog->existingGpsMode();
-    if(!gpsRoutesList->isEmpty() && synchDialog->isAnyRouteChecked())   //tady kontrola jestli bylo neco zaskrtnute
-    {
+    if(!gpsRoutesList->isEmpty() && synchDialog->isAnyRouteChecked()) { //tady kontrola jestli bylo neco zaskrtnute
+
 
         synchResultDialog->setNewDialog();
-        for(int i = 0; i < imageWidgetsList->count(); i++)
-        {
-            if(all || imageWidgetsList->at(i)->isClicked )
-            {
-                if(existingGpsMode == 2 && imageWidgetsList->at(i)->imageData->isGps)//nezobrazovat fotografie ktere uz maji souradnice
+        for(int i = 0; i < imageWidgetsList->count(); i++) {
+            if(all || imageWidgetsList->at(i)->isClicked ) {
+                if(existingGpsMode == 2 && imageWidgetsList->at(i)->imageData->isGps) { //nezobrazovat fotografie ktere uz maji souradnice
                     continue;
+                }
                 gpsRoutesList->setGpsInImage(imageWidgetsList->at(i), synchDialog->offset(),
                                              synchDialog->checkedRoutes(), synchDialog->maxRoutesDistM(),
                                              synchDialog->maxRoutesDistTime(), synchDialog->method(),
@@ -483,9 +461,7 @@ void MainWindow::setGpsInImages()
         }
         synchResultDialog->showDialog();
 
-    }
-    else
-    {
+    } else {
         QMessageBox *mb = new QMessageBox(QMessageBox::Information, tr("Synchronisation"),
                                           QString(tr("Wasn't selected any route")),
                                           QMessageBox::Close);
@@ -497,20 +473,18 @@ void MainWindow::setGpsInImages()
     }
 }
 
-void MainWindow::saveSynchChanges()
-{
+void MainWindow::saveSynchChanges() {
 
     bool all = synchDialog->isSynchAll();
-    for(int i = 0; i< imageWidgetsList->length(); i++)
-    {
-        if(all || imageWidgetsList->at(i)->isClicked)
+    for(int i = 0; i< imageWidgetsList->length(); i++) {
+        if (all || imageWidgetsList->at(i)->isClicked) {
             imageWidgetsList->at(i)->saveNewData(synchResultDialog->saveExifCheckbox->isChecked());
+        }
     }
 }
 
 
-void MainWindow::setRoute(GpsRoute *gpsRoute)
-{
+void MainWindow::setRoute(GpsRoute *gpsRoute) {
     connect(this, SIGNAL(setGpsThread(QThread *)), gpsRoute, SLOT(setThread(QThread*)));
     emit(setGpsThread(this->thread()));
 
@@ -538,25 +512,23 @@ void MainWindow::setRoute(GpsRoute *gpsRoute)
 }
 
 
-void MainWindow::on_actionOpen_Gps_triggered()
-{
+void MainWindow::on_actionOpen_Gps_triggered() {
     QStringList gpsfileNames = QFileDialog::getOpenFileNames(this,tr("Open GPS File"),  QDir::currentPath(),
                                                              tr("GPS files (*.gpx);; All Files (*)"));
 
-    if(gpsfileNames.length() < 1)
+    if(gpsfileNames.length() < 1) {
         return;
+    }
     importThread->start();
     emit(importGpsFiles(gpsfileNames));
 
 }
 
-void MainWindow::deleteRoute(int id)
-{
+void MainWindow::deleteRoute(int id) {
     gpsRoutesList->deleteRoute(id);
 }
 
-void MainWindow::openGpsRoutesFromDialog()
-{
+void MainWindow::openGpsRoutesFromDialog() {
     QStringList gpsfileNames = QFileDialog::getOpenFileNames(this,tr("Open GPS File"),  QDir::currentPath(),
                                                              tr("GPS files (*.gpx);; All Files (*)"));;
 
@@ -564,20 +536,20 @@ void MainWindow::openGpsRoutesFromDialog()
     emit(importGpsFiles(gpsfileNames));
 
 }
-void MainWindow::quitLoading()
-{
+
+void MainWindow::quitLoading() {
     importThread->terminate();
-    if(progressBar != NULL)
-    {
+    if(progressBar != NULL) {
         delete progressBar;
         progressBar = NULL;
     }
-    if(isNewMarkerSetting == 1)
+
+    if(isNewMarkerSetting == 1) {
         addNewMarkerFinished();
+    }
 }
 
-void MainWindow::addImage(ImageData *imageData)
-{
+void MainWindow::addImage(ImageData *imageData) {
     ImageInfo *imageWidget = new ImageInfo(imageData);
     imageWidgetsList->addImage(imageWidget);
     connect(this, SIGNAL(retranslateUiSignal()),imageWidget, SLOT(retranslateUi()));
@@ -604,26 +576,25 @@ void MainWindow::addImage(ImageData *imageData)
 
 
 
-void MainWindow::mousePressEvent(QMouseEvent *event)
-{
+void MainWindow::mousePressEvent(QMouseEvent *event) {
     event->accept();
-    if(isNewMarkerSetting == 1)
+    if (isNewMarkerSetting == 1) {
         addNewMarkerFinished();
+    }
 }
 
-void MainWindow::on_actionOpen_Picture_triggered()
-{
+void MainWindow::on_actionOpen_Picture_triggered() {
     QStringList fileNames = QFileDialog::getOpenFileNames(this, tr("Open Image"),
                                                           QDir::currentPath(),
                                                           tr("Images (*.png *.jpg *.tif *.raw *.rw2 *.mrw *.orf *.raf *.arw *.ari);; All files (*)"));
-    if(fileNames.length() < 1)
+    if(fileNames.length() < 1) {
         return;
+    }
     importThread->start();
     emit(importImages(fileNames));
 }
 
-void MainWindow::synchAsk()
-{
+void MainWindow::synchAsk() {
 
     QMessageBox *askDialog = new QMessageBox(QMessageBox::Question, tr("File import"),
                                              tr("Do you wish to synchronize pictures with GPS route?"),
@@ -635,64 +606,55 @@ void MainWindow::synchAsk()
 
     int ret = askDialog->exec();
 
-    if(ret == QMessageBox::Yes)
+    if(ret == QMessageBox::Yes) {
         synchronizeImageGpsDialog();
+    }
 }
 
 
 
-void MainWindow::on_actionNastavit_zpo_d_n_triggered()
-{
+void MainWindow::on_actionNastavit_zpo_d_n_triggered() {
     static_cast<QVBoxLayout *>(dateTimeDialog->layout())->insertWidget(2, dateTimeChange);
     //static_cast<QFrame *>(dateTimeDialog->layout()->itemAt(0)->widget())->layout()->addWidget(dateTimeChange);
     dateTimeDialog->exec();
 }
 
-void MainWindow::changeDateTime_clicked()
-{
+void MainWindow::changeDateTime_clicked() {
     changeImagesDateTime(dateTimeDialog->rAll->isChecked());
 }
-void MainWindow::changeImagesDateTime(bool all)
-{
+
+void MainWindow::changeImagesDateTime(bool all) {
     ImageInfo *image;
-    for(int i=0; i<imageWidgetsList->length(); i++)
-    {
+    for(int i=0; i<imageWidgetsList->length(); i++) {
         image = imageWidgetsList->at(i);
-        if(all || image->isClicked)
-        {
-            if(dateTimeChange->isSetChange())
-            {
-                if(dateTimeChange->timeShift() != 0)
+        if (all || image->isClicked) {
+            if (dateTimeChange->isSetChange()) {
+                if (dateTimeChange->timeShift() != 0) {
                     image->changeDateTime(dateTimeChange->timeShift(), dateTimeChange->isSaveTime());
-            }
-            else
+                }
+            } else {
                 image->setOrigDateTime(dateTimeChange->isSaveTime());
+            }
         }
     }
 }
 
-void MainWindow::synchronizeSelected()
-{
+void MainWindow::synchronizeSelected() {
     synchDialog->setSelectedOnly(true);
     synchronizeImageGpsDialog();
 }
 
-void MainWindow::on_actionSynchronize_with_GPS_route_triggered()
-{
+void MainWindow::on_actionSynchronize_with_GPS_route_triggered() {
     synchronizeImageGpsDialog();
 }
 
-void MainWindow::synchronizeImageGpsDialog()
-{
+void MainWindow::synchronizeImageGpsDialog() {
     synchDialog->init();
     synchDialog->exec();
-
 }
 
-void MainWindow::synchronizeImageGps()
-{
-    if(synchDialog->isTimeChange()) //provedu zmenu casu fotografii
-    {
+void MainWindow::synchronizeImageGps() {
+    if(synchDialog->isTimeChange()) { //provedu zmenu casu fotografii
         changeImagesDateTime(synchDialog->isSynchAll());
     }
     setGpsInImages();

@@ -18,54 +18,46 @@ setAutoFillBackground(true);
 
 }
 
-void PicturesScrollArea::resizeEvent( QResizeEvent *event )
-{
+void PicturesScrollArea::resizeEvent( QResizeEvent *event ) {
     event->accept();
     emit showImages();
 }
 
-QSize PicturesScrollArea::sizeHint() const
-{
+QSize PicturesScrollArea::sizeHint() const {
     return QSize(850, 16777215);
 }
 
 
-void PicturesScrollArea::keyPressEvent ( QKeyEvent * event )
-{
+void PicturesScrollArea::keyPressEvent ( QKeyEvent * event ) {
     emit(processEvent(event));
 }
 
-void PicturesScrollArea::wheelEvent(QWheelEvent * event)
-{
+void PicturesScrollArea::wheelEvent(QWheelEvent * event) {
     if(event->modifiers() & Qt::ControlModifier){
         event->accept();
-        if(event->delta() < 0)
+        if(event->delta() < 0) {
             emit(changeSize(-1));
-        else
+        } else {
             emit(changeSize(1));
-    }
-    else
+        }
+    } else {
         QScrollArea::wheelEvent(event);
+    }
 
 }
 
 
-void PicturesScrollArea::setImageFocus(int dy, int widgetHeight)
-{
-    if(dy + this->widget()->pos().y() < 0)  //widget je nad scrollAreou
-    {
+void PicturesScrollArea::setImageFocus(int dy, int widgetHeight) {
+    if(dy + this->widget()->pos().y() < 0) { //widget je nad scrollAreou
         QScrollBar *scrollBar = verticalScrollBar();
         scrollBar->setValue(scrollBar->value() +  (dy + this->widget()->pos().y()));
-    }
-    else if(dy > verticalScrollBar()->value() + this->contentsRect().height()-widgetHeight) //widget je pod scrollAreou
-    {
+    } else if(dy > verticalScrollBar()->value() + this->contentsRect().height()-widgetHeight) { //widget je pod scrollAreou
         QScrollBar *scrollBar = verticalScrollBar();
         scrollBar->setValue(scrollBar->value() +  (dy + this->widget()->pos().y()) - (this->contentsRect().height()-widgetHeight));
     }
 }
 
-void PicturesScrollArea::shiftScrollBar(int dy)
-{
+void PicturesScrollArea::shiftScrollBar(int dy) {
     verticalScrollBar()->setValue(verticalScrollBar()->value() +  dy*3);
 }
 

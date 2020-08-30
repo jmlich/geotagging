@@ -94,7 +94,6 @@ SynchResultDialog::SynchResultDialog(QWidget *parent) :
     this->resize(QSize(700,450));
     this->setWindowTitle(tr("Synchronisation"));
 
-
 }
 
 void SynchResultDialog::retranslateUi()
@@ -127,14 +126,14 @@ void SynchResultDialog::legendButtonToggled(bool n)
 {
 
     legend->setVisible(n);
-    if(n)
+    if(n) {
         resize(width(), height() + legend->height() + layout()->contentsMargins().bottom());
-    else
+    } else {
         resize(width(), height() - legend->height() - layout()->contentsMargins().bottom());
+    }
 }
 
-QGroupBox *SynchResultDialog::createLegend()
-{
+QGroupBox *SynchResultDialog::createLegend() {
     QGroupBox *box = new QGroupBox(tr("Legend"));
     box->setAutoFillBackground(true);
     QPalette palBox = box->palette();
@@ -187,20 +186,18 @@ QGroupBox *SynchResultDialog::createLegend()
 }
 
 //pri vybrani "zaskrtnout vybrane" z kontextoveho menu
-void SynchResultDialog::checkSelectedItems()
-{
+void SynchResultDialog::checkSelectedItems() {
+
     QTreeWidgetItem *twi;
-    foreach(twi, tw->selectedItems())
-    {
+    foreach(twi, tw->selectedItems()) {
         int i = tw->indexOfTopLevelItem(twi);
         treeWidgetList.at(i)->setChecked(true);
     }
+
 }
-void SynchResultDialog::uncheckSelectedItems()
-{
+void SynchResultDialog::uncheckSelectedItems() {
     QTreeWidgetItem *twi;
-    foreach(twi, tw->selectedItems())
-    {
+    foreach(twi, tw->selectedItems()) {
         int i = tw->indexOfTopLevelItem(twi);
         treeWidgetList.at(i)->setChecked(false);
     }
@@ -208,8 +205,9 @@ void SynchResultDialog::uncheckSelectedItems()
 
 
 
-void SynchResultDialog::itemDoubleClicked(QTreeWidgetItem *twi, int col)
-{
+void SynchResultDialog::itemDoubleClicked(QTreeWidgetItem *twi, int col) {
+    Q_UNUSED(col)
+
     int i = tw->indexOfTopLevelItem(twi);
     if(treeWidgetList.at(i)->checkBox->isEnabled()){
         treeWidgetList.at(i)->checkBox->toggle();
@@ -217,18 +215,15 @@ void SynchResultDialog::itemDoubleClicked(QTreeWidgetItem *twi, int col)
     }
 }
 
-void SynchResultDialog::setNewDialog()
-{
+void SynchResultDialog::setNewDialog() {
     tw->clear();
     treeWidgetList.clear();
 }
 
-void SynchResultDialog::addNewItem(ImageInfo *image, int existingGpsMode)
-{
+void SynchResultDialog::addNewItem(ImageInfo *image, int existingGpsMode) {
     SynchResultItem *widget = new SynchResultItem(image,colorOk, colorFailed, colorOkUnchecked, colorFailedChecked, tw);
 
-    if(existingGpsMode == 1 && image->imageData->isGps)//tucne, nezaskrtnout
-    {
+    if(existingGpsMode == 1 && image->imageData->isGps) { //tucne, nezaskrtnout
         widget->checkBox->setChecked(false);
     }
     treeWidgetList.append(widget);
@@ -236,10 +231,8 @@ void SynchResultDialog::addNewItem(ImageInfo *image, int existingGpsMode)
     image->synchCheckBox = widget->checkBox;
 }
 
-void SynchResultDialog::showDialog()
-{
-    for(int i = 0; i < tw->columnCount(); i++)
-    {
+void SynchResultDialog::showDialog() {
+    for(int i = 0; i < tw->columnCount(); i++) {
         tw->resizeColumnToContents(i);
         tw->setColumnWidth(i,tw->columnWidth(i) + 5);
     }
@@ -253,21 +246,17 @@ void SynchResultDialog::showDialog()
 
 }
 
-void SynchResultDialog::checkButtonClicked()
-{
+void SynchResultDialog::checkButtonClicked() {
     int time = timeEdit->time().hour() * 3600 + timeEdit->time().minute() * 60 + timeEdit->time().second();
-    for(int i = 0; i<treeWidgetList.length(); i++)
-    {
+    for(int i = 0; i<treeWidgetList.length(); i++) {
 
-        if(treeWidgetList.at(i)->timeDiff < time)
-        {
+        if(treeWidgetList.at(i)->timeDiff < time) {
             treeWidgetList.at(i)->setChecked(true);
         }
     }
 }
 
-QSize SynchResultDialog::sizeHint()
-{
+QSize SynchResultDialog::sizeHint() {
     return QSize(0,0);
 }
 

@@ -476,13 +476,13 @@ function deleteMarker(id) {
 }
 
 function deleteRoute(id) {
-    for(var i = routes.length - 1; i>=0; i--) {
+    for (var i = routes.length - 1; i>=0; i--) {
         if (id === routes[i].options.id){
             map.removeLayer(routes[i]);
             routes.splice(i,1);
         }
     }
-    for(var i = joinedSegments.length - 1; i>=0; i--) {
+    for (var i = joinedSegments.length - 1; i>=0; i--) {
         if (id === joinedSegments[i].options.id) {
             map.removeLayer(joinedSegments[i]);
             joinedSegments.splice(i,1);

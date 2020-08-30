@@ -22,30 +22,35 @@ PicturesFrame::PicturesFrame(QWidget *parent) :
     minImageSize = 0;
 }
 
-void PicturesFrame::changeImageSize(int s)
-{
+void PicturesFrame::changeImageSize(int s) {
 
-    if(imageSize+s < minImageSize || imageSize+s >maxImageSize )
+    if(imageSize+s < minImageSize || imageSize+s >maxImageSize ) {
         return;
+    }
     imageSize += s;
     showImages();
 }
 
-int PicturesFrame::countColCount()
-{
-    if(imageWidgetsList->length() <= 0)
+int PicturesFrame::countColCount() {
+
+    if(imageWidgetsList->length() <= 0) {
         return 0;
+    }
+
     int colCount = (static_cast<QScrollArea *>(parent())->size().width()) / (imageWidgetsList->at(0)->actualWidth() + 10);
-    if(!colCount)
+    if(!colCount) {
         colCount = 1;
-    if(colCount > imageWidgetsList->length())
+    }
+
+    if(colCount > imageWidgetsList->length()) {
         colCount = imageWidgetsList->length();
+    }
 
     return colCount;
 }
 
-void PicturesFrame::addImage(ImageInfo *imageWidget)
-{
+void PicturesFrame::addImage(ImageInfo *imageWidget) {
+
     imageWidget->setIconSize(imageSize);
     imageWidget->setLabels();
     int numberLine = -1;
@@ -55,57 +60,57 @@ void PicturesFrame::addImage(ImageInfo *imageWidget)
 
     layout->addWidget(imageWidget, numberLine, j%colCount);
 }
-void PicturesFrame::showImages()
-{
+void PicturesFrame::showImages() {
+
     int numberLine = -1;
-    if(imageWidgetsList->length() < 1)
+    if(imageWidgetsList->length() < 1) {
         return;
-    if(imageSize != imageWidgetsList->at(0)->iconSize)
+    }
+    if(imageSize != imageWidgetsList->at(0)->iconSize) {
         imageWidgetsList->at(0)->resizeWidget(imageSize);
+    }
     int colCount = countColCount();
 
-    for(int i = 0; i<imageWidgetsList->length(); i++)
-    {
-        if(i%colCount == 0)
-        {
+    for(int i = 0; i<imageWidgetsList->length(); i++) {
+        if(i%colCount == 0) {
             numberLine++;
         }
 
-        if(imageSize != imageWidgetsList->at(i)->iconSize)
-        {
+        if(imageSize != imageWidgetsList->at(i)->iconSize) {
             imageWidgetsList->at(i)->resizeWidget(imageSize);
         }
         layout->addWidget(imageWidgetsList->at(i), numberLine, i%colCount);
     }
 }
 
-void PicturesFrame::timerEvent(QTimerEvent *event)
-{
+void PicturesFrame::timerEvent(QTimerEvent *event) {
+
     event->accept();
     int y = mapToParent(mapFromGlobal(cursor().pos())).y();
     if(y < 0){//jsem kurzorem nad ramcem
         emit(shiftScrollBar(y));
-    }
-    else if(y > static_cast<QScrollArea *>(parent())->contentsRect().height())
+    } else if(y > static_cast<QScrollArea *>(parent())->contentsRect().height()) {
          emit(shiftScrollBar(y-static_cast<QScrollArea *>(parent())->contentsRect().height()));
+    }
 
     rubberBand->setGeometry(QRect(origin, mapFromGlobal(cursor().pos())).normalized());
 
-    if(i%5)
+    if(i%5) {
         emit(rubberBandRect(QRect(origin, mapFromGlobal(cursor().pos())),0));
+    }
     i++;
 }
 
 
-void PicturesFrame::mousePressEvent( QMouseEvent * event)
-{
+void PicturesFrame::mousePressEvent( QMouseEvent * event) {
+
     emit(mousePress(event));
-    if(event->button() == Qt::LeftButton)
-    {
+    if(event->button() == Qt::LeftButton) {
         origin = event->pos();
         i = 0;
-        if (!rubberBand)
+        if (!rubberBand) {
             rubberBand = new QRubberBand(QRubberBand::Rectangle, this);
+        }
 
         rubberBand->setGeometry(QRect(origin, QSize(0,0))); //tady to nekdy pada
         rubberBand->show();
@@ -113,37 +118,36 @@ void PicturesFrame::mousePressEvent( QMouseEvent * event)
         emit(rubberBandRect(QRect(origin, event->pos()),0));
 
         timer.start(60, this);
-    }
-    else if(event->button() == Qt::RightButton)
-    {
+    } else if(event->button() == Qt::RightButton) {
         emit(rightClick(event->pos()));
     }
 
 }
 
 
-void PicturesFrame::mouseMoveEvent(QMouseEvent *event)
-{
-    if(dragEventInProgress)
-    {
+void PicturesFrame::mouseMoveEvent(QMouseEvent *event) {
+
+    if(dragEventInProgress) {
         rubberBand->setGeometry(QRect(origin, event->pos()).normalized());
 
-        if(i%5)
+        if(i%5) {
             emit(rubberBandRect(QRect(origin, event->pos()),0));
+        }
         i++;
     }
+
 }
 
-void PicturesFrame::mouseReleaseEvent(QMouseEvent *event)
-{
-    if(event->button() == Qt::LeftButton)
-    {
+void PicturesFrame::mouseReleaseEvent(QMouseEvent *event) {
+
+    if(event->button() == Qt::LeftButton) {
         timer.stop();
         dragEventInProgress = 0;
         rubberBand->hide();
         QRect r(origin, event->pos());
         emit(rubberBandRect(r, 1));
     }
+
 }
 
 

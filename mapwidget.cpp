@@ -33,8 +33,9 @@ MapWidget::MapWidget(  QWidget * parent) :
     setWidgets();
 }
 
-void MapWidget::loadFinished(bool n)
-{
+void MapWidget::loadFinished(bool n) {
+    Q_UNUSED(n)
+
     loadIsFinished = 1;
     if(!scriptsToRun.isEmpty())
     {
@@ -46,8 +47,8 @@ void MapWidget::loadFinished(bool n)
 
 }
 
-void MapWidget::retranslateUi()
-{
+void MapWidget::retranslateUi() {
+
     mapSelect->setItemText(0, tr("Cyclo-tourist"));
     mapSelect->setItemText(1, tr("Google Roadmap"));
     mapSelect->setItemText(2, tr("Google Terrain"));
@@ -65,29 +66,26 @@ void MapWidget::retranslateUi()
     setWindowTitle(tr("Map"));
 
 }
-void MapWidget::changeRouteOpacity(int id, int value)
-{
+void MapWidget::changeRouteOpacity(int id, int value) {
     QString scriptStr = QString("changeRouteOpacity(%1, %2);").arg(id).arg(value/10.0);
     mapView->page()->runJavaScript(scriptStr, [](const QVariant &result){ qDebug() << result.toString(); });
 }
-void MapWidget::lineWidthChanged(int id, int value)
-{
+
+void MapWidget::lineWidthChanged(int id, int value) {
     QString scriptStr = QString("lineWidthChanged(%1, %2);").arg(id).arg(value);
     mapView->page()->runJavaScript(scriptStr, [](const QVariant &result){ qDebug() << result.toString(); });
 }
-void MapWidget::changeRouteColor(int id, QString color)
-{
+
+void MapWidget::changeRouteColor(int id, QString color) {
     QString scriptStr = QString("changeRouteColor(%1, \"%2\");").arg(id).arg(color);
     mapView->page()->runJavaScript(scriptStr, [](const QVariant &result){ qDebug() << result.toString(); });
 }
 
-void MapWidget::settingNewMarker(QCursor cursor, QList<int> idList)
-{
+void MapWidget::settingNewMarker(QCursor cursor, QList<int> idList) {
     this->setCursor(cursor);
     QString ids = "[";
     int i;
-    foreach(i, idList)
-    {
+    foreach(i, idList) {
         ids += QString("%1").arg(i) + ",";
     }
     ids.chop(1);
@@ -96,23 +94,22 @@ void MapWidget::settingNewMarker(QCursor cursor, QList<int> idList)
     QString scriptStr = QString("settingNewMarker(%1);").arg(ids);
     mapView->page()->runJavaScript(scriptStr, [](const QVariant &result){ qDebug() << result.toString(); });
 }
-void MapWidget::endSettingNewMarker(QCursor cursor)
-{
+
+void MapWidget::endSettingNewMarker(QCursor cursor) {
     this->setCursor(cursor);
     QString scriptStr = "endSettingNewMarker();";
     mapView->page()->runJavaScript(scriptStr, [](const QVariant &result){ qDebug() << result.toString(); });
 
 }
-void MapWidget::newMarkerAdded(int id, double lat, double lon, double ele)
-{
+
+void MapWidget::newMarkerAdded(int id, double lat, double lon, double ele) {
 
 //    qDebug() << "newMarkerAdded" << id << lat << lon << ele;
 
     emit(settingNewMarkerFinished());
     emit(setGpsInImage(id, lat, lon, ele));
 }
-void MapWidget::setWidgets()
-{
+void MapWidget::setWidgets() {
     iconMarkerVisible = new QIcon(":/icons/markerShowR.png");
     iconRouteVisible = new QIcon(":/icons/chodecMapa.png");
     iconRelief = new QIcon(":/icons/relief.png");
@@ -226,8 +223,7 @@ void MapWidget::setWidgets()
     setWidget(w);
 }
 
-void MapWidget::flipRelief()
-{
+void MapWidget::flipRelief() {
     reliefVisible = !reliefVisible;
     QStringList scriptStr;
     scriptStr << QString("flipRelief(%1);").arg(reliefVisible);
@@ -235,24 +231,21 @@ void MapWidget::flipRelief()
 
 }
 
-void MapWidget::setJoinSegments()
-{
+void MapWidget::setJoinSegments() {
     joinSegmentsVisible = !joinSegmentsVisible;
     QStringList scriptStr;
     scriptStr << QString("setJoinSegments(%1);").arg(joinSegmentsVisible && routesVisible);
     mapView->page()->runJavaScript(scriptStr.join("\n"), [](const QVariant &result){ qDebug() << result.toString(); });
 }
 
-void MapWidget::changeMap(int mapI)
-{
+void MapWidget::changeMap(int mapI) {
     QString s = mapSelect->itemData(mapI).toString();
     QStringList scriptStr;
     scriptStr << QString("setMapType(\"%1\");").arg(s);
     mapView->page()->runJavaScript(scriptStr.join("\n"), [](const QVariant &result){ qDebug() << result.toString(); });
 }
 
-void MapWidget::addMarker(int id, double lat, double lon)
-{
+void MapWidget::addMarker(int id, double lat, double lon) {
     QStringList scriptStr;
     scriptStr << QString("addMarker(%1, %2, %3, %4); centerInBounds(1,0);").arg(QString::number(lat, 'f', 10)).arg(QString::number(lon, 'f', 10)).arg(id).arg(markersVisible);
 
@@ -263,8 +256,7 @@ void MapWidget::addMarker(int id, double lat, double lon)
     }
 }
 
-void MapWidget::markerSelected(int id, bool isSelected)
-{
+void MapWidget::markerSelected(int id, bool isSelected) {
     QStringList scriptStr;
     scriptStr <<"for (i in markers) {"
             <<    QString("if(%1 == -1 || %1==markers[i].options.id){").arg(id)
@@ -275,8 +267,7 @@ void MapWidget::markerSelected(int id, bool isSelected)
     mapView->page()->runJavaScript(scriptStr.join("\n"), [](const QVariant &result){ qDebug() << result.toString(); });
 }
 
-void MapWidget::markerClicked(int id)
-{
+void MapWidget::markerClicked(int id) {
     QStringList scriptStr;
     scriptStr << QString("markerClicked(%1, %2);").arg(id).arg((QApplication::keyboardModifiers() & Qt::ControlModifier));
 
@@ -284,8 +275,7 @@ void MapWidget::markerClicked(int id)
     emit(mClicked(id, 0, 1));
 }
 
-void MapWidget::markerDragged(int id)
-{
+void MapWidget::markerDragged(int id) {
     qDebug() << "markerDragged" << id;
     idDragged = id;
     QMessageBox *mb = new QMessageBox(QMessageBox::Question, tr("Change picture location"),
@@ -302,31 +292,29 @@ void MapWidget::markerDragged(int id)
         setMarkerLastPosition();
     }
 }
-void MapWidget::setNewGpsInImage()
-{
+void MapWidget::setNewGpsInImage() {
     qDebug() << "setNewGpsInImage" << idDragged;
     QString scriptStr = QString("setNewMarkerPosition(%1);").arg(idDragged);
     mapView->page()->runJavaScript(scriptStr, [](const QVariant &result){ qDebug() << result.toString(); });
 
 //    mapView->page()->mainFrame()->evaluateJavaScript( scriptStr).toList();
 }
-void MapWidget::setMarkerLastPosition()
-{
+
+void MapWidget::setMarkerLastPosition() {
     QString scriptStr = QString("setOldMarkerPosition(%1);").arg(idDragged);
     mapView->page()->runJavaScript(scriptStr, [](const QVariant &result){ qDebug() << result.toString(); });
 
 }
 
-void MapWidget::addRoute(GpsRoute *route)
-{
-    for(int i=0; i<route->segmentList.length(); i++)
-    {
+void MapWidget::addRoute(GpsRoute *route) {
+
+    for (int i=0; i<route->segmentList.length(); i++) {
         QString points = "";
         GpsSegment *seg = route->segmentList.at(i);
-        for(int j=0; j<seg->length(); j++)
-        {
-
-            points.append(QString("[%1, %2],\n").arg(QString::number(seg->at(j)->latitude, 'f', 10)).arg(QString::number(seg->at(j)->longitude, 'f', 10)));
+        for (int j=0; j<seg->length(); j++) {
+            points.append(QString("[%1, %2],\n")
+                          .arg(QString::number(seg->at(j)->latitude, 'f', 10))
+                          .arg(QString::number(seg->at(j)->longitude, 'f', 10)));
         }
         QStringList scriptStr;
         scriptStr << "var routeCoordinatesList = ["
@@ -335,7 +323,7 @@ void MapWidget::addRoute(GpsRoute *route)
                 << QString("addRoute(routeCoordinatesList, %1, %2, \"%3\", 1);")
                 .arg(route->id).arg(routesVisible).arg(route->routeColor->name());
 
-        if(i+1 < route->segmentList.length()) { //pridani spojeni segmentu
+        if (i+1 < route->segmentList.length()) { //pridani spojeni segmentu
             scriptStr << "var routeCoordinatesList2 = ["
                     << QString("[%1, %2],").arg(QString::number(route->segmentList.at(i)->last()->latitude, 'f', 10))
                             .arg(QString::number(route->segmentList.at(i)->last()->longitude, 'f', 10))
@@ -346,7 +334,7 @@ void MapWidget::addRoute(GpsRoute *route)
 
         }
 
-        if(!loadIsFinished) {
+        if (!loadIsFinished) {
             scriptsToRun << scriptStr.join("\n");
         } else {
             mapView->page()->runJavaScript(scriptStr.join("\n"), [](const QVariant &result){ qDebug() << result.toString(); });
@@ -354,23 +342,20 @@ void MapWidget::addRoute(GpsRoute *route)
     }
 }
 
-void MapWidget::centerMap()
-{
+void MapWidget::centerMap() {
     QStringList scriptStr;
     scriptStr << "centerInBounds(1,1)";
     mapView->page()->runJavaScript(scriptStr.join("\n"), [](const QVariant &result){ qDebug() << result.toString(); });
 }
 
-void MapWidget::setMarkersVisibility()
-{
+void MapWidget::setMarkersVisibility() {
     QStringList scriptStr;
     markersVisible = !markersVisible;
     scriptStr << QString("setMarkersVisibility(%1);").arg(markersVisible);
     mapView->page()->runJavaScript(scriptStr.join("\n"), [](const QVariant &result){ qDebug() << result.toString(); });
 }
 
-void MapWidget::setRoutesVisibility()
-{
+void MapWidget::setRoutesVisibility() {
     routesVisible = !routesVisible;
     QStringList scriptStr;
     scriptStr << QString("setRoutesVisibility(%1);").arg(routesVisible)
@@ -380,19 +365,16 @@ void MapWidget::setRoutesVisibility()
 }
 
 
-void MapWidget::deleteMarker(int id)
-{
+void MapWidget::deleteMarker(int id) {
     QStringList scriptStr;
     scriptStr << QString("deleteMarker(%1);").arg(id);
     mapView->page()->runJavaScript(scriptStr.join("\n"), [](const QVariant &result){ qDebug() << result.toString(); });
 }
-void MapWidget::keyPressEvent(QKeyEvent *event)
-{
+void MapWidget::keyPressEvent(QKeyEvent *event) {
     emit(processEvent(event));
 }
 
-void MapWidget::deleteRoute(int id)
-{
+void MapWidget::deleteRoute(int id) {
     QString scriptStr = QString("deleteRoute(%1);").arg(id);
     mapView->page()->runJavaScript(scriptStr, [](const QVariant &result){ qDebug() << result.toString(); });
 }

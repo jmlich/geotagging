@@ -26,13 +26,11 @@ ImageData::ImageData(QObject *parent) :
     connect(this, SIGNAL(readExif(QString)), exifRW, SLOT(readExif(QString)));
 }
 
-int ImageData::loadData(QString pictureFName)
-{
+int ImageData::loadData(QString pictureFName) {
         pictureName = pictureFName;
 
         QByteArray type =  QImageReader::imageFormat(pictureName);
-        if(type == "")    //neni obrazek
-        {
+        if (type == "") {    //neni obrazek
             return 1;
         }
 
@@ -42,8 +40,7 @@ int ImageData::loadData(QString pictureFName)
         return 0;
 }
 
-void ImageData::scaleImage(QString pictureName)
-{
+void ImageData::scaleImage(QString pictureName) {
     QImage img(pictureName);
     if(img.isNull()){   //img je null
         return;
@@ -64,8 +61,7 @@ void ImageData::scaleImage(QString pictureName)
         isExif = false;
     }
 
-    if(isExif)
-    {
+    if(isExif) {
         image.get();
         image->readMetadata();
 
@@ -73,8 +69,7 @@ void ImageData::scaleImage(QString pictureName)
         if (!exifData.empty()) {
             Exiv2::ExifKey key("Exif.Image.Orientation");
             Exiv2::ExifData::iterator pos = exifData.findKey(key);
-            if(pos != exifData.end())
-            {
+            if(pos != exifData.end()) {
                 QString str = exifData["Exif.Image.Orientation"].toString().data();
                 switch(str.toInt()){
                 case 3: //obraz otoceny o 180stupnu
@@ -110,21 +105,17 @@ void ImageData::scaleImage(QString pictureName)
 /**
   *z EXIF
   */
-void ImageData::setDateTime(QDateTime dateTimeNew)
-{
+void ImageData::setDateTime(QDateTime dateTimeNew) {
     *(this->dateTime) = dateTimeNew;
     this->originalDateTime = dateTimeNew;
     this->lastDateTimeSaved = dateTimeNew;
     isDateTimeChanged = 0;
 }
 
-void ImageData::setGps(double lat, double lon, double alt)
-{
+void ImageData::setGps(double lat, double lon, double alt) {
     latitude = lat;
     longitude = lon;
     altitude = alt;
     gpsSource = 1;
     isGps = 1;
 }
-
-

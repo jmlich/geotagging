@@ -17,14 +17,11 @@ ImageView::ImageView(QWidget *parent):
     this->layout()->setContentsMargins(0,0,0,0);
     this->layout()->addWidget(scrollArea);
 }
-ImageView::~ImageView()
-{
+ImageView::~ImageView() {
     delete img;
 }
 
-void ImageView::setImage(QString pictureName)
-{
-
+void ImageView::setImage(QString pictureName) {
 
     img = new QImage(pictureName);
     if(img->isNull()){
@@ -37,14 +34,12 @@ void ImageView::setImage(QString pictureName)
     try{
         image = Exiv2::ImageFactory::open ( std::string(pictureName.toUtf8()));
         isExif = true;
-    }
-    catch (Exiv2::Error& e) {
+    } catch (Exiv2::Error& e) {
         qDebug() << "Caught Exiv2 exception 2 '" << e.what() << "'";
         isExif = false;
     }
 
-    if(isExif)
-    {
+    if (isExif) {
         image.get();
         image->readMetadata();
 
@@ -52,29 +47,22 @@ void ImageView::setImage(QString pictureName)
         if (!exifData.empty()) {
             Exiv2::ExifKey key("Exif.Image.Orientation");
             Exiv2::ExifData::iterator pos = exifData.findKey(key);
-            if(pos != exifData.end())
-            {
+            if(pos != exifData.end()) {
                 //qDebug() << exifData["Exif.Image.Orientation"].toString().data() << "iiii";
                 QString str = exifData["Exif.Image.Orientation"].toString().data();
                 switch(str.toInt()){
                 case 3: //obraz otoceny o 180stupnu
-                    {
                         QMatrix rm;
                         *img = img->transformed(rm.rotate(180));
                         break;
-                    }
                 case 6: //obraz otoceny o 90stupnu
-                    {
                         QMatrix rm;
                         *img = img->transformed(rm.rotate(90));
                         break;
-                    }
                 case 8: //obraz otoceny o 280stupnu
-                    {
                         QMatrix rm;
                         *img = img->transformed(rm.rotate(280));
                         break;
-                    }
                 default:
                     break;
                 }
@@ -94,8 +82,8 @@ void ImageView::setImage(QString pictureName)
     resize(scrollArea->widget()->width() + 2, scrollArea->widget()->height() + 2);
     imageL->setAlignment(Qt::AlignCenter);
 }
-void ImageView::resizeEvent( QResizeEvent *event )
-{
+
+void ImageView::resizeEvent( QResizeEvent *event ) {
     event->accept();
     currentSize = QSize(this->size().width()-2, this->size().height()-2);
     imageL->setPixmap(QPixmap::fromImage((img->scaled(currentSize,Qt::KeepAspectRatio))));
@@ -126,17 +114,16 @@ void ImageView::resizeEvent( QResizeEvent *event )
 
 }*/
 
-void ImageView::changeImageSize(int delta)
-{
-    if(delta < 0)
-    {
-        if(currentSize.width() > 60 && currentSize.height() > 60 )
+void ImageView::changeImageSize(int delta) {
+    if(delta < 0) {
+        if(currentSize.width() > 60 && currentSize.height() > 60 ) {
             currentSize = QSize(currentSize.width() * 0.90, currentSize.height() * 0.90);
-        else
+        } else {
             return;
-    }
-    else
+        }
+    } else {
         currentSize = QSize(currentSize.width() * 1.1, currentSize.height() * 1.1);
+    }
 
     imageL->setPixmap(QPixmap::fromImage((img->scaled(currentSize,Qt::KeepAspectRatio))));
     scrollArea->setWidget(imageL);

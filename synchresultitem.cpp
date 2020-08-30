@@ -31,8 +31,8 @@ SynchResultItem::SynchResultItem(ImageInfo *image,QString cOk, QString cFailed, 
     parent->setItemWidget(this, 0, w);
 
 
-    if(image->imageData->dateTime->isNull() || image->imageData->dateTime->toTime_t() == QDateTime::fromString(QString("0000:00:00 00:00:00"), "yyyy:MM:dd hh:mm:ss").toTime_t())
-    {
+    if(image->imageData->dateTime->isNull()
+            || image->imageData->dateTime->toTime_t() == QDateTime::fromString(QString("0000:00:00 00:00:00"), "yyyy:MM:dd hh:mm:ss").toTime_t()) {
         //neni datum ve fotce
         this->setText(1,"-");
         this->setText(2,"-");
@@ -45,29 +45,27 @@ SynchResultItem::SynchResultItem(ImageInfo *image,QString cOk, QString cFailed, 
         timeDiff = 9999999;
         checkBox->setEnabled(false);
 
-    }
-    else
-    {
+    } else {
         this->setText(1,image->imageData->dateTime->toString("dd.M.yyyy hh:mm:ss"));
-        if(image->approxMethod == 0)    //nejblizsi bod
-        {
+        if(image->approxMethod == 0) {   //nejblizsi bod
+
             this->setText(3,tr("nearest point (") + image->candidatePointTime->toString("dd.MM.yyyy hh:mm:ss") + ")");
             timeDiff = image->imageData->dateTime->toTime_t()- image->candidatePointTime->toTime_t();
             char sign = '+';
-            if(timeDiff < 0)
-            {
+            if (timeDiff < 0) {
                 timeDiff *= -1;
                 sign = '-';
             }
 
             int days = timeDiff / (24 * 3600);
             QString dayName;
-            if(days == 1)
+            if(days == 1) {
                 dayName = tr("day");
-            else if(days == 2 || days == 3 || days == 4)
+            } else if(days == 2 || days == 3 || days == 4) {
                 dayName = tr("days", "low");
-            else
+            } else {
                 dayName = tr("days", "high");
+            }
 
             int h = (timeDiff % 24) / 3600;
             int m = (timeDiff % 3600) / 60;
@@ -79,29 +77,24 @@ SynchResultItem::SynchResultItem(ImageInfo *image,QString cOk, QString cFailed, 
                   + ((m || h) ? QString("%1m").arg(m) : "")
                   + QString("%1s").arg(s);
             this->setText(4,str);
-        }
-        else if(image->approxMethod == 1)
-        {
+        } else if(image->approxMethod == 1) {
             this->setText(3,tr("from 2 points"));
             timeDiff = 0;
-        }
-        else if(image->approxMethod == 2)   //z vice bodu
-        {
+        } else if(image->approxMethod == 2) { //z vice bodu
+
             this->setText(3,tr("from more points"));
             timeDiff = 0;
         }
 
-        if(image->candidateIsCorrect)
-        {
+        if(image->candidateIsCorrect) {
             checkBox->setChecked(1);
-            for(int j = 0; j<parent->columnCount(); j++)
+            for (int j = 0; j<parent->columnCount(); j++)
                 this->setBackgroundColor(j,colorOk);
             synchOk = 1;
-        }
-        else
-        {   //prirazeni selhalo
-            for(int j = 0; j<parent->columnCount(); j++)
+        } else {   //prirazeni selhalo
+            for (int j = 0; j<parent->columnCount(); j++) {
                 this->setBackgroundColor(j,colorFailed);
+            }
             synchOk = 0;
 
         }
@@ -117,26 +110,27 @@ SynchResultItem::SynchResultItem(ImageInfo *image,QString cOk, QString cFailed, 
     }
 }
 
-void SynchResultItem::setChecked(bool n)
-{
-    if(checkBox->isEnabled()){
+void SynchResultItem::setChecked(bool n) {
+    if(checkBox->isEnabled()) {
         checkBox->setChecked(n);
         setItemColor();
     }
 }
-void SynchResultItem::setItemColor()
-{
+void SynchResultItem::setItemColor() {
 
     QString currentColor;
-    if(synchOk && checkBox->isChecked())
+    if(synchOk && checkBox->isChecked()) {
         currentColor = colorOk;
-    else if(!synchOk && !checkBox->isChecked())
+    } else if(!synchOk && !checkBox->isChecked()) {
         currentColor = colorFailed;
-    else if(synchOk && !checkBox->isChecked())
+    } else if(synchOk && !checkBox->isChecked()) {
         currentColor = colorOkUnchecked;
-    else if(!synchOk && checkBox->isChecked())
+    } else if(!synchOk && checkBox->isChecked()) {
         currentColor = colorFailedChecked;
-    for(int j = 0; j<colCount; j++)
-        this->setBackgroundColor(j,currentColor);
+    }
+
+    for(int j = 0; j<colCount; j++) {
+        this->setBackgroundColor(j, currentColor);
+    }
 
 }

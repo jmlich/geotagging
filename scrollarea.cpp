@@ -12,15 +12,16 @@ ScrollArea::ScrollArea(QWidget *parent) :
         this->setContentsMargins(0,0,0,0);
         this->setWidgetResizable(true);
 }
-void ScrollArea::wheelEvent(QWheelEvent * event)
-{
+
+void ScrollArea::wheelEvent(QWheelEvent * event) {
     if(event->modifiers() & Qt::ControlModifier){
         event->accept();
-        if(event->delta() < 0)
+        if(event->delta() < 0) {
             emit(changeSize(-1));
-        else
+        } else {
             emit(changeSize(1));
-    }
-    else
+        }
+    } else {
         QScrollArea::wheelEvent(event);
+    }
 }
