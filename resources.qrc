@@ -3,8 +3,6 @@
         <file>icons/openGps.png</file>
         <file>icons/closeX.png</file>
         <file>icons/chodec.png</file>
-        <file>icons/marker-yellow.png</file>
-        <file>icons/marker-red.png</file>
         <file>icons/synch.png</file>
         <file>icons/saveTimeIcon.png</file>
         <file>icons/geotagging.png</file>
@@ -19,7 +17,6 @@
         <file>icons/routeFull.png</file>
         <file>icons/terc.png</file>
         <file>icons/saveGpsIconS.png</file>
-        <file>googleMapsV3.html</file>
         <file>leaflet.html</file>
         <file>./js/jquery.min.js</file>
         <file>./js/leaflet.js</file>
