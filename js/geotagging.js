@@ -96,12 +96,20 @@ function initialize() {
     yellowMarker = L.icon({
                               iconUrl: "qrc:///js/images/marker-icon-gold.png",
                               shadowUrl: "qrc:///js/images/marker-shadow.png",
+                              iconSize: [25, 41],
+                              iconAnchor: [12, 41],
+                              popupAnchor: [1, -34],
+                              shadowSize: [41, 41],
                           });
 
 
     defaultMarker = L.icon({
                                iconUrl: "qrc:///js/images/marker-icon-red.png",
                                shadowUrl: "qrc:///js/images/marker-shadow.png",
+                               iconSize: [25, 41],
+                               iconAnchor: [12, 41],
+                               popupAnchor: [1, -34],
+                               shadowSize: [41, 41],
                            });
 
     //    test_add_marker();
