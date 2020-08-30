@@ -42,7 +42,7 @@ void ImageView::setImage(QString pictureName) {
     if (isExif) {
         image.get();
         image->readMetadata();
-
+        QMatrix rot;
         Exiv2::ExifData &exifData =  image->exifData();
         if (!exifData.empty()) {
             Exiv2::ExifKey key("Exif.Image.Orientation");
@@ -52,16 +52,13 @@ void ImageView::setImage(QString pictureName) {
                 QString str = exifData["Exif.Image.Orientation"].toString().data();
                 switch(str.toInt()){
                 case 3: //obraz otoceny o 180stupnu
-                        QMatrix rm;
-                        *img = img->transformed(rm.rotate(180));
+                        *img = img->transformed(rot.rotate(180));
                         break;
                 case 6: //obraz otoceny o 90stupnu
-                        QMatrix rm;
-                        *img = img->transformed(rm.rotate(90));
+                        *img = img->transformed(rot.rotate(90));
                         break;
                 case 8: //obraz otoceny o 280stupnu
-                        QMatrix rm;
-                        *img = img->transformed(rm.rotate(280));
+                        *img = img->transformed(rot.rotate(280));
                         break;
                 default:
                     break;
