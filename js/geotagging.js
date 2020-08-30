@@ -171,42 +171,33 @@ function setOldMarkerPosition(id) {
     console.log("setOldMarkerPosition("+id+")")
     for (var i in markers) {
         if (id === markers[i].options.id) {
-            markers[i].setLatLng(markers[i].options.oldPosition);
-            map.panTo(markers[i].options.oldPosition)
+            var position = markers[i].options.oldPosition;
+            if (position === undefined) {
+                console.error("oldPosition is not defined")
+                continue;
+            }
+
+            markers[i].setLatLng(position);
+            map.panTo(position)
         }
     }
 }
 
 function setNewMarkerPosition(id) {
-    console.log("setNewMarkerPosition " + id)
+    console.log("setNewMarkerPosition (" + id +")")
     for (var markerIdx in markers) {
         if(id === markers[markerIdx].options.id){
-            markers[markerIdx].options.oldPosition = markers[markerIdx].getLatLng();
+            var position = markers[markerIdx].getLatLng();
+            markers[markerIdx].options.oldPosition = position;
             map.addLayer(markers[markerIdx]);
-            return markers[markerIdx].getLatLng();
 
             ////////////////////////
 
-            //            var ele = -1000;
-            //            var locations = [];
-            //            locations.push(markers[markerIdx].getPosition());
+            var ele = -1000;
+            ele = elevation
+            newMarkerAdded(id, position[0], position[1], ele);
+            return position;
 
-            //            // Create a LocationElevationRequest object using the array's one value
-            //            var positionalRequest = {
-            //                'locations': locations
-            //            }
-            //            // Initiate the location request
-            //            elevator.getElevationForLocations(positionalRequest, function(results, status) {
-            //                if (status === google.maps.ElevationStatus.OK) {
-            //                    // Retrieve the first result
-            //                    if (results[0]) {
-            //                        ele = results[0].elevation;
-            //                    }
-            //                }
-            //                //				alert(newLat+ ", " +newLng + " != " + markers[markerIdx].position.lat()+ " " + markers[markerIdx].position.lng() + " " + ele);
-
-            //                newMarkerAdded(id, newLat, newLng, ele);
-            //            });
         }
     }
     //return [markers[markerIdx].position.lat(),markers[markerIdx].position.lng(), ele];
@@ -216,10 +207,11 @@ function setNewMarkerPosition(id) {
 var idList;
 function settingNewMarker(iidList) {
     idList = iidList;
+    console.log("FIXME settingNewMarker("+iidList+")")
     //    map.draggableCursor = 'crosshair';
-    clickListener = google.maps.event.addListener(map, 'click', function(event) {
-        addNewMarkers(event.latLng);
-    });
+//    clickListener = google.maps.event.addListener(map, 'click', function(event) {
+//        addNewMarkers(event.latLng);
+//    });
 
 }
 function endSettingNewMarker() {
@@ -262,7 +254,7 @@ function addNewMarkers(coord) {
 }
 
 function addMarker(lat, lon, iid, isVisible) {
-    console.log("addMarker("+lat+","+lon+","+iid+ ","+ isVisible+ ")")
+    console.log("addMarker("+lat+", "+lon+", "+iid+ ", "+ isVisible+ ")")
     var location = L.latLng(lat, lon);
 
     for (var i in markers) {
@@ -291,7 +283,8 @@ function addMarker(lat, lon, iid, isVisible) {
                               draggable: true,
                               icon: defaultMarker,
                               id: iid,
-                              title: iid
+                              title: iid,
+                              oldPosition: [lat, lon],
                           });
 
     if (isVisible) {
@@ -370,11 +363,11 @@ function addRoute(routeCoordinatesList, iid, isVisible, var_color, isValid) {
         path.push(L.latLng(e[0], e[1]));
     });
     
-
     var route = L.polyline(path, {
                                color: var_color,
-                               id: iid
+                               id: iid,
                            })
+
     if(isVisible) {
         route.addTo(map);
     }
@@ -388,13 +381,10 @@ function addRoute(routeCoordinatesList, iid, isVisible, var_color, isValid) {
     }
 }
 
-function centerInBounds(fitMarkers, fitRoutes){
+function centerInBounds(fitMarkers, fitRoutes) {
+    console.log("centerInBounds(fitMarkers, fitRoutes)")
 
     if ((markers.length === 0) && (routes.length === 0)) {
-        /*var myLatlng = new google.maps.LatLng(0,0);
-    var zoom = 1;
-    map.setCenter(myLatLng);
-    map.setZoom = zoom;*/
         return;
     }
 
@@ -450,7 +440,7 @@ function markerClicked(id, isCtrl) {
 
 function setMarkersVisibility(setVisible) {
     for (var i in markers) {
-        if(setVisible) {
+        if (setVisible) {
             map.addLayer(markers[i]);
         } else {
             if( markers[i].icon === defaultMarker) {
@@ -462,7 +452,7 @@ function setMarkersVisibility(setVisible) {
 
 function setRoutesVisibility(setVisible) {
     for (var i in routes) {
-        if(setVisible) {
+        if (setVisible) {
             map.addLayer(routes[i]);
         } else {
             map.removeLayer(routes[i]);
