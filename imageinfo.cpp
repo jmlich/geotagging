@@ -7,8 +7,8 @@
 #include "ui_imageinfo.h"
 
 ImageInfo::ImageInfo(ImageData *newImageData,QWidget *parent) :
-        QWidget(parent),
-        ui(new Ui::ImageInfo)
+    QWidget(parent),
+    ui(new Ui::ImageInfo)
 {
     ui->setupUi(this);
     imageData = newImageData;
@@ -107,23 +107,23 @@ QString ImageInfo::currentStyleSheet() {
     }
     QString sSheet;
     sSheet += ".QFrame { "
-              + QString("background-color: %1;").arg(isClicked ? "#D0D0E7" : "#FFFFFF")
-              + QString("border-width: 1px;")
-              + "border-style: outset; "
-              + "border-radius: 9px; "
-              + QString("border-color: %1; }").arg(borderColor)
+            + QString("background-color: %1;").arg(isClicked ? "#D0D0E7" : "#FFFFFF")
+            + QString("border-width: 1px;")
+            + "border-style: outset; "
+            + "border-radius: 9px; "
+            + QString("border-color: %1; }").arg(borderColor)
 
-              + QString("#nameLabel { color:%1;}").arg("#232323")//.arg(pictureName)
-              + QString("#timeLabel { color:%1}").arg(imageData->isDateTimeSaved ? "#232323" : "#FF0000")
-              + QString("#gpsLabel { color:%1}").arg(imageData->isGpsSaved ? "#232323" : "#FF0000")
-              + QString("#altitudeLabel { color:%1}").arg((imageData->altitude < -999 || imageData->isGpsSaved) ? "#232323" : "#FF0000")
+            + QString("#nameLabel { color:%1;}").arg("#232323")//.arg(pictureName)
+            + QString("#timeLabel { color:%1}").arg(imageData->isDateTimeSaved ? "#232323" : "#FF0000")
+            + QString("#gpsLabel { color:%1}").arg(imageData->isGpsSaved ? "#232323" : "#FF0000")
+            + QString("#altitudeLabel { color:%1}").arg((imageData->altitude < -999 || imageData->isGpsSaved) ? "#232323" : "#FF0000")
 
-              + QString("#nameLabel:hover { background-color: #E1ECEC;}")
-              + QString("#timeLabel:hover { background-color: #E1ECEC;}")
-              + QString("#gpsLabel:hover { background-color: #E1ECEC;}")
-              + QString("#altitudeLabel:hover { background-color: #E1ECEC;}")
-              + QString("#frameImage:hover { background-color: #E1ECEC;}")
-              ;
+            + QString("#nameLabel:hover { background-color: #E1ECEC;}")
+            + QString("#timeLabel:hover { background-color: #E1ECEC;}")
+            + QString("#gpsLabel:hover { background-color: #E1ECEC;}")
+            + QString("#altitudeLabel:hover { background-color: #E1ECEC;}")
+            + QString("#frameImage:hover { background-color: #E1ECEC;}")
+            ;
 
     return sSheet;
 }
@@ -143,8 +143,9 @@ QString ImageInfo::gpsCandidadesString() {
 }
 
 void ImageInfo::setGpsLabel() {
-    if(imageData->isGps) {
-        if(isClicked){
+
+    if (imageData->isGps) {
+        if (isClicked){
             markerLabel->setVisible(0);
             markerSelectedLabel->setVisible(imageData->isGps);
         } else {
@@ -153,18 +154,18 @@ void ImageInfo::setGpsLabel() {
         }
     }
     switch (imageData->gpsSource) {
-    case 1:
-        ui->gpsLabel->setText(gpsString());
+        case 1:
+            ui->gpsLabel->setText(gpsString());
         break;
-    case 2:
-        //ui->gpsLabel->setTextFormat(Qt::RichText);
-        ui->gpsLabel->setText("<img src=:/icons/chodecMini.png> " + gpsString());
+        case 2:
+            //ui->gpsLabel->setTextFormat(Qt::RichText);
+            ui->gpsLabel->setText("<img src=:/icons/chodecMini.png> " + gpsString());
         break;
-    case 3:
-        //ui->gpsLabel->setTextFormat(Qt::RichText);
-        ui->gpsLabel->setText("<img src=:/icons/handIcon.png> " + gpsString());
+        case 3:
+            //ui->gpsLabel->setTextFormat(Qt::RichText);
+            ui->gpsLabel->setText("<img src=:/icons/handIcon.png> " + gpsString());
         break;
-    default:
+        default:
         break;
     }
 
@@ -183,18 +184,18 @@ void ImageInfo::setAltitudeLabel() {
         return;
     } else {
         switch (imageData->gpsSource) {
-        case 1:
-            ui->altitudeLabel->setText(QString(tr("%1m")).arg(imageData->altitude));
+            case 1:
+                ui->altitudeLabel->setText(QString(tr("%1m")).arg(imageData->altitude));
             break;
-        case 2:
-            ui->altitudeLabel->setText("<img src=:/icons/chodecMini.png> "
-                                       + QString(tr("%1m")).arg(imageData->altitude));
+            case 2:
+                ui->altitudeLabel->setText("<img src=:/icons/chodecMini.png> "
+                                           + QString(tr("%1m")).arg(imageData->altitude));
             break;
-        case 3:
-            ui->altitudeLabel->setText("<img src=:/icons/handIcon.png> "
-                                       + QString(tr("%1m")).arg(imageData->altitude));
+            case 3:
+                ui->altitudeLabel->setText("<img src=:/icons/handIcon.png> "
+                                           + QString(tr("%1m")).arg(imageData->altitude));
             break;
-        default:
+            default:
             break;
         }
     }
@@ -227,7 +228,7 @@ void ImageInfo::setAltitude(double alt) {
 
 void ImageInfo::setGpsFromMap(int iid, double lat, double lon, double alt) {
 
-//    qDebug()  << "setGpsFromMap" << iid << lat << lon << alt;
+    //    qDebug()  << "setGpsFromMap" << iid << lat << lon << alt;
 
     if(iid == imageData->id) {
         imageData->latitude = lat;
@@ -460,7 +461,7 @@ void ImageInfo::setOrigDateTime (bool isSaveTime) {
 QStringList ImageInfo::exifInformation() {
     QStringList exifList;
     exifList << QFileInfo(imageData->pictureName).fileName()
-            << QFileInfo(imageData->pictureName).absolutePath() + "/";
+             << QFileInfo(imageData->pictureName).absolutePath() + "/";
     exifList.append(*imageData->exifRW->readExifInfo(imageData->pictureName, formatHandler));
     return exifList;
 }

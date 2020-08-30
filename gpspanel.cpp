@@ -26,17 +26,15 @@ GpsPanel::GpsPanel( QWidget * parent):
 
 }
 
-void GpsPanel::retranslateUi()
-{
+void GpsPanel::retranslateUi() {
     setWindowTitle(tr("GPS routes"));
 }
 
-QSize GpsPanel::sizeHint() const
-{
+QSize GpsPanel::sizeHint() const {
     return QSize(280, 16777215);
 }
-void GpsPanel::addGpsWidget(GpsRoute *gpsRouteWidget)
-{
+
+void GpsPanel::addGpsWidget(GpsRoute *gpsRouteWidget) {
     treeW->addTopLevelItem(gpsRouteWidget);
     treeW->setItemWidget(gpsRouteWidget, 1,  gpsRouteWidget->buttonWidget);
 }

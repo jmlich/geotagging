@@ -27,17 +27,17 @@ ImageData::ImageData(QObject *parent) :
 }
 
 int ImageData::loadData(QString pictureFName) {
-        pictureName = pictureFName;
+    pictureName = pictureFName;
 
-        QByteArray type =  QImageReader::imageFormat(pictureName);
-        if (type == "") {    //neni obrazek
-            return 1;
-        }
+    QByteArray type =  QImageReader::imageFormat(pictureName);
+    if (type == "") {    //neni obrazek
+        return 1;
+    }
 
-        scaleImage(pictureName);
-        emit(readExif(pictureName));
+    scaleImage(pictureName);
+    emit(readExif(pictureName));
 
-        return 0;
+    return 0;
 }
 
 void ImageData::scaleImage(QString pictureName) {
@@ -61,7 +61,7 @@ void ImageData::scaleImage(QString pictureName) {
         isExif = false;
     }
 
-    if(isExif) {
+    if (isExif) {
         image.get();
         image->readMetadata();
 
@@ -69,28 +69,20 @@ void ImageData::scaleImage(QString pictureName) {
         if (!exifData.empty()) {
             Exiv2::ExifKey key("Exif.Image.Orientation");
             Exiv2::ExifData::iterator pos = exifData.findKey(key);
+            QMatrix rm;
             if(pos != exifData.end()) {
                 QString str = exifData["Exif.Image.Orientation"].toString().data();
                 switch(str.toInt()){
-                case 3: //obraz otoceny o 180stupnu
-                    {
-                        QMatrix rm;
+                    case 3: //obraz otoceny o 180stupnu
                         img = img.transformed(rm.rotate(180));
-                        break;
-                    }
-                case 6: //obraz otoceny o 90stupnu
-                    {
-                        QMatrix rm;
+                    break;
+                    case 6: //obraz otoceny o 90stupnu
                         img = img.transformed(rm.rotate(90));
-                        break;
-                    }
-                case 8: //obraz otoceny o 280stupnu
-                    {
-                        QMatrix rm;
+                    break;
+                    case 8: //obraz otoceny o 280stupnu
                         img = img.transformed(rm.rotate(280));
-                        break;
-                    }
-                default:
+                    break;
+                    default:
                     break;
                 }
 

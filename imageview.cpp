@@ -17,6 +17,7 @@ ImageView::ImageView(QWidget *parent):
     this->layout()->setContentsMargins(0,0,0,0);
     this->layout()->addWidget(scrollArea);
 }
+
 ImageView::~ImageView() {
     delete img;
 }

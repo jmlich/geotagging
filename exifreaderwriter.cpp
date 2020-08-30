@@ -10,17 +10,15 @@ ExifReaderWriter::ExifReaderWriter(QObject *parent) :
 {
 }
 
-Exiv2::Image::AutoPtr ExifReaderWriter::openExif(QString pictureName)
-{
+Exiv2::Image::AutoPtr ExifReaderWriter::openExif(QString pictureName) {
     Exiv2::Image::AutoPtr image;
     try{
 #ifdef _WIN32
-        image = Exiv2::ImageFactory::open(  std::string(pictureName.toLocal8Bit()));
+        image = Exiv2::ImageFactory::open( std::string(pictureName.toLocal8Bit()));
 #else
         image = Exiv2::ImageFactory::open( std::string(pictureName.toUtf8()));
 #endif
-    }
-    catch (Exiv2::Error& e) {
+    } catch (Exiv2::Error& e) {
         //std::cerr << "Caught Exiv2 exception 1 '" << e.what() << "'\n";
         return image;
     }
@@ -31,47 +29,48 @@ Exiv2::Image::AutoPtr ExifReaderWriter::openExif(QString pictureName)
     return image;
 
 }
-double ExifReaderWriter::readAltitude(QString str, Exiv2::ExifData &exifData)
-{
+
+double ExifReaderWriter::readAltitude(QString str, Exiv2::ExifData &exifData) {
     QString altStr = readExifItem(exifData,str.toStdString());
     QString altStrRef = readExifItem(exifData,str.toStdString() + "Ref");
-    if(!altStr.isEmpty())
-    {
+    if(!altStr.isEmpty()) {
         QRegExp rx("^(\\d+)/(\\d+)$");
         rx.indexIn(altStr, 0);
         double alt = rx.cap(1).toDouble()/rx.cap(2).toDouble();
-        if(altStrRef == "1")
+        if(altStrRef == "1") {
             alt *= -1;
+        }
         return alt;
+    } else {
+        return -1000;
     }
-    else return -1000;
 }
 
-double ExifReaderWriter::readLatLon(QString str, Exiv2::ExifData &exifData)
-{
+double ExifReaderWriter::readLatLon(QString str, Exiv2::ExifData &exifData) {
 
     QString gpsStr = readExifItem(exifData,str.toStdString());
     QString gpsStrRef = readExifItem(exifData,str.toStdString() + "Ref");
 
-    if(!gpsStr.isEmpty())
-    {
+    if(!gpsStr.isEmpty()) {
         //format stupne/jmenovatel minuty/jmenovatel sekundy/jmenovatel
         QRegExp rx("^(\\d+)/(\\d+) (\\d+)/(\\d+) (\\d+)/(\\d+)$");
         rx.indexIn(gpsStr, 0);
         double gps = rx.cap(1).toDouble()/rx.cap(2).toDouble() + ((rx.cap(3).toDouble()/rx.cap(4).toDouble())
                                                                   + (rx.cap(5).toDouble()/rx.cap(6).toDouble())/60) / 60;
-        if(gpsStrRef == "S" || gpsStrRef == "W")
+        if (gpsStrRef == "S" || gpsStrRef == "W") {
             gps *= -1;
+        }
         return gps;
+    } else {
+        return 1000;
     }
-    else return 1000;
 }
 
-void ExifReaderWriter::readExif(QString pictureName)
-{
+void ExifReaderWriter::readExif(QString pictureName) {
     Exiv2::Image::AutoPtr image = openExif(pictureName);
-    if(image.get() == 0)
+    if(image.get() == 0) {
         return;
+    }
     Exiv2::ExifData &exifData = image->exifData();
     if (exifData.empty()) {
         //qDebug() << "nejsou exif data";
@@ -84,8 +83,7 @@ void ExifReaderWriter::readExif(QString pictureName)
     double lon = readLatLon("Exif.GPSInfo.GPSLongitude", exifData);
     double alt = readAltitude("Exif.GPSInfo.GPSAltitude", exifData);
 
-    if(lat < 1000 && lon<1000)
-    {
+    if(lat < 1000 && lon<1000) {
         emit(setGps(lat, lon, alt));
     }
 
@@ -93,31 +91,30 @@ void ExifReaderWriter::readExif(QString pictureName)
 
     QDateTime *dateTime = NULL;
     //cteni data
-    if((dateTime = readExifDate(exifData,"Exif.Photo.DateTimeOriginal")) == NULL)
-        if((dateTime = readExifDate(exifData,"Exif.Image.DateTimeOriginal")) == NULL)
-            if((dateTime = readExifDate(exifData,"Exif.Photo.DateTimeDigitized")) == NULL)
+    if((dateTime = readExifDate(exifData,"Exif.Photo.DateTimeOriginal")) == NULL) {
+        if((dateTime = readExifDate(exifData,"Exif.Image.DateTimeOriginal")) == NULL) {
+            if((dateTime = readExifDate(exifData,"Exif.Photo.DateTimeDigitized")) == NULL) {
                 dateTime = readExifDate(exifData,"Exif.Image.DateTime");
+            }
+        }
+    }
 
-    if(dateTime != NULL)
+    if(dateTime != NULL) {
         emit(setDateTime(*dateTime));
+    }
     emit(finished());
     return;
 }
 
-QDateTime *ExifReaderWriter::readExifDate(Exiv2::ExifData &exifData, std::string keyStr)
-{
+QDateTime *ExifReaderWriter::readExifDate(Exiv2::ExifData &exifData, std::string keyStr) {
 
     QDateTime *dateTime = NULL;
     QString strDate = readExifItem(exifData,keyStr);
-    if(!strDate.isEmpty())
-    {
-        if(!QDateTime::fromString(strDate, "yyyy:MM:dd hh:mm:ss").isNull())
-        {
+    if(!strDate.isEmpty()) {
+        if(!QDateTime::fromString(strDate, "yyyy:MM:dd hh:mm:ss").isNull()) {
             timeFormat = "yyyy:MM:dd hh:mm:ss";
             dateTime = new QDateTime(QDateTime::fromString(strDate,timeFormat));
-        }
-        else if(!QDateTime::fromString(strDate, "yyyy:MM:dd:hh:mm:ss").isNull())
-        {
+        } else if(!QDateTime::fromString(strDate, "yyyy:MM:dd:hh:mm:ss").isNull()) {
             timeFormat = "yyyy:MM:dd:hh:mm:ss";
             dateTime = new QDateTime(QDateTime::fromString(strDate,timeFormat));
         }
@@ -129,17 +126,16 @@ QDateTime *ExifReaderWriter::readExifDate(Exiv2::ExifData &exifData, std::string
 void ExifReaderWriter::saveExifTime(QString pictureName, QDateTime *dateTime)
 {
     Exiv2::Image::AutoPtr image = openExif(pictureName);
-    if(image.get() == 0)
+    if(image.get() == 0) {
         return;
+    }
 
-    if(image->exifData().empty())
-    {
+    if(image->exifData().empty()) {
         Exiv2::ExifData exifDataTmp;
         image->setExifData(exifDataTmp);
     }
 
     Exiv2::ExifData &exifData = image->exifData();
-
 
     QString str = dateTime->toString(timeFormat.toLatin1());
 
@@ -150,10 +146,11 @@ void ExifReaderWriter::saveExifTime(QString pictureName, QDateTime *dateTime)
 
     image->writeMetadata();
 }
-QString ExifReaderWriter::exifLatLonString(double l)
-{
-    if(l < 0)
+
+QString ExifReaderWriter::exifLatLonString(double l) {
+    if(l < 0) {
         l = -l;
+    }
     int degrees = floor(l);
     double minTmp = (l - degrees) * 60;
     int min = floor(minTmp);
@@ -161,15 +158,14 @@ QString ExifReaderWriter::exifLatLonString(double l)
     return QString("%1/1 %2/1 %3/1000").arg(degrees).arg(min).arg(secM);
 }
 
-void ExifReaderWriter::saveExifGps(QString pictureName, double latitude, double longitude, double altitude)
-{
+void ExifReaderWriter::saveExifGps(QString pictureName, double latitude, double longitude, double altitude) {
     qDebug() << "saveExifGps" << pictureName << latitude << longitude << altitude;
     Exiv2::Image::AutoPtr image = openExif(pictureName);
-    if(image.get() == 0)
+    if (image.get() == 0) {
         return;
+    }
 
-    if(image->exifData().empty())
-    {
+    if(image->exifData().empty()) {
         Exiv2::ExifData exifDataTmp;
         image->setExifData(exifDataTmp);
     }
@@ -182,42 +178,34 @@ void ExifReaderWriter::saveExifGps(QString pictureName, double latitude, double 
     writeData(exifData, "Exif.GPSInfo.GPSLatitudeRef", (latitude<0 ? "S" : "N"));
     writeData(exifData, "Exif.GPSInfo.GPSLongitudeRef", (longitude<0 ? "W" : "E"));
 
-    if(altitude > -999)
-    {
+    if(altitude > -999) {
         writeData(exifData, "Exif.GPSInfo.GPSAltitude", (QString("%1/%2").arg(abs(round(altitude * 1000))).arg(1000)));
         writeData(exifData, "Exif.GPSInfo.GPSAltitudeRef", (altitude<0 ? "1" : "0"));
     }
     image->writeMetadata();
 }
 
-void ExifReaderWriter::writeData(Exiv2::ExifData &exifData, std::string keyStr, QString str)
-{
+void ExifReaderWriter::writeData(Exiv2::ExifData &exifData, std::string keyStr, QString str) {
     try{
         Exiv2::ExifKey key(keyStr);
         Exiv2::ExifData::iterator pos = exifData.findKey(key);
         if(pos != exifData.end()){
             exifData[keyStr].setValue(str.toStdString());
-        }
-        else    //vytvorim novou polozku
-        {
+        } else {    //vytvorim novou polozku
             exifData[keyStr].setValue(str.toStdString());
         }
-    }
-    catch (Exiv2::Error& e) {
+    } catch (Exiv2::Error& e) {
         ;//std::cerr << "Caught Exiv2 exception '" << e.what() << "'\n";
     }
 
-
 }
 
-QString ExifReaderWriter::readExifItem( Exiv2::ExifData &exifData, std::string keyStr)
-{
+QString ExifReaderWriter::readExifItem( Exiv2::ExifData &exifData, std::string keyStr) {
     try{
         Exiv2::ExifKey key(keyStr);
         Exiv2::ExifData::iterator pos = exifData.findKey(key);
 
-        if(pos != exifData.end())
-        {
+        if (pos != exifData.end()) {
             return exifData[keyStr].toString().data();
         }
     }
@@ -228,17 +216,14 @@ QString ExifReaderWriter::readExifItem( Exiv2::ExifData &exifData, std::string k
 
 }
 
-QString ExifReaderWriter::getExposureTime(Exiv2::ExifData &exifData)
-{
+QString ExifReaderWriter::getExposureTime(Exiv2::ExifData &exifData) {
     QString exifStr = readExifItem(exifData, "Exif.Photo.ExposureTime");
     QStringList exifStrList = exifStr.split("/");
 
-    if(exifStrList.length() == 2)
-    {
+    if(exifStrList.length() == 2) {
         QString part1 = exifStrList.at(0);
         QString part2 = exifStrList.at(1);
-        while(part1.endsWith("0") && part2.endsWith("0"))
-        {
+        while(part1.endsWith("0") && part2.endsWith("0")) {
             part1.chop(1);
             part2.chop(1);
         }
@@ -247,12 +232,12 @@ QString ExifReaderWriter::getExposureTime(Exiv2::ExifData &exifData)
     }
     return exifStr;
 }
-QString ExifReaderWriter::getExposureBias(Exiv2::ExifData &exifData)
-{
+
+QString ExifReaderWriter::getExposureBias(Exiv2::ExifData &exifData) {
     QString exifStr = readExifItem(exifData, "Exif.Photo.ExposureBiasValue");
 
     QStringList exifStrList = exifStr.split("/");
-    if(exifStrList.length() == 2){
+    if(exifStrList.length() == 2) {
         double f = exifStrList.at(0).toDouble() / exifStrList.at(1).toDouble();
         return QString::number(f) + " EV";
     }
@@ -260,8 +245,7 @@ QString ExifReaderWriter::getExposureBias(Exiv2::ExifData &exifData)
 
 }
 
-QString ExifReaderWriter::getMeteringMode(Exiv2::ExifData &exifData)
-{
+QString ExifReaderWriter::getMeteringMode(Exiv2::ExifData &exifData) {
     QString exifStr = readExifItem(exifData, "Exif.Photo.MeteringMode");
     switch (exifStr.toInt()){
     case 0:
@@ -286,8 +270,7 @@ QString ExifReaderWriter::getMeteringMode(Exiv2::ExifData &exifData)
     }
 }
 
-QString ExifReaderWriter::getExposureProgram(Exiv2::ExifData &exifData)
-{
+QString ExifReaderWriter::getExposureProgram(Exiv2::ExifData &exifData) {
     QString exifStr = readExifItem(exifData, "Exif.Photo.ExposureProgram");
 
     switch (exifStr.toInt()){
@@ -313,20 +296,18 @@ QString ExifReaderWriter::getExposureProgram(Exiv2::ExifData &exifData)
     }
 }
 
-QString ExifReaderWriter::getFNumber(Exiv2::ExifData &exifData)
-{
+QString ExifReaderWriter::getFNumber(Exiv2::ExifData &exifData) {
     QString exifStr = readExifItem(exifData, "Exif.Photo.FNumber");
 
     QStringList exifStrList = exifStr.split("/");
-    if(exifStrList.length() == 2){
+    if(exifStrList.length() == 2) {
         double f = exifStrList.at(0).toDouble() / exifStrList.at(1).toDouble();
         return "F" + QString::number(f);
     }
     return exifStr;
 }
 
-QString ExifReaderWriter::getFocalLength(Exiv2::ExifData &exifData)
-{
+QString ExifReaderWriter::getFocalLength(Exiv2::ExifData &exifData) {
     QString exifStr = readExifItem(exifData, "Exif.Photo.FocalLength");
 
     QStringList exifStrList = exifStr.split("/");
@@ -337,11 +318,12 @@ QString ExifReaderWriter::getFocalLength(Exiv2::ExifData &exifData)
     return exifStr;
 
 }
-QString ExifReaderWriter::getFlash(Exiv2::ExifData &exifData)
-{
+
+QString ExifReaderWriter::getFlash(Exiv2::ExifData &exifData) {
     QString exifStr = readExifItem(exifData, "Exif.Photo.Flash");//'0' means flash did not fire, '1' flash fired,
-    if(exifStr.isEmpty())
+    if(exifStr.isEmpty()) {
         return "";
+    }
     switch (exifStr.toInt() % 2){
     case 0:
         return tr("did not fire");
@@ -353,13 +335,13 @@ QString ExifReaderWriter::getFlash(Exiv2::ExifData &exifData)
 }
 
 
-QStringList *ExifReaderWriter::readExifInfo(QString pictureName, FormatHandler *formatH)
-{
+QStringList *ExifReaderWriter::readExifInfo(QString pictureName, FormatHandler *formatH) {
     QStringList *exifList = new QStringList;
 
     Exiv2::Image::AutoPtr image = openExif(pictureName);
-    if(image.get() == 0)
+    if(image.get() == 0) {
         return exifList;
+    }
     Exiv2::ExifData &exifData = image->exifData();
     if (exifData.empty()) {
         //nejsou exif data
@@ -375,10 +357,13 @@ QStringList *ExifReaderWriter::readExifInfo(QString pictureName, FormatHandler *
 
     //cteni data
     QDateTime *dateTime = NULL;
-    if((dateTime = readExifDate(exifData,"Exif.Photo.DateTimeOriginal")) == NULL)
-        if((dateTime = readExifDate(exifData,"Exif.Image.DateTimeOriginal")) == NULL)
-            if((dateTime = readExifDate(exifData,"Exif.Photo.DateTimeDigitized")) == NULL)
+    if((dateTime = readExifDate(exifData,"Exif.Photo.DateTimeOriginal")) == NULL) {
+        if((dateTime = readExifDate(exifData,"Exif.Image.DateTimeOriginal")) == NULL) {
+            if((dateTime = readExifDate(exifData,"Exif.Photo.DateTimeDigitized")) == NULL) {
                 dateTime = readExifDate(exifData,"Exif.Image.DateTime");
+            }
+        }
+    }
 
 
     ////////////////////
@@ -419,5 +404,3 @@ QStringList *ExifReaderWriter::readExifInfo(QString pictureName, FormatHandler *
     return exifList;
 
 }
-
-

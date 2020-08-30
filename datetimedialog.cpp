@@ -42,8 +42,8 @@ DateTimeDialog::DateTimeDialog(QWidget *parent) :
     this->layout()->addWidget(l);
     this->layout()->addWidget(buttonBox);
 }
-void DateTimeDialog::retranslateUi()
-{
+
+void DateTimeDialog::retranslateUi() {
     rAll->setText(tr("All pictures"));
     rSelected->setText(tr("Selected pictures"));
 }

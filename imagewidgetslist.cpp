@@ -12,8 +12,8 @@ ImageWidgetsList::ImageWidgetsList(QObject *parent) :
 }
 
 void ImageWidgetsList::addImage(ImageInfo *imageWidget) {
-//idImageCount++;
- /*   if (imageWidget->loadFile(fileName))
+    //idImageCount++;
+    /*   if (imageWidget->loadFile(fileName))
     {
         return 1;
     }
@@ -26,8 +26,8 @@ void ImageWidgetsList::addImage(ImageInfo *imageWidget) {
     connect( imageWidget, SIGNAL(deleteMarker(int)), map, SLOT(deleteMarker(int)));
     connect( imageWidget, SIGNAL(selected(int, bool)), map, SLOT(markerSelected(int,bool)));
 
-   // connect( picturesFrame, SIGNAL(rubberBandRect(QRect,bool, bool)), imageWidget, SLOT(testRect(QRect, bool, bool)));
-   // connect( imageWidget, SIGNAL(getFocus(int, int)), ui->scrollAreaPictures, SLOT(setImageFocus(int, int)));
+    // connect( picturesFrame, SIGNAL(rubberBandRect(QRect,bool, bool)), imageWidget, SLOT(testRect(QRect, bool, bool)));
+    // connect( imageWidget, SIGNAL(getFocus(int, int)), ui->scrollAreaPictures, SLOT(setImageFocus(int, int)));
     ///connect( map, SIGNAL(mClicked(int)), imageWidget, SLOT(checkMarkerClickedId(int)));
     connect( map, SIGNAL(setGpsInImage(int, double, double, double)),
              imageWidget, SLOT(setGpsFromMap(int, double,double, double)));
@@ -86,12 +86,12 @@ void ImageWidgetsList::deleteSelected() {
 
 QList<int> ImageWidgetsList::selectedIdList() {
     QList<int> idList;
-     for(int i=0; i<this->length(); i++) {
-         if(this->at(i)->isClicked) {
-             idList.append(this->at(i)->imageData->id);
-         }
-     }
-     return idList;
+    for(int i=0; i<this->length(); i++) {
+        if(this->at(i)->isClicked) {
+            idList.append(this->at(i)->imageData->id);
+        }
+    }
+    return idList;
 }
 void ImageWidgetsList::saveExifGpsInSelected() {
     for (int i=0; i<this->length(); i++) {
@@ -177,11 +177,11 @@ void ImageWidgetsList::rubberBandSelection(QRect r, bool apply) {
         if(r.intersects(imageRect)) {
             if((QApplication::keyboardModifiers() & Qt::ControlModifier ) && at(i)->isClickedOrig) {//invertuju vyber
 
-                    if(apply) {
-                        at(i)->unselect();
-                    } else {
-                        at(i)->unclick();
-                    }
+                if(apply) {
+                    at(i)->unselect();
+                } else {
+                    at(i)->unclick();
+                }
 
             } else {   //vyberu
                 if(apply) {

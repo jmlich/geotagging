@@ -13,28 +13,22 @@ FormatHandler::FormatHandler() :
 }
 
 
-QString FormatHandler::gpsInFormat(double l)
-{
+QString FormatHandler::gpsInFormat(double l) {
     QString lStr;
-    if(formatGps=="d") //stupne
-    {
-        if(l<0)
+    if(formatGps=="d") {//stupne
+        if(l<0) {
             l *= -1;
+        }
         lStr = QString::number(l, 'f', 5);
-
-    }
-    else if(formatGps=="dm")   //stupne minuty
-    {
+    } else if(formatGps=="dm") {   //stupne minuty
         lStr = convertDegreeToDM(l);
-    }
-    else    //stupne minuty sekundy
-    {
+    } else {    //stupne minuty sekundy
         lStr = convertDegreeToDMS(l);
     }
     return lStr;
 }
-QString FormatHandler::gpsAllInFormat(double lat, double lon)
-{
+
+QString FormatHandler::gpsAllInFormat(double lat, double lon) {
     QString latStr = gpsInFormat(lat);
     QString lonStr = gpsInFormat(lon);
     return QString("%1%2 %3%4")
@@ -44,19 +38,20 @@ QString FormatHandler::gpsAllInFormat(double lat, double lon)
             .arg(lon>=0 ? tr("E") : tr("W"));
 }
 
-QString FormatHandler::convertDegreeToDM(double l)
-{
-    if(l < 0)
+QString FormatHandler::convertDegreeToDM(double l) {
+    if(l < 0) {
         l *= -1;
+    }
     int degree = l;
     double min = (l - degree) * 60;
 
     return QString::number(degree) + "°" + QString::number(min, 'f', 3) + "'";
 }
-QString FormatHandler::convertDegreeToDMS(double l)
-{
-    if(l < 0)
+
+QString FormatHandler::convertDegreeToDMS(double l){
+    if (l < 0) {
         l = l * (-1);
+    }
     int degree = l;
     double minTmp = (l - degree) * 60;
 

@@ -8,19 +8,19 @@
 GpsSegment::GpsSegment()
 {
 }
-uint GpsSegment::startTime()
-{
+
+uint GpsSegment::startTime() {
     return first()->dateTime->toTime_t();
 }
-uint GpsSegment::endTime()
-{
+
+uint GpsSegment::endTime() {
     return last()->dateTime->toTime_t();
 }
-double GpsSegment::startLat()
-{
+
+double GpsSegment::startLat() {
     return first()->latitude;
 }
-double GpsSegment::startLon()
-{
+
+double GpsSegment::startLon() {
     return first()->longitude;
 }
