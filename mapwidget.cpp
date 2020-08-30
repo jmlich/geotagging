@@ -335,8 +335,7 @@ void MapWidget::addRoute(GpsRoute *route)
                 << QString("addRoute(routeCoordinatesList, %1, %2, \"%3\", 1);")
                 .arg(route->id).arg(routesVisible).arg(route->routeColor->name());
 
-        if(i+1 < route->segmentList.length())   //pridani spojeni segmentu
-        {
+        if(i+1 < route->segmentList.length()) { //pridani spojeni segmentu
             scriptStr << "var routeCoordinatesList2 = ["
                     << QString("[%1, %2],").arg(QString::number(route->segmentList.at(i)->last()->latitude, 'f', 10))
                             .arg(QString::number(route->segmentList.at(i)->last()->longitude, 'f', 10))
@@ -346,12 +345,11 @@ void MapWidget::addRoute(GpsRoute *route)
                     << QString("addRoute(routeCoordinatesList2, %1, %2, \"%3\",0);").arg(route->id).arg(routesVisible && joinSegmentsVisible).arg(route->routeColor->name());
 
         }
-        if(!loadIsFinished)
-        {
+
+        if(!loadIsFinished) {
             scriptsToRun << scriptStr.join("\n");
-        }
-        else
-        {
+        } else {
+//            qDebug() << scriptStr.join("\n");
             mapView->page()->runJavaScript(scriptStr.join("\n"), [](const QVariant &result){ qDebug() << result.toString(); });
         }
     }

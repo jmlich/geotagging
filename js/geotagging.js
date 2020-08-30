@@ -107,11 +107,21 @@ function initialize() {
                                shadowUrl: "qrc:///js/images/marker-shadow.png",
                            });
 
-    //    test_add_marker();
+//    test_add_marker();
+//    test_add_route();
 }
 
 function test_add_marker() {
-    addMarker(49, 16, 1, 1);
+    var marker_id = 1234;
+    addMarker(49.5, 16.5, marker_id, true);
+}
+
+function test_add_route() {
+    var route_id = 42;
+    addRoute([ [49,16], [50,17], [49,17] ], route_id, true, "#ff0000", true)
+    changeRouteColor(route_id, "#0000ff");
+    changeRouteOpacity(route_id, 0.3);
+    lineWidthChanged(route_id, 7)
 }
 
 
@@ -152,17 +162,10 @@ function setMapType(mapType) {
 
 
 function flipRelief(setVisible) {
-
     if (setVisible) {
-
-        console.log("add hillshading")
         map.addLayer(hill);
-
-//        map.overlayMapTypes.insertAt(0, mapTuristCykloRelief);
     } else {
-        console.log("remove hillshading")
         map.removeLayer(hill)
-//        map.overlayMapTypes.removeAt(0);
     }
     return true;
 }
@@ -319,8 +322,6 @@ function addMarker(lat, lon, iid, isVisible) {
 }
 function changeRouteOpacity(id, value) {
     for (var i in routes) {
-        console.log(i)
-        console.log(routes[i].options.id)
         if (id === routes[i].options.id)
             routes[i].setStyle({opacity: value});
     }
@@ -345,30 +346,30 @@ function lineWidthChanged(id, value) {
 
 function changeRouteColor(id, value) {
     for (var i in routes) {
-        if(id === routes[i].options.id) {
+        if (id === routes[i].options.id) {
             routes[i].setStyle({color: value});
         }
     }
     for (var i in joinedSegments) {
-        if(id === joinedSegments[i].options.id) {
+        if (id === joinedSegments[i].options.id) {
             joinedSegments[i].setStyle({color: value});
         }
     }
 }
 function setJoinSegments(setVisible) {
     for (var i in joinedSegments) {
-        if(setVisible) {
-            joinedSegments[i].setMap(map);
+        if (setVisible) {
+            map.addLayer(joinedSegments[i]);
         } else {
-            joinedSegments[i].setMap(null);
+            map.removeLayer(joinedSegments[i]);
         }
     }
-    // alert(setVisible);
 }
 
 //////////
 
 function addRoute(routeCoordinatesList, iid, isVisible, var_color, isValid) {
+    console.log("addRoute(routeCoordinatesList, "+iid+", "+isVisible+", "+var_color+", "+isValid+") ")
     path = [];
     routeCoordinatesList.forEach(function(e) {
         path.push(L.latLng(e[0], e[1]));
@@ -379,24 +380,12 @@ function addRoute(routeCoordinatesList, iid, isVisible, var_color, isValid) {
                                 color: var_color,
                                 id: iid
                             })
-//    var route = new google.maps.Polyline({
-//                                             path: path,
-//                                             strokeColor: color,
-//                                             strokeOpacity: 1.0,
-//                                             strokeWeight: 3,
-//                                             id: iid
-//                                         });
     if(isVisible) {
         route.addTo(map);
     }
 
     map.fitBounds(route.getBounds());
-//    var bounds = new google.maps.LatLngBounds;
-//    for (i in path) {
-//        bounds.extend(path[i]);
-//    }
-//    map.fitBounds(bounds);
-    //map.panToBounds(bounds);
+
     if (isValid) {
         routes.push(route);
     } else {
@@ -405,8 +394,7 @@ function addRoute(routeCoordinatesList, iid, isVisible, var_color, isValid) {
 }
 function centerInBounds(fitMarkers, fitRoutes){
 
-    if ((markers.length === 0) && (routes.length === 0))
-    {
+    if ((markers.length === 0) && (routes.length === 0)) {
         /*var myLatlng = new google.maps.LatLng(0,0);
     var zoom = 1;
     map.setCenter(myLatLng);
@@ -434,20 +422,17 @@ function centerInBounds(fitMarkers, fitRoutes){
 function markerSelected(isSelected, i, markersVisible) {
     console.log("markerSelected("+isSelected+", "+i+", "+markersVisible+")")
     if (isSelected) {
-        //map.setCenter(markers[i].position);
         map.panTo(markers[i].getLatLng());
         markers[i].setIcon(yellowMarker);
         markers[i].setZIndexOffset(1);
         if(!markersVisible) {
-//            markers[i].setMap(map);
-            console.log("setMap")
+            map.addLayer(markers[i]);
         }
     } else {
         markers[i].setIcon(defaultMarker);
         markers[i].setZIndexOffset(0);
         if(!markersVisible) {
-            console.log("setMap(null)")
-//            markers[i].setMap(null);
+            map.removeLayer(markers[i]);
         }
     }
 }
@@ -466,10 +451,10 @@ function markerClicked(id, isCtrl) {
 function setMarkersVisibility(setVisible) {
     for (var i in markers) {
         if(setVisible) {
-            markers[i].setMap(map);
+            map.addLayer(markers[i]);
         } else {
             if( markers[i].icon === defaultMarker) {
-//                markers[i].setMap(null);
+                map.removeLayer(markers[i]);
             }
         }
     }
@@ -477,9 +462,10 @@ function setMarkersVisibility(setVisible) {
 function setRoutesVisibility(setVisible) {
     for (var i in routes) {
         if(setVisible) {
-            routes[i].setMap(map);
+            map.addLayer(routes[i]);
         } else {
-            routes[i].setMap(null);
+            map.removeLayer(routes[i]);
+
         }
     }
 }
@@ -487,7 +473,7 @@ function setRoutesVisibility(setVisible) {
 function deleteMarker(id) {
     for (var i in markers) {
         if (id === markers[i].options.id){
-//            markers[i].setMap(null);
+            map.removeLayer(markers[i]);
             markers.splice(i,1);
             break;
         }
@@ -495,15 +481,15 @@ function deleteMarker(id) {
 }
 
 function deleteRoute(id) {
-    for(var i=routes.length - 1; i>=0; i--) {
+    for(var i = routes.length - 1; i>=0; i--) {
         if (id === routes[i].options.id){
-//            routes[i].setMap(null);
+            map.removeLayer(routes[i]);
             routes.splice(i,1);
         }
     }
-    for(var i=joinedSegments.length - 1; i>=0; i--) {
+    for(var i = joinedSegments.length - 1; i>=0; i--) {
         if (id === joinedSegments[i].options.id) {
-//            joinedSegments[i].setMap(null);
+            map.removeLayer(joinedSegments[i]);
             joinedSegments.splice(i,1);
         }
     }
