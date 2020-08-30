@@ -6,11 +6,10 @@ var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                           subdomains:['a', 'b', 'c'],
                       });
 
-var osmCycle = L.tileLayer(
-            'http://{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png', {
-                subdomains:['a', 'b', 'c'],
-                attribution: '&copy; OpenCycleMap, ' + 'Map data ' + osm
-            });
+var osmCycle = L.tileLayer('http://{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png', {
+                               subdomains:['a', 'b', 'c'],
+                               attribution: '&copy; OpenCycleMap, ' + 'Map data ' + osm
+                           });
 
 var google = L.tileLayer('https://{s}.google.com/vt/lyrs=m@248407269&hl=x-local&x={x}&y={y}&z={z}&s=Galileo', {
                              attribution: 'Map data &copy; Google 2012',
@@ -33,21 +32,19 @@ var satelite  = L.tileLayer('https://{s}.google.com/vt/lyrs=s&x={x}&y={y}&z={z}'
                             });
 
 var hikebikemapv1 = L.tileLayer('http://{s}.tiles.wmflabs.org/hikebike/{z}/{x}/{y}.png', {
-                                        subdomains:['a', 'b', 'c'],
-                                        maxZoom: 17,
-                                        attribution: 'Map Data © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-                                    });
+                                    subdomains:['a', 'b', 'c'],
+                                    maxZoom: 17,
+                                    attribution: 'Map Data © <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+                                });
 
 var prosoar = L.tileLayer('https://skylines.aero/mapproxy/tiles/1.0.0/airspace+airports/EPSG3857/{z}/{x}/{y}.png',{
                               attribution: 'skylines.aero'
                           });
 
-var hill = L.tileLayer(
-            'http://{s}.tiles.wmflabs.org/hillshading/{z}/{x}/{y}.png',
-            {
-                maxZoom: 17,
-                attribution: 'Hillshading: SRTM3 v2 (<a href="http://www2.jpl.nasa.gov/srtm/">NASA</a>)'
-            });
+var hill = L.tileLayer('http://{s}.tiles.wmflabs.org/hillshading/{z}/{x}/{y}.png',{
+                           maxZoom: 17,
+                           attribution: 'Hillshading: SRTM3 v2 (<a href="http://www2.jpl.nasa.gov/srtm/">NASA</a>)'
+                       });
 
 var baseMaps = {
     osm,
@@ -94,7 +91,7 @@ function initialize() {
                 } ).setView([49.8043055, 15.4768055], 8);
 
     L.control.scale().addTo(map);
-//    L.control.layers(baseMaps, overlayMaps).addTo(map);
+    //    L.control.layers(baseMaps, overlayMaps).addTo(map);
 
     yellowMarker = L.icon({
                               iconUrl: "qrc:///js/images/marker-icon-gold.png",
@@ -107,8 +104,8 @@ function initialize() {
                                shadowUrl: "qrc:///js/images/marker-shadow.png",
                            });
 
-//    test_add_marker();
-//    test_add_route();
+    //    test_add_marker();
+    //    test_add_route();
 }
 
 function test_add_marker() {
@@ -190,26 +187,26 @@ function setNewMarkerPosition(id) {
 
             ////////////////////////
 
-//            var ele = -1000;
-//            var locations = [];
-//            locations.push(markers[markerIdx].getPosition());
+            //            var ele = -1000;
+            //            var locations = [];
+            //            locations.push(markers[markerIdx].getPosition());
 
-//            // Create a LocationElevationRequest object using the array's one value
-//            var positionalRequest = {
-//                'locations': locations
-//            }
-//            // Initiate the location request
-//            elevator.getElevationForLocations(positionalRequest, function(results, status) {
-//                if (status === google.maps.ElevationStatus.OK) {
-//                    // Retrieve the first result
-//                    if (results[0]) {
-//                        ele = results[0].elevation;
-//                    }
-//                }
-//                //				alert(newLat+ ", " +newLng + " != " + markers[markerIdx].position.lat()+ " " + markers[markerIdx].position.lng() + " " + ele);
+            //            // Create a LocationElevationRequest object using the array's one value
+            //            var positionalRequest = {
+            //                'locations': locations
+            //            }
+            //            // Initiate the location request
+            //            elevator.getElevationForLocations(positionalRequest, function(results, status) {
+            //                if (status === google.maps.ElevationStatus.OK) {
+            //                    // Retrieve the first result
+            //                    if (results[0]) {
+            //                        ele = results[0].elevation;
+            //                    }
+            //                }
+            //                //				alert(newLat+ ", " +newLng + " != " + markers[markerIdx].position.lat()+ " " + markers[markerIdx].position.lng() + " " + ele);
 
-//                newMarkerAdded(id, newLat, newLng, ele);
-//            });
+            //                newMarkerAdded(id, newLat, newLng, ele);
+            //            });
         }
     }
     //return [markers[markerIdx].position.lat(),markers[markerIdx].position.lng(), ele];
@@ -219,7 +216,7 @@ function setNewMarkerPosition(id) {
 var idList;
 function settingNewMarker(iidList) {
     idList = iidList;
-//    map.draggableCursor = 'crosshair';
+    //    map.draggableCursor = 'crosshair';
     clickListener = google.maps.event.addListener(map, 'click', function(event) {
         addNewMarkers(event.latLng);
     });
@@ -227,14 +224,14 @@ function settingNewMarker(iidList) {
 }
 function endSettingNewMarker() {
     console.log("FIXME endSettingNewMarker()")
-//    map.draggableCursor = 'auto';
-//    google.maps.event.removeListener(clickListener);
+    //    map.draggableCursor = 'auto';
+    //    google.maps.event.removeListener(clickListener);
 }
 
 
 function addNewMarkers(coord) {
     console.log("FIXME addNewMarkers(" + coord + ")")
-/*
+    /*
     var ele = -1000;
     var locations = [];
     locations.push(LatLng);
@@ -285,7 +282,6 @@ function addMarker(lat, lon, iid, isVisible) {
             return;
         }
     }
-
     
     if (lat < -90 || lat > 90 || lon < -180 || lon > 180) {
         return;
@@ -305,16 +301,17 @@ function addMarker(lat, lon, iid, isVisible) {
         markerClicked(marker.options.id)
     });
     marker.on('dragstart',function() { // 'dragstart'
-//        markerClicked(marker.options.id, false); // FIXME: doesn't work https://github.com/Leaflet/Leaflet/issues/4484
+        //        markerClicked(marker.options.id, false); // FIXME: doesn't work https://github.com/Leaflet/Leaflet/issues/4484
     });
     marker.on('dragend',function() { // 'dragend'
-//        console.log('markerDragged(' + marker.options.id+ ")");
+        //        console.log('markerDragged(' + marker.options.id+ ")");
         window.mapWidget.markerDragged(marker.options.id);
     });
     markers.push(marker);
 
     //centerInBounds(1,0);
 }
+
 function changeRouteOpacity(id, value) {
     for (var i in routes) {
         if (id === routes[i].options.id) {
@@ -327,6 +324,7 @@ function changeRouteOpacity(id, value) {
         }
     }
 }
+
 function lineWidthChanged(id, value) {
     for (var i in routes) {
         if (id === routes[i].options.id) {
@@ -352,6 +350,7 @@ function changeRouteColor(id, value) {
         }
     }
 }
+
 function setJoinSegments(setVisible) {
     for (var i in joinedSegments) {
         if (setVisible) {
@@ -373,9 +372,9 @@ function addRoute(routeCoordinatesList, iid, isVisible, var_color, isValid) {
     
 
     var route = L.polyline(path, {
-                                color: var_color,
-                                id: iid
-                            })
+                               color: var_color,
+                               id: iid
+                           })
     if(isVisible) {
         route.addTo(map);
     }
@@ -388,6 +387,7 @@ function addRoute(routeCoordinatesList, iid, isVisible, var_color, isValid) {
         joinedSegments.push(route);
     }
 }
+
 function centerInBounds(fitMarkers, fitRoutes){
 
     if ((markers.length === 0) && (routes.length === 0)) {
@@ -415,6 +415,7 @@ function centerInBounds(fitMarkers, fitRoutes){
     map.fitBounds(bounds);
     //map.panToBounds(bounds);
 }
+
 function markerSelected(isSelected, i, markersVisible) {
     console.log("markerSelected("+isSelected+", "+i+", "+markersVisible+")")
     if (isSelected) {
@@ -432,6 +433,7 @@ function markerSelected(isSelected, i, markersVisible) {
         }
     }
 }
+
 function markerClicked(id, isCtrl) {
     console.log("markerClicked("+id+", "+isCtrl+")")
     for (var i in markers) {
@@ -445,6 +447,7 @@ function markerClicked(id, isCtrl) {
     }
 
 }
+
 function setMarkersVisibility(setVisible) {
     for (var i in markers) {
         if(setVisible) {
@@ -456,6 +459,7 @@ function setMarkersVisibility(setVisible) {
         }
     }
 }
+
 function setRoutesVisibility(setVisible) {
     for (var i in routes) {
         if(setVisible) {
