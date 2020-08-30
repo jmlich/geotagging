@@ -12,6 +12,7 @@ BuildRequires:  qt5-devel >= 5.10.0
 BuildRequires:  qt5-linguist
 BuildRequires:  libappstream-glib
 BuildRequires:  exiv2-devel
+BuildRequires:  qt5-qtwebengine-devel
 
 %description
 Photography geotagging tool
