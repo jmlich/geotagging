@@ -7,7 +7,7 @@
 #include "imageview.h"
 
 ImageView::ImageView(QWidget *parent):
-        QWidget(parent)
+    QWidget(parent)
 {
     imageL = new QLabel;
     scrollArea = new ScrollArea;
@@ -51,16 +51,16 @@ void ImageView::setImage(QString pictureName) {
                 //qDebug() << exifData["Exif.Image.Orientation"].toString().data() << "iiii";
                 QString str = exifData["Exif.Image.Orientation"].toString().data();
                 switch(str.toInt()){
-                case 3: //obraz otoceny o 180stupnu
+                    case 3: //obraz otoceny o 180stupnu
                         *img = img->transformed(rot.rotate(180));
-                        break;
-                case 6: //obraz otoceny o 90stupnu
+                    break;
+                    case 6: //obraz otoceny o 90stupnu
                         *img = img->transformed(rot.rotate(90));
-                        break;
-                case 8: //obraz otoceny o 280stupnu
+                    break;
+                    case 8: //obraz otoceny o 280stupnu
                         *img = img->transformed(rot.rotate(280));
-                        break;
-                default:
+                    break;
+                    default:
                     break;
                 }
 
