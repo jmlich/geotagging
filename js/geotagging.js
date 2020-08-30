@@ -404,7 +404,7 @@ function centerInBounds(fitMarkers, fitRoutes) {
 
     if (fitRoutes) {
         for (i in routes) {
-            routes[i].getPath().forEach(function(e) {
+            routes[i].getLatLngs().forEach(function(e) {
                 bounds.extend(e);
             });
         }
