@@ -171,10 +171,12 @@ function flipRelief(setVisible) {
 }
 
 function setOldMarkerPosition(id) {
+    console.log("setOldMarkerPosition("+id+")")
     for (var i in markers) {
-        if(id === markers[i].options.id) {
+        if (id === markers[i].options.id) {
             markers[i].setLatLng(markers[i].options.oldPosition);
-            map.panTo(markers[i].options.oldPosition)        }
+            map.panTo(markers[i].options.oldPosition)
+        }
     }
 }
 
@@ -268,7 +270,7 @@ function addMarker(lat, lon, iid, isVisible) {
 
     for (var i in markers) {
         if (iid === markers[i].options.id){
-            if(lat >90 || lat > 90 || lon < -180 || lon > 180) {
+            if (lat < -90 || lat > 90 || lon < -180 || lon > 180) {
                 map.removeLayer(markers[i]);
                 markers.splice(i,1);
                 return;
@@ -285,7 +287,7 @@ function addMarker(lat, lon, iid, isVisible) {
     }
 
     
-    if (lat >90 || lat > 90 || lon < -180 || lon > 180) {
+    if (lat < -90 || lat > 90 || lon < -180 || lon > 180) {
         return;
     }
 
@@ -308,7 +310,6 @@ function addMarker(lat, lon, iid, isVisible) {
     marker.on('dragend',function() { // 'dragend'
 //        console.log('markerDragged(' + marker.options.id+ ")");
         window.mapWidget.markerDragged(marker.options.id);
-        markerClicked(marker.options.id, false); // FIXME: workaround for https://github.com/Leaflet/Leaflet/issues/4484
     });
     markers.push(marker);
 
@@ -316,8 +317,9 @@ function addMarker(lat, lon, iid, isVisible) {
 }
 function changeRouteOpacity(id, value) {
     for (var i in routes) {
-        if (id === routes[i].options.id)
+        if (id === routes[i].options.id) {
             routes[i].setStyle({opacity: value});
+        }
     }
     for (var i in joinedSegments) {
         if (id === joinedSegments[i].options.id) {
