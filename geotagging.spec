@@ -8,11 +8,12 @@ URL:            https://github.com/jmlich/geotagging
 Source0:        https://github.com/jmlich/geotagging/archive/master.tar.gz#/%{name}-%{version}.tar.gz
 
 BuildRequires:  desktop-file-utils
-BuildRequires:  qt5-devel >= 5.10.0
-BuildRequires:  qt5-linguist
 BuildRequires:  libappstream-glib
 BuildRequires:  exiv2-devel
 BuildRequires:  qt5-qtwebengine-devel
+BuildRequires:  qt5-qtbase-devel
+BuildRequires:  qt5-qtquickcontrols
+BuildRequires:  qt5-linguist
 
 %description
 Photography geotagging tool
