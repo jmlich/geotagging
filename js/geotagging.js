@@ -194,8 +194,7 @@ function setNewMarkerPosition(id) {
             ////////////////////////
 
             var ele = -1000;
-            ele = elevation
-            newMarkerAdded(id, position[0], position[1], ele);
+            window.mapWidget.newMarkerAdded(id, position.lat, position.lng, ele);
             return position;
 
         }
@@ -246,7 +245,7 @@ function addNewMarkers(coord) {
         {
             addMarker(coord.lat(), coord.lng(), idList[i], 1);
             markerClicked(idList[i], 1);
-            newMarkerAdded(idList[i], coord.lat(), coord.lng(), ele);
+            window.mapWidget.newMarkerAdded(idList[i], coord.lat(), coord.lng(), ele);
 
         }
     });
