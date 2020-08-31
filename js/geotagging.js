@@ -214,50 +214,30 @@ function setNewMarkerPosition(id) {
 var idList;
 function settingNewMarker(iidList) {
     idList = iidList;
-    console.log("FIXME settingNewMarker("+iidList+")")
-    //    map.draggableCursor = 'crosshair';
-//    clickListener = google.maps.event.addListener(map, 'click', function(event) {
-//        addNewMarkers(event.latLng);
-//    });
 
+    $('#map').css('cursor','crosshair');
+
+    map.once('click', function(event){
+        console.log("marker Added" + event.latlng)
+        addNewMarkers(event.latlng);
+    });
 }
 function endSettingNewMarker() {
-    console.log("FIXME endSettingNewMarker()")
-    //    map.draggableCursor = 'auto';
-    //    google.maps.event.removeListener(clickListener);
+    $('#map').css('cursor','');
 }
 
 
 function addNewMarkers(coord) {
     console.log("FIXME addNewMarkers(" + coord + ")")
-    /*
     var ele = -1000;
-    var locations = [];
-    locations.push(LatLng);
 
-    // Create a LocationElevationRequest object using the array's one value
-    var positionalRequest = {
-        'locations': locations
+    // FIXME evelation
+    for (var i = 0; i < idList.length; i++) {
+        addMarker(coord.lat, coord.lng, idList[i], 1);
+        markerClicked(idList[i], 1);
+        window.mapWidget.newMarkerAdded(idList[i], coord.lat, coord.lng, ele);
     }
-    
-    // Initiate the location request
-    elevator.getElevationForLocations(positionalRequest, function(results, status) {
-        if (status === google.maps.ElevationStatus.OK) {
-            // Retrieve the first result
-            if (results[0]) {
-                ele = results[0].elevation;
-            }
-        }
 
-        for (var i = 0; i< idList.length; i=i+1)
-        {
-            addMarker(coord.lat(), coord.lng(), idList[i], 1);
-            markerClicked(idList[i], 1);
-            window.mapWidget.newMarkerAdded(idList[i], coord.lat(), coord.lng(), ele);
-
-        }
-    });
-*/
 }
 
 function addMarker(lat, lon, iid, isVisible) {
