@@ -62,8 +62,7 @@
     <property name="title">
      <string>&amp;Files</string>
     </property>
-    <addaction name="actionOpen_Picture"/>
-    <addaction name="actionOpen_Gps"/>
+    <addaction name="actionOpen"/>
     <addaction name="actionSave_Datetime"/>
     <addaction name="actionSave_Gps"/>
    </widget>
@@ -127,14 +126,16 @@
     <string>Change picture time</string>
    </property>
   </action>
-  <action name="actionOpen_Picture">
-   <property name="text">
-    <string>Open Pictures</string>
+  <action name="actionOpen">
+   <property name="icon">
+    <iconset resource="resources.qrc">
+     <normaloff>:/icons/openGps.png</normaloff>:/icons/openGps.png</iconset>
    </property>
-  </action>
-  <action name="actionOpen_Gps">
    <property name="text">
-    <string>Open Gps route</string>
+    <string>Open</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+O</string>
    </property>
   </action>
   <action name="actionSave_Datetime">
@@ -241,6 +242,8 @@
    <container>1</container>
   </customwidget>
  </customwidgets>
- <resources/>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
  <connections/>
 </ui>

@@ -57,15 +57,11 @@ MainWindow::MainWindow(QWidget *parent) :
 
     map->gpsRoutesList = gpsRoutesList;
 
-    ui->actionOpen_Gps->setIcon(QIcon(":/icons/openGps.png"));
-    ui->actionOpen_Picture->setIcon(QIcon(":/icons/openImage.png"));
-    ui->actionOpen_Picture->setShortcut(QKeySequence::Open);
     ui->actionSave_Gps->setIcon(QIcon(":/icons/saveGpsIcon.png"));
     ui->actionSave_Datetime->setIcon(QIcon(":/icons/saveTimeIcon.png"));
     ui->actionNastavit_zpo_d_n->setIcon(QIcon(":/icons/clock.png"));
     ui->actionSynchronize_with_GPS_route->setIcon(QIcon(":/icons/synch.png"));
-    ui->actionOpen_Gps->setIconVisibleInMenu(true);
-    ui->actionOpen_Picture->setIconVisibleInMenu(true);
+    ui->actionOpen->setIconVisibleInMenu(true);
     ui->actionSave_Gps->setIconVisibleInMenu(true);
     ui->actionSave_Datetime->setIconVisibleInMenu(true);
     ui->actionNastavit_zpo_d_n->setIconVisibleInMenu(true);
@@ -512,17 +508,20 @@ void MainWindow::setRoute(GpsRoute *gpsRoute) {
 }
 
 
-void MainWindow::on_actionOpen_Gps_triggered() {
-    QStringList gpsfileNames = QFileDialog::getOpenFileNames(this,tr("Open GPS File"),  QDir::currentPath(),
-                                                             tr("GPS files (*.gpx);; All Files (*)"));
 
-    if(gpsfileNames.length() < 1) {
+void MainWindow::on_actionOpen_triggered() {
+    QList<QUrl> fileNames = QFileDialog::getOpenFileUrls(this, tr("Open files"),
+                                                          QDir::currentPath(),
+                                                          tr("Images and routes (*.png *.jpg *.tif *.raw *.rw2 *.mrw *.orf *.raf *.arw *.ari *.gpx);;Images (*.png *.jpg *.tif *.raw *.rw2 *.mrw *.orf *.raf *.arw *.ari);;GPS files (*.gpx);; All files (*)"));
+
+    if(fileNames.length() < 1) {
         return;
     }
-    importThread->start();
-    emit(importGpsFiles(gpsfileNames));
+
+    importFileProcessor->processDropUrls(&fileNames);
 
 }
+
 
 void MainWindow::deleteRoute(int id) {
     gpsRoutesList->deleteRoute(id);
@@ -583,16 +582,6 @@ void MainWindow::mousePressEvent(QMouseEvent *event) {
     }
 }
 
-void MainWindow::on_actionOpen_Picture_triggered() {
-    QStringList fileNames = QFileDialog::getOpenFileNames(this, tr("Open Image"),
-                                                          QDir::currentPath(),
-                                                          tr("Images (*.png *.jpg *.tif *.raw *.rw2 *.mrw *.orf *.raf *.arw *.ari);; All files (*)"));
-    if(fileNames.length() < 1) {
-        return;
-    }
-    importThread->start();
-    emit(importImages(fileNames));
-}
 
 void MainWindow::synchAsk() {
 

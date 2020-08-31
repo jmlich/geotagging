@@ -139,10 +139,9 @@ private slots:
     void synchronizeSelected();
     //void on_actionNum_triggered();
     //void on_actionGrade_triggered();
-    void on_actionOpen_Gps_triggered();
+    void on_actionOpen_triggered();
 
     void on_actionNastavit_zpo_d_n_triggered();
-    void on_actionOpen_Picture_triggered();
     //void on_changeButton_clicked();
 
 protected:
