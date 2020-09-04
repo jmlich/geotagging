@@ -512,7 +512,7 @@ void MainWindow::setRoute(GpsRoute *gpsRoute) {
 void MainWindow::on_actionOpen_triggered() {
     QList<QUrl> fileNames = QFileDialog::getOpenFileUrls(this, tr("Open files"),
                                                           QDir::currentPath(),
-                                                          tr("Images and routes (*.png *.jpg *.tif *.raw *.rw2 *.mrw *.orf *.raf *.arw *.ari *.gpx);;Images (*.png *.jpg *.tif *.raw *.rw2 *.mrw *.orf *.raf *.arw *.ari);;GPS files (*.gpx);; All files (*)"));
+                                                          tr("Images and routes (*.png *.jpg *.JPG *.jpeg *.JPEG *.tif *.raw *.rw2 *.mrw *.orf *.raf *.arw *.ari *.gpx);;Images (*.png *.jpg *.JPG *.jpeg *.JPEG *.tif *.raw *.rw2 *.mrw *.orf *.raf *.arw *.ari);;GPS files (*.gpx);; All files (*)"));
 
     if(fileNames.length() < 1) {
         return;
