@@ -278,7 +278,7 @@ function addMarker(lat, lon, iid, isVisible) {
         marker.addTo(map);
     }
     marker.on('click', function(e) {
-        markerClicked(marker.options.id)
+        mapWidget.markerClicked(marker.options.id)
     });
     marker.on('dragstart',function() { // 'dragstart'
         //        markerClicked(marker.options.id, false); // FIXME: doesn't work https://github.com/Leaflet/Leaflet/issues/4484
