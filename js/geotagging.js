@@ -422,7 +422,6 @@ function markerClicked(id, isCtrl) {
             markers[i].setZIndexOffset(0);
         }
     }
-
 }
 
 function setMarkersVisibility(setVisible) {
@@ -430,9 +429,9 @@ function setMarkersVisibility(setVisible) {
         if (setVisible) {
             map.addLayer(markers[i]);
         } else {
-            if( markers[i].icon === defaultMarker) {
+//            if( markers[i].getIcon() === defaultMarker) {
                 map.removeLayer(markers[i]);
-            }
+//            }
         }
     }
 }
