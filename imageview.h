@@ -1,6 +1,6 @@
 /** @file imageview.h
   * Hlavickovy soubor tridy ImageView dedici ze tridy QWidget
-  * pro zobrazeni noveho okna s fotografií v puvodni velikosti
+  * pro zobrazeni noveho okna s fotografii v puvodni velikosti
   */
 
 #ifndef IMAGEVIEW_H
@@ -28,6 +28,8 @@ public:
     //ImageView(QWidget *parent = 0,QImage *image = 0);
     void setImage(QString pictureName);
    // void wheelEvent(QWheelEvent * event);
+    QSize sizeHint() const;
+
 public slots:
     void changeImageSize(int delta);
 

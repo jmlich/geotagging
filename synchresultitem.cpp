@@ -39,8 +39,9 @@ SynchResultItem::SynchResultItem(ImageInfo *image,QString cOk, QString cFailed, 
         this->setText(3,"-");
         this->setText(4,"-");
         this->setText(5,"-");
-        for(int j = 0; j<parent->columnCount(); j++)
-            this->setBackgroundColor(j,colorFailed);
+        for(int j = 0; j<parent->columnCount(); j++) {
+            this->setBackground(j, QBrush(colorFailed,Qt::SolidPattern));
+        }
         synchOk = 0;
         timeDiff = 9999999;
         checkBox->setEnabled(false);
@@ -88,12 +89,13 @@ SynchResultItem::SynchResultItem(ImageInfo *image,QString cOk, QString cFailed, 
 
         if(image->candidateIsCorrect) {
             checkBox->setChecked(1);
-            for (int j = 0; j<parent->columnCount(); j++)
-                this->setBackgroundColor(j,colorOk);
+            for (int j = 0; j<parent->columnCount(); j++) {
+                this->setBackground(j, QBrush(colorOk, Qt::SolidPattern));
+            }
             synchOk = 1;
         } else {   //prirazeni selhalo
             for (int j = 0; j<parent->columnCount(); j++) {
-                this->setBackgroundColor(j,colorFailed);
+                this->setBackground(j, QBrush(colorFailed, Qt::SolidPattern));
             }
             synchOk = 0;
 
@@ -130,7 +132,7 @@ void SynchResultItem::setItemColor() {
     }
 
     for(int j = 0; j<colCount; j++) {
-        this->setBackgroundColor(j, currentColor);
+        this->setBackground(j, QBrush(currentColor,Qt::SolidPattern));
     }
 
 }

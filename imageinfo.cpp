@@ -3,6 +3,7 @@
   */
 
 #include <QAction>
+#include <QDebug>
 #include "imageinfo.h"
 #include "ui_imageinfo.h"
 

@@ -16,10 +16,16 @@ ImageView::ImageView(QWidget *parent):
 
     this->layout()->setContentsMargins(0,0,0,0);
     this->layout()->addWidget(scrollArea);
+    this->setWindowModality(Qt::ApplicationModal);
 }
 
 ImageView::~ImageView() {
     delete img;
+}
+
+QSize ImageView::sizeHint() const
+{
+    return QSize(1024, 768);
 }
 
 void ImageView::setImage(QString pictureName) {
