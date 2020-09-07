@@ -28,7 +28,7 @@ public:
     //ImageView(QWidget *parent = 0,QImage *image = 0);
     void setImage(QString pictureName);
    // void wheelEvent(QWheelEvent * event);
-    QSize sizeHint() const;
+    virtual QSize sizeHint() const;
 
 public slots:
     void changeImageSize(int delta);
