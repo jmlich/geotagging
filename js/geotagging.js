@@ -6,10 +6,6 @@ var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
                           subdomains:['a', 'b', 'c'],
                       });
 
-var osmCycle = L.tileLayer('http://{s}.tile.opencyclemap.org/cycle/{z}/{x}/{y}.png', {
-                               subdomains:['a', 'b', 'c'],
-                               attribution: '&copy; OpenCycleMap, ' + 'Map data ' + osm
-                           });
 
 var google = L.tileLayer('https://{s}.google.com/vt/lyrs=m@248407269&hl=x-local&x={x}&y={y}&z={z}&s=Galileo', {
                              attribution: 'Map data &copy; Google 2012',
@@ -46,14 +42,39 @@ var hill = L.tileLayer('http://{s}.tiles.wmflabs.org/hillshading/{z}/{x}/{y}.png
                            attribution: 'Hillshading: SRTM3 v2 (<a href="http://www2.jpl.nasa.gov/srtm/">NASA</a>)'
                        });
 
+var mapyCzOphoto = L.tileLayer('http://m{s}.mapserver.mapy.cz/ophoto-m/{z}-{x}-{y}',{
+                                   "minZoom":5,
+                                   "maxZoom":20,
+                                   "subdomains": ['1','2','3','4'],
+                                   "attribution":"© Seznam.cz, a.s., © EOX IT Services GmbH, © OpenStreetMap",
+                               });
+var mapyCzBase = L.tileLayer('http://m{s}.mapserver.mapy.cz/base-m/{z}-{x}-{y}', {
+                                 "minZoom":5,
+                                 "maxZoom":18,
+                                 "subdomains": ['1','2','3','4'],
+                                 "attribution":"© Seznam.cz, a.s., © OpenStreetMap",
+                             });
+var arcGisTopo = L.tileLayer('https://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer/tile/{z}/{y}/{x}.png',{
+                                 "attribution":"© Esri",
+                                 "subdomains":['a','b','c'],
+                             });
+var arcGitSatellite = L.tileLayer('https://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}.png',{
+                                     "attribution":"© Esri",
+                                     "subdomains":['a','b','c'],
+                                     "maxZoom":17,
+                                 });
+
 var baseMaps = {
     osm,
-    osmCycle,
     google,
     googleTerrain,
     googleHybrid,
     satelite,
-    hikebikemapv1
+    hikebikemapv1,
+    mapyCzOphoto,
+    mapyCzBase,
+    arcGisTopo,
+    arcGitSatellite
 }
 
 var selectedBaseLayer = osm;
@@ -153,9 +174,19 @@ function setMapType(mapType) {
     case "OSMMapnik":
         selectedBaseLayer = osm;
         break;
-    case "OSMCyklo":
-        selectedBaseLayer = osmCycle;
+    case "mapyCzBase":
+        selectedBaseLayer = mapyCzBase;
         break;
+    case "mapyCzOphoto":
+        selectedBaseLayer = mapyCzOphoto;
+        break;
+    case "arcGisTopo":
+        selectedBaseLayer = arcGisTopo;
+        break;
+    case "arcGitSatellite":
+        selectedBaseLayer = arcGitSatellite;
+        break;
+
     default:
         return false;
     }

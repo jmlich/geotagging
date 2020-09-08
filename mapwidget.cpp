@@ -55,7 +55,10 @@ void MapWidget::retranslateUi() {
     mapSelect->setItemText(3, tr("Google Satellite"));
     mapSelect->setItemText(4, tr("Google Hybrid"));
     mapSelect->setItemText(5, tr("OSM Mapnik"));
-    mapSelect->setItemText(6, tr("OSM Cyclomap"));
+    mapSelect->setItemText(6, tr("Mapy.cz base"));
+    mapSelect->setItemText(7, tr("Mapy.cz Orthophoto"));
+    mapSelect->setItemText(8, tr("ArcGis Topographic"));
+    mapSelect->setItemText(9, tr("ArcGis Satellite"));
 
     bCenter->setToolTip(tr("Center map to view all"));
     bMarkersVisibility->setToolTip(tr("Show all markers"));
@@ -124,9 +127,12 @@ void MapWidget::setWidgets() {
     mapSelect->addItem(tr("Google Roadmap"), "ROADMAP");
     mapSelect->addItem(tr("Google Terrain"), "TERRAIN");
     mapSelect->addItem(tr("Google Satellite"), "SATELLITE");
-    mapSelect->addItem( tr("Google Hybrid"), "HYBRID");
+    mapSelect->addItem(tr("Google Hybrid"), "HYBRID");
     mapSelect->addItem(tr("OSM Mapnik"), "OSMMapnik");
-    mapSelect->addItem(tr("OSM Cyclomap"), "OSMCyklo");
+    mapSelect->addItem(tr("Mapy.cz base"), "mapyCzBase");
+    mapSelect->addItem(tr("Mapy.cz Orthophoto"), "mapyCzOphoto");
+    mapSelect->addItem(tr("ArcGis Topographic"), "arcGisTopo");
+    mapSelect->addItem(tr("ArcGis Satellite"), "arcGitSatellite");
     mapSelect->setCurrentIndex(5);
     mapSelect->setSizePolicy(QSizePolicy::Maximum,QSizePolicy::Fixed);
     mapSelect->setFixedHeight(iconSize.height());
