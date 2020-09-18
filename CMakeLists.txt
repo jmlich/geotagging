@@ -90,9 +90,6 @@ QT5_CREATE_TRANSLATION(QT_FILES "${CMAKE_SOURCE_DIR}"
 install(FILES ${QM_FILES}
     DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/geotagging/translation")
 
-install(FILES "geotagging_defaults.json"
-    DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/geotagging")
-
 install(FILES "geotagging.desktop"
     DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/applications")
 
