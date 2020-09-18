@@ -11,7 +11,7 @@ public:
     explicit AboutDialog(QWidget *parent = nullptr);
 
 private:
-    Ui::Dialog ui;
+    Ui::AboutDialog ui;
 
 signals:
 
