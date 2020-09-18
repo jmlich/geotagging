@@ -79,8 +79,7 @@ add_definitions(-DQUICK_TEST_SOURCE_DIR="${CMAKE_CURRENT_SOURCE_DIR}")
 
 
 
-QT5_ADD_TRANSLATION(QM_FILES ${TS_FILES}
-    OPTIONS "-idbased")
+QT5_ADD_TRANSLATION(QM_FILES ${TS_FILES})
 add_custom_target(translations DEPENDS ${QM_FILES})
 add_dependencies(geotagging translations)
 
