@@ -34,6 +34,7 @@
 #include "exifinfo.h"
 #include "importfileprocessor.h"
 #include "imagedata.h"
+#include "aboutdialog.h"
 #include "ui_mainwindow.h"
 
 namespace Ui {
@@ -102,6 +103,7 @@ private:
 
     int sizeWidgetMin;
     int sizeWidgetMax;
+    AboutDialog *aboutDialog;
     SynchDialog *synchDialog;
     SynchResultDialog *synchResultDialog;
     PicturesFrame *picturesFrame;

@@ -35,7 +35,7 @@
          <x>0</x>
          <y>0</y>
          <width>647</width>
-         <height>384</height>
+         <height>385</height>
         </rect>
        </property>
        <property name="sizePolicy">
@@ -55,7 +55,7 @@
      <x>0</x>
      <y>0</y>
      <width>665</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuOpen">
@@ -71,6 +71,7 @@
      <string>&amp;Edit</string>
     </property>
     <addaction name="actionNastavit_zpo_d_n"/>
+    <addaction name="actionSynchronize_with_GPS_route"/>
    </widget>
    <widget class="QMenu" name="menuView">
     <property name="title">
@@ -101,16 +102,16 @@
     <addaction name="menuDateTimeFormat"/>
     <addaction name="menuDisplayedImageInformations"/>
    </widget>
-   <widget class="QMenu" name="menuPicture">
+   <widget class="QMenu" name="menuHelp">
     <property name="title">
-     <string>&amp;Picture</string>
+     <string>&amp;Help</string>
     </property>
-    <addaction name="actionSynchronize_with_GPS_route"/>
+    <addaction name="action_About"/>
    </widget>
    <addaction name="menuOpen"/>
    <addaction name="menuEdit"/>
    <addaction name="menuView"/>
-   <addaction name="menuPicture"/>
+   <addaction name="menuHelp"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -230,6 +231,14 @@
    </property>
    <property name="text">
     <string>Altitude</string>
+   </property>
+  </action>
+  <action name="action_About">
+   <property name="text">
+    <string>&amp;About</string>
+   </property>
+   <property name="shortcut">
+    <string>F1</string>
    </property>
   </action>
  </widget>

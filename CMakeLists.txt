@@ -35,6 +35,7 @@ find_package(Qt5 COMPONENTS Core Gui Network Widgets WebEngineWidgets WebChannel
 file(GLOB TS_FILES translation/*.ts)
 
 add_executable(geotagging WIN32
+  aboutdialog.cpp
   changedatetime.cpp
   changetime.cpp
   datetimedialog.cpp
@@ -64,6 +65,7 @@ add_executable(geotagging WIN32
   synchresultitem.cpp
   geotagging.qrc
   geotagging.rc
+  aboutdialog.ui
   changedatetime.ui
   changetime.ui
   imageinfo.ui

@@ -38,6 +38,7 @@ MainWindow::MainWindow(QWidget *parent) :
     picturesFrame = new PicturesFrame();
     picturesFrame = new PicturesFrame(ui->scrollAreaPictures);
 
+    aboutDialog = new AboutDialog(this);
     dateTimeChange = new ChangeDateTime();
     synchDialog = new SynchDialog(gpsRoutesList, this,dateTimeChange, this );
     synchResultDialog = new SynchResultDialog(this);
@@ -119,6 +120,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
     connect(ui->actionSave_Gps, SIGNAL(triggered()), imageWidgetsList, SLOT(saveExifGpsInAll()));
     connect(ui->actionSave_Datetime, SIGNAL(triggered()), imageWidgetsList, SLOT(saveExifDateTimeInAll()));
+    connect(ui->action_About,SIGNAL(triggered()), aboutDialog, SLOT(show()));
 
 
     ui->scrollAreaPictures->setWidget(picturesFrame);
