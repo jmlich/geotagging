@@ -14,6 +14,7 @@ BuildRequires:  qt5-qtwebengine-devel
 BuildRequires:  qt5-qtbase-devel
 BuildRequires:  qt5-qtquickcontrols
 BuildRequires:  qt5-linguist
+BuildRequires:  git
 
 %description
 Photography geotagging tool
