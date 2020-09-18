@@ -1,0 +1,10 @@
+[main]
+host = https://www.transifex.com
+
+[geotagging.geotagging-en-us-ts]
+file_filter = translation/geotagging_<lang>.ts
+minimum_perc = 0
+source_file = translation/geotagging_en_US.ts
+source_lang = en
+type = QT
+
