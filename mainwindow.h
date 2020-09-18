@@ -34,6 +34,8 @@
 #include "exifinfo.h"
 #include "importfileprocessor.h"
 #include "imagedata.h"
+#include "ui_mainwindow.h"
+
 namespace Ui {
     class MainWindow;
 }

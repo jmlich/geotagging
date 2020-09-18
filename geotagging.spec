@@ -21,13 +21,13 @@ Photography geotagging tool
 %prep
 %setup -q -n %{name}-%{version}
 
-
 %build
-%{qmake_qt5} PREFIX=%{_prefix}
-make %{?_smp_mflags}
+%cmake
+%cmake_build
+
 
 %install
-make INSTALL_ROOT=$RPM_BUILD_ROOT install
+%cmake_install
 desktop-file-install --dir=${RPM_BUILD_ROOT}%{_datadir}/applications %{name}.desktop
 appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/*.appdata.xml
 
