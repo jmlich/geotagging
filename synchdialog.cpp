@@ -94,6 +94,7 @@ SynchDialog::SynchDialog(QList<GpsRoute*> *gpsR,QWidget *mw,ChangeDateTime *chan
     ui->comboBox_zones->addItem(tr("UTC+14:00 - Line Islands"), -14);
 
     tzset();
+#ifdef _XOPEN_SOURCE
     for(int i=0;i<ui->comboBox_zones->count(); i++) {
         if(ui->comboBox_zones->itemData(i).toDouble()*3600 == timezone)
             //if(ui->comboBox_zones->itemData(i).toDouble() == timezoneOffset)
@@ -104,6 +105,7 @@ SynchDialog::SynchDialog(QList<GpsRoute*> *gpsR,QWidget *mw,ChangeDateTime *chan
     if(daylight) {
         ui->checkBoxDST->setChecked(true);
     }
+#endif // _XOPEN_SOURCE
 }
 
 void SynchDialog::retranslateUi()
