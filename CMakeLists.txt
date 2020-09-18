@@ -95,6 +95,9 @@ install(FILES "geotagging.desktop"
 install(FILES "icons/geotagging.ico" "icons/geotagging.png"
     DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor/applications/64x64")
 
+install(FILES "geotagging.appdata.xml"
+    DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/metainfo")
+
 install(TARGETS geotagging RUNTIME
         DESTINATION ${CMAKE_INSTALL_BINDIR})
 
