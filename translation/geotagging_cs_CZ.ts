@@ -47,31 +47,31 @@
         <translation>Dialog</translation>
     </message>
     <message>
-        <source>let  </source>
+        <source>years</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>měsíců  </source>
+        <source>months  </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>dnů  </source>
+        <source>days</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <source>hodin</source>
-        <translation type="unfinished"></translation>
+        <source>hours</source>
+        <translation type="unfinished">hodin</translation>
     </message>
     <message>
-        <source>minut</source>
-        <translation type="unfinished"></translation>
+        <source>minutes</source>
+        <translation type="unfinished">minut</translation>
     </message>
     <message>
-        <source>sekund</source>
-        <translation type="unfinished"></translation>
+        <source>seconds</source>
+        <translation type="unfinished">sekund</translation>
     </message>
     <message>
-        <source>uložit nový čas do EXIF dat fotografií</source>
+        <source>store new timestamp into EXIF part of file</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -90,7 +90,7 @@
     <name>Dialog</name>
     <message>
         <source>Dialog</source>
-        <translation>Dialog</translation>
+        <translation type="vanished">Dialog</translation>
     </message>
     <message>
         <source>Geotagging application</source>
@@ -775,6 +775,10 @@ p, li { white-space: pre-wrap; }
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;the library.  If this is what you want to do, use the GNU Lesser General&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Public License instead of this License.  But first, please read&lt;/p&gt;
 &lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&amp;lt;http://www.gnu.org/philosophy/why-not-lgpl.html&amp;gt;.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <source>About</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

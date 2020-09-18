@@ -19,42 +19,42 @@
      <item row="0" column="1">
       <widget class="QLabel" name="label_2">
        <property name="text">
-        <string>let  </string>
+        <string>years</string>
        </property>
       </widget>
      </item>
      <item row="0" column="3">
       <widget class="QLabel" name="label_3">
        <property name="text">
-        <string>měsíců  </string>
+        <string>months  </string>
        </property>
       </widget>
      </item>
      <item row="0" column="5">
       <widget class="QLabel" name="label_5">
        <property name="text">
-        <string>dnů  </string>
+        <string>days</string>
        </property>
       </widget>
      </item>
      <item row="1" column="1">
       <widget class="QLabel" name="label">
        <property name="text">
-        <string>hodin</string>
+        <string>hours</string>
        </property>
       </widget>
      </item>
      <item row="1" column="3">
       <widget class="QLabel" name="label_4">
        <property name="text">
-        <string>minut</string>
+        <string>minutes</string>
        </property>
       </widget>
      </item>
      <item row="1" column="5">
       <widget class="QLabel" name="label_6">
        <property name="text">
-        <string>sekund</string>
+        <string>seconds</string>
        </property>
       </widget>
      </item>
@@ -123,7 +123,7 @@
    <item row="1" column="1">
     <widget class="QCheckBox" name="checkBox_isSaveTime">
      <property name="text">
-      <string>uložit nový čas do EXIF dat fotografií</string>
+      <string>store new timestamp into EXIF part of file</string>
      </property>
      <property name="checked">
       <bool>true</bool>
