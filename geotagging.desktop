@@ -6,6 +6,6 @@ GenericName=geotagging
 Exec=geotagging %u
 Terminal=false
 Type=Application
-Icon=/usr/share/icons/hicolor/64x64/apps/geotagging.png
+Icon=/usr/share/icons/hicolor/applications/64x64/geotagging.png
 Categories=Graphics;Application;Qt;Network;
 StartupNotify=true
