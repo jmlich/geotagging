@@ -9,7 +9,7 @@
 #include <QWidget>
 #include <QLabel>
 #include <QLayout>
-#include "exiv2/exiv2.hpp"
+#include <exiv2/exiv2.hpp>
 #include "scrollarea.h"
 //#include <QMouseEvent>
 
