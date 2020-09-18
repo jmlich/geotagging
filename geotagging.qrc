@@ -18,19 +18,20 @@
         <file>icons/terc.png</file>
         <file>icons/saveGpsIconS.png</file>
         <file>leaflet.html</file>
-        <file>./js/jquery.min.js</file>
-        <file>./js/leaflet.js</file>
-        <file>./js/geotagging.js</file>
-        <file>./js/qwebchannel.js</file>
-        <file>./css/leaflet.css</file>
-        <file>./css/images/layers-2x.png</file>
-        <file>./css/images/layers.png</file>
-        <file>./js/images/marker-icon.png</file>
-        <file>./js/images/marker-icon-2x.png</file>
-        <file>./js/images/marker-icon-gold.png</file>
-        <file>./js/images/marker-icon-red.png</file>
-        <file>./js/images/marker-shadow.png</file>
+        <file>js/jquery.min.js</file>
+        <file>js/leaflet.js</file>
+        <file>js/geotagging.js</file>
+        <file>js/qwebchannel.js</file>
+        <file>css/leaflet.css</file>
+        <file>css/images/layers-2x.png</file>
+        <file>css/images/layers.png</file>
+        <file>js/images/marker-icon.png</file>
+        <file>js/images/marker-icon-2x.png</file>
+        <file>js/images/marker-icon-gold.png</file>
+        <file>js/images/marker-icon-red.png</file>
+        <file>js/images/marker-shadow.png</file>
         <file>translation/geotagging_cs_CZ.qm</file>
         <file>translation/qt_cs_CZ.qm</file>
+        <file>LICENSE</file>
     </qresource>
 </RCC>

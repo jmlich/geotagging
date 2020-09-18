@@ -2,6 +2,8 @@
   * Soubor s tridou GpsRoute reprezentujici trasu
   */
 
+#define _USE_MATH_DEFINES
+#include <cmath>
 #include "gpsroute.h"
 
 GpsRoute::GpsRoute(int iid) :
@@ -342,7 +344,7 @@ bool GpsRoute::loadFile(QString fileName) {
 
     //otevre soubor
     if (!data->open ( QIODevice::ReadOnly)) { //otevreni souboru
-        return -1;
+        return 0;
     }
 
     xml->setDevice(data);
