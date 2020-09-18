@@ -36,6 +36,7 @@ appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/*.appdata.xml
 %{_bindir}/geotagging
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/64x64/apps/geotagging.png
+%{_datadir}/icons/hicolor/64x64/apps/geotagging.ico
 %{_metainfodir}/geotagging.appdata.xml
 
 %changelog

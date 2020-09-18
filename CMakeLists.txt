@@ -93,7 +93,7 @@ install(FILES ${QM_FILES}
 install(FILES "geotagging.desktop"
     DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/applications")
 
-install(FILES "geotagging64.ico" "geotagging64.png"
+install(FILES "icons/geotagging.ico" "icons/geotagging.png"
     DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor/applications/64x64")
 
 install(TARGETS geotagging RUNTIME
