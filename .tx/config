@@ -1,7 +1,7 @@
 [main]
 host = https://www.transifex.com
 
-[geotagging.geotagging-en-us-ts]
+[translation/geotagging_en_US.ts]
 file_filter = translation/geotagging_<lang>.ts
 minimum_perc = 0
 source_file = translation/geotagging_en_US.ts
