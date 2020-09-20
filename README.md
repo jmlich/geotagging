@@ -38,5 +38,5 @@ nainstalovat knihovny zlib (testováno zlib-1.2.3), expat (testováno expat-2.0.
 
 Aplikace byla vyvíjena v Qt5
 překlad:
-- qmake
-- make
+- cmake ..
+- cmake --build .
