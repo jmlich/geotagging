@@ -1,6 +1,8 @@
 
 [![Copr build status](https://copr.fedorainfracloud.org/coprs/jmlich/laa/package/geotagging/status_image/last_build.png)](https://copr.fedorainfracloud.org/coprs/jmlich/laa/package/geotagging/)
 
+Translate to your language at [transifex](https://www.transifex.com/jozef-mlich/geotagging/dashboard/).
+
 ![screenshot](./data/geotagging.png)
 
 www.fit.vutbr.cz/study/DP/BP.php.cs?id=11578
