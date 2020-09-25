@@ -71,7 +71,7 @@ void PicturesFrame::showImages() {
     }
     int colCount = countColCount();
 
-    for(int i = 0; i<imageWidgetsList->length(); i++) {
+    for(int i = 0; i < imageWidgetsList->length(); i++) {
         if(i%colCount == 0) {
             numberLine++;
         }

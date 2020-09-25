@@ -125,7 +125,7 @@ void ImageWidgetsList::saveExifDateTimeInAll()
     }
 }
 void ImageWidgetsList::testRightClick(QPoint p) {
-    for(int i=0; i<this->length(); i++) {
+    for(int i = 0; i < this->length(); i++) {
         if(QRect(this->at(i)->pos(),this->at(i)->rect().size()).intersects(QRect(p,QSize(1,1)))) {
             //qDebug() << "ooooooo";
             if(this->at(i)->isClicked) {
@@ -139,14 +139,16 @@ void ImageWidgetsList::testRightClick(QPoint p) {
     selectOne(-1, 1, 0);
     return;
 }
-void ImageWidgetsList::selectOne(int id, bool clickMarker, bool focus)
-{
+
+void ImageWidgetsList::selectOne(int id, bool clickMarker, bool focus) {
+    qDebug() << "selectOne" << id << clickMarker << focus;
+
     bool isOnly = 1;
     int iSelected = -1;
-    for(int i=0; i<this->length(); i++) {
-        if(id == at(i)->imageData->id) {
+    for(int i = 0; i < this->length(); i++) {
+        if (id == at(i)->imageData->id) {
             iSelected = i;
-            if(clickMarker) {
+            if (clickMarker) {
                 at(i)->select();
             } else {
                 at(i)->click(focus);
@@ -160,7 +162,10 @@ void ImageWidgetsList::selectOne(int id, bool clickMarker, bool focus)
             }
         }
     }
-    if(isOnly) {
+    if (iSelected == -1) {
+        return;
+    }
+    if (isOnly) {
         QStringList exifList = at(iSelected)->exifInformation();
         if(!exifList.isEmpty()) {
             emit(setExifInfo(exifList));
