@@ -38,10 +38,7 @@
   <releases>
     <release version="0.5.3" timestamp="1601067015">
       <description>
-        <p>This stable release fixes the following bug:</p>
-        <ul>
-          <li>CPU no longer overheats when you hold down spacebar</li>
-        </ul>
+        <p>First packaged version</p>
       </description>
     </release>
   </releases>
