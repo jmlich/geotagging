@@ -2,13 +2,14 @@
 <component type="desktop">
  <name>geotagging</name>
  <summary>Photography geotagging tool</summary>
- <id>geotagging.desktop</id>
+ <id>com.github.jmlich.geotagging</id>
+ <launchable type="desktop-id">geotagging.desktop</launchable>
  <metadata_license>CC0-1.0</metadata_license>
  <project_license>GPL-3.0</project_license>
  <description>
   <p>
   Synchronize your photos with gps track log (*.gpx). You can adjust GPS coordinates
-  and store them directory into photos.
+  and store them directly into EXIF.
   </p>
  </description>
 
@@ -16,6 +17,10 @@
  <screenshots>
     <screenshot type="default">
       <image>https://raw.githubusercontent.com/jmlich/geotagging/master/data/geotagging.png</image>
+      <caption></caption>
+    </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/jmlich/geotagging/master/data/screenshot2.png</image>
       <caption></caption>
     </screenshot>
  </screenshots>
