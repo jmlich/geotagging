@@ -10,8 +10,8 @@ ExifReaderWriter::ExifReaderWriter(QObject *parent) :
 {
 }
 
-Exiv2::Image::AutoPtr ExifReaderWriter::openExif(QString pictureName) {
-    Exiv2::Image::AutoPtr image;
+std::unique_ptr<Exiv2::Image> ExifReaderWriter::openExif(QString pictureName) {
+    std::unique_ptr<Exiv2::Image> image;
     try{
 #ifdef _WIN32
         image = Exiv2::ImageFactory::open( std::string(pictureName.toLocal8Bit()));
@@ -67,7 +67,7 @@ double ExifReaderWriter::readLatLon(QString str, Exiv2::ExifData &exifData) {
 }
 
 void ExifReaderWriter::readExif(QString pictureName) {
-    Exiv2::Image::AutoPtr image = openExif(pictureName);
+    std::unique_ptr<Exiv2::Image> image = openExif(pictureName);
     if(image.get() == 0) {
         return;
     }
@@ -125,7 +125,7 @@ QDateTime *ExifReaderWriter::readExifDate(Exiv2::ExifData &exifData, std::string
 
 void ExifReaderWriter::saveExifTime(QString pictureName, QDateTime *dateTime)
 {
-    Exiv2::Image::AutoPtr image = openExif(pictureName);
+    std::unique_ptr<Exiv2::Image> image = openExif(pictureName);
     if(image.get() == 0) {
         return;
     }
@@ -160,7 +160,7 @@ QString ExifReaderWriter::exifLatLonString(double l) {
 
 void ExifReaderWriter::saveExifGps(QString pictureName, double latitude, double longitude, double altitude) {
     qDebug() << "saveExifGps" << pictureName << latitude << longitude << altitude;
-    Exiv2::Image::AutoPtr image = openExif(pictureName);
+    std::unique_ptr<Exiv2::Image> image = openExif(pictureName);
     if (image.get() == 0) {
         return;
     }
@@ -338,7 +338,7 @@ QString ExifReaderWriter::getFlash(Exiv2::ExifData &exifData) {
 QStringList *ExifReaderWriter::readExifInfo(QString pictureName, FormatHandler *formatH) {
     QStringList *exifList = new QStringList;
 
-    Exiv2::Image::AutoPtr image = openExif(pictureName);
+    std::unique_ptr<Exiv2::Image> image = openExif(pictureName);
     if(image.get() == 0) {
         return exifList;
     }
