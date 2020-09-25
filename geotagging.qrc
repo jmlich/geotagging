@@ -30,8 +30,6 @@
         <file>js/images/marker-icon-gold.png</file>
         <file>js/images/marker-icon-red.png</file>
         <file>js/images/marker-shadow.png</file>
-        <file>translation/geotagging_cs_CZ.qm</file>
-        <file>translation/qt_cs_CZ.qm</file>
         <file>LICENSE</file>
     </qresource>
 </RCC>

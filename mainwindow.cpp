@@ -12,20 +12,24 @@ MainWindow::MainWindow(QWidget *parent) :
         ui(new Ui::MainWindow)
 {
     translator = new QTranslator;
-    QString locale = QLocale::system().name();
-    translator->load(":/translation/geotagging_" + locale);
 
-    if(translator->isEmpty())
-        translator->load(":/translation/geotagging_" + locale.split("_")[0]);
-    qApp->installTranslator(translator);
+    QString i18nFilename = QLatin1String("geotagging_") + QLocale::system().name();
+    qDebug() << i18nFilename;
+    if (translator->load(i18nFilename, "./")) {
+        qDebug() << i18nFilename << "./" << QLocale::system().bcp47Name();
+        qApp->installTranslator(translator);
 
-
-    qtTranslator = new QTranslator;
-    //qtTranslator->load("qt_" + locale,QLibraryInfo::location(QLibraryInfo::TranslationsPath));
-    qtTranslator->load(":/translation/qt_" + locale);
-    if(qtTranslator->isEmpty())
-        qtTranslator->load(":/translation/qt_" + locale.split("_")[0]);
-    qApp->installTranslator(qtTranslator);
+    } else if (translator->load(i18nFilename, QLibraryInfo::location(QLibraryInfo::TranslationsPath))) {
+        qDebug() << i18nFilename << QLibraryInfo::location(QLibraryInfo::TranslationsPath) << QLocale::system().bcp47Name();
+        qApp->installTranslator(translator);
+    } else {
+        qDebug() << "translation.load() failed - falling back to English";
+        if (translator->load(QLatin1String("geotagging_en_US")   , "./")) {
+            qApp->installTranslator(translator);
+        } else if (translator->load(QLatin1String("geotagging_en_US"), QLibraryInfo::location(QLibraryInfo::TranslationsPath))) {
+            qApp->installTranslator(translator);
+        }
+    }
 
     progressBar = NULL;
     ui->setupUi(this);
