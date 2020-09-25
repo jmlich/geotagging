@@ -100,10 +100,6 @@ install(FILES "icons/geotagging128.png"
     DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor/128x128/apps"
     RENAME "com.github.jmlich.geotagging.png")
 
-install(FILES "icons/geotagging.ico"
-    DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor/64x64/apps"
-    RENAME "com.github.jmlich.geotagging.ico")
-
 install(FILES "com.github.jmlich.geotagging.appdata.xml"
     DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/metainfo")
 

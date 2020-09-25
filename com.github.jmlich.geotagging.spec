@@ -36,7 +36,6 @@ appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/*.appdata.xml
 %{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
 %{_datadir}/icons/hicolor/86x86/apps/%{name}.png
-%{_datadir}/icons/hicolor/64x64/apps/%{name}.ico
 %{_datadir}/icons/hicolor/128x128/apps/%{name}.png
 %{_datadir}/%{name}/translation/*.qm
 %{_metainfodir}/%{name}.appdata.xml
