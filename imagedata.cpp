@@ -71,18 +71,18 @@ void ImageData::scaleImage(QString pictureName) {
         if (!exifData.empty()) {
             Exiv2::ExifKey key("Exif.Image.Orientation");
             Exiv2::ExifData::iterator pos = exifData.findKey(key);
-            QMatrix rm;
+            QTransform rm;
             if(pos != exifData.end()) {
                 QString str = exifData["Exif.Image.Orientation"].toString().data();
                 switch(str.toInt()){
                     case 3: //obraz otoceny o 180stupnu
-                        img = img.transformed(rm.rotate(180));
+                        img = img.transformed(rm.rotate(180), Qt::SmoothTransformation);
                     break;
                     case 6: //obraz otoceny o 90stupnu
-                        img = img.transformed(rm.rotate(90));
+                        img = img.transformed(rm.rotate(90), Qt::SmoothTransformation);
                     break;
                     case 8: //obraz otoceny o 280stupnu
-                        img = img.transformed(rm.rotate(280));
+                        img = img.transformed(rm.rotate(280), Qt::SmoothTransformation);
                     break;
                     default:
                     break;

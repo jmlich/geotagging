@@ -50,7 +50,7 @@ void ImageView::setImage(QString pictureName) {
     if (isExif) {
         image.get();
         image->readMetadata();
-        QMatrix rot;
+        QTransform rot;
         Exiv2::ExifData &exifData =  image->exifData();
         if (!exifData.empty()) {
             Exiv2::ExifKey key("Exif.Image.Orientation");
