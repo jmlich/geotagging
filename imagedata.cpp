@@ -50,14 +50,14 @@ void ImageData::scaleImage(QString pictureName) {
     bool isExif = false;
     try{
 #ifdef _WIN32
-        image = Exiv2::ImageFactory::open(  std::string(pictureName.toLocal8Bit()));
+        image = Exiv2::ImageFactory::open( pictureName.toStdString() );
 #else
-        image = Exiv2::ImageFactory::open( std::string(pictureName.toUtf8()));
+        image = Exiv2::ImageFactory::open( pictureName.toStdString() );
 #endif
         isExif = true;
     }
     catch (Exiv2::Error& e) {
-        //std::cerr << "Caught Exiv2 exception 2 '" << e.what() << "'\n";
+        qDebug() << pictureName << e.what();
         isExif = false;
     }
 
