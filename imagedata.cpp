@@ -1,6 +1,8 @@
 /** @file imagedata.cpp
   * Soubor s tridou ImageData dedici ze tridy QObject obsahujici data nactena z fotografie
   */
+
+#include <QDebug>
 #include "imagedata.h"
 
 ImageData::ImageData(QObject *parent) :
