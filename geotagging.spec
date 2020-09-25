@@ -1,5 +1,5 @@
 Name:           geotagging
-Version:        0.2.0
+Version:        0.5.2
 Release:        %(date +%Y%m%d%H)%{?dist}
 Summary:        Photography geotagging tool
 Group:          Applications/Internet
