@@ -14,6 +14,7 @@
  </description>
 
  <url type="homepage">https://github.com/jmlich/geotagging</url>
+ <url type="bugtracker">https://github.com/jmlich/geotagging/issues</url>
  <screenshots>
     <screenshot type="default">
       <image>https://raw.githubusercontent.com/jmlich/geotagging/master/data/geotagging.png</image>
@@ -24,5 +25,14 @@
       <caption></caption>
     </screenshot>
  </screenshots>
-
+  <categories>
+    <category>Graphics</category>
+  </categories>
+  <keywords>
+    <keyword>gps</keyword>
+    <keyword>exif</keyword>
+    <keyword>jpg</keyword>
+    <keyword>gpx</keyword>
+  </keywords>
+  <content_rating type="oars-1.1"/>
 </component>

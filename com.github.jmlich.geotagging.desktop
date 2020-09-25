@@ -6,6 +6,6 @@ GenericName=geotagging
 Exec=com.github.jmlich.geotagging %u
 Terminal=false
 Type=Application
-Icon=/usr/share/icons/hicolor/applications/86x86/com.github.jmlich.geotagging.png
+Icon=com.github.jmlich.geotagging
 Categories=Graphics;Application;Qt;Network;
 StartupNotify=true
