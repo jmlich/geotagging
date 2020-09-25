@@ -4,6 +4,7 @@
 Translate to your language at [transifex](https://www.transifex.com/jozef-mlich/geotagging/dashboard/).
 
 ![screenshot](./data/geotagging.png)
+![screenshot2](./data/screenshot2.png)
 
 www.fit.vutbr.cz/study/DP/BP.php.cs?id=11578
 
