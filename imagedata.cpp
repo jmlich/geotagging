@@ -47,7 +47,7 @@ void ImageData::scaleImage(QString pictureName) {
     if(img.isNull()){   //img je null
         return;
     }
-    Exiv2::Image::AutoPtr image;
+    std::unique_ptr<Exiv2::Image> image;
 
     bool isExif = false;
     try{
