@@ -1,10 +1,10 @@
 [main]
 host = https://www.transifex.com
 
-[translation/geotagging_en_US.ts]
-file_filter = translation/geotagging_<lang>.ts
+[translation/com.github.jmlich.geotagging_en_US.ts]
+file_filter = translation/com.github.jmlich.geotagging_<lang>.ts
 minimum_perc = 0
-source_file = translation/geotagging_en_US.ts
+source_file = translation/com.github.jmlich.geotagging_en_US.ts
 source_lang = en
 type = QT
 

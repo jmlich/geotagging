@@ -13,7 +13,7 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     translator = new QTranslator;
 
-    QString i18nFilename = QLatin1String("geotagging_") + QLocale::system().name();
+    QString i18nFilename = QLatin1String("com.github.jmlich.geotagging_") + QLocale::system().name();
     qDebug() << i18nFilename;
     if (translator->load(i18nFilename, "./")) {
         qDebug() << i18nFilename << "./" << QLocale::system().bcp47Name();
@@ -24,9 +24,9 @@ MainWindow::MainWindow(QWidget *parent) :
         qApp->installTranslator(translator);
     } else {
         qDebug() << "translation.load() failed - falling back to English";
-        if (translator->load(QLatin1String("geotagging_en_US")   , "./")) {
+        if (translator->load(QLatin1String("com.github.jmlich.geotagging_en_US")   , "./")) {
             qApp->installTranslator(translator);
-        } else if (translator->load(QLatin1String("geotagging_en_US"), QLibraryInfo::location(QLibraryInfo::TranslationsPath))) {
+        } else if (translator->load(QLatin1String("com.github.jmlich.geotagging_en_US"), QLibraryInfo::location(QLibraryInfo::TranslationsPath))) {
             qApp->installTranslator(translator);
         }
     }

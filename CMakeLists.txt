@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
 
-project(geotagging LANGUAGES CXX)
+project(com.github.jmlich.geotagging LANGUAGES CXX)
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 
@@ -34,7 +34,7 @@ find_package(Qt5 COMPONENTS Core Gui Network Widgets WebEngineWidgets WebChannel
 
 file(GLOB TS_FILES translation/*.ts)
 
-add_executable(geotagging WIN32
+add_executable(com.github.jmlich.geotagging WIN32
   aboutdialog.cpp
   changedatetime.cpp
   changetime.cpp
@@ -81,29 +81,32 @@ add_definitions(-DQUICK_TEST_SOURCE_DIR="${CMAKE_CURRENT_SOURCE_DIR}")
 
 QT5_ADD_TRANSLATION(QM_FILES ${TS_FILES})
 add_custom_target(translations DEPENDS ${QM_FILES})
-add_dependencies(geotagging translations)
+add_dependencies(com.github.jmlich.geotagging translations)
 
 QT5_CREATE_TRANSLATION(QT_FILES "${CMAKE_SOURCE_DIR}"
     OPTIONS "-no-obsolete")
 
 install(FILES ${QM_FILES}
-    DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/geotagging/translation")
+    DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/com.github.jmlich.geotagging/translation")
 
-install(FILES "geotagging.desktop"
+install(FILES "com.github.jmlich.geotagging.desktop"
     DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/applications")
 
-install(FILES "icons/geotagging.ico" "icons/geotagging.png"
+install(FILES "icons/geotagging.png"
+    DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor/applications/86x86")
+
+install(FILES "icons/geotagging.ico"
     DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/icons/hicolor/applications/64x64")
 
-install(FILES "geotagging.appdata.xml"
+install(FILES "com.github.jmlich.geotagging.appdata.xml"
     DESTINATION "${CMAKE_INSTALL_DATAROOTDIR}/metainfo")
 
-install(TARGETS geotagging RUNTIME
+install(TARGETS com.github.jmlich.geotagging RUNTIME
         DESTINATION ${CMAKE_INSTALL_BINDIR})
 
-target_compile_definitions(geotagging
+target_compile_definitions(com.github.jmlich.geotagging
   PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
-target_link_libraries(geotagging
+target_link_libraries(com.github.jmlich.geotagging
   PRIVATE Qt5::Core Qt5::Gui Qt5::Network Qt5::Widgets Qt5::WebEngineWidgets Qt5::WebChannel exiv2)
 
 
@@ -111,10 +114,10 @@ option(DEPLOY_QT_LIBRARIES "Deploy Qt libraries to executable path" OFF)
 if(DEPLOY_QT_LIBRARIES)
     if(WIN32)
         include(DeployQt)
-        windeployqt(geotagging)
+        windeployqt(com.github.jmlich.geotagging)
     elseif(APPLE)
         include(DeployQt)
-        macdeployqt(geotagging)
+        macdeployqt(com.github.jmlich.geotagging)
     endif()
 endif()
  feature_summary(WHAT ALL FATAL_ON_MISSING_REQUIRED_PACKAGES)

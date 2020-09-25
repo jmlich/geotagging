@@ -1,4 +1,4 @@
-Name:           geotagging
+Name:           com.github.jmlich.geotagging
 Version:        0.5.3
 Release:        %(date +%Y%m%d%H)%{?dist}
 Summary:        Photography geotagging tool
@@ -33,12 +33,12 @@ desktop-file-install --dir=${RPM_BUILD_ROOT}%{_datadir}/applications %{name}.des
 appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/*.appdata.xml
 
 %files
-%{_bindir}/geotagging
+%{_bindir}/%{name}
 %{_datadir}/applications/%{name}.desktop
-%{_datadir}/icons/hicolor/applications/64x64/geotagging.png
-%{_datadir}/icons/hicolor/applications/64x64/geotagging.ico
-%{_datadir}/geotagging/translation/*.qm
-%{_metainfodir}/geotagging.appdata.xml
+%{_datadir}/icons/hicolor/applications/86x86/%{name}.png
+%{_datadir}/icons/hicolor/applications/64x64/%{name}.ico
+%{_datadir}/%{name}/translation/*.qm
+%{_metainfodir}/%{name}.appdata.xml
 
 %changelog
 * Fri Jun 15 2018 Jozef Mlich <imlich@fit.vutbr.cz> - 0.2.0-1

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
- <name>geotagging</name>
+ <name>com.github.jmlich.geotagging</name>
  <summary>Photography geotagging tool</summary>
  <id>com.github.jmlich.geotagging</id>
- <launchable type="desktop-id">geotagging.desktop</launchable>
+ <launchable type="desktop-id">com.github.jmlich.geotagging.desktop</launchable>
  <metadata_license>CC0-1.0</metadata_license>
  <project_license>GPL-3.0</project_license>
  <description>
