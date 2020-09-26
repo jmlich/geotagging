@@ -1,5 +1,5 @@
 Name:           com.github.jmlich.geotagging
-Version:        0.5.3
+Version:        0.5.4
 Release:        %(date +%Y%m%d%H)%{?dist}
 Summary:        Photography geotagging tool
 Group:          Applications/Internet
