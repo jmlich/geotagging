@@ -6,7 +6,7 @@ Translate to your language at [transifex](https://www.transifex.com/jozef-mlich/
 ![screenshot](./data/geotagging.png)
 ![screenshot2](./data/screenshot2.png)
 
-[![Click to play on youtube](https://img.youtube.com/vi/wLZSWO1wOPs/0.jpg)](https://www.youtube.com/watch?v=wLZSWO1wOPs)
+[![Click to play on youtube](https://img.youtube.com/vi/BZhxQC5wgNI/0.jpg)](https://www.youtube.com/watch?v=BZhxQC5wgNI)
 
 
 www.fit.vutbr.cz/study/DP/BP.php.cs?id=11578
