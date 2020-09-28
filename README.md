@@ -1,10 +1,13 @@
 
-[![Copr build status](https://copr.fedorainfracloud.org/coprs/jmlich/laa/package/geotagging/status_image/last_build.png)](https://copr.fedorainfracloud.org/coprs/jmlich/laa/package/geotagging/)
+[![Copr build status](https://copr.fedorainfracloud.org/coprs/jmlich/laa/package/com.github.jmlich.geotagging/status_image/last_build.png)](https://copr.fedorainfracloud.org/coprs/jmlich/laa/package/com.github.jmlich.geotagging/)
 
 Translate to your language at [transifex](https://www.transifex.com/jozef-mlich/geotagging/dashboard/).
 
 ![screenshot](./data/geotagging.png)
 ![screenshot2](./data/screenshot2.png)
+
+[![Click to play on youtube](https://img.youtube.com/vi/wLZSWO1wOPs/0.jpg)](https://www.youtube.com/watch?v=wLZSWO1wOPs)
+
 
 www.fit.vutbr.cz/study/DP/BP.php.cs?id=11578
 
