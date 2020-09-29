@@ -1,24 +1,26 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="cs_CZ" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="cs_CZ">
 <context>
     <name>AboutDialog</name>
     <message>
         <location filename="../aboutdialog.ui" line="14"/>
         <source>About</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="40"/>
         <source>Geotagging application</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="61"/>
         <source>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
 &lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
 p, li { white-space: pre-wrap; }
-&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Ubuntu'; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:&apos;Ubuntu&apos;; font-size:11pt; font-weight:400; font-style:normal;&quot;&gt;
 &lt;p style=&quot;-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -79,37 +81,37 @@ p, li { white-space: pre-wrap; }
     <message>
         <location filename="../changetime.ui" line="22"/>
         <source>years</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../changetime.ui" line="29"/>
         <source>months  </source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../changetime.ui" line="36"/>
         <source>days</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../changetime.ui" line="43"/>
         <source>hours</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">hodin</translation>
     </message>
     <message>
         <location filename="../changetime.ui" line="50"/>
         <source>minutes</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">minut</translation>
     </message>
     <message>
         <location filename="../changetime.ui" line="57"/>
         <source>seconds</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished">sekund</translation>
     </message>
     <message>
         <location filename="../changetime.ui" line="126"/>
         <source>store new timestamp into EXIF part of file</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -590,117 +592,120 @@ p, li { white-space: pre-wrap; }
         <translation>&amp;Soubor</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="71"/>
+        <location filename="../mainwindow.ui" line="72"/>
         <source>&amp;Edit</source>
         <translation>&amp;Upravit</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="78"/>
+        <location filename="../mainwindow.ui" line="79"/>
         <source>&amp;View</source>
         <translation>&amp;Zobrazit</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="82"/>
+        <location filename="../mainwindow.ui" line="83"/>
         <source>GPS format</source>
         <translation>Formát GPS souřadnic</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="90"/>
+        <location filename="../mainwindow.ui" line="91"/>
         <source>Date and time format</source>
         <translation>Formát data a času</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="95"/>
+        <location filename="../mainwindow.ui" line="96"/>
         <source>Displayed informations about image</source>
         <translation>Informace zobrazené u miniatur fotografií</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="107"/>
+        <location filename="../mainwindow.ui" line="108"/>
         <source>&amp;Help</source>
         <translation>&amp;Nápověda</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="127"/>
+        <location filename="../mainwindow.ui" line="128"/>
         <source>Change picture time</source>
         <translation>Změna času fotografií</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="136"/>
+        <location filename="../mainwindow.ui" line="137"/>
         <source>Open</source>
         <translation>Otevřít</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="139"/>
+        <location filename="../mainwindow.ui" line="140"/>
         <source>Ctrl+O</source>
         <translation>Ctrl+O</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="144"/>
+        <location filename="../mainwindow.ui" line="145"/>
         <source>Save dates and times in pictures</source>
         <translation>Uložit datum a čas do fotografií</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="149"/>
+        <location filename="../mainwindow.ui" line="150"/>
         <source>Save gps in pictures</source>
         <translation>Uložit GPS souřadnice do fotografií</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="152"/>
+        <location filename="../mainwindow.ui" line="153"/>
         <source>Ctrl+S</source>
         <translation>Ctrl+S</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="163"/>
+        <location filename="../mainwindow.ui" line="164"/>
         <source>degrees minutes</source>
         <translation>stupně minuty</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="171"/>
+        <location filename="../mainwindow.ui" line="172"/>
         <source>degrees </source>
         <translation>stupně </translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="176"/>
+        <location filename="../mainwindow.ui" line="177"/>
         <source>Synchronize with GPS route</source>
         <translation>Synchronizovat s GPS trasou</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="184"/>
+        <location filename="../mainwindow.ui" line="231"/>
+        <source>E&amp;xit</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <source>Čeština</source>
-        <translation>Čeština</translation>
+        <translation type="vanished">Čeština</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="192"/>
         <source>English</source>
-        <translation>English</translation>
+        <translation type="vanished">English</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="200"/>
+        <location filename="../mainwindow.ui" line="185"/>
         <source>degrees minutes seconds</source>
         <translation>stupně minuty sekundy</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="211"/>
+        <location filename="../mainwindow.ui" line="196"/>
         <source>Date and Time</source>
         <translation>Datum a čas</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="222"/>
+        <location filename="../mainwindow.ui" line="207"/>
         <source>Latitude and Longitude</source>
         <translation>Zeměpisná šířka a délka</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="233"/>
+        <location filename="../mainwindow.ui" line="218"/>
         <source>Altitude</source>
         <translation>Nadmořská výška</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="238"/>
+        <location filename="../mainwindow.ui" line="223"/>
         <source>&amp;About</source>
         <translation>&amp;O Programu</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="241"/>
+        <location filename="../mainwindow.ui" line="226"/>
         <source>F1</source>
         <translation>F1</translation>
     </message>
@@ -710,82 +715,82 @@ p, li { white-space: pre-wrap; }
         <translation>Nastavit zpoždění</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="72"/>
+        <location filename="../mainwindow.cpp" line="76"/>
         <source>Geotagging</source>
         <translation>Geotagging</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="163"/>
+        <location filename="../mainwindow.cpp" line="167"/>
         <source>Local setting</source>
         <translation>Místní - dlouhé</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="171"/>
+        <location filename="../mainwindow.cpp" line="175"/>
         <source>Local setting - short</source>
         <translation>Místní - krátké</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="179"/>
+        <location filename="../mainwindow.cpp" line="183"/>
         <source>d.M.yyyy hh:mm:ss</source>
         <translation>d.M.yyyy hh:mm:ss</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="331"/>
+        <location filename="../mainwindow.cpp" line="335"/>
         <source>Couldn&apos;t recognize format of some files</source>
         <translation>Nepodařilo se rozpoznat formát některýh souborů</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="352"/>
+        <location filename="../mainwindow.cpp" line="356"/>
         <source>Drag and drop</source>
         <translation>Drag and drop</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="417"/>
+        <location filename="../mainwindow.cpp" line="421"/>
         <source>Save changes</source>
         <translation>Uložit změny</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="418"/>
+        <location filename="../mainwindow.cpp" line="422"/>
         <source>Some changes in EXIF metadata weren&apos;t saved. Do you wish to save them now?</source>
         <translation>Některé změny v EXIF metadatech nebyli uloženy. Přejete si je uložit nyní?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="463"/>
+        <location filename="../mainwindow.cpp" line="467"/>
         <source>Synchronisation</source>
         <translation>Synchronizace</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="464"/>
+        <location filename="../mainwindow.cpp" line="468"/>
         <source>Wasn&apos;t selected any route</source>
         <translation>Nebyla vybrána žádná trasa</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="515"/>
+        <location filename="../mainwindow.cpp" line="519"/>
         <source>Open files</source>
         <translation>Otevřít soubory</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="517"/>
+        <location filename="../mainwindow.cpp" line="521"/>
         <source>Images and routes (*.png *.jpg *.JPG *.jpeg *.JPEG *.tif *.raw *.rw2 *.mrw *.orf *.raf *.arw *.ari *.gpx);;Images (*.png *.jpg *.JPG *.jpeg *.JPEG *.tif *.raw *.rw2 *.mrw *.orf *.raf *.arw *.ari);;GPS files (*.gpx);; All files (*)</source>
         <translation>Obrázky a trasy (*.png *.jpg *.JPG *.jpeg *.JPEG *.tif *.raw *.rw2 *.mrw *.orf *.raf *.arw *.ari *.gpx);;Obrázky (*.png *.jpg *.JPG *.jpeg *.JPEG *.tif *.raw *.rw2 *.mrw *.orf *.raf *.arw *.ari);;GPS soubory (*.gpx);; All files (*)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="533"/>
+        <location filename="../mainwindow.cpp" line="537"/>
         <source>Open GPS File</source>
         <translation>Otevřít GPS soubor</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="534"/>
+        <location filename="../mainwindow.cpp" line="538"/>
         <source>GPS files (*.gpx);; All Files (*)</source>
         <translation>GPS soubory (*.gpx);; Všechny soubory (*)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="590"/>
+        <location filename="../mainwindow.cpp" line="594"/>
         <source>File import</source>
         <translation>Import souborů</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="591"/>
+        <location filename="../mainwindow.cpp" line="595"/>
         <source>Do you wish to synchronize pictures with GPS route?</source>
         <translation>Přejete si synchronizovat fotografie s GPS trasou?</translation>
     </message>
@@ -1008,209 +1013,209 @@ p, li { white-space: pre-wrap; }
     </message>
     <message>
         <location filename="../synchdialog.cpp" line="37"/>
-        <location filename="../synchdialog.cpp" line="112"/>
+        <location filename="../synchdialog.cpp" line="114"/>
         <source>Synchronize pictures with GPS routes</source>
         <translation>Synchronizace fotografií s GPS trasami</translation>
     </message>
     <message>
         <location filename="../synchdialog.cpp" line="50"/>
         <source>UTC-12:00 - Baker Island, Howland Island</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../synchdialog.cpp" line="51"/>
         <source>UTC-11:00 - Samoa, American Samoa</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../synchdialog.cpp" line="52"/>
         <source>UTC-10:00 - Hawaii, Papeete</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../synchdialog.cpp" line="53"/>
         <source>UTC-9:00  - Marquesas Islands</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../synchdialog.cpp" line="54"/>
         <source>UTC-9:00  - Anchorage, Fairbanks, Juneau</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../synchdialog.cpp" line="55"/>
         <source>UTC-8:00  - Vancouver, Washington (state), Portland, Las Vegas, California, Baja California</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../synchdialog.cpp" line="56"/>
         <source>UTC-7:00  - Alberta, Colorado, Arizona, Chihuahua, Sonora</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../synchdialog.cpp" line="57"/>
         <source>UTC-6:00  - Chicago, Costa Rica, Dallas, El Salvador, Guatemala, Honduras, Houston, Manitoba, Mexico City, Nicaragua, Saskatchewan</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../synchdialog.cpp" line="58"/>
         <source>UTC-5:00  - Ottawa, Toronto, Montreal, Boston, New York, North Carolina, Washington D.C., Georgia, Miami, Cuba, Jamaica, Haiti, Panama, Colombia, Continental Ecuador, Peru</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../synchdialog.cpp" line="59"/>
         <source>UTC-4:30  - Venezuela</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../synchdialog.cpp" line="60"/>
         <source>UTC-4:00  - Nova Scotia, Dominican Republic, Puerto Rico, Trinidad and Tobago, Amazonas, Bolivia, Continental Chile, Paraguay, San Luis Province</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../synchdialog.cpp" line="61"/>
         <source>UTC-3:30  - Newfoundland</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../synchdialog.cpp" line="62"/>
         <source>UTC-3:00  - Rio de Janeiro, S?o Paulo, Argentina (except San Luis Province), Uruguay, Nuuk</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../synchdialog.cpp" line="63"/>
         <source>UTC-2:00  - Fernando de Noronha, South Georgia and the South Sandwich Islands</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../synchdialog.cpp" line="64"/>
         <source>UTC-1:00  - Azores, Cape Verde</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../synchdialog.cpp" line="65"/>
         <source>UTC-0:00  - Iceland, Faroe Islands, United Kingdom, Ireland, Continental Portugal, Madeira, Morocco, Senegal, Ghana, Côte d&apos;Ivoire</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../synchdialog.cpp" line="66"/>
         <source>UTC+1:00  - Albania, Slovenia, Macedonia, Norway, Sweden, Denmark, Germany, the Netherlands, Belgium, Metropolitan France, Switzerland, Austria, Poland, Czech Republic, Slovakia, Hungary, Continental Spain, Italy, Croatia, Serbia, Kosovo, Bosnia and Herzegovina, Tunisia, Algeria, Nigeria, Cameroon, Angola, Kinshasa</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../synchdialog.cpp" line="70"/>
         <source>UTC+2:00  - Finland, Lithuania, Latvia, Estonia, Belarus, Ukraine, Romania, Bulgaria, Greece, Turkey, Cyprus, Syria, Lebanon, Jordan, Palestine, Israel, Egypt, Libya, Mozambique, Malawi, Zambia, Zimbabwe, South Africa</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../synchdialog.cpp" line="73"/>
         <source>UTC+3:00  - Samara, Iraq, Saudi Arabia, Yemen, Sudan, Ethiopia, Somalia, Kenya, Uganda, Tanzania, Madagascar</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../synchdialog.cpp" line="74"/>
         <source>UTC+3:30  - Iran</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../synchdialog.cpp" line="75"/>
         <source>UTC+4:00  - Georgia, Armenia, Azerbaijan, United Arab Emirates, Oman, Seychelles, Mauritius, Moscow, Saint Petersburg</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../synchdialog.cpp" line="76"/>
         <source>UTC+4:30  - Afghanistan</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../synchdialog.cpp" line="77"/>
         <source>UTC+5:00  - Sverdlovsk, Uzbekistan, Pakistan, Maldives, Kazakhstan</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../synchdialog.cpp" line="78"/>
         <source>UTC+5:30  - India, Sri Lanka</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../synchdialog.cpp" line="79"/>
         <source>UTC+5:45  - Nepal</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../synchdialog.cpp" line="80"/>
         <source>UTC+6:00  - Novosibirsk, Almaty, Bangladesh</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../synchdialog.cpp" line="81"/>
         <source>UTC+6:30  - Myanmar, Cocos Islands</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../synchdialog.cpp" line="82"/>
         <source>UTC+7:00  - Krasnoyarsk, Thailand, Vietnam, Jakarta</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../synchdialog.cpp" line="83"/>
         <source>UTC+7:30  - Java time</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../synchdialog.cpp" line="84"/>
         <source>UTC+8:00  - Irkutsk, Ulan Bator, China, Taiwan, Hong Kong, Philippines, Malaysia, Singapore, Western Australia</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../synchdialog.cpp" line="85"/>
         <source>UTC+9:00  - Zabaykalsky, Japan, North Korea, South Korea, East Timor</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../synchdialog.cpp" line="86"/>
         <source>UTC+9:30  - Northern Territory, South Australia</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../synchdialog.cpp" line="87"/>
         <source>UTC+10:00 - Victoria, Tasmania, Queensland, New South Wales, Primorsky</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../synchdialog.cpp" line="88"/>
         <source>UTC+10:30 - Lord Howe Island</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../synchdialog.cpp" line="89"/>
         <source>UTC+11:00 - Kamchatka, Solomon Islands, New Caledonia</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../synchdialog.cpp" line="90"/>
         <source>UTC+11:30 - Norfolk Island</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../synchdialog.cpp" line="91"/>
         <source>UTC+12:00 - Fiji, New Zealand</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../synchdialog.cpp" line="92"/>
         <source>UTC+12:45 - Chatham Islands</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../synchdialog.cpp" line="93"/>
         <source>UTC+13:00 - Tonga</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../synchdialog.cpp" line="94"/>
         <source>UTC+14:00 - Line Islands</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
