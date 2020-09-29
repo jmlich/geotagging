@@ -125,7 +125,7 @@ MainWindow::MainWindow(QWidget *parent) :
     connect(ui->actionSave_Gps, SIGNAL(triggered()), imageWidgetsList, SLOT(saveExifGpsInAll()));
     connect(ui->actionSave_Datetime, SIGNAL(triggered()), imageWidgetsList, SLOT(saveExifDateTimeInAll()));
     connect(ui->action_About,SIGNAL(triggered()), aboutDialog, SLOT(show()));
-
+    connect(ui->actionExit,SIGNAL(triggered()),this, SLOT(close()));
 
     ui->scrollAreaPictures->setWidget(picturesFrame);
     ui->scrollAreaPictures->setWidgetResizable(true);
