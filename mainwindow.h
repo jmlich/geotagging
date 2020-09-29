@@ -179,7 +179,6 @@ public slots:
     //void updateProgress(int value);
     //void keyPressEvent(QKeyEvent *);
     void quitLoading();
-
 };
 
 #endif // MAINWINDOW_H

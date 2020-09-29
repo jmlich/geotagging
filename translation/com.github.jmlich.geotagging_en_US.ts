@@ -502,57 +502,62 @@
     </message>
     <message>
         <location filename="../imageinfo.ui" line="126"/>
-        <location filename="../imageinfo.cpp" line="295"/>
+        <location filename="../imageinfo.cpp" line="301"/>
         <source>Unknown time</source>
         <translation>Unknown time</translation>
     </message>
     <message>
         <location filename="../imageinfo.ui" line="142"/>
-        <location filename="../imageinfo.cpp" line="174"/>
+        <location filename="../imageinfo.cpp" line="180"/>
         <source>Unknown GPS coordinates</source>
         <translation>Unknown GPS coordinates</translation>
     </message>
     <message>
         <location filename="../imageinfo.ui" line="149"/>
-        <location filename="../imageinfo.cpp" line="184"/>
+        <location filename="../imageinfo.cpp" line="190"/>
         <source>Unknown altitude</source>
         <translation>Unknown altitude</translation>
     </message>
     <message>
-        <location filename="../imageinfo.cpp" line="39"/>
-        <location filename="../imageinfo.cpp" line="74"/>
+        <location filename="../imageinfo.cpp" line="40"/>
+        <location filename="../imageinfo.cpp" line="80"/>
         <source>Save GPS coordinates to EXIF data of selected pictures</source>
         <translation>Save GPS coordinates to EXIF data of selected pictures</translation>
     </message>
     <message>
-        <location filename="../imageinfo.cpp" line="43"/>
-        <location filename="../imageinfo.cpp" line="75"/>
+        <location filename="../imageinfo.cpp" line="44"/>
+        <location filename="../imageinfo.cpp" line="81"/>
         <source>Save date and time to EXIF data of selected pictures</source>
         <translation>Save date and time to EXIF data of selected pictures</translation>
     </message>
     <message>
-        <location filename="../imageinfo.cpp" line="47"/>
-        <location filename="../imageinfo.cpp" line="76"/>
+        <location filename="../imageinfo.cpp" line="48"/>
+        <location filename="../imageinfo.cpp" line="82"/>
         <source>Set new location for selected pictures</source>
         <translation>Set new location for selected pictures</translation>
     </message>
     <message>
-        <location filename="../imageinfo.cpp" line="51"/>
-        <location filename="../imageinfo.cpp" line="77"/>
+        <location filename="../imageinfo.cpp" line="52"/>
+        <source>Open Image in External Editor</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../imageinfo.cpp" line="56"/>
+        <location filename="../imageinfo.cpp" line="83"/>
         <source>Synchronize with GPS route</source>
         <translation>Synchronize with GPS route</translation>
     </message>
     <message>
-        <location filename="../imageinfo.cpp" line="136"/>
-        <location filename="../imageinfo.cpp" line="183"/>
-        <location filename="../imageinfo.cpp" line="294"/>
+        <location filename="../imageinfo.cpp" line="142"/>
+        <location filename="../imageinfo.cpp" line="189"/>
+        <location filename="../imageinfo.cpp" line="300"/>
         <source>-</source>
         <translation>-</translation>
     </message>
     <message>
-        <location filename="../imageinfo.cpp" line="189"/>
-        <location filename="../imageinfo.cpp" line="193"/>
-        <location filename="../imageinfo.cpp" line="197"/>
+        <location filename="../imageinfo.cpp" line="195"/>
+        <location filename="../imageinfo.cpp" line="199"/>
+        <location filename="../imageinfo.cpp" line="203"/>
         <source>%1m</source>
         <translation>%1m</translation>
     </message>
@@ -768,12 +773,12 @@
         <translation>GPS files (*.gpx);; All Files (*)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="594"/>
+        <location filename="../mainwindow.cpp" line="591"/>
         <source>File import</source>
         <translation>File import</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="595"/>
+        <location filename="../mainwindow.cpp" line="592"/>
         <source>Do you wish to synchronize pictures with GPS route?</source>
         <translation>Do you wish to synchronize pictures with GPS route?</translation>
     </message>

@@ -57,6 +57,7 @@ public:
     QAction *saveDateTimeAction;
     QAction *newMarkerAction;
     QAction *synchAction;
+    QAction *openExternaly;
 
    /* QString pictureName;
     QDateTime *dateTime;
@@ -139,6 +140,7 @@ public slots:
   //  void contextMenuEvent(QContextMenuEvent *event);
 
     void changeLabelVisibility(QAction *a);
+    void openExternalEditor();
 
 signals:
     void clicked(int id);

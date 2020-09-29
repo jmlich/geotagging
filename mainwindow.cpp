@@ -578,9 +578,6 @@ void MainWindow::addImage(ImageData *imageData) {
     picturesFrame->addImage(imageWidget);
 }
 
-
-
-
 void MainWindow::mousePressEvent(QMouseEvent *event) {
     event->accept();
     if (isNewMarkerSetting == 1) {

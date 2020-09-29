@@ -2,6 +2,7 @@
   * Soubor s trifou ImageInfo dedici ze tridy QWidget zobrazujici fotografii a popisky
   */
 
+#include <QDesktopServices>
 #include <QAction>
 #include <QDebug>
 #include "imageinfo.h"
@@ -48,6 +49,10 @@ ImageInfo::ImageInfo(ImageData *newImageData,QWidget *parent) :
     newMarkerAction->setIconVisibleInMenu(true);
     this->addAction(newMarkerAction);
 
+    openExternaly = new QAction(tr("Open Image in External Editor"));
+    openExternaly->setIconVisibleInMenu(true);
+    this->addAction(openExternaly);
+
     synchAction = new QAction(QIcon(":/icons/synch.png"),tr("Synchronize with GPS route"),this);
     synchAction->setIconVisibleInMenu(true);
     this->addAction(synchAction);
@@ -65,6 +70,7 @@ ImageInfo::ImageInfo(ImageData *newImageData,QWidget *parent) :
 
     connect(this, SIGNAL(saveExifGps(QString, double, double, double)), imageData->exifRW, SLOT(saveExifGps(QString,double,double, double)));
     connect(this, SIGNAL(saveExifTime(QString,QDateTime*)), imageData->exifRW, SLOT(saveExifTime(QString,QDateTime*)));
+    connect(openExternaly, SIGNAL(triggered()), this, SLOT(openExternalEditor()));
 }
 
 void ImageInfo::retranslateUi() {
@@ -475,4 +481,8 @@ void ImageInfo::changeLabelVisibility(QAction *a) {
     } else if(a->data().toString() == "alt") {
         ui->altitudeLabel->setVisible(a->isChecked());
     }
+}
+
+void ImageInfo::openExternalEditor() {
+    QDesktopServices::openUrl(QUrl::fromLocalFile(QFileInfo(imageData->pictureName).absoluteFilePath()));
 }
