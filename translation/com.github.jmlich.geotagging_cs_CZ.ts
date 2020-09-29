@@ -1,17 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="cs_CZ">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="cs_CZ" version="2.1">
 <context>
     <name>AboutDialog</name>
     <message>
         <location filename="../aboutdialog.ui" line="14"/>
         <source>About</source>
-        <translation type="unfinished"></translation>
+        <translation>O aplikaci</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="40"/>
         <source>Geotagging application</source>
-        <translation type="unfinished"></translation>
+        <translation>Aplikace geotagging</translation>
     </message>
 </context>
 <context>
@@ -72,37 +70,37 @@
     <message>
         <location filename="../changetime.ui" line="22"/>
         <source>years</source>
-        <translation type="unfinished"></translation>
+        <translation>let</translation>
     </message>
     <message>
         <location filename="../changetime.ui" line="29"/>
         <source>months  </source>
-        <translation type="unfinished"></translation>
+        <translation>měsíců</translation>
     </message>
     <message>
         <location filename="../changetime.ui" line="36"/>
         <source>days</source>
-        <translation type="unfinished"></translation>
+        <translation>dní</translation>
     </message>
     <message>
         <location filename="../changetime.ui" line="43"/>
         <source>hours</source>
-        <translation type="unfinished">hodin</translation>
+        <translation>hodin</translation>
     </message>
     <message>
         <location filename="../changetime.ui" line="50"/>
         <source>minutes</source>
-        <translation type="unfinished">minut</translation>
+        <translation>minut</translation>
     </message>
     <message>
         <location filename="../changetime.ui" line="57"/>
         <source>seconds</source>
-        <translation type="unfinished">sekund</translation>
+        <translation>sekund</translation>
     </message>
     <message>
         <location filename="../changetime.ui" line="126"/>
         <source>store new timestamp into EXIF part of file</source>
-        <translation type="unfinished"></translation>
+        <translation>uložit nový čas do EXIFu</translation>
     </message>
 </context>
 <context>
@@ -660,7 +658,7 @@
     <message>
         <location filename="../mainwindow.ui" line="231"/>
         <source>E&amp;xit</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Konec</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="185"/>
