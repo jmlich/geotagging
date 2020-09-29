@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
- <name>geotagging</name>
+ <name>Geotagging</name>
  <summary>Photography geotagging tool</summary>
  <id>com.github.jmlich.geotagging</id>
  <launchable type="desktop-id">com.github.jmlich.geotagging.desktop</launchable>
@@ -36,6 +36,11 @@
   </keywords>
   <content_rating type="oars-1.1"/>
   <releases>
+    <release version="0.5.5" timestamp="1601366230">
+      <description>
+        <p>Polish appstream xml</p>
+      </description>
+    </release>
     <release version="0.5.4" timestamp="1601122018">
       <description>
         <p>First packaged version</p>
