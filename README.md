@@ -1,3 +1,4 @@
+<a href='https://flathub.org/apps/details/com.github.jmlich.geotagging'><img width='240' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-en.png'/></a>
 
 [![Copr build status](https://copr.fedorainfracloud.org/coprs/jmlich/laa/package/com.github.jmlich.geotagging/status_image/last_build.png)](https://copr.fedorainfracloud.org/coprs/jmlich/laa/package/com.github.jmlich.geotagging/)
 
