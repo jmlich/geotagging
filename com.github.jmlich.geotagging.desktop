@@ -7,5 +7,5 @@ Exec=com.github.jmlich.geotagging %u
 Terminal=false
 Type=Application
 Icon=com.github.jmlich.geotagging
-Categories=Graphics;Application;Qt;Network;
+Categories=Graphics;Photography;Maps
 StartupNotify=true
