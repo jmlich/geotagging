@@ -1,6 +1,6 @@
 [Desktop Entry]
-Name=geotagging
-Name[en_US]=geotagging
+Name=Geotagging
+Name[en_US]=Geotagging
 Comment=Photography geotagging tool
 GenericName=geotagging
 Exec=com.github.jmlich.geotagging %u
