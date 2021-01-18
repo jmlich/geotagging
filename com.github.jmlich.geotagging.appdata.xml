@@ -15,6 +15,7 @@
 
  <url type="homepage">https://github.com/jmlich/geotagging</url>
  <url type="bugtracker">https://github.com/jmlich/geotagging/issues</url>
+ <url type="translate">https://www.transifex.com/jozef-mlich/geotagging/dashboard/</url>
  <screenshots>
     <screenshot type="default">
       <image>https://raw.githubusercontent.com/jmlich/geotagging/master/data/geotagging.png</image>
