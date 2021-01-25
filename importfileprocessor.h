@@ -1,6 +1,6 @@
 /** @file importfileprocessor.h
   * Hlavickovy soubor tridy ImportFileProcessor dedici ze tridy QObject
-  * , slouží pro import fotografií
+  * , slouÅ¾Ã­ pro import fotografiÃ­
   */
 
 #ifndef IMPORTFILEPROCESSOR_H
