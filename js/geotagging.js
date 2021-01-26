@@ -96,6 +96,7 @@ var clickListener;
 var yellowMarker;
 var defaultMarker;
 var elevator;
+var lastSelected = -1;
 
 function initialize() {
 
@@ -113,6 +114,7 @@ function initialize() {
 
     L.control.scale().addTo(map);
     //    L.control.layers(baseMaps, overlayMaps).addTo(map);
+    $('.leaflet-container').css('cursor','crosshair');
 
     yellowMarker = L.icon({
                               iconUrl: "qrc:///js/images/marker-icon-gold.png",
@@ -133,6 +135,17 @@ function initialize() {
                                shadowSize: [41, 41],
                            });
 
+    map.on('mousemove', function (e) {
+        console.log(lastSelected)
+        if (lastSelected !== -1) {
+            var mouse_pos = e.latlng;
+            var marker_pos = markers[lastSelected].getLatLng();
+            $("#distance").text( Math.round(marker_pos.distanceTo(mouse_pos)) + " m");
+        } else {
+            $("#distance").text("");
+
+        }
+    })
     //    test_add_marker();
     //    test_add_route();
 }
@@ -427,6 +440,7 @@ function centerInBounds(fitMarkers, fitRoutes) {
 function markerSelected(isSelected, i, markersVisible) {
     console.log("markerSelected("+isSelected+", "+i+", "+markersVisible+")")
     if (isSelected) {
+        lastSelected = i;
         map.panTo(markers[i].getLatLng());
         markers[i].setIcon(yellowMarker);
         markers[i].setZIndexOffset(1);
@@ -446,6 +460,8 @@ function markerClicked(id, isCtrl) {
     console.log("markerClicked("+id+", "+isCtrl+")")
     for (var i in markers) {
         if (id === markers[i].options.id){
+            lastSelected = i;
+
             markers[i].setIcon(yellowMarker);
             markers[i].setZIndexOffset(1);
         } else if(!isCtrl) {
