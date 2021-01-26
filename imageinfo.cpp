@@ -71,6 +71,7 @@ ImageInfo::ImageInfo(ImageData *newImageData,QWidget *parent) :
     connect(this, SIGNAL(saveExifGps(QString, double, double, double)), imageData->exifRW, SLOT(saveExifGps(QString,double,double, double)));
     connect(this, SIGNAL(saveExifTime(QString,QDateTime*)), imageData->exifRW, SLOT(saveExifTime(QString,QDateTime*)));
     connect(openExternaly, SIGNAL(triggered()), this, SLOT(openExternalEditor()));
+    connect(imageData, SIGNAL(imageReloadDone()), this, SLOT(imageChanged()));
 }
 
 void ImageInfo::retranslateUi() {
@@ -335,6 +336,13 @@ void ImageInfo::scaleFinished(bool ret) {
 }
 void ImageInfo::rescaleFinished(QPixmap *p) {
     ui->imageLabel->setPixmap(*p);
+}
+
+void ImageInfo::imageChanged() {
+    ui->imageLabel->setPixmap(QPixmap::fromImage(*imageData->image_small));
+    resizeWidget(iconSize);
+
+    ui->imageLabel->repaint();
 }
 
 QSize ImageInfo::sizeHint() {

@@ -19,6 +19,14 @@ ImageData::ImageData(QObject *parent) :
     dateTime = new QDateTime;
     *dateTime = QDateTime::fromString(QString("0000:00:00 00:00:00"), "yyyy:MM:dd hh:mm:ss");
 
+    watcher = new QFileSystemWatcher(this);
+    reloadTimer = new QTimer(this);
+    reloadTimer->setSingleShot(true);
+    reloadTimer->setInterval(RELOAD_TIMER_INTERVAL);
+    reloadTimer->setTimerType(Qt::CoarseTimer);
+
+    image_small = new QImage();
+
 
     isDateTimeChanged = 0;
     scaleSize = QSize(288,212);//maximalni zobrazitelne velikost obrazku
@@ -26,6 +34,8 @@ ImageData::ImageData(QObject *parent) :
     connect(exifRW, SIGNAL(setGps(double,double, double)), this, SLOT(setGps(double,double, double)));
     connect(exifRW, SIGNAL(setDateTime(QDateTime)), this, SLOT(setDateTime(QDateTime)));
     connect(this, SIGNAL(readExif(QString)), exifRW, SLOT(readExif(QString)));
+    connect(watcher, SIGNAL(fileChanged(QString)), this, SLOT(watchedFileChanged(QString)));
+    connect(reloadTimer, SIGNAL(timeout()), this, SLOT(imageReload()));
 }
 
 int ImageData::loadData(QString pictureFName) {
@@ -34,6 +44,10 @@ int ImageData::loadData(QString pictureFName) {
     QByteArray type =  QImageReader::imageFormat(pictureName);
     if (type == "") {    //neni obrazek
         return 1;
+    }
+
+    if (watcher->files().indexOf(pictureName) == -1) { // add filename to watcher (only if wasn't added previously)
+        watcher->addPath(pictureName);
     }
 
     scaleImage(pictureName);
@@ -92,7 +106,6 @@ void ImageData::scaleImage(QString pictureName) {
         }
     }
 
-    image_small = new QImage;
     *image_small = img.scaled(scaleSize,Qt::KeepAspectRatio, Qt::SmoothTransformation);
 
 }
@@ -112,4 +125,26 @@ void ImageData::setGps(double lat, double lon, double alt) {
     altitude = alt;
     gpsSource = 1;
     isGps = 1;
+}
+
+/**
+ * @brief ImageData::imageFileChanged
+ * start timer when file changed to avoid repeated reload
+ * imageReload function will be triggered when timeout
+ * @param filename
+ */
+
+void ImageData::watchedFileChanged(const QString filename) {
+    reloadTimer->start();
+}
+
+/**
+ * @brief ImageData::imageReload
+ * we want to reload thumbnail when file
+ */
+
+void ImageData::imageReload() {
+    qDebug() << "reload " << pictureName;
+    loadData(pictureName);
+    emit(imageReloadDone());
 }

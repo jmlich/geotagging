@@ -142,6 +142,9 @@ public slots:
     void changeLabelVisibility(QAction *a);
     void openExternalEditor();
 
+    void imageChanged();
+
+
 signals:
     void clicked(int id);
     void mapAddMarker(int id, double lat, double lon);

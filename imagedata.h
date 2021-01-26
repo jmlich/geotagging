@@ -9,7 +9,12 @@
 #include <QDateTime>
 #include <QImage>
 #include <QImageReader>
+#include <QFileSystemWatcher>
+#include <QTimer>
 #include "exifreaderwriter.h"
+
+#define RELOAD_TIMER_INTERVAL 1500
+
 class ImageData : public QObject
 {
     Q_OBJECT
@@ -33,16 +38,25 @@ public:
     double longitude;
     double altitude;
 
-    QImage *image_small;
+    QImage *image_small = NULL;
     int loadData(QString pictureFName);
     void scaleImage(QString pictureName);
     QSize scaleSize;
     ExifReaderWriter *exifRW;
+
+    QFileSystemWatcher *watcher;
+    QTimer *reloadTimer;
+
 signals:
      void readExif(QString n);
+     void imageReloadDone();
+
 public slots:
      void setDateTime(QDateTime dateTime);
      void setGps(double lat, double lon, double alt);
+
+     void imageReload();
+     void watchedFileChanged(const QString filename);
 
 
 };
