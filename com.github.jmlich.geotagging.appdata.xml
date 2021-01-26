@@ -37,6 +37,12 @@
   </keywords>
   <content_rating type="oars-1.1"/>
   <releases>
+    <release version="0.5.6" timestamp="1611669972">
+      <description>
+        <p>watching of opened files for changes</p>
+        <p>open image from external application</p>
+      </description>
+    </release>
     <release version="0.5.5" timestamp="1601366230">
       <description>
         <p>Polish appstream xml</p>
