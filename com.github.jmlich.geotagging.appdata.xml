@@ -1,31 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
- <name>Geotagging</name>
- <summary>Photography geotagging tool</summary>
- <id>com.github.jmlich.geotagging</id>
- <launchable type="desktop-id">com.github.jmlich.geotagging.desktop</launchable>
- <metadata_license>CC0-1.0</metadata_license>
- <project_license>GPL-3.0</project_license>
- <description>
-  <p>
+  <name>Geotagging</name>
+  <summary>Photography geotagging tool</summary>
+  <id>com.github.jmlich.geotagging</id>
+  <launchable type="desktop-id">com.github.jmlich.geotagging.desktop</launchable>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0</project_license>
+  <description>
+    <p>
   Synchronize your photos with gps track log (*.gpx). You can adjust GPS coordinates
   and store them directly into EXIF.
   </p>
- </description>
-
- <url type="homepage">https://github.com/jmlich/geotagging</url>
- <url type="bugtracker">https://github.com/jmlich/geotagging/issues</url>
- <url type="translate">https://www.transifex.com/jozef-mlich/geotagging/dashboard/</url>
- <screenshots>
+  </description>
+  <url type="homepage">https://github.com/jmlich/geotagging</url>
+  <url type="bugtracker">https://github.com/jmlich/geotagging/issues</url>
+  <url type="translate">https://www.transifex.com/jozef-mlich/geotagging/dashboard/</url>
+  <screenshots>
     <screenshot type="default">
       <image>https://raw.githubusercontent.com/jmlich/geotagging/master/data/geotagging.png</image>
-      <caption></caption>
+      <caption/>
     </screenshot>
     <screenshot>
       <image>https://raw.githubusercontent.com/jmlich/geotagging/master/data/screenshot2.png</image>
-      <caption></caption>
+      <caption/>
     </screenshot>
- </screenshots>
+  </screenshots>
   <categories>
     <category>Graphics</category>
   </categories>
