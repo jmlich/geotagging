@@ -6,12 +6,12 @@
     <message>
         <location filename="../aboutdialog.ui" line="14"/>
         <source>About</source>
-        <translation type="unfinished">About</translation>
+        <translation>About</translation>
     </message>
     <message>
         <location filename="../aboutdialog.ui" line="40"/>
         <source>Geotagging application</source>
-        <translation type="unfinished">Geotagging application</translation>
+        <translation>Geotagging application</translation>
     </message>
 </context>
 <context>
@@ -165,12 +165,12 @@
     <message>
         <location filename="../exifinfo.cpp" line="44"/>
         <source>Latitude</source>
-        <translation type="unfinished"></translation>
+        <translation>Latitude</translation>
     </message>
     <message>
         <location filename="../exifinfo.cpp" line="45"/>
         <source>Longitude</source>
-        <translation type="unfinished"></translation>
+        <translation>Longitude</translation>
     </message>
     <message>
         <location filename="../exifinfo.cpp" line="46"/>
@@ -180,7 +180,7 @@
     <message>
         <location filename="../exifinfo.cpp" line="47"/>
         <source>Direction</source>
-        <translation type="unfinished"></translation>
+        <translation>Direction</translation>
     </message>
     <message>
         <location filename="../exifinfo.cpp" line="48"/>
@@ -552,7 +552,7 @@
     <message>
         <location filename="../imageinfo.cpp" line="52"/>
         <source>Open Image in External Editor</source>
-        <translation type="unfinished"></translation>
+        <translation>Open Image in External Editor</translation>
     </message>
     <message>
         <location filename="../imageinfo.cpp" line="56"/>
@@ -678,7 +678,7 @@
     <message>
         <location filename="../mainwindow.ui" line="231"/>
         <source>E&amp;xit</source>
-        <translation type="unfinished"></translation>
+        <translation>E&amp;xit</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="185"/>

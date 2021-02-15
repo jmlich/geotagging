@@ -165,12 +165,12 @@
     <message>
         <location filename="../exifinfo.cpp" line="44"/>
         <source>Latitude</source>
-        <translation type="unfinished"></translation>
+        <translation>Zeměpisná šířka</translation>
     </message>
     <message>
         <location filename="../exifinfo.cpp" line="45"/>
         <source>Longitude</source>
-        <translation type="unfinished"></translation>
+        <translation>Zeměpisná délka</translation>
     </message>
     <message>
         <location filename="../exifinfo.cpp" line="46"/>
@@ -180,7 +180,7 @@
     <message>
         <location filename="../exifinfo.cpp" line="47"/>
         <source>Direction</source>
-        <translation type="unfinished"></translation>
+        <translation>Směr</translation>
     </message>
     <message>
         <location filename="../exifinfo.cpp" line="48"/>
