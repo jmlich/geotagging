@@ -129,13 +129,13 @@
     </message>
     <message>
         <location filename="../exifinfo.cpp" line="20"/>
-        <location filename="../exifinfo.cpp" line="64"/>
+        <location filename="../exifinfo.cpp" line="65"/>
         <source>parameter</source>
         <translation>parameter</translation>
     </message>
     <message>
         <location filename="../exifinfo.cpp" line="20"/>
-        <location filename="../exifinfo.cpp" line="64"/>
+        <location filename="../exifinfo.cpp" line="65"/>
         <source>value</source>
         <translation>value</translation>
     </message>
@@ -155,14 +155,22 @@
         <translation>Date and time</translation>
     </message>
     <message>
-        <location filename="../exifinfo.cpp" line="44"/>
         <source>GPS latitude</source>
-        <translation>GPS latitude</translation>
+        <translation type="vanished">GPS latitude</translation>
+    </message>
+    <message>
+        <source>GPS longitude</source>
+        <translation type="vanished">GPS longitude</translation>
+    </message>
+    <message>
+        <location filename="../exifinfo.cpp" line="44"/>
+        <source>Latitude</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../exifinfo.cpp" line="45"/>
-        <source>GPS longitude</source>
-        <translation>GPS longitude</translation>
+        <source>Longitude</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../exifinfo.cpp" line="46"/>
@@ -171,61 +179,66 @@
     </message>
     <message>
         <location filename="../exifinfo.cpp" line="47"/>
+        <source>Direction</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../exifinfo.cpp" line="48"/>
         <source>Camera make</source>
         <translation>Camera make</translation>
     </message>
     <message>
-        <location filename="../exifinfo.cpp" line="48"/>
+        <location filename="../exifinfo.cpp" line="49"/>
         <source>Camera model</source>
         <translation>Camera model</translation>
     </message>
     <message>
-        <location filename="../exifinfo.cpp" line="49"/>
+        <location filename="../exifinfo.cpp" line="50"/>
         <source>Exposure time</source>
         <translation>Exposure time</translation>
     </message>
     <message>
-        <location filename="../exifinfo.cpp" line="50"/>
+        <location filename="../exifinfo.cpp" line="51"/>
         <source>Exposure Bias</source>
         <translation>Exposure Bias</translation>
     </message>
     <message>
-        <location filename="../exifinfo.cpp" line="51"/>
+        <location filename="../exifinfo.cpp" line="52"/>
         <source>Exposure Program</source>
         <translation>Exposure Program</translation>
     </message>
     <message>
-        <location filename="../exifinfo.cpp" line="52"/>
+        <location filename="../exifinfo.cpp" line="53"/>
         <source>Resolution</source>
         <translation>Resolution</translation>
     </message>
     <message>
-        <location filename="../exifinfo.cpp" line="53"/>
+        <location filename="../exifinfo.cpp" line="54"/>
         <source>Flash</source>
         <translation>Flash</translation>
     </message>
     <message>
-        <location filename="../exifinfo.cpp" line="54"/>
+        <location filename="../exifinfo.cpp" line="55"/>
         <source>F-number (F-spot)</source>
         <translation>F-number (F-spot)</translation>
     </message>
     <message>
-        <location filename="../exifinfo.cpp" line="55"/>
+        <location filename="../exifinfo.cpp" line="56"/>
         <source>Metering mode</source>
         <translation>Metering mode</translation>
     </message>
     <message>
-        <location filename="../exifinfo.cpp" line="56"/>
+        <location filename="../exifinfo.cpp" line="57"/>
         <source>ISO speed</source>
         <translation>ISO speed</translation>
     </message>
     <message>
-        <location filename="../exifinfo.cpp" line="57"/>
+        <location filename="../exifinfo.cpp" line="58"/>
         <source>Focal length</source>
         <translation>Focal length</translation>
     </message>
     <message>
-        <location filename="../exifinfo.cpp" line="58"/>
+        <location filename="../exifinfo.cpp" line="59"/>
         <source>Exif comment</source>
         <translation>Exif comment</translation>
     </message>
@@ -233,117 +246,117 @@
 <context>
     <name>ExifReaderWriter</name>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="252"/>
+        <location filename="../exifreaderwriter.cpp" line="272"/>
         <source>unknown</source>
         <translation>unknown</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="254"/>
+        <location filename="../exifreaderwriter.cpp" line="274"/>
         <source>average</source>
         <translation>average</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="256"/>
+        <location filename="../exifreaderwriter.cpp" line="276"/>
         <source>center weighted average</source>
         <translation>center weighted average</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="258"/>
+        <location filename="../exifreaderwriter.cpp" line="278"/>
         <source>spot</source>
         <translation>spot</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="260"/>
+        <location filename="../exifreaderwriter.cpp" line="280"/>
         <source>multi-spot</source>
         <translation>multi-spot</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="262"/>
+        <location filename="../exifreaderwriter.cpp" line="282"/>
         <source>multi-segment</source>
         <translation>multi-segment</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="264"/>
+        <location filename="../exifreaderwriter.cpp" line="284"/>
         <source>partial</source>
         <translation>partial</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="266"/>
+        <location filename="../exifreaderwriter.cpp" line="286"/>
         <source>other</source>
         <translation>other</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="278"/>
+        <location filename="../exifreaderwriter.cpp" line="298"/>
         <source>manual control</source>
         <translation>manual control</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="280"/>
+        <location filename="../exifreaderwriter.cpp" line="300"/>
         <source>normal</source>
         <translation>normal</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="282"/>
+        <location filename="../exifreaderwriter.cpp" line="302"/>
         <source>aperture priority</source>
         <translation>aperture priority</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="284"/>
+        <location filename="../exifreaderwriter.cpp" line="304"/>
         <source>shutter priority</source>
         <translation>shutter priority</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="286"/>
+        <location filename="../exifreaderwriter.cpp" line="306"/>
         <source>program creative (slow program)</source>
         <translation>program creative (slow program)</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="288"/>
+        <location filename="../exifreaderwriter.cpp" line="308"/>
         <source>program action(high-speed program)</source>
         <translation>program action(high-speed program)</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="290"/>
+        <location filename="../exifreaderwriter.cpp" line="310"/>
         <source>portrait mode</source>
         <translation>portrait mode</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="292"/>
+        <location filename="../exifreaderwriter.cpp" line="312"/>
         <source>landscape mode</source>
         <translation>landscape mode</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="329"/>
+        <location filename="../exifreaderwriter.cpp" line="349"/>
         <source>did not fire</source>
         <translation>did not fire</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="331"/>
+        <location filename="../exifreaderwriter.cpp" line="351"/>
         <source>fired</source>
         <translation>fired</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="387"/>
+        <location filename="../exifreaderwriter.cpp" line="413"/>
         <source>N</source>
         <translation>N</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="387"/>
+        <location filename="../exifreaderwriter.cpp" line="413"/>
         <source>S</source>
         <translation>S</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="388"/>
+        <location filename="../exifreaderwriter.cpp" line="414"/>
         <source>E</source>
         <translation>E</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="388"/>
+        <location filename="../exifreaderwriter.cpp" line="414"/>
         <source>W</source>
         <translation>W</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="389"/>
+        <location filename="../exifreaderwriter.cpp" line="415"/>
         <source> m</source>
         <translation> m</translation>
     </message>
@@ -502,37 +515,37 @@
     </message>
     <message>
         <location filename="../imageinfo.ui" line="126"/>
-        <location filename="../imageinfo.cpp" line="301"/>
+        <location filename="../imageinfo.cpp" line="302"/>
         <source>Unknown time</source>
         <translation>Unknown time</translation>
     </message>
     <message>
         <location filename="../imageinfo.ui" line="142"/>
-        <location filename="../imageinfo.cpp" line="180"/>
+        <location filename="../imageinfo.cpp" line="181"/>
         <source>Unknown GPS coordinates</source>
         <translation>Unknown GPS coordinates</translation>
     </message>
     <message>
         <location filename="../imageinfo.ui" line="149"/>
-        <location filename="../imageinfo.cpp" line="190"/>
+        <location filename="../imageinfo.cpp" line="191"/>
         <source>Unknown altitude</source>
         <translation>Unknown altitude</translation>
     </message>
     <message>
         <location filename="../imageinfo.cpp" line="40"/>
-        <location filename="../imageinfo.cpp" line="80"/>
+        <location filename="../imageinfo.cpp" line="81"/>
         <source>Save GPS coordinates to EXIF data of selected pictures</source>
         <translation>Save GPS coordinates to EXIF data of selected pictures</translation>
     </message>
     <message>
         <location filename="../imageinfo.cpp" line="44"/>
-        <location filename="../imageinfo.cpp" line="81"/>
+        <location filename="../imageinfo.cpp" line="82"/>
         <source>Save date and time to EXIF data of selected pictures</source>
         <translation>Save date and time to EXIF data of selected pictures</translation>
     </message>
     <message>
         <location filename="../imageinfo.cpp" line="48"/>
-        <location filename="../imageinfo.cpp" line="82"/>
+        <location filename="../imageinfo.cpp" line="83"/>
         <source>Set new location for selected pictures</source>
         <translation>Set new location for selected pictures</translation>
     </message>
@@ -543,21 +556,21 @@
     </message>
     <message>
         <location filename="../imageinfo.cpp" line="56"/>
-        <location filename="../imageinfo.cpp" line="83"/>
+        <location filename="../imageinfo.cpp" line="84"/>
         <source>Synchronize with GPS route</source>
         <translation>Synchronize with GPS route</translation>
     </message>
     <message>
-        <location filename="../imageinfo.cpp" line="142"/>
-        <location filename="../imageinfo.cpp" line="189"/>
-        <location filename="../imageinfo.cpp" line="300"/>
+        <location filename="../imageinfo.cpp" line="143"/>
+        <location filename="../imageinfo.cpp" line="190"/>
+        <location filename="../imageinfo.cpp" line="301"/>
         <source>-</source>
         <translation>-</translation>
     </message>
     <message>
-        <location filename="../imageinfo.cpp" line="195"/>
-        <location filename="../imageinfo.cpp" line="199"/>
-        <location filename="../imageinfo.cpp" line="203"/>
+        <location filename="../imageinfo.cpp" line="196"/>
+        <location filename="../imageinfo.cpp" line="200"/>
+        <location filename="../imageinfo.cpp" line="204"/>
         <source>%1m</source>
         <translation>%1m</translation>
     </message>
