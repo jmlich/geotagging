@@ -57,7 +57,6 @@ QStringList ExifInfo::labelNames() {
                 << tr("ISO speed")
                 << tr("Focal length")
                 << tr("Exif comment")
-//                << tr("Field Of View")
                    ;
     return labelsNames;
 }

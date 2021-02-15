@@ -214,7 +214,7 @@ double ExifReaderWriter::readExifItemDouble( Exiv2::ExifData &exifData, std::str
         ;//std::cerr << "Caught Exiv2 exception '" << e.what() << "'\n";
     }
 
-    return 0.0;
+    return qQNaN();
 
 }
 
@@ -411,7 +411,7 @@ QStringList *ExifReaderWriter::readExifInfo(QString pictureName, FormatHandler *
             << (lat < 1000 ?(formatH->gpsInFormat(lat) + (lat>=0 ? tr("N") : tr("S"))) : "")
             << (lon < 1000 ?(formatH->gpsInFormat(lon) + (lon>=0 ? tr("E") : tr("W"))) : "")
             << (alt > -999 ?(QString::number(alt) + tr(" m")) : "")
-            << formatH->gpsInFormat(direction)
+            << (qIsNaN(direction) ? "" : formatH->gpsInFormat(direction))
             << cameraMake
             << cameraModel
             << exposureTime
