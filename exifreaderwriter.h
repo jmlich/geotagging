@@ -22,6 +22,7 @@ class ExifReaderWriter : public QObject
     QString exifLatLonString(double l);
     std::unique_ptr<Exiv2::Image> openExif(QString pictureName);
     QString readExifItem(Exiv2::ExifData &exifData, std::string keyStr);
+    double readExifItemDouble( Exiv2::ExifData &exifData, std::string keyStr );
     QString getExposureTime(Exiv2::ExifData &exifData);
     QString getExposureBias(Exiv2::ExifData &exifData);
     QString getExposureProgram(Exiv2::ExifData &exifData);

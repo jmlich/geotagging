@@ -66,6 +66,7 @@ double ExifReaderWriter::readLatLon(QString str, Exiv2::ExifData &exifData) {
     }
 }
 
+
 void ExifReaderWriter::readExif(QString pictureName) {
     std::unique_ptr<Exiv2::Image> image = openExif(pictureName);
     if(image.get() == 0) {
@@ -197,6 +198,23 @@ void ExifReaderWriter::writeData(Exiv2::ExifData &exifData, std::string keyStr, 
     } catch (Exiv2::Error& e) {
         ;//std::cerr << "Caught Exiv2 exception '" << e.what() << "'\n";
     }
+
+}
+
+double ExifReaderWriter::readExifItemDouble( Exiv2::ExifData &exifData, std::string keyStr ) {
+    try{
+        Exiv2::ExifKey key(keyStr);
+        Exiv2::ExifData::iterator pos = exifData.findKey(key);
+
+        if (pos != exifData.end()) {
+            return exifData[keyStr].toFloat();
+        }
+    }
+    catch (Exiv2::Error& e) {
+        ;//std::cerr << "Caught Exiv2 exception '" << e.what() << "'\n";
+    }
+
+    return 0.0;
 
 }
 
@@ -366,6 +384,12 @@ QStringList *ExifReaderWriter::readExifInfo(QString pictureName, FormatHandler *
     }
 
 
+    double direction = readExifItemDouble(exifData, "Exif.GPSInfo.GPSImgDirection");
+
+// https://sourceforge.net/p/exiftool/code/ci/master/tree/lib/Image/ExifTool/Exif.pm#l4412
+// https://www.thephotoforum.com/threads/calculate-angle-of-view-from-exif-tags.129742/
+//    FOV = 2*arctan((SQRT(a*a + b*b)/2)/f)
+
     ////////////////////
     QString cameraMake = readExifItem(exifData, "Exif.Image.Make");
     QString cameraModel = readExifItem(exifData, "Exif.Image.Model");
@@ -387,6 +411,7 @@ QStringList *ExifReaderWriter::readExifInfo(QString pictureName, FormatHandler *
             << (lat < 1000 ?(formatH->gpsInFormat(lat) + (lat>=0 ? tr("N") : tr("S"))) : "")
             << (lon < 1000 ?(formatH->gpsInFormat(lon) + (lon>=0 ? tr("E") : tr("W"))) : "")
             << (alt > -999 ?(QString::number(alt) + tr(" m")) : "")
+            << formatH->gpsInFormat(direction)
             << cameraMake
             << cameraModel
             << exposureTime

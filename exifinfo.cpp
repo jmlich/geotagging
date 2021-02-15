@@ -41,9 +41,10 @@ QStringList ExifInfo::labelNames() {
     labelsNames << tr("Picture name")
                 << tr("Path to file")
                 << tr("Date and time")
-                << tr("GPS latitude")
-                << tr("GPS longitude")
+                << tr("Latitude")
+                << tr("Longitude")
                 << tr("Altitude")
+                << tr("Direction")
                 << tr("Camera make")
                 << tr("Camera model")
                 << tr("Exposure time")
@@ -56,6 +57,7 @@ QStringList ExifInfo::labelNames() {
                 << tr("ISO speed")
                 << tr("Focal length")
                 << tr("Exif comment")
+//                << tr("Field Of View")
                    ;
     return labelsNames;
 }
