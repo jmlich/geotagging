@@ -36,7 +36,7 @@ public:
     QString timeFormat;
 
 signals:
-    void setGps(double lat, double lon, double alt);
+    void setGps(double lat, double lon, double alt, double direction);
     void finished();
     void setDateTime(QDateTime dateTime);
 public slots:

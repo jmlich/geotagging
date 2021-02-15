@@ -83,9 +83,11 @@ void ExifReaderWriter::readExif(QString pictureName) {
     double lat = readLatLon("Exif.GPSInfo.GPSLatitude", exifData);
     double lon = readLatLon("Exif.GPSInfo.GPSLongitude", exifData);
     double alt = readAltitude("Exif.GPSInfo.GPSAltitude", exifData);
+    double direction = readExifItemDouble(exifData, "Exif.GPSInfo.GPSImgDirection");
+
 
     if(lat < 1000 && lon<1000) {
-        emit(setGps(lat, lon, alt));
+        emit(setGps(lat, lon, alt, direction));
     }
 
     ////////////////////////////

@@ -37,6 +37,7 @@ public:
     double latitude;
     double longitude;
     double altitude;
+    double direction;
 
     QImage *image_small = NULL;
     int loadData(QString pictureFName);
@@ -53,7 +54,7 @@ signals:
 
 public slots:
      void setDateTime(QDateTime dateTime);
-     void setGps(double lat, double lon, double alt);
+     void setGps(double _lat, double _lon, double _alt, double _direction);
 
      void imageReload();
      void watchedFileChanged(const QString filename);

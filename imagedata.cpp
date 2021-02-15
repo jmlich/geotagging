@@ -16,6 +16,7 @@ ImageData::ImageData(QObject *parent) :
     latitude = 1000;
     longitude = 1001;
     altitude = -1000;
+    direction = qQNaN();
     dateTime = new QDateTime;
     *dateTime = QDateTime::fromString(QString("0000:00:00 00:00:00"), "yyyy:MM:dd hh:mm:ss");
 
@@ -31,7 +32,7 @@ ImageData::ImageData(QObject *parent) :
     isDateTimeChanged = 0;
     scaleSize = QSize(288,212);//maximalni zobrazitelne velikost obrazku
     exifRW = new ExifReaderWriter;
-    connect(exifRW, SIGNAL(setGps(double,double, double)), this, SLOT(setGps(double,double, double)));
+    connect(exifRW, SIGNAL(setGps(double,double, double, double)), this, SLOT(setGps(double,double, double, double)));
     connect(exifRW, SIGNAL(setDateTime(QDateTime)), this, SLOT(setDateTime(QDateTime)));
     connect(this, SIGNAL(readExif(QString)), exifRW, SLOT(readExif(QString)));
     connect(watcher, SIGNAL(fileChanged(QString)), this, SLOT(watchedFileChanged(QString)));
@@ -119,10 +120,12 @@ void ImageData::setDateTime(QDateTime dateTimeNew) {
     isDateTimeChanged = 0;
 }
 
-void ImageData::setGps(double lat, double lon, double alt) {
-    latitude = lat;
-    longitude = lon;
-    altitude = alt;
+void ImageData::setGps(double _lat, double _lon, double _alt, double _direction) {
+    latitude = _lat;
+    longitude = _lon;
+    altitude = _alt;
+    direction = _direction;
+
     gpsSource = 1;
     isGps = 1;
 }
