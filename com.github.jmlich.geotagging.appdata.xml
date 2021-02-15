@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <component type="desktop">
   <name>Geotagging</name>
-  <summary>Photography geotagging tool</summary>
+  <summary>To find the place where you took the photo</summary>
   <id>com.github.jmlich.geotagging</id>
   <launchable type="desktop-id">com.github.jmlich.geotagging.desktop</launchable>
   <metadata_license>CC0-1.0</metadata_license>
