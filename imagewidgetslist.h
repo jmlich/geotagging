@@ -1,6 +1,6 @@
 /** @file imagewidgetslist.h
   * Hlavickovy soubor tridy ImageWidgetsList dedici ze trid QObject a QList<ImageInfo *>
-  * obsahujici seznam widgetù s fotografiemi
+  * obsahujici seznam widgetÅ¯ s fotografiemi
   */
 
 #ifndef IMAGEWIDGETSLIST_H

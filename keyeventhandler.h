@@ -1,6 +1,6 @@
 /** @file keyeventhandler.h
   * Hlavickovy soubor tridy KeyEventHandler dedici ze tridy QObject,
-  * slouží pro rozpoznani klavesovych zkratek
+  * slouÅ¾Ã­ pro rozpoznani klavesovych zkratek
   */
 
 #ifndef KEYEVENTHANDLER_H
