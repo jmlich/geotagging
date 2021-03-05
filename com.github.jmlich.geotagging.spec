@@ -23,7 +23,7 @@ Photography geotagging tool
 %setup -q -n %{name}-%{version}
 
 %build
-%cmake
+%cmake -DVERSION:STRING=%{version}
 %cmake_build
 
 

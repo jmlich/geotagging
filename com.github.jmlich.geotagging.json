@@ -31,7 +31,8 @@
       "name": "geotagging",
       "buildsystem": "cmake-ninja",
       "config-opts": [
-        "-DCMAKE_BUILD_TYPE=RelWithDebInfo"
+        "-DCMAKE_BUILD_TYPE=RelWithDebInfo",
+        "-DVERSION:STRING=0.5.7"
       ],
       "sources": [
         {

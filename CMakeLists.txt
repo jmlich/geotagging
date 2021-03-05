@@ -28,7 +28,9 @@ execute_process(COMMAND
   ERROR_QUIET OUTPUT_STRIP_TRAILING_WHITESPACE
 )
 
-add_definitions( -DGIT_VERSION="${GIT_VERSION}" )
+set(VERSION "${GIT_VERSION}" CACHE STRING "Manaly defined version string")
+
+add_definitions( -DGIT_VERSION="${VERSION}" )
 
 find_package(Qt5 COMPONENTS Core Gui Network Widgets WebEngineWidgets WebChannel LinguistTools REQUIRED)
 
