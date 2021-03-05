@@ -1,0 +1,38 @@
+os: windows
+language: C++
+env: PATH=/c/Python38:/c/Python38/Scripts:$PATH
+before_install:
+#  - SET PATH=%PATH%;"C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Tools\MSVC\14.16.27023\bin\Hostx64\x86"\
+#  - choco install -y visualstudio2017buildtools
+#  - choco install -y visualstudio2017-workload-vctools
+  - choco install  python --version 3.8.0
+  - python -m pip install --upgrade pip
+  - python -m pip install aqtinstall
+  - python -m aqt install --outputdir /c/Qt 5.14.2 windows desktop win32_msvc2017
+  - python -m aqt tool --outputdir /c/Qt windows tools_openssl_x86 1.1.1-4 qt.tools.openssl.win_x64
+  - wget https://www.exiv2.org/builds/exiv2-0.27.3-2019msvc64.zip
+  - 7z x exiv2-0.27.3-2019msvc64.zip -oc:/
+script:
+  - mkdir build
+  - cd build
+  - cmake -DCMAKE_PREFIX_PATH="C:\Qt\5.14.2\msvc2017" -Dexiv2_DIR=C:\exiv2-0.27.3-2019msvc64\lib\cmake\exiv2  -DCMAKE_BUILD_TYPE=RELEASE -DDEPLOY_QT_LIBRARIES=ON -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON ..
+  - cmake --build . --config Release
+  - ctest -C Release .
+  - cp *.qm ./Release
+  - find /c/Qt/Tools/OpenSSL -type f -name '*.dll' -print -exec cp {} ./Release \;
+  - find /c/exiv2 -type f -name '*.dll' -print -exec cp {} ./Release \;
+  - 7z a -tzip com.github.jmlich.geotagging.zip -r *
+before_deploy:
+  - git config --local user.name "YOUR GIT USER NAME"
+  - git config --local user.email "YOUR GIT USER EMAIL"
+  - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
+  - git tag $TRAVIS_TAG
+deploy:
+  provider: releases
+  skip_cleanup: true
+  api_key: $GITHUB_TOKEN
+  file: editor.zip
+  overwrite: true
+  on:
+    tags: false
+    draft: true
