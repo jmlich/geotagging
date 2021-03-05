@@ -24,7 +24,7 @@ void DateTimeEdit::keyPressEvent(QKeyEvent *event) {
     event->accept();
     timer->setInterval(3000);
     QDateTimeEdit::keyPressEvent(event);
-    //emit(change());
+    //emit change();
 }
 
 /*
@@ -32,7 +32,7 @@ void DateTimeEdit::keyPressEvent(QKeyEvent *event) {
 void DateTimeEdit::mousePressEvent(QMouseEvent *event) {
     //timer->setInterval(1000);
     QDateTimeEdit::mousePressEvent(event);
-    //emit(change());
+    //emit change();
 }
 
 */

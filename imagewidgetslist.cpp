@@ -81,7 +81,7 @@ void ImageWidgetsList::deleteSelected() {
             this->removeOne(imageWidget);
         }
     }
-    emit(showImages());
+    emit showImages();
 }
 
 QList<int> ImageWidgetsList::selectedIdList() {
@@ -168,7 +168,7 @@ void ImageWidgetsList::selectOne(int id, bool clickMarker, bool focus) {
     if (isOnly) {
         QStringList exifList = at(iSelected)->exifInformation();
         if(!exifList.isEmpty()) {
-            emit(setExifInfo(exifList));
+            emit setExifInfo(exifList);
         }
     }
     //selectedCount = 1;
@@ -225,10 +225,10 @@ void ImageWidgetsList::rubberBandSelection(QRect r, bool apply) {
         }
     }
     if(apply && selectedCount == 1) {
-        emit(setExifInfo(at(lastISelected)->exifInformation()));
+        emit setExifInfo(at(lastISelected)->exifInformation());
     } else if(apply && selectedCount == 0) {
         QStringList list;
-        emit(setExifInfo(list));
+        emit setExifInfo(list);
     }
 }
 

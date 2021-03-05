@@ -86,7 +86,7 @@ void ImageInfo::retranslateUi() {
 
 ImageInfo::~ImageInfo() {
     if(imageData->isGps) {
-        emit(deleteMarker(imageData->id));
+        emit deleteMarker(imageData->id);
     }
     delete candidatePointTime;
     delete saveDateTimeAction;
@@ -359,7 +359,7 @@ void ImageInfo::setLabels() {
     setTextLabels();
     resizeWidget(iconSize);
     if(imageData->isGps) {
-        emit(mapAddMarker(imageData->id, imageData->latitude, imageData->longitude));
+        emit mapAddMarker(imageData->id, imageData->latitude, imageData->longitude);
     }
     markerLabel->setVisible(imageData->isGps);
 }
@@ -368,7 +368,7 @@ void ImageInfo::select() {
     isClickedOrig = 1;
     click(0);
     if(imageData->isGps) {
-        emit(selected(imageData->id,1));
+        emit selected(imageData->id,1);
     }
 }
 
@@ -376,7 +376,7 @@ void ImageInfo::unselect() {
     isClickedOrig = 0;
     unclick();
     if(imageData->isGps) {
-        emit(selected(imageData->id,0));
+        emit selected(imageData->id,0);
     }
 }
 
@@ -385,7 +385,7 @@ void ImageInfo::click(bool focus) {
     this->setStyleSheet(currentStyleSheet());
 
     if(focus) {
-        emit(getFocus(this->pos().y(), this->height()));
+        emit getFocus(this->pos().y(), this->height());
     }
 }
 
@@ -425,11 +425,11 @@ void ImageInfo::saveNewData(bool isSaveExif) {
         imageData->altitude = altitudeCandidate;
         imageData->gpsSource = 2;
         imageData->isGps = 1;
-        emit(mapAddMarker(imageData->id, imageData->latitude, imageData->longitude));
+        emit mapAddMarker(imageData->id, imageData->latitude, imageData->longitude);
         //////////
 
         if (isSaveExif) {
-            emit(saveExifGps(imageData->pictureName, imageData->latitude, imageData->longitude, imageData->altitude));
+            emit saveExifGps(imageData->pictureName, imageData->latitude, imageData->longitude, imageData->altitude);
         } else {
             imageData->isGpsSaved = 0;
             setStyleSheet(currentStyleSheet());
@@ -441,7 +441,7 @@ void ImageInfo::saveNewData(bool isSaveExif) {
 }
 void ImageInfo::saveGps() {
     if(imageData->isGps) {
-        emit(saveExifGps(imageData->pictureName, imageData->latitude, imageData->longitude, imageData->altitude));
+        emit saveExifGps(imageData->pictureName, imageData->latitude, imageData->longitude, imageData->altitude);
         imageData->isGpsSaved = 1;
         setStyleSheet(currentStyleSheet());
     }
@@ -450,7 +450,7 @@ void ImageInfo::saveGps() {
 void ImageInfo::saveDateTime() {
     if (!imageData->dateTime->isNull()
             && imageData->dateTime->toTime_t() != QDateTime::fromString(QString("0000:00:00 00:00:00"), "yyyy:MM:dd hh:mm:ss").toTime_t()) {
-        emit(saveExifTime(imageData->pictureName, imageData->dateTime));
+        emit saveExifTime(imageData->pictureName, imageData->dateTime);
         imageData->isDateTimeSaved = 1;
         imageData->lastDateTimeSaved = *imageData->dateTime;
         setStyleSheet(currentStyleSheet());

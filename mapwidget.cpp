@@ -109,8 +109,8 @@ void MapWidget::newMarkerAdded(int id, double lat, double lon, double ele) {
 
     qDebug() << "newMarkerAdded" << id << lat << lon << ele;
 
-    emit(settingNewMarkerFinished());
-    emit(setGpsInImage(id, lat, lon, ele));
+    emit settingNewMarkerFinished();
+    emit setGpsInImage(id, lat, lon, ele);
 }
 void MapWidget::setWidgets() {
     iconMarkerVisible = new QIcon(":/icons/markerShowR.png");
@@ -282,7 +282,7 @@ void MapWidget::markerClicked(int id) {
     scriptStr << QString("markerClicked(%1, %2);").arg(id).arg((QApplication::keyboardModifiers() & Qt::ControlModifier));
 
     mapView->page()->runJavaScript(scriptStr.join("\n"), [](const QVariant &result){ qDebug() << result.toString(); });
-    emit(mClicked(id, 0, 1));
+    emit mClicked(id, 0, 1);
 }
 
 void MapWidget::markerDragged(int id) {
@@ -381,7 +381,7 @@ void MapWidget::deleteMarker(int id) {
     mapView->page()->runJavaScript(scriptStr.join("\n"), [](const QVariant &result){ qDebug() << result.toString(); });
 }
 void MapWidget::keyPressEvent(QKeyEvent *event) {
-    emit(processEvent(event));
+    emit processEvent(event);
 }
 
 void MapWidget::deleteRoute(int id) {

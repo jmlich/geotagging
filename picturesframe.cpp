@@ -88,15 +88,15 @@ void PicturesFrame::timerEvent(QTimerEvent *event) {
     event->accept();
     int y = mapToParent(mapFromGlobal(cursor().pos())).y();
     if(y < 0){//jsem kurzorem nad ramcem
-        emit(shiftScrollBar(y));
+        emit shiftScrollBar(y);
     } else if(y > static_cast<QScrollArea *>(parent())->contentsRect().height()) {
-         emit(shiftScrollBar(y-static_cast<QScrollArea *>(parent())->contentsRect().height()));
+         emit shiftScrollBar(y-static_cast<QScrollArea *>(parent())->contentsRect().height());
     }
 
     rubberBand->setGeometry(QRect(origin, mapFromGlobal(cursor().pos())).normalized());
 
     if(i%5) {
-        emit(rubberBandRect(QRect(origin, mapFromGlobal(cursor().pos())),0));
+        emit rubberBandRect(QRect(origin, mapFromGlobal(cursor().pos())),0);
     }
     i++;
 }
@@ -104,7 +104,7 @@ void PicturesFrame::timerEvent(QTimerEvent *event) {
 
 void PicturesFrame::mousePressEvent( QMouseEvent * event) {
 
-    emit(mousePress(event));
+    emit mousePress(event);
     if(event->button() == Qt::LeftButton) {
         origin = event->pos();
         i = 0;
@@ -115,11 +115,11 @@ void PicturesFrame::mousePressEvent( QMouseEvent * event) {
         rubberBand->setGeometry(QRect(origin, QSize(0,0))); //tady to nekdy pada
         rubberBand->show();
         dragEventInProgress = 1;
-        emit(rubberBandRect(QRect(origin, event->pos()),0));
+        emit rubberBandRect(QRect(origin, event->pos()),0);
 
         timer.start(60, this);
     } else if(event->button() == Qt::RightButton) {
-        emit(rightClick(event->pos()));
+        emit rightClick(event->pos());
     }
 
 }
@@ -131,7 +131,7 @@ void PicturesFrame::mouseMoveEvent(QMouseEvent *event) {
         rubberBand->setGeometry(QRect(origin, event->pos()).normalized());
 
         if(i%5) {
-            emit(rubberBandRect(QRect(origin, event->pos()),0));
+            emit rubberBandRect(QRect(origin, event->pos()),0);
         }
         i++;
     }
@@ -145,7 +145,7 @@ void PicturesFrame::mouseReleaseEvent(QMouseEvent *event) {
         dragEventInProgress = 0;
         rubberBand->hide();
         QRect r(origin, event->pos());
-        emit(rubberBandRect(r, 1));
+        emit rubberBandRect(r, 1);
     }
 
 }

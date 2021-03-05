@@ -380,7 +380,7 @@ void MainWindow::dropEvent(QDropEvent *event) {
         QList<QUrl> *urlList = new QList<QUrl>;
         *urlList = mimeData->urls();
 
-        emit(processDropUrls(urlList));
+        emit processDropUrls(urlList);
     }
 }
 
@@ -488,7 +488,7 @@ void MainWindow::saveSynchChanges() {
 
 void MainWindow::setRoute(GpsRoute *gpsRoute) {
     connect(this, SIGNAL(setGpsThread(QThread *)), gpsRoute, SLOT(setThread(QThread*)));
-    emit(setGpsThread(this->thread()));
+    emit setGpsThread(this->thread());
 
     gpsRoute->createLabels();
 
@@ -538,7 +538,7 @@ void MainWindow::openGpsRoutesFromDialog() {
                                                              tr("GPS files (*.gpx);; All Files (*)"));;
 
     importThread->start();
-    emit(importGpsFiles(gpsfileNames));
+    emit importGpsFiles(gpsfileNames);
 
 }
 

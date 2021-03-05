@@ -13,11 +13,11 @@ KeyEventHandler::KeyEventHandler(QObject *parent) :
 void KeyEventHandler::processKeyEvent(QKeyEvent *event) {
 
     if(event->key() == int('A') && (event->modifiers() & Qt::ControlModifier)){
-        emit(selectImage());
+        emit selectImage();
     } else if(event->key() == Qt::Key_Delete) {
-        emit(deleteSelected());
+        emit deleteSelected();
     } else if(event->key() == Qt::Key_Escape){
-        emit(escapePressed());
+        emit escapePressed();
     }
 
 }

@@ -22,7 +22,7 @@ GpsRoute::GpsRoute(int iid) :
 }
 
 GpsRoute::~GpsRoute() {
-    emit(deleteRoute(id));
+    emit deleteRoute(id);
 }
 
 void GpsRoute::setThread(QThread *newThread) {
@@ -92,15 +92,15 @@ void GpsRoute::changeColor() {
     QPixmap pixmap(20,20);
     pixmap.fill(*routeColor);
     bColor->setIcon(QIcon(pixmap));
-    emit(changeRouteColor(id, routeColor->name()));
+    emit changeRouteColor(id, routeColor->name());
 }
 
 void GpsRoute::sliderMoved(int value) {
-    emit(changeOpacity(id,value));
+    emit changeOpacity(id,value);
 }
 
 void GpsRoute::spinBoxChanged(int value) {
-    emit(lineWidthChanged(id,value));
+    emit lineWidthChanged(id,value);
 }
 
 void GpsRoute::retranslateUi() {

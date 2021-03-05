@@ -75,7 +75,7 @@ void ExifReaderWriter::readExif(QString pictureName) {
     Exiv2::ExifData &exifData = image->exifData();
     if (exifData.empty()) {
         //qDebug() << "nejsou exif data";
-        emit(finished());
+        emit finished();
         return;
     }
 
@@ -87,7 +87,7 @@ void ExifReaderWriter::readExif(QString pictureName) {
 
 
     if(lat < 1000 && lon<1000) {
-        emit(setGps(lat, lon, alt, direction));
+        emit setGps(lat, lon, alt, direction);
     }
 
     ////////////////////////////
@@ -103,9 +103,9 @@ void ExifReaderWriter::readExif(QString pictureName) {
     }
 
     if(dateTime != NULL) {
-        emit(setDateTime(*dateTime));
+        emit setDateTime(*dateTime);
     }
-    emit(finished());
+    emit finished();
     return;
 }
 

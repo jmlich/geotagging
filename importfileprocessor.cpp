@@ -40,13 +40,13 @@ void ImportFileProcessor::processDropUrls(QList<QUrl> *urlList)
     foreach(QUrl url, *urlList) {
         count += countFiles(url.toLocalFile());
     }
-    emit(setProgressMaximum(count));
+    emit setProgressMaximum(count);
 
     foreach(QUrl url, *urlList) {
         processDropFile(url.toLocalFile(), rec);
     }
 
-    emit(finished(unrecognizedList));
+    emit finished(unrecognizedList);
 }
 
 void ImportFileProcessor::processDropFile(QString fileName, int recursion) {
@@ -85,7 +85,7 @@ void ImportFileProcessor::processDropFile(QString fileName, int recursion) {
     } else {
        unrecognizedList->append(fileName);
        countProcessed++;
-       emit(setProgressValue(countProcessed));
+       emit setProgressValue(countProcessed);
     }
 }
 void ImportFileProcessor::loadGpsFile(QString gpsFileName) {
@@ -97,9 +97,9 @@ void ImportFileProcessor::loadGpsFile(QString gpsFileName) {
         return;
     }
     idRouteCount++;
-    emit(importRouteFinished(gpsRoute));
+    emit importRouteFinished(gpsRoute);
     countProcessed++;
-    emit(setProgressValue(countProcessed));
+    emit setProgressValue(countProcessed);
 }
 
 void ImportFileProcessor::loadImageFile(QString imageFileName) {
@@ -112,9 +112,9 @@ void ImportFileProcessor::loadImageFile(QString imageFileName) {
     }
     imageData->id = idImageCount;
     idImageCount++;
-    emit(importImageFinished(imageData));
+    emit importImageFinished(imageData);
     countProcessed++;
-    emit(setProgressValue(countProcessed));
+    emit setProgressValue(countProcessed);
 }
 
 void ImportFileProcessor::importImages(QStringList imageList) {
@@ -123,13 +123,13 @@ void ImportFileProcessor::importImages(QStringList imageList) {
     foreach(QString imageFile, imageList) {
         count += countFiles(imageFile);
     }
-    emit(setProgressMaximum(count));
+    emit setProgressMaximum(count);
 
     unrecognizedList = new QStringList;
     foreach(QString imageFile, imageList) {
         loadImageFile(imageFile);
     }
-    emit(finished(unrecognizedList));
+    emit finished(unrecognizedList);
 }
 
 void ImportFileProcessor::importGpsFiles(QStringList gpsList) {
@@ -138,12 +138,12 @@ void ImportFileProcessor::importGpsFiles(QStringList gpsList) {
     foreach(QString gpsFile, gpsList) {
         count += countFiles(gpsFile);
     }
-    emit(setProgressMaximum(count));
+    emit setProgressMaximum(count);
 
     unrecognizedList = new QStringList;
     foreach(QString gpsFile, gpsList) {
         loadGpsFile(gpsFile);
     }
 
-    emit(finished(unrecognizedList));
+    emit finished(unrecognizedList);
 }

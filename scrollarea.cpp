@@ -16,10 +16,10 @@ ScrollArea::ScrollArea(QWidget *parent) :
 void ScrollArea::wheelEvent(QWheelEvent * event) {
     if(event->modifiers() & Qt::ControlModifier){
         event->accept();
-        if(event->delta() < 0) {
-            emit(changeSize(-1));
+        if(event->angleDelta().y() < 0) {
+            emit changeSize(-1);
         } else {
-            emit(changeSize(1));
+            emit changeSize(1);
         }
     } else {
         QScrollArea::wheelEvent(event);

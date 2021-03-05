@@ -52,7 +52,7 @@ int ImageData::loadData(QString pictureFName) {
     }
 
     scaleImage(pictureName);
-    emit(readExif(pictureName));
+    emit readExif(pictureName);
 
     return 0;
 }
@@ -149,5 +149,5 @@ void ImageData::watchedFileChanged(const QString filename) {
 void ImageData::imageReload() {
     qDebug() << "reload " << pictureName;
     loadData(pictureName);
-    emit(imageReloadDone());
+    emit imageReloadDone();
 }
