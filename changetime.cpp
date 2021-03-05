@@ -38,7 +38,9 @@ void ChangeTime::on_buttonBox_accepted()
     int year = ui->yearSpinBox->text().toInt();
     int month = ui->monthSpinBox->text().toInt();
     int day = ui->daySpinBox->text().toInt();
-    int sec = ui->hourSpinBox->text().toInt() * 3600 + ui->minuteSpinBox->text().toInt() * 60 + ui->secondSpinBox->text().toInt();
+    int sec = (ui->hourSpinBox->text().toInt() * 3600)
+            + (ui->minuteSpinBox->text().toInt() * 60)
+            + ui->secondSpinBox->text().toInt();
 
     /*if(ui->signComboBox->currentText() == "-")
     {

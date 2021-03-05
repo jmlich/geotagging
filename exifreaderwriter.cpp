@@ -19,7 +19,8 @@ std::unique_ptr<Exiv2::Image> ExifReaderWriter::openExif(QString pictureName) {
         image = Exiv2::ImageFactory::open( std::string(pictureName.toUtf8()));
 #endif
     } catch (Exiv2::Error& e) {
-        //std::cerr << "Caught Exiv2 exception 1 '" << e.what() << "'\n";
+        Q_UNUSED(e)
+//        qDebug() << e.what();
         return image;
     }
 
@@ -55,8 +56,12 @@ double ExifReaderWriter::readLatLon(QString str, Exiv2::ExifData &exifData) {
         //format stupne/jmenovatel minuty/jmenovatel sekundy/jmenovatel
         QRegExp rx("^(\\d+)/(\\d+) (\\d+)/(\\d+) (\\d+)/(\\d+)$");
         rx.indexIn(gpsStr, 0);
-        double gps = rx.cap(1).toDouble()/rx.cap(2).toDouble() + ((rx.cap(3).toDouble()/rx.cap(4).toDouble())
-                                                                  + (rx.cap(5).toDouble()/rx.cap(6).toDouble())/60) / 60;
+        double gps =
+                (rx.cap(1).toDouble()/rx.cap(2).toDouble())
+                + (
+                    (rx.cap(3).toDouble()/rx.cap(4).toDouble()) +
+                    (rx.cap(5).toDouble()/rx.cap(6).toDouble())/60
+                    ) / 60;
         if (gpsStrRef == "S" || gpsStrRef == "W") {
             gps *= -1;
         }
@@ -198,7 +203,8 @@ void ExifReaderWriter::writeData(Exiv2::ExifData &exifData, std::string keyStr, 
             exifData[keyStr].setValue(str.toStdString());
         }
     } catch (Exiv2::Error& e) {
-        ;//std::cerr << "Caught Exiv2 exception '" << e.what() << "'\n";
+        Q_UNUSED(e);
+//        qDebug() << e.what();
     }
 
 }
@@ -213,7 +219,8 @@ double ExifReaderWriter::readExifItemDouble( Exiv2::ExifData &exifData, std::str
         }
     }
     catch (Exiv2::Error& e) {
-        ;//std::cerr << "Caught Exiv2 exception '" << e.what() << "'\n";
+        Q_UNUSED(e);
+//        qDebug() << e.what();
     }
 
     return qQNaN();
@@ -230,7 +237,8 @@ QString ExifReaderWriter::readExifItem( Exiv2::ExifData &exifData, std::string k
         }
     }
     catch (Exiv2::Error& e) {
-        ;//std::cerr << "Caught Exiv2 exception '" << e.what() << "'\n";
+        Q_UNUSED(e);
+//        qDebug() << e.what();
     }
     return "";
 
