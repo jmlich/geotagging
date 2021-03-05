@@ -36,6 +36,12 @@
   </keywords>
   <content_rating type="oars-1.1"/>
   <releases>
+    <release version="0.5.7" timestamp="1614953072">
+      <description>
+        <p>displaing of distance between cursor and selected photo</p>
+        <p>initial support for camera direction angle</p>
+      </description>
+    </release>
     <release version="0.5.6" timestamp="1611669972">
       <description>
         <p>watching of opened files for changes</p>
