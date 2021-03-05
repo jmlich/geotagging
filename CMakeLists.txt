@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.8)
 
 project(com.github.jmlich.geotagging LANGUAGES CXX)
 
@@ -111,7 +111,7 @@ install(TARGETS com.github.jmlich.geotagging RUNTIME
 target_compile_definitions(com.github.jmlich.geotagging
   PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
 target_link_libraries(com.github.jmlich.geotagging
-  PRIVATE Qt5::Core Qt5::Gui Qt5::Network Qt5::Widgets Qt5::WebEngineWidgets Qt5::WebChannel exiv2)
+  PRIVATE Qt5::Core Qt5::Gui Qt5::Network Qt5::Widgets Qt5::WebEngineWidgets Qt5::WebChannel exiv2lib)
 
 
 option(DEPLOY_QT_LIBRARIES "Deploy Qt libraries to executable path" OFF)
