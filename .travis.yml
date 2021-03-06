@@ -1,10 +1,9 @@
 os: windows
 language: C++
-env: PATH=/c/Python38:/c/Python38/Scripts:$PATH
+env: PATH=/c/Python38:/c/Python38/Scripts:/C/Program Files (x86)/Microsoft Visual Studio/2017/BuildTools/VC/Tools/MSVC/14.16.27023/bin/Hostx64/x86:$PATH
 before_install:
   - choco install -y visualstudio2017buildtools
   - choco install -y visualstudio2017-workload-vctools
-  - SET PATH=%PATH%;"C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Tools\MSVC\14.16.27023\bin\Hostx64\x86"
   - wget https://www.exiv2.org/builds/exiv2-0.27.3-2019msvc64.zip
   - 7z x exiv2-0.27.3-2019msvc64.zip -oc:/
   - choco install  python --version 3.8.0
