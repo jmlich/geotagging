@@ -5,13 +5,13 @@ before_install:
 #  - SET PATH=%PATH%;"C:\Program Files (x86)\Microsoft Visual Studio\2017\BuildTools\VC\Tools\MSVC\14.16.27023\bin\Hostx64\x86"\
 #  - choco install -y visualstudio2017buildtools
 #  - choco install -y visualstudio2017-workload-vctools
+  - wget https://www.exiv2.org/builds/exiv2-0.27.3-2019msvc64.zip
+  - 7z x exiv2-0.27.3-2019msvc64.zip -oc:/
   - choco install  python --version 3.8.0
   - python -m pip install --upgrade pip
   - python -m pip install aqtinstall
   - python -m aqt install --outputdir /c/Qt 5.14.2 windows desktop win32_msvc2017
   - python -m aqt tool --outputdir /c/Qt windows tools_openssl_x86 1.1.1-4 qt.tools.openssl.win_x64
-  - wget https://www.exiv2.org/builds/exiv2-0.27.3-2019msvc64.zip
-  - 7z x exiv2-0.27.3-2019msvc64.zip -oc:/
 script:
   - mkdir build
   - cd build
