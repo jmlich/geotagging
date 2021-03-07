@@ -20,8 +20,8 @@ script:
 #  - find /c/exiv2 -type f -name '*.dll' -print -exec cp {} ./Release \;
   - 7z a -tzip com.github.jmlich.geotagging.zip -r *
 before_deploy:
-  - git config --local user.name "YOUR GIT USER NAME"
-  - git config --local user.email "YOUR GIT USER EMAIL"
+  - git config --local user.name "travis"
+  - git config --local user.email "tavis@travis-ci.org"
   - export TRAVIS_TAG=${TRAVIS_TAG:-$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)}
   - git tag $TRAVIS_TAG
 deploy:
