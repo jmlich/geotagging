@@ -5,7 +5,7 @@ Geotagging is rather simple tool for manipulating with geographical information 
 
 # Installation
 
-* Windows - download exe file from [https://github.com/jmlich/geotagging/releases](releases section)
+* Windows - download exe file from [releases section](https://github.com/jmlich/geotagging/releases)
 * Fedora - add COPR repository and install rpms
 * Other Linux distributions - use flatpak
 
