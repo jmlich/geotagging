@@ -7,12 +7,12 @@ before_install:
   - choco install -y python --version 3.8.0
   - python -m pip install --upgrade pip
   - python -m pip install aqtinstall
-  - python -m aqt install --outputdir /c/Qt 5.15.2 windows desktop win64_msvc2017_64 -m qtwebengine
+  - python -m aqt install --outputdir /c/Qt 5.15.2 windows desktop win64_msvc2019_64 -m qtwebengine
   - python -m aqt tool --outputdir /c/Qt windows tools_openssl_x64 1.1.1-10 qt.tools.openssl.win_x64
 script:
   - mkdir build
   - cd build
-  - cmake -DCMAKE_PREFIX_PATH="C:\Qt\5.15.2\msvc2017_64" -Dexiv2_DIR="C:\exiv2-0.27.3-2019msvc64\lib\cmake\exiv2" -DCMAKE_GENERATOR_PLATFORM=x64 -DCMAKE_BUILD_TYPE=RELEASE -DDEPLOY_QT_LIBRARIES=ON -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON ..
+  - cmake -DCMAKE_PREFIX_PATH="C:\Qt\5.15.2\msvc2019_64" -Dexiv2_DIR="C:\exiv2-0.27.3-2019msvc64\lib\cmake\exiv2" -DCMAKE_GENERATOR_PLATFORM=x64 -DCMAKE_BUILD_TYPE=RELEASE -DDEPLOY_QT_LIBRARIES=ON -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON ..
   - cmake --build . --config Release
   - ctest -C Release .
   - cp *.qm ./Release
