@@ -1,8 +1,13 @@
+# Introduction
+![logo](https://github.com/jmlich/geotagging/raw/master/icons/geotagging.png)
+
+Geotagging is rather simple tool for manipulating with geographical information stored in JPEG images (in EXIF section). Your photos can be augmented by GPS coordinates by synchronization from track log files (*.gpx). The GPS coordinates can be also adjusted manually using Drag and Drop.
+
 # Installation
 
 * Windows - download exe file from releases section
 * Fedora - add COPR repository and install rpms
-* Other Linux - use flatpak
+* Other Linux distributions - use flatpak
 
 <a href='https://flathub.org/apps/details/com.github.jmlich.geotagging'><img width='240' alt='Download on Flathub' src='https://flathub.org/assets/badges/flathub-badge-en.png'/></a>
 
