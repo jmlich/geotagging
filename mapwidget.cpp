@@ -3,6 +3,7 @@
   * implementuje dokovaci okno s mapou
   */
 #include <QtWebChannel>
+#include <QWebEngineProfile>
 #include "mapwidget.h"
 
 MapWidget::MapWidget(  QWidget * parent) :
@@ -11,13 +12,17 @@ MapWidget::MapWidget(  QWidget * parent) :
     setWindowTitle(tr("Map"));
 
     mapView = new QWebEngineView(parent);
+    QWebEngineProfile *profile = new QWebEngineProfile(mapView);
+    profile->setHttpUserAgent(QString("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) QtWebEngine/%1 Geotagging/%2").arg(qVersion()).arg(GIT_VERSION));
+    QWebEnginePage *page = new QWebEnginePage(profile, mapView);
+    mapView->setPage(page);
+    page->load(QUrl("qrc:///leaflet.html"));
     markersVisible = 1;
     routesVisible = 1;
     joinSegmentsVisible = 0;
     reliefVisible = 0;
     loadIsFinished = 0;
     connect(mapView, SIGNAL(loadFinished(bool)), this, SLOT(loadFinished(bool)));
-    mapView->load(QUrl("qrc:///leaflet.html"));
 
     QWebChannel *channel = new QWebChannel(mapView->page());
     channel->registerObject("mapWidget", this);

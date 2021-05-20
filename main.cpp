@@ -87,6 +87,9 @@ int main(int argc, char *argv[])
     QApplication a(argc, argv);
     qInstallMessageHandler(myMessageHandler);
 
+    qDebug() << "Starting build " << QString::fromLocal8Bit(GIT_VERSION) << " "<< QString::fromLocal8Bit(__DATE__) << " " <<  QString::fromLocal8Bit(__TIME__) << "Qt:" << qVersion();
+    qDebug() << "supportsSsl" <<QSslSocket::supportsSsl() << "build version:"<< QSslSocket::sslLibraryBuildVersionString() << "library version:" << QSslSocket::sslLibraryVersionString();
+
     MainWindow w;
     w.show();
 
