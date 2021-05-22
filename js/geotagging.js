@@ -78,6 +78,8 @@ var baseMaps = {
 }
 
 var selectedBaseLayer = osm;
+var selectedOverlayLayer = null;
+
 
 var overlayMaps = {
     prosoar,
@@ -136,7 +138,6 @@ function initialize() {
                            });
 
     map.on('mousemove', function (e) {
-        console.log(lastSelected)
         if (lastSelected !== -1) {
             var mouse_pos = e.latlng;
             var marker_pos = markers[lastSelected].getLatLng();
@@ -165,6 +166,10 @@ function test_add_route() {
 
 
 function setMapType(mapType) {
+
+    if (selectedOverlayLayer !== null) {
+        map.removeLayer(selectedOverlayLayer);
+    }
 
     map.removeLayer(selectedBaseLayer);
 
@@ -205,6 +210,9 @@ function setMapType(mapType) {
     }
 
     map.addLayer(selectedBaseLayer);
+    if (selectedOverlayLayer != null) {
+        map.addLayer(selectedOverlayLayer);
+    }
 
     return true;
 }
@@ -213,8 +221,10 @@ function setMapType(mapType) {
 function flipRelief(setVisible) {
     if (setVisible) {
         map.addLayer(hill);
+        selectedOverlayLayer = hill;
     } else {
         map.removeLayer(hill)
+        selectedOverlayLayer = null;
     }
     return true;
 }
