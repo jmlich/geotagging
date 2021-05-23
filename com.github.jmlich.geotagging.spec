@@ -1,5 +1,5 @@
 Name:           com.github.jmlich.geotagging
-Version:        0.5.7
+Version:        0.5.8
 Release:        %(date +%Y%m%d%H)%{?dist}
 Summary:        Photography geotagging tool
 Group:          Applications/Internet
@@ -41,6 +41,10 @@ appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/*.appdata.xml
 %{_metainfodir}/%{name}.appdata.xml
 
 %changelog
+* Sun May 23 2021 Jozef Mlich <imlich@fit.vutbr.cz> - 0.5.8-1
+- fix hill shading overlay map when changing base map
+- use own user agent to comply OpenStreetMap usage policy
+
 * Fri Mar 05 2021 Jozef Mlich <imlich@fit.vutbr.cz> - 0.5.7-1
 - measuring distance of selected POI and cursor
 - loading camera direction from exif

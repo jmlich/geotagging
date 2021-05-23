@@ -36,6 +36,12 @@
   </keywords>
   <content_rating type="oars-1.1"/>
   <releases>
+    <release version="0.5.8" timestamp="1621767032">
+      <description>
+        <p>fix hill shading overlay map when changing base map</p>
+        <p>use own user agent to comply OpenStreetMap usage policy</p>
+      </description>
+    </release>
     <release version="0.5.7" timestamp="1614953072">
       <description>
         <p>displaing of distance between cursor and selected photo</p>
