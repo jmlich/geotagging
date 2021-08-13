@@ -713,7 +713,8 @@
     <message>
         <location filename="../changetime.cpp" line="10"/>
         <source>Nastavit zpoždění</source>
-        <translation>Nastavit zpoždění</translation>
+        <comment>? Set a delay</comment>
+       <translation>Set a delay</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="76"/>
@@ -763,6 +764,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="468"/>
         <source>Wasn&apos;t selected any route</source>
+        <comment>No route selected??</comment>
         <translation>Wasn&apos;t selected any route</translation>
     </message>
     <message>
@@ -1097,6 +1099,7 @@
         <location filename="../synchresultdialog.cpp" line="114"/>
         <location filename="../synchresultdialog.cpp" line="137"/>
         <source>Legend</source>
+        <comment>? History??</comment>
         <translation>Legend</translation>
     </message>
     <message>
