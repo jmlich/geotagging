@@ -7,7 +7,7 @@ ChangeTime::ChangeTime(QWidget *parent) :
     ui(new Ui::ChangeTime)
 {
     ui->setupUi(this);
-    setWindowTitle(QApplication::translate("MainWindow", "Nastavit zpo\305\276d\304\233n\303\255", 0));
+    setWindowTitle(QApplication::translate("MainWindow", "Set delay", 0));
     //setWindowTitle(QString::fromWCharArray(static_cast<wchar_t*>("Zmnit as")));
 
     connect(this, SIGNAL(changeDateTime(int,int,int,int,bool)),parent, SLOT(changeDateTime_clicked(int,int,int,int,bool)));
