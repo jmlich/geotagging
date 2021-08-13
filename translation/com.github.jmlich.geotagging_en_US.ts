@@ -155,14 +155,6 @@
         <translation>Date and time</translation>
     </message>
     <message>
-        <source>GPS latitude</source>
-        <translation type="vanished">GPS latitude</translation>
-    </message>
-    <message>
-        <source>GPS longitude</source>
-        <translation type="vanished">GPS longitude</translation>
-    </message>
-    <message>
         <location filename="../exifinfo.cpp" line="44"/>
         <source>Latitude</source>
         <translation>Latitude</translation>
@@ -711,10 +703,6 @@
         <translation>F1</translation>
     </message>
     <message>
-        <source>Nastavit zpoždění</source>
-        <translation type="vanished">Nastavit zpoždění</translation>
-    </message>
-    <message>
         <location filename="../mainwindow.cpp" line="76"/>
         <source>Geotagging</source>
         <translation>Geotagging</translation>
@@ -761,8 +749,8 @@
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="468"/>
-        <source>Wasn&apos;t selected any route</source>
-        <translation>Wasn&apos;t selected any route</translation>
+        <source>No route selected</source>
+        <translation>No route selected</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="519"/>
@@ -1098,7 +1086,6 @@
         <translation>Synchronisation</translation>
     </message>
     <message>
-        <location filename="../synchresultdialog.cpp" line="114"/>
         <location filename="../synchresultdialog.cpp" line="137"/>
         <source>Legend</source>
         <translation>Legend</translation>
@@ -1108,6 +1095,12 @@
         <location filename="../synchresultdialog.cpp" line="161"/>
         <source>Correctly assigned coordinates, will be saved</source>
         <translation>Correctly assigned coordinates, will be saved</translation>
+    </message>
+    <message>
+        <location filename="../synchresultdialog.cpp" line="22"/>
+        <location filename="../synchresultdialog.cpp" line="114"/>
+        <source>Key</source>
+        <translation>Key</translation>
     </message>
     <message>
         <location filename="../synchresultdialog.cpp" line="117"/>
