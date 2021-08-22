@@ -20,7 +20,7 @@ jobs:
       with:
         version: ${{ matrix.version }}
         host: 'windows'
-        taget: 'desktop'
+        target: 'desktop'
         arch: 'win64_msvc2019_64'
         modules: 'qtwebengine'
         tools: 'tools_openssl_x64,1.1.1-10,qt.tools.openssl.win_x64'
@@ -28,7 +28,7 @@ jobs:
     - name: Download exiv2
       if: startsWith(matrix.os, 'windows')
       run: |
-        wget https://www.exiv2.org/builds/exiv2-0.27.3-2019msvc64.zip
+        curl https://www.exiv2.org/builds/exiv2-0.27.3-2019msvc64.zip --output exiv2-0.27.3-2019msvc64.zip
         7z x exiv2-0.27.3-2019msvc64.zip -oc:/
 
       shell: cmd
