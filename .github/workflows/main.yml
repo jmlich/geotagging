@@ -34,7 +34,7 @@ jobs:
       shell: cmd
 
 
-    - name: Configure test project on windows
+    - name: Build
       if: startsWith(matrix.os, 'windows')
       run: |
         call "%programfiles(x86)%\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
@@ -49,23 +49,9 @@ jobs:
         7z a -tzip com.github.jmlich.geotagging.zip -r *
       shell: cmd
 
-    - name: Create Release
-      id: create_release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Archive build results
+      uses: actions/upload-artifact@v2
       with:
-        tag_name: action-${{ env.GITHUB_RUN_ID }}-${{ env.GITHUB_SHA }}
-        release_name: Release ${{ github.ref }}
-        draft: false
-        prerelease: false
-    - name: Upload Release Asset
-      id: upload-release-asset
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
-        asset_path: ./build/com.github.jmlich.geotagging.zip
-        asset_name: com.github.jmlich.geotagging.zip
-        asset_content_type: application/zip
+        name: com.github.jmlich.geotagging.zip
+        path: ./build/com.github.jmlich.geotagging.zip
