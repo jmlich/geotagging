@@ -1,4 +1,4 @@
-name: QMake Build Matrix
+name: Build
 
 on: [push]
 
