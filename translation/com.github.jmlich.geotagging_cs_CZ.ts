@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="cs_CZ">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="cs_CZ" version="2.1">
 <context>
     <name>AboutDialog</name>
     <message>
@@ -750,7 +748,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="468"/>
         <source>No route selected</source>
-        <translation>Nebyla vybrána žádná trasa</translation>
+        <translation>Nebyla vybrána trasa</translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="519"/>
