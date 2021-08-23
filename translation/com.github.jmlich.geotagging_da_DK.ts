@@ -39,7 +39,7 @@
     <message>
         <location filename="../changedatetime.ui" line="78"/>
         <source>d.M.yyyy H:mm:ss</source>
-        <translation>d.M.yyyy H:mm:ss</translation>
+        <translation>d.M.åååå H:mm:ss</translation>
     </message>
     <message>
         <location filename="../changedatetime.ui" line="85"/>
@@ -67,7 +67,7 @@
     <message>
         <location filename="../changetime.ui" line="14"/>
         <source>Dialog</source>
-        <translation>Dialog</translation>
+        <translation>Dialog.</translation>
     </message>
     <message>
         <location filename="../changetime.ui" line="22"/>
@@ -125,13 +125,13 @@
     <message>
         <location filename="../exifinfo.cpp" line="13"/>
         <source>EXIF Info</source>
-        <translation>EXIF Info</translation>
+        <translation>EXIF data</translation>
     </message>
     <message>
         <location filename="../exifinfo.cpp" line="20"/>
         <location filename="../exifinfo.cpp" line="65"/>
         <source>parameter</source>
-        <translation>parameter</translation>
+        <translation>parametre</translation>
     </message>
     <message>
         <location filename="../exifinfo.cpp" line="20"/>
@@ -263,17 +263,17 @@
     <message>
         <location filename="../exifreaderwriter.cpp" line="278"/>
         <source>spot</source>
-        <translation>spot</translation>
+        <translation>punkt</translation>
     </message>
     <message>
         <location filename="../exifreaderwriter.cpp" line="280"/>
         <source>multi-spot</source>
-        <translation>multi-spot</translation>
+        <translation>multi-punkt</translation>
     </message>
     <message>
         <location filename="../exifreaderwriter.cpp" line="282"/>
         <source>multi-segment</source>
-        <translation>multi-segment</translation>
+        <translation>multisegment</translation>
     </message>
     <message>
         <location filename="../exifreaderwriter.cpp" line="284"/>
@@ -313,7 +313,7 @@
     <message>
         <location filename="../exifreaderwriter.cpp" line="308"/>
         <source>program action(high-speed program)</source>
-        <translation>action program (high-speed)</translation>
+        <translation>action program (højhastighed)</translation>
     </message>
     <message>
         <location filename="../exifreaderwriter.cpp" line="310"/>
@@ -460,7 +460,7 @@
         <location filename="../gpsroute.cpp" line="138"/>
         <location filename="../gpsroute.cpp" line="527"/>
         <source>Route length</source>
-        <translation>Rute længde</translation>
+        <translation>Rutelængde</translation>
     </message>
     <message>
         <location filename="../gpsroute.cpp" line="141"/>
@@ -475,13 +475,13 @@
     <message>
         <location filename="../gpsroute.cpp" line="529"/>
         <source>%1 km</source>
-        <translation>%1 km</translation>
+        <translation>%1 KM/translation>
     </message>
     <message>
         <location filename="../gpsroute.cpp" line="537"/>
         <source>%1 segment</source>
         <comment>1</comment>
-        <translation>%1 segment</translation>
+        <translation>%1 segmenter</translation>
     </message>
     <message>
         <location filename="../gpsroute.cpp" line="539"/>
@@ -501,7 +501,7 @@
     <message>
         <location filename="../imageinfo.ui" line="19"/>
         <source>Form</source>
-        <translation>Form</translation>
+        <translation>Formular</translation>
     </message>
     <message>
         <location filename="../imageinfo.ui" line="55"/>
