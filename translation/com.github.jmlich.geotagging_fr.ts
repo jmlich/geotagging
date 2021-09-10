@@ -1015,7 +1015,7 @@
         <location filename="../synchresultdialog.cpp" line="38"/>
         <location filename="../synchresultdialog.cpp" line="102"/>
         <source>Check</source>
-        <translation>Vérifier</translation>
+        <translation>Marquage</translation>
     </message>
     <message>
         <location filename="../synchresultdialog.cpp" line="43"/>
@@ -1027,7 +1027,7 @@
         <location filename="../synchresultdialog.cpp" line="46"/>
         <location filename="../synchresultdialog.cpp" line="113"/>
         <source>Check pictures with time distance &lt;</source>
-        <translation>Vérifier les images avec un(e) temps/distance &lt;</translation>
+        <translation>Marquer les images avec un(e) temps/distance &lt;</translation>
     </message>
     <message>
         <location filename="../synchresultdialog.cpp" line="70"/>
@@ -1092,7 +1092,7 @@
         <location filename="../synchresultdialog.cpp" line="116"/>
         <location filename="../synchresultdialog.cpp" line="161"/>
         <source>Correctly assigned coordinates, will be saved</source>
-        <translation>Les coordonnées correctement assignées seront sauvegardées</translation>
+        <translation>Coordonnées correctement assignées, seront sauvegardées</translation>
     </message>
     <message>
         <location filename="../synchresultdialog.cpp" line="22"/>
