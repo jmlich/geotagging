@@ -2,8 +2,6 @@ name: Build
 
 on: [push]
 
-env:
-  QT_VERSION: 5.14.0
 
 jobs:
   test:
