@@ -50,5 +50,5 @@ jobs:
     - name: Archive build results
       uses: actions/upload-artifact@v2
       with:
-        name: com.github.jmlich.geotagging.zip
+        name: com.github.jmlich.geotagging
         path: ./build/Release/*
