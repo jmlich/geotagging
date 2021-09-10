@@ -44,7 +44,7 @@ jobs:
         cmake --build . --config Release
         ctest -C Release .
         cp *.qm ./Release
-        for /R c:\source %%f in (*.dll) do copy %%f "%CD%\Release"
+        for /R C:\exiv2-0.27.3-2019msvc64 %%f in (*.dll) do copy %%f "%CD%\Release"
         for /R c:\Qt\Tools\OpenSSL %%f in (*.dll) do copy %%f "%CD%\Release"
       shell: cmd
 
