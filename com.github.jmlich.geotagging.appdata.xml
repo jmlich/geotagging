@@ -36,6 +36,12 @@
   </keywords>
   <content_rating type="oars-1.1"/>
   <releases>
+    <release version="0.5.9" timestamp="1631280861">
+      <description>
+        <p>French translations - thanks to LeJun</p>
+        <p>Danish translations - thanks to Erik 'Clicketyclick' Bachmann </p>
+      </description>
+    </release>
     <release version="0.5.8" timestamp="1621767032">
       <description>
         <p>fix hill shading overlay map when changing base map</p>
