@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="da_DK" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="da_DK">
 <context>
     <name>AboutDialog</name>
     <message>
@@ -465,7 +467,7 @@
     <message>
         <location filename="../gpsroute.cpp" line="529"/>
         <source>%1 km</source>
-        <translation>%1 KM/translation>
+        <translation>%1 KM/translation</translation>
     </message>
     <message>
         <location filename="../gpsroute.cpp" line="537"/>
@@ -748,7 +750,7 @@
     <message>
         <location filename="../mainwindow.cpp" line="468"/>
         <source>No route selected</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../mainwindow.cpp" line="519"/>
@@ -783,7 +785,7 @@
     <message>
         <location filename="../changetime.cpp" line="10"/>
         <source>Set delay</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -1086,7 +1088,7 @@
     <message>
         <location filename="../synchresultdialog.cpp" line="137"/>
         <source>Legend</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../synchresultdialog.cpp" line="116"/>
@@ -1098,19 +1100,19 @@
         <location filename="../synchresultdialog.cpp" line="22"/>
         <location filename="../synchresultdialog.cpp" line="114"/>
         <source>Key</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../synchresultdialog.cpp" line="117"/>
         <location filename="../synchresultdialog.cpp" line="162"/>
         <source>Picture time doesn&apos;t fit any route, no coordinatest will be saved</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../synchresultdialog.cpp" line="118"/>
         <location filename="../synchresultdialog.cpp" line="163"/>
         <source>Correctly assigned coordinates, won&apos;t be saved</source>
-        <translation type="unfinished"/>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../synchresultdialog.cpp" line="119"/>
