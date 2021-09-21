@@ -1,5 +1,5 @@
 Name:           com.github.jmlich.geotagging
-Version:        0.5.8
+Version:        0.5.9
 Release:        %(date +%Y%m%d%H)%{?dist}
 Summary:        Photography geotagging tool
 Group:          Applications/Internet
@@ -41,6 +41,10 @@ appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/*.appdata.xml
 %{_metainfodir}/%{name}.appdata.xml
 
 %changelog
+* Fri Sep 10 2021 Jozef Mlich <imlich@fit.vutbr.cz> - 0.5.9-1
+- French translations - thanks to LeJun
+- Danish translations - thanks to Erik 'Clicketyclick' Bachmann
+
 * Sun May 23 2021 Jozef Mlich <imlich@fit.vutbr.cz> - 0.5.8-1
 - fix hill shading overlay map when changing base map
 - use own user agent to comply OpenStreetMap usage policy

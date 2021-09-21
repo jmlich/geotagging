@@ -19,7 +19,7 @@ SynchResultDialog::SynchResultDialog(QWidget *parent) :
     colorFailedChecked = "#FFDD77";//"#FFE07F"; //"#FFD877";
 
     legend = createLegend();
-    legendButton = new QPushButton("Legenda");
+    legendButton = new QPushButton( tr("Key"));
 
     QDialogButtonBox *buttonBox = new QDialogButtonBox();
     buttonBox->addButton(QDialogButtonBox::Save);
@@ -111,7 +111,7 @@ void SynchResultDialog::retranslateUi()
                         << tr("Time distance")
                         << tr("From route"));
     checkDistLabel->setText(tr("Check pictures with time distance <"));
-    legend->setTitle(tr("Legend"));
+    legend->setTitle(tr("Key"));
 
     ltOk->setText(tr("Correctly assigned coordinates, will be saved"));
     ltFailed->setText(tr("Picture time doesn't fit any route, no coordinatest will be saved"));

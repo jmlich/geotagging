@@ -465,7 +465,7 @@ void MainWindow::setGpsInImages()
 
     } else {
         QMessageBox *mb = new QMessageBox(QMessageBox::Information, tr("Synchronisation"),
-                                          QString(tr("Wasn't selected any route")),
+                                          QString(tr("No route selected")),
                                           QMessageBox::Close);
 
         QPalette pal = mb->palette();
