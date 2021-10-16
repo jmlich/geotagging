@@ -5,7 +5,6 @@
 #ifndef GPSPOINT_H
 #define GPSPOINT_H
 #include<QString>
-#include<QRegExp>
 #include <QDateTime>
 
 class GpsPoint
