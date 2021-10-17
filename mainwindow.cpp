@@ -13,22 +13,21 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     translator = new QTranslator;
 
-    QString i18nFilename = QLatin1String("com.github.jmlich.geotagging_") + QLocale::system().name();
-    qDebug() << i18nFilename;
-    if (translator->load(i18nFilename, "./")) {
-        qDebug() << i18nFilename << "./" << QLocale::system().bcp47Name();
-        qApp->installTranslator(translator);
-
-    } else if (translator->load(i18nFilename, QLibraryInfo::location(QLibraryInfo::TranslationsPath))) {
-        qDebug() << i18nFilename << QLibraryInfo::location(QLibraryInfo::TranslationsPath) << QLocale::system().bcp47Name();
-        qApp->installTranslator(translator);
+    if (translator->load(QLocale(), QLatin1String("com.github.jmlich.geotagging"), QLatin1String("_"), "./")) {
+        bool installed = qApp->installTranslator(translator);
+        qDebug() << "installTranslator()" << QLocale::system().name() << (installed ? "success" : "failed");
+    } else if (translator->load(QLocale(), QLatin1String("com.github.jmlich.geotagging"), QLatin1String("_"), QLibraryInfo::location(QLibraryInfo::TranslationsPath) )) {
+        bool installed = qApp->installTranslator(translator);
+        qDebug() << "installTranslator()" << QLocale::system().name() << (installed ? "success" : "failed");
     } else {
-        qDebug() << "translation.load() failed - falling back to English";
+        qDebug() << "translation.load() failed " << QLocale::system().name() << " falling back to English";
+
         if (translator->load(QLatin1String("com.github.jmlich.geotagging_en_US")   , "./")) {
             qApp->installTranslator(translator);
         } else if (translator->load(QLatin1String("com.github.jmlich.geotagging_en_US"), QLibraryInfo::location(QLibraryInfo::TranslationsPath))) {
             qApp->installTranslator(translator);
         }
+
     }
 
     progressBar = NULL;
