@@ -2,6 +2,7 @@
   * Soubor s tridou GpsPoint reprezentujici bod trasy
   */
 
+#include <QDebug>
 #include "gpspoint.h"
 
 GpsPoint::GpsPoint() {
@@ -14,6 +15,8 @@ void GpsPoint::setTime(QString time_str) {
     QDateTime dt = QDateTime::fromString(time_str, Qt::ISODate);
     if(dt.isValid()) {
         *dateTime = dt;
+    } else {
+        qWarning() << "Cannot parse time_str " << time_str;
     }
 }
 
