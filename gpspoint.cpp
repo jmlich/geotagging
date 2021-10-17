@@ -11,12 +11,10 @@ GpsPoint::GpsPoint() {
 }
 
 void GpsPoint::setTime(QString time_str) {
-    QRegExp rx("(\\d\\d\\d\\d-\\d\\d-\\d\\d)T(\\d\\d:\\d\\d:\\d\\d)Z");
-    rx.indexIn(time_str, 0);
-
-    dateTime->setDate(QDate::fromString(rx.cap(1), "yyyy-MM-dd"));
-    dateTime->setTime(QTime::fromString(rx.cap(2), "hh:mm:ss"));
-
+    QDateTime dt = QDateTime::fromString(time_str, Qt::ISODate);
+    if(dt.isValid()) {
+        *dateTime = dt;
+    }
 }
 
 void GpsPoint::changeDateTime(int year, int month, int day, int seconds) {
