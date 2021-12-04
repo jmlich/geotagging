@@ -1,5 +1,5 @@
 Name:           com.github.jmlich.geotagging
-Version:        0.5.9
+Version:        0.6.0
 Release:        %(date +%Y%m%d%H)%{?dist}
 Summary:        Photography geotagging tool
 Group:          Applications/Internet
@@ -41,6 +41,10 @@ appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/*.appdata.xml
 %{_metainfodir}/%{name}.appdata.xml
 
 %changelog
+* Sat Dec 04 2021 Jozef Mlich <jmlich83@gmail.com> - 0.6.0-1
+- Spanish (Latin America) translation - thanks to YoViajo
+- fix of loading gpx with subsecond precision - thanks to Dmitry Saraev
+
 * Fri Sep 10 2021 Jozef Mlich <imlich@fit.vutbr.cz> - 0.5.9-1
 - French translations - thanks to LeJun
 - Danish translations - thanks to Erik 'Clicketyclick' Bachmann

@@ -37,6 +37,12 @@
   </keywords>
   <content_rating type="oars-1.1"/>
   <releases>
+    <release version="0.6.0" timestamp="1638616232">
+      <description>
+        <p>Spanish (Latin America) translation - thanks to YoViajo</p>
+        <p>fix of loading gpx with subsecond precision - thanks to Dmitry Saraev </p>
+      </description>
+    </release>
     <release version="0.5.9" timestamp="1631280861">
       <description>
         <p>French translations - thanks to LeJun</p>
