@@ -3,6 +3,7 @@
   */
 
 #include <QDebug>
+#include <QDateTime>
 #include "gpspoint.h"
 
 GpsPoint::GpsPoint() {
@@ -13,6 +14,7 @@ GpsPoint::GpsPoint() {
 
 void GpsPoint::setTime(QString time_str) {
     QDateTime dt = QDateTime::fromString(time_str, Qt::ISODate);
+    dt.setTimeSpec(Qt::LocalTime); // TODO fix working with time zones and remove this ugly hack
     if(dt.isValid()) {
         *dateTime = dt;
     } else {
