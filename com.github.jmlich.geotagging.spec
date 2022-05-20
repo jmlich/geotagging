@@ -20,7 +20,7 @@ BuildRequires:  git
 Photography geotagging tool
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q -n geotagging-master
 
 %build
 %cmake -DVERSION:STRING=%{version}
