@@ -26,8 +26,8 @@ jobs:
     - name: Download exiv2
       if: startsWith(matrix.os, 'windows')
       run: |
-        curl https://www.exiv2.org/builds/exiv2-0.27.3-2019msvc64.zip --output exiv2-0.27.3-2019msvc64.zip
-        7z x exiv2-0.27.3-2019msvc64.zip -oc:/
+        curl https://github.com/Exiv2/exiv2/releases/download/v0.27.5/exiv2-0.27.5-2019msvc64.zip
+        7z x exiv2-0.27.5-2019msvc64.zip -oc:/
 
       shell: cmd
 
@@ -38,11 +38,11 @@ jobs:
         call "%programfiles(x86)%\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
         mkdir build
         cd build
-        cmake -DCMAKE_PREFIX_PATH="C:\Qt\5.15.2\msvc2019_64" -Dexiv2_DIR="C:\exiv2-0.27.3-2019msvc64\lib\cmake\exiv2" -DCMAKE_GENERATOR_PLATFORM=x64 -DCMAKE_BUILD_TYPE=RELEASE -DDEPLOY_QT_LIBRARIES=ON -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON ..
+        cmake -DCMAKE_PREFIX_PATH="C:\Qt\5.15.2\msvc2019_64" -Dexiv2_DIR="C:\exiv2-0.27.5-2019msvc64\lib\cmake\exiv2" -DCMAKE_GENERATOR_PLATFORM=x64 -DCMAKE_BUILD_TYPE=RELEASE -DDEPLOY_QT_LIBRARIES=ON -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON ..
         cmake --build . --config Release
         ctest -C Release .
         cp *.qm ./Release
-        for /R C:\exiv2-0.27.3-2019msvc64 %%f in (*.dll) do copy %%f "%CD%\Release"
+        for /R C:\exiv2-0.27.5-2019msvc64 %%f in (*.dll) do copy %%f "%CD%\Release"
         for /R c:\Qt\Tools\OpenSSL %%f in (*.dll) do copy %%f "%CD%\Release"
       shell: cmd
 
