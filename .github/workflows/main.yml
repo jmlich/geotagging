@@ -26,7 +26,7 @@ jobs:
     - name: Download exiv2
       if: startsWith(matrix.os, 'windows')
       run: |
-        curl https://github.com/Exiv2/exiv2/releases/download/v0.27.5/exiv2-0.27.5-2019msvc64.zip --output exiv2-0.27.5-2019msvc64.zip
+        curl -L https://github.com/Exiv2/exiv2/releases/download/v0.27.5/exiv2-0.27.5-2019msvc64.zip --output exiv2-0.27.5-2019msvc64.zip
         7z x exiv2-0.27.5-2019msvc64.zip -oc:/
 
       shell: cmd
