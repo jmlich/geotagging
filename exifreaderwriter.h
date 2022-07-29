@@ -6,7 +6,6 @@
 #define EXIFREADERWRITER_H
 
 #include <QObject>
-#include <memory>
 #include <exiv2/exiv2.hpp>
 #include <QMessageBox>
 #include <QDateTime>
