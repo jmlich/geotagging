@@ -12,7 +12,7 @@ BuildRequires:  libappstream-glib
 BuildRequires:  exiv2-devel
 BuildRequires:  qt6-qtbase-devel
 BuildRequires:  qt6-qtwebchannel-devel
-BuildRequires:  qt6-linguist
+BuildRequires:  qt6-qttools-devel
 BuildRequires:  git
 
 %description
