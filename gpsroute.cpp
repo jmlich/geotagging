@@ -559,10 +559,7 @@ void GpsRoute::fillLabels() {
 }
 
 void GpsRoute::setGpsFormat(QAction *action) {
-
-    qDebug() << "FIXME: ambigious conversion from int to QChar" << action->data().toInt();
-    return; // FIXME
-//    formatHandler->formatGps = action->data().toInt();
+    formatHandler->formatGps = action->data().toString();
     double lat = segmentList.first()->first()->latitude;
     double lon = segmentList.first()->first()->longitude;
     this->child(3)->setText(1,formatHandler->gpsAllInFormat(lat,lon));
