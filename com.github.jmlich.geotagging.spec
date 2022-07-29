@@ -10,9 +10,8 @@ Source0:        https://github.com/jmlich/geotagging/archive/master.tar.gz#/%{na
 BuildRequires:  desktop-file-utils
 BuildRequires:  libappstream-glib
 BuildRequires:  exiv2-devel
-BuildRequires:  qt6-qtwebengine-devel
 BuildRequires:  qt6-qtbase-devel
-BuildRequires:  qt6-qtquickcontrols
+BuildRequires:  qt6-qtwebchannel-devel
 BuildRequires:  qt6-linguist
 BuildRequires:  git
 
