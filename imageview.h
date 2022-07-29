@@ -22,12 +22,14 @@ class ImageView : public QWidget {
     void resizeEvent( QResizeEvent *event );
     QSize currentSize;
 
+    double scaleFactor = 1.0;
+
 public:
     ImageView(QWidget *parent = 0);
     ~ImageView();
     //ImageView(QWidget *parent = 0,QImage *image = 0);
     void setImage(QString pictureName);
-   // void wheelEvent(QWheelEvent * event);
+    void wheelEvent(QWheelEvent * event);
     virtual QSize sizeHint() const;
 
 public slots:

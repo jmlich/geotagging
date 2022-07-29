@@ -98,26 +98,28 @@ void ImageView::resizeEvent( QResizeEvent *event ) {
     //scrollArea->checkScrollBars();
 }
 
-/*void ImageView::wheelEvent(QWheelEvent *event)
-{
-    event->accept();
-     QSize s;
-    if(event->delta() < 0)
-    {
-        qDebug() <<imageL->width() << imageL->height() ;
-        if(imageL->width() > 30 && imageL->height() > 30 )
-            s = QSize(imageL->width()* 0.90, imageL->height() * 0.90);
-        else
-            return;
 
+void ImageView::wheelEvent(QWheelEvent *event) {
+    if (event->modifiers() & Qt::ControlModifier) {
+        QSize s;
+        if(event->angleDelta().y() < 0) {
+            qDebug() <<imageL->width() << imageL->height() ;
+            if(imageL->width() > 30 && imageL->height() > 30 ) {
+                s = QSize(imageL->width()* 0.90, imageL->height() * 0.90);
+            } else {
+                return;
+            }
+
+        } else {
+            s = QSize(imageL->width()* 1.1, imageL->height() * 1.1);
+        }
+        qDebug() << s;
+        imageL->setPixmap(QPixmap::fromImage((img->scaled(s,Qt::KeepAspectRatio))));
+        imageL->resize(s);
+        event->accept();
     }
-    else
-        s = QSize(imageL->width()* 1.1, imageL->height() * 1.1);
-    qDebug() << s;
-    imageL->setPixmap(QPixmap::fromImage((img->scaled(s,Qt::KeepAspectRatio))));
-    imageL->resize(s);
+}
 
-}*/
 
 void ImageView::changeImageSize(int delta) {
     if(delta < 0) {
