@@ -13,6 +13,7 @@ BuildRequires:  exiv2-devel
 BuildRequires:  qt6-qtbase-devel
 BuildRequires:  qt6-qtwebchannel-devel
 BuildRequires:  qt6-qttools-devel
+BuildRequires:  qt6-qtwebengine-devel
 BuildRequires:  git
 
 %description
