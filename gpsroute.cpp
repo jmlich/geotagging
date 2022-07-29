@@ -73,7 +73,7 @@ void GpsRoute::createLabels() {
     QHBoxLayout *layout = new QHBoxLayout;
     this->buttonWidget->setLayout(layout);
     layout->setSpacing(0);
-    layout->setMargin(0);
+    layout->setContentsMargins(0,0,0,0);
     layout->setAlignment(Qt::AlignLeft);
     layout->addWidget(bColor);
     layout->addWidget(spinBoxWidth);
@@ -121,7 +121,7 @@ void GpsRoute::retranslateUi() {
     this->child(4)->setText(1,formatHandler->gpsAllInFormat(lat,lon));
 
     this->child(5)->setText(0,tr("Total time"));
-    qulonglong sec = segmentList.last()->last()->dateTime->toTime_t() - segmentList.first()->first()->dateTime->toTime_t();
+    qulonglong sec = segmentList.last()->last()->dateTime->toSecsSinceEpoch() - segmentList.first()->first()->dateTime->toSecsSinceEpoch();
     QString days;
     days.setNum(sec / (24*60*60));
     sec = sec % (24*60*60);
@@ -149,9 +149,9 @@ double GpsRoute::countDistanceGps(double posFirst, double posSecond, double dist
 void GpsRoute::approximatePosition(ImageInfo *image ,GpsPoint *first, GpsPoint *second,
                                    double offset, int method, GpsPoint *before, GpsPoint *after)
 {
-    int imageTime = image->imageData->dateTime->addSecs(offset*3600).toTime_t();
+    int imageTime = image->imageData->dateTime->addSecs(offset*3600).toSecsSinceEpoch();
     if(method == 0) { //nejblizsi bod
-        if(imageTime-first->dateTime->toTime_t() < second->dateTime->toTime_t() - imageTime) { //blize k prvnimu
+        if(imageTime-first->dateTime->toSecsSinceEpoch() < second->dateTime->toSecsSinceEpoch() - imageTime) { //blize k prvnimu
             image->setGpsCandidates(first->latitude,
                                     first->longitude,
                                     first->ele,
@@ -165,8 +165,8 @@ void GpsRoute::approximatePosition(ImageInfo *image ,GpsPoint *first, GpsPoint *
                                     method);
         }
     } else if(method == 1) { //ze dvou okolnich bodu
-        int timeDist = second->dateTime->toTime_t() - first->dateTime->toTime_t();
-        int timeDistPoint = imageTime - first->dateTime->toTime_t();
+        int timeDist = second->dateTime->toSecsSinceEpoch() - first->dateTime->toSecsSinceEpoch();
+        int timeDistPoint = imageTime - first->dateTime->toSecsSinceEpoch();
         double distProc = static_cast<double>(timeDistPoint) / static_cast<double>(timeDist);
         double lat = countDistanceGps(first->latitude, second->latitude, distProc);
         double lon = countDistanceGps(first->longitude, second->longitude, distProc);
@@ -180,10 +180,10 @@ void GpsRoute::approximatePosition(ImageInfo *image ,GpsPoint *first, GpsPoint *
     } else if(method == 2) {
         double v1tmp = -1;
         double v2tmp = -1;
-        double t1 = first->dateTime->toTime_t();
-        double t2 = second->dateTime->toTime_t();
+        double t1 = first->dateTime->toSecsSinceEpoch();
+        double t2 = second->dateTime->toSecsSinceEpoch();
         if (before != NULL) {
-            uint deltaT1 = t1 - before->dateTime->toTime_t();
+            uint deltaT1 = t1 - before->dateTime->toSecsSinceEpoch();
             double deltaS1 = countDistance(before->latitude,before->longitude, first->latitude, first->longitude);
             v1tmp = deltaS1 / deltaT1;
         } else {
@@ -193,7 +193,7 @@ void GpsRoute::approximatePosition(ImageInfo *image ,GpsPoint *first, GpsPoint *
         }
 
         if(after != NULL) {
-            uint deltaT2 = after->dateTime->toTime_t() - t2;
+            uint deltaT2 = after->dateTime->toSecsSinceEpoch() - t2;
             double deltaS2 = countDistance(second->latitude,second->longitude, after->latitude, after->longitude);
             v2tmp = deltaS2 / deltaT2;
         } else {
@@ -211,9 +211,6 @@ void GpsRoute::approximatePosition(ImageInfo *image ,GpsPoint *first, GpsPoint *
         double deltaS = countDistance(first->latitude, first->longitude, second->latitude, second->longitude);
         uint deltaT = t2-t1;
         //////////
-        if(deltaT==0) {
-            deltaT = 0.00001;
-        }
         if(deltaS==0) {
             deltaS = 0.00001;
         }
@@ -221,7 +218,7 @@ void GpsRoute::approximatePosition(ImageInfo *image ,GpsPoint *first, GpsPoint *
 
         double v1 = (2*deltaS)/(deltaT * (1+p));
         double v2 = v1 * p;
-        uint t = imageTime - first->dateTime->toTime_t();
+        uint t = imageTime - first->dateTime->toSecsSinceEpoch();
         double a = (v2-v1)/(deltaT);
         double s = v1 * t + 0.5 * a * pow(t,2);
 
@@ -240,7 +237,7 @@ void GpsRoute::approximatePosition(ImageInfo *image ,GpsPoint *first, GpsPoint *
 
 bool GpsRoute::setGpsInImage(ImageInfo *image,  double offset, uint maxDistM, uint maxDistTime,int method, bool isJoinSeg) {
     QDateTime time = image->imageData->dateTime->addSecs(offset*3600);
-    uint time_t = time.toTime_t();
+    uint time_t = time.toSecsSinceEpoch();
 
     for(int i=0; i<segmentList.length(); i++) {
         if(time_t < segmentList.at(i)->startTime()) {
@@ -250,8 +247,8 @@ bool GpsRoute::setGpsInImage(ImageInfo *image,  double offset, uint maxDistM, ui
 
             if (i > 0) {   //neni to prvni segment
                 firstPoint = segmentList.at(i-1)->last();
-                uint firstTime = firstPoint->dateTime->toTime_t();
-                uint secondTime = secondPoint->dateTime->toTime_t();
+                uint firstTime = firstPoint->dateTime->toSecsSinceEpoch();
+                uint secondTime = secondPoint->dateTime->toSecsSinceEpoch();
 
                 //testuju jestli muzu spojit segmenty
                 if(isJoinSeg
@@ -299,7 +296,7 @@ bool GpsRoute::setGpsInImage(ImageInfo *image,  double offset, uint maxDistM, ui
 
 bool GpsRoute::imageInSegment(ImageInfo *image,  double offset, GpsSegment *segment, int method, GpsSegment *segBefore, GpsSegment *segAfter) {
     QDateTime time = image->imageData->dateTime->addSecs(offset*3600);
-    uint time_t = time.toTime_t();
+    uint time_t = time.toSecsSinceEpoch();
 
     image->setCandidateIsCorrect(1);
     image->setCandidateRouteName(QFileInfo(this->name).fileName());
@@ -308,8 +305,8 @@ bool GpsRoute::imageInSegment(ImageInfo *image,  double offset, GpsSegment *segm
     for(int i = 0, j = segment->count()-1; j-i > 0;) {
         k = (i+j)/2;
 
-        if(time_t >= segment->at(k)->dateTime->toTime_t()) {
-            if(time_t < segment->at(k + 1)->dateTime->toTime_t() ) { //nasla sem dva okolni body
+        if(time_t >= segment->at(k)->dateTime->toSecsSinceEpoch()) {
+            if(time_t < segment->at(k + 1)->dateTime->toSecsSinceEpoch() ) { //nasla sem dva okolni body
                 break;
             } else {
                 i = k;
@@ -350,7 +347,7 @@ bool GpsRoute::loadFile(QString fileName) {
     xml->setDevice(data);
     xml->readNextStartElement();
 
-    if (xml->name() == "gpx"){  //je gpx soubor
+    if (xml->name() == QStringLiteral("gpx")){  //je gpx soubor
         int state = 0;
         GpsPoint *point = NULL;
         GpsPoint *lastPoint = NULL;
@@ -361,7 +358,7 @@ bool GpsRoute::loadFile(QString fileName) {
 
             switch (state) {
                 case 0: //neni nacten zacatek segmentu
-                    if (xml->isStartElement() &&  xml->name() == "trkseg") { //novy segment
+                    if (xml->isStartElement() &&  xml->name() == QStringLiteral("trkseg")) { //novy segment
                         currentSegment = new GpsSegment;
                         state = 1;
 
@@ -373,7 +370,7 @@ bool GpsRoute::loadFile(QString fileName) {
                     }
                 break;
                 case 1: //neni nacten bod
-                    if (xml->isStartElement() && (xml->name() == "trkpt")) { //novy bod
+                    if (xml->isStartElement() && (xml->name() == QStringLiteral("trkpt"))) { //novy bod
                         lastPoint = point;
                         point = new GpsPoint;
                         point->longitude = xml->attributes().value("lon").toString().toDouble();
@@ -394,7 +391,7 @@ bool GpsRoute::loadFile(QString fileName) {
 
                         state = 2;
 
-                    } else if (xml->isEndElement() && xml->name() == "trkseg") {   //konec segmentu
+                    } else if (xml->isEndElement() && xml->name() == QStringLiteral("trkseg")) {   //konec segmentu
                         state = 0;
 
                     //else if (xml->atEnd())
@@ -405,11 +402,11 @@ bool GpsRoute::loadFile(QString fileName) {
                 break;
 
                 case 2: //je nacten bod ale ne cas
-                    if (xml->isStartElement() && xml->name() == "time") {
+                    if (xml->isStartElement() && xml->name() == QStringLiteral("time")) {
                         state = 3;
-                    } else if (xml->isStartElement() && xml->name() == "ele") {
+                    } else if (xml->isStartElement() && xml->name() == QStringLiteral("ele")) {
                         state=4;
-                    } else if (xml->isEndElement() && (xml->name() == "trkpt")) {
+                    } else if (xml->isEndElement() && (xml->name() == QStringLiteral("trkpt"))) {
                         state = 1;
                     }
                 break;
@@ -426,14 +423,14 @@ bool GpsRoute::loadFile(QString fileName) {
                         }
                         currentSegment->append(point);
 
-                    } else if (xml->isEndElement() && xml->name() == "time") {
+                    } else if (xml->isEndElement() && xml->name() == QStringLiteral("time")) {
                         state = 2;
                     }
                 break;
                 case 4:
                     if (xml->isCharacters()) {
                         point->ele = xml->text().toString().toDouble();
-                    } else if (xml->isEndElement() && xml->name() == "ele") {
+                    } else if (xml->isEndElement() && xml->name() == QStringLiteral("ele")) {
                         state = 2;
                     }
                 break;
@@ -505,7 +502,7 @@ void GpsRoute::fillLabels() {
         lon = segmentList.last()->last()->longitude;
         twtmp->setText(1,formatHandler->gpsAllInFormat(lat,lon));
 
-        qulonglong sec = segmentList.last()->last()->dateTime->toTime_t() - segmentList.first()->first()->dateTime->toTime_t();
+        qulonglong sec = segmentList.last()->last()->dateTime->toSecsSinceEpoch() - segmentList.first()->first()->dateTime->toSecsSinceEpoch();
 
         twtmp = new QTreeWidgetItem(this);
         twtmp->setText(0,tr("Total time"));
@@ -563,7 +560,9 @@ void GpsRoute::fillLabels() {
 
 void GpsRoute::setGpsFormat(QAction *action) {
 
-    formatHandler->formatGps = action->data().toInt();
+    qDebug() << "FIXME: ambigious conversion from int to QChar" << action->data().toInt();
+    return; // FIXME
+//    formatHandler->formatGps = action->data().toInt();
     double lat = segmentList.first()->first()->latitude;
     double lon = segmentList.first()->first()->longitude;
     this->child(3)->setText(1,formatHandler->gpsAllInFormat(lat,lon));
@@ -579,12 +578,12 @@ void GpsRoute::setDateTimeFormat(QAction *action) {
     this->child(2)->setText(1,segmentList.last()->last()->dateTime->toString(formatHandler->formatDateTime) +" UTC");
 }
 
-uint GpsRoute::startTime() {
-    return segmentList.first()->first()->dateTime->toTime_t();
+qint64 GpsRoute::startTime() {
+    return segmentList.first()->first()->dateTime->toSecsSinceEpoch();
 }
 
-uint GpsRoute::endTime() {
-    return segmentList.last()->last()->dateTime->toTime_t();
+qint64 GpsRoute::endTime() {
+    return segmentList.last()->last()->dateTime->toSecsSinceEpoch();
 }
 
 double GpsRoute::startLat() {

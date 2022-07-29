@@ -15,8 +15,8 @@ class GpsSegment : public QList<GpsPoint *>
     //Q_OBJECT
 public:
     explicit GpsSegment();
-    uint startTime();
-    uint endTime();
+    qint64 startTime();
+    qint64 endTime();
     double startLat();
     double startLon();
     double endLat();

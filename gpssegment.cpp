@@ -9,12 +9,12 @@ GpsSegment::GpsSegment()
 {
 }
 
-uint GpsSegment::startTime() {
-    return first()->dateTime->toTime_t();
+qint64 GpsSegment::startTime() {
+    return first()->dateTime->toSecsSinceEpoch();
 }
 
-uint GpsSegment::endTime() {
-    return last()->dateTime->toTime_t();
+qint64 GpsSegment::endTime() {
+    return last()->dateTime->toSecsSinceEpoch();
 }
 
 double GpsSegment::startLat() {

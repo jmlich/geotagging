@@ -57,8 +57,8 @@ public:
     double maxLon;
     double routeLenght;
 
-    uint startTime();
-    uint endTime();
+    qint64 startTime();
+    qint64 endTime();
     double startLat();
     double startLon();
     double endLat();

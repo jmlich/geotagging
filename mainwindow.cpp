@@ -5,6 +5,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QMimeData>
+#include <QActionGroup>
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -16,7 +17,7 @@ MainWindow::MainWindow(QWidget *parent) :
     if (translator->load(QLocale(), QLatin1String("com.github.jmlich.geotagging"), QLatin1String("_"), "./")) {
         bool installed = qApp->installTranslator(translator);
         qDebug() << "installTranslator()" << QLocale::system().name() << (installed ? "success" : "failed");
-    } else if (translator->load(QLocale(), QLatin1String("com.github.jmlich.geotagging"), QLatin1String("_"), QLibraryInfo::location(QLibraryInfo::TranslationsPath) )) {
+    } else if (translator->load(QLocale(), QLatin1String("com.github.jmlich.geotagging"), QLatin1String("_"), QLibraryInfo::path(QLibraryInfo::TranslationsPath) )) {
         bool installed = qApp->installTranslator(translator);
         qDebug() << "installTranslator()" << QLocale::system().name() << (installed ? "success" : "failed");
     } else {
@@ -24,7 +25,7 @@ MainWindow::MainWindow(QWidget *parent) :
 
         if (translator->load(QLatin1String("com.github.jmlich.geotagging_en_US")   , "./")) {
             qApp->installTranslator(translator);
-        } else if (translator->load(QLatin1String("com.github.jmlich.geotagging_en_US"), QLibraryInfo::location(QLibraryInfo::TranslationsPath))) {
+        } else if (translator->load(QLatin1String("com.github.jmlich.geotagging_en_US"), QLibraryInfo::path(QLibraryInfo::TranslationsPath))) {
             qApp->installTranslator(translator);
         }
 

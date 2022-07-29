@@ -271,7 +271,7 @@ void ImageInfo::setCandidateRouteName(QString routeN) {
 
 void ImageInfo::changeDateTime(int timeShift, bool isSaveTime) {
     if (imageData->dateTime->isNull()
-            || imageData->dateTime->toTime_t() == QDateTime::fromString(QString("0000:00:00 00:00:00"), "yyyy:MM:dd hh:mm:ss").toTime_t()) {
+            || imageData->dateTime->toSecsSinceEpoch() == QDateTime::fromString(QString("0000:00:00 00:00:00"), "yyyy:MM:dd hh:mm:ss").toSecsSinceEpoch()) {
         return;
     }
 
@@ -403,7 +403,8 @@ void ImageInfo::checkMarkerClickedId(int iid) {
 }
 
 int ImageInfo::actualWidth() {
-    return imageSizeHint().width() + ui->frameImage->layout()->margin() * 2;
+    QMargins margins = ui->frameImage->layout()->contentsMargins();
+    return imageSizeHint().width() + margins.left() + margins.right();
 }
 
 
@@ -449,7 +450,7 @@ void ImageInfo::saveGps() {
 
 void ImageInfo::saveDateTime() {
     if (!imageData->dateTime->isNull()
-            && imageData->dateTime->toTime_t() != QDateTime::fromString(QString("0000:00:00 00:00:00"), "yyyy:MM:dd hh:mm:ss").toTime_t()) {
+            && imageData->dateTime->toSecsSinceEpoch() != QDateTime::fromString(QString("0000:00:00 00:00:00"), "yyyy:MM:dd hh:mm:ss").toSecsSinceEpoch()) {
         emit saveExifTime(imageData->pictureName, imageData->dateTime);
         imageData->isDateTimeSaved = 1;
         imageData->lastDateTimeSaved = *imageData->dateTime;
@@ -460,7 +461,7 @@ void ImageInfo::saveDateTime() {
 void ImageInfo::setOrigDateTime (bool isSaveTime) {
     *imageData->dateTime = imageData->originalDateTime;
     imageData->isDateTimeChanged = 0;
-    if(imageData->dateTime->toTime_t() != imageData->lastDateTimeSaved.toTime_t()) {
+    if(imageData->dateTime->toSecsSinceEpoch() != imageData->lastDateTimeSaved.toSecsSinceEpoch()) {
         if(isSaveTime) {
             saveDateTime();
         } else {

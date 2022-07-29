@@ -37,8 +37,8 @@ void ChangeDateTime::showEvent(QShowEvent *) {
 
 
 void ChangeDateTime::processDateTimeChange(QDateTime) {
-    int secChange =- (ui->dateTimeEdit->dateTime().toTime_t()
-                    - QDateTime::currentDateTime().toTime_t());
+    int secChange =- (ui->dateTimeEdit->dateTime().toSecsSinceEpoch()
+                    - QDateTime::currentDateTime().toSecsSinceEpoch());
     if(-1 < secChange && secChange <= 1) {
         return;
     }

@@ -36,7 +36,7 @@ int GpsRoutesList::setGpsInImage(ImageInfo *image, double offset, QList<int> rou
         return 0;
     }
     QDateTime time = image->imageData->dateTime->addSecs(offset*3600);
-    uint time_t = time.toTime_t();
+    qint64 time_t = time.toSecsSinceEpoch();
 
     int lastI = -1;
     for (int i = 0; i < length(); i++) {  //prochazim seznam tras
@@ -54,8 +54,8 @@ int GpsRoutesList::setGpsInImage(ImageInfo *image, double offset, QList<int> rou
                 if(routesCheckedList.at(j)) {
                     firstPoint = at(j)->segmentList.last()->last();
                     //uprostred
-                    uint firstTime = firstPoint->dateTime->toTime_t();
-                    uint secondTime = secondPoint->dateTime->toTime_t();
+                    qint64 firstTime = firstPoint->dateTime->toSecsSinceEpoch();
+                    qint64 secondTime = secondPoint->dateTime->toSecsSinceEpoch();
 
                     //priradim nejblizsimu bodu
                     image->setCandidateIsCorrect(0);

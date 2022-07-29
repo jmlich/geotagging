@@ -4,6 +4,7 @@
 
 #include "exifreaderwriter.h"
 #include <QDebug>
+#include <QRegularExpression>
 
 ExifReaderWriter::ExifReaderWriter(QObject *parent) :
         QObject(parent)
@@ -35,9 +36,9 @@ double ExifReaderWriter::readAltitude(QString str, Exiv2::ExifData &exifData) {
     QString altStr = readExifItem(exifData,str.toStdString());
     QString altStrRef = readExifItem(exifData,str.toStdString() + "Ref");
     if(!altStr.isEmpty()) {
-        QRegExp rx("^(\\d+)/(\\d+)$");
-        rx.indexIn(altStr, 0);
-        double alt = rx.cap(1).toDouble()/rx.cap(2).toDouble();
+        QRegularExpression rx("^(\\d+)/(\\d+)$");
+        QRegularExpressionMatch match = rx.match(altStr);
+        double alt = match.captured(1).toDouble()/match.captured(2).toDouble();
         if(altStrRef == "1") {
             alt *= -1;
         }
@@ -54,13 +55,13 @@ double ExifReaderWriter::readLatLon(QString str, Exiv2::ExifData &exifData) {
 
     if(!gpsStr.isEmpty()) {
         //format stupne/jmenovatel minuty/jmenovatel sekundy/jmenovatel
-        QRegExp rx("^(\\d+)/(\\d+) (\\d+)/(\\d+) (\\d+)/(\\d+)$");
-        rx.indexIn(gpsStr, 0);
+        QRegularExpression rx("^(\\d+)/(\\d+) (\\d+)/(\\d+) (\\d+)/(\\d+)$");
+        QRegularExpressionMatch match = rx.match(gpsStr);
         double gps =
-                (rx.cap(1).toDouble()/rx.cap(2).toDouble())
+                (match.captured(1).toDouble()/match.captured(2).toDouble())
                 + (
-                    (rx.cap(3).toDouble()/rx.cap(4).toDouble()) +
-                    (rx.cap(5).toDouble()/rx.cap(6).toDouble())/60
+                    (match.captured(3).toDouble()/match.captured(4).toDouble()) +
+                    (match.captured(5).toDouble()/match.captured(6).toDouble())/60
                     ) / 60;
         if (gpsStrRef == "S" || gpsStrRef == "W") {
             gps *= -1;

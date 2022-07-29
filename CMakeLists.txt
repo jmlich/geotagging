@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.8)
+cmake_minimum_required(VERSION 3.16)
 
 project(com.github.jmlich.geotagging LANGUAGES CXX)
 
@@ -8,7 +8,7 @@ set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 
-set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_VERBOSE_MAKEFILE ON)
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
@@ -32,7 +32,7 @@ set(VERSION "${GIT_VERSION}" CACHE STRING "Manaly defined version string")
 
 add_definitions( -DGIT_VERSION="${VERSION}" )
 
-find_package(Qt5 COMPONENTS Core Gui Network Widgets WebEngineWidgets WebChannel LinguistTools REQUIRED)
+find_package(Qt6 COMPONENTS Core Gui Network Widgets WebEngineWidgets WebChannel LinguistTools REQUIRED)
 
 file(GLOB TS_FILES translation/*.ts)
 
@@ -81,11 +81,11 @@ add_definitions(-DQUICK_TEST_SOURCE_DIR="${CMAKE_CURRENT_SOURCE_DIR}")
 
 
 
-QT5_ADD_TRANSLATION(QM_FILES ${TS_FILES})
+QT6_ADD_TRANSLATION(QM_FILES ${TS_FILES})
 add_custom_target(translations DEPENDS ${QM_FILES})
 add_dependencies(com.github.jmlich.geotagging translations)
 
-QT5_CREATE_TRANSLATION(QT_FILES "${CMAKE_SOURCE_DIR}"
+QT6_CREATE_TRANSLATION(QT_FILES "${CMAKE_SOURCE_DIR}"
     OPTIONS "-no-obsolete")
 
 install(FILES ${QM_FILES}
@@ -111,7 +111,7 @@ install(TARGETS com.github.jmlich.geotagging RUNTIME
 target_compile_definitions(com.github.jmlich.geotagging
   PRIVATE $<$<OR:$<CONFIG:Debug>,$<CONFIG:RelWithDebInfo>>:QT_QML_DEBUG>)
 target_link_libraries(com.github.jmlich.geotagging
-  PRIVATE Qt5::Core Qt5::Gui Qt5::Network Qt5::Widgets Qt5::WebEngineWidgets Qt5::WebChannel exiv2lib)
+  PRIVATE Qt6::Core Qt6::Gui Qt6::Network Qt6::Widgets Qt6::WebEngineWidgets Qt6::WebChannel exiv2lib)
 
 
 option(DEPLOY_QT_LIBRARIES "Deploy Qt libraries to executable path" OFF)

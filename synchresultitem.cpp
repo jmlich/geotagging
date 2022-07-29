@@ -24,7 +24,7 @@ SynchResultItem::SynchResultItem(ImageInfo *image,QString cOk, QString cFailed, 
     QWidget *w = new QWidget;
     w->setLayout(new QHBoxLayout);
     w->layout()->setSpacing(0);
-    w->layout()->setMargin(1);
+    w->layout()->setContentsMargins(1,1,1,1);
     w->layout()->setAlignment(Qt::AlignLeft);
     w->layout()->addWidget(checkBox);
     w->layout()->addWidget(l);
@@ -32,7 +32,7 @@ SynchResultItem::SynchResultItem(ImageInfo *image,QString cOk, QString cFailed, 
 
 
     if(image->imageData->dateTime->isNull()
-            || image->imageData->dateTime->toTime_t() == QDateTime::fromString(QString("0000:00:00 00:00:00"), "yyyy:MM:dd hh:mm:ss").toTime_t()) {
+            || image->imageData->dateTime->toSecsSinceEpoch() == QDateTime::fromString(QString("0000:00:00 00:00:00"), "yyyy:MM:dd hh:mm:ss").toSecsSinceEpoch()) {
         //neni datum ve fotce
         this->setText(1,"-");
         this->setText(2,"-");
@@ -51,7 +51,7 @@ SynchResultItem::SynchResultItem(ImageInfo *image,QString cOk, QString cFailed, 
         if(image->approxMethod == 0) {   //nejblizsi bod
 
             this->setText(3,tr("nearest point (") + image->candidatePointTime->toString("dd.MM.yyyy hh:mm:ss") + ")");
-            timeDiff = image->imageData->dateTime->toTime_t()- image->candidatePointTime->toTime_t();
+            timeDiff = image->imageData->dateTime->toSecsSinceEpoch()- image->candidatePointTime->toSecsSinceEpoch();
             char sign = '+';
             if (timeDiff < 0) {
                 timeDiff *= -1;
