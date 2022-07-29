@@ -38,8 +38,11 @@ jobs:
         mkdir build
         cd build
         cmake -DCMAKE_PREFIX_PATH="C:\Qt\6.3.1\msvc2019_64" -Dexiv2_DIR="C:\exiv2-0.27.5-2019msvc64\lib\cmake\exiv2" -DCMAKE_GENERATOR_PLATFORM=x64 -DCMAKE_BUILD_TYPE=RELEASE -DDEPLOY_QT_LIBRARIES=ON -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON ..
+        if %errorlevel% neq 0 exit /b %errorlevel%
         cmake --build . --config Release
+        if %errorlevel% neq 0 exit /b %errorlevel%
         ctest -C Release .
+        if %errorlevel% neq 0 exit /b %errorlevel%
         cp *.qm ./Release
         for /R C:\exiv2-0.27.5-2019msvc64 %%f in (*.dll) do copy %%f "%CD%\Release"
         for /R c:\Qt\Tools\OpenSSL %%f in (*.dll) do copy %%f "%CD%\Release"
