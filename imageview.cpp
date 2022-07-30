@@ -135,3 +135,9 @@ void ImageView::changeImageSize(int delta) {
     imageL->setPixmap(QPixmap::fromImage((img->scaled(currentSize,Qt::KeepAspectRatio))));
     scrollArea->setWidget(imageL);
 }
+
+void ImageView::keyPressEvent(QKeyEvent *ev) {
+    if (ev->key() == Qt::Key_Escape) {
+        this->close();
+    }
+}

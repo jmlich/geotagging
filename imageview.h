@@ -34,7 +34,7 @@ public:
 
 public slots:
     void changeImageSize(int delta);
-
+    void keyPressEvent(QKeyEvent *e);
 };
 
 #endif // IMAGEVIEW_H
