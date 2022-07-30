@@ -12,7 +12,6 @@ set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_VERBOSE_MAKEFILE ON)
 set(CMAKE_MODULE_PATH "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
-add_compile_definitions(_HAS_AUTO_PTR_ETC=1)
 
 include(GNUInstallDirs)
 include(FeatureSummary)
@@ -130,6 +129,7 @@ endif()
 
 # generate proper GUI program on specified platform
 if(WIN32) # Check if we are on Windows
+    add_compile_definitions(_HAS_AUTO_PTR_ETC=1)
     if(MSVC) # Check if we are using the Visual Studio compiler
 	set_target_properties(${PROJECT_NAME} PROPERTIES
 	    WIN32_EXECUTABLE YES
