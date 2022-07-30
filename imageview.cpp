@@ -31,6 +31,7 @@ QSize ImageView::sizeHint() const
 
 void ImageView::setImage(QString pictureName) {
 
+    this->setWindowTitle(pictureName);
     img = new QImage(pictureName);
     if(img->isNull()){
         //img je null
