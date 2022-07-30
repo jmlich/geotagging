@@ -4,6 +4,7 @@
   */
 
 #include <QDebug>
+#include <QScroller>
 #include "imageview.h"
 
 ImageView::ImageView(QWidget *parent):
@@ -13,6 +14,7 @@ ImageView::ImageView(QWidget *parent):
     scrollArea = new ScrollArea;
     this->setLayout(new QHBoxLayout);
     connect(scrollArea, SIGNAL(changeSize(int)), this, SLOT(changeImageSize(int)));
+    QScroller::grabGesture(scrollArea, QScroller::LeftMouseButtonGesture);
 
     this->layout()->setContentsMargins(0,0,0,0);
     this->layout()->addWidget(scrollArea);
