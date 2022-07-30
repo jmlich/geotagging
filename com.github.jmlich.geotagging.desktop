@@ -1,6 +1,5 @@
 [Desktop Entry]
 Name=Geotagging
-Name[en_US]=Geotagging
 Comment=Photography geotagging tool
 GenericName=geotagging
 Exec=com.github.jmlich.geotagging %u
@@ -9,3 +8,10 @@ Type=Application
 Icon=com.github.jmlich.geotagging
 Categories=Graphics;Photography;Maps
 StartupNotify=true
+Name[en_US]=Geotagging
+Name[da_DK]=Geotagging
+Name[en_US]=Geotagging
+Name[cs_CZ]=Geotagging
+Name[es_419]=Geoetiquetado
+Name[fr]=Géomarquage
+Name[it_IT]=Geotagging

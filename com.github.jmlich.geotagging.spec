@@ -1,5 +1,5 @@
 Name:           com.github.jmlich.geotagging
-Version:        0.6.1
+Version:        0.7.0
 Release:        %(date +%Y%m%d%H)%{?dist}
 Summary:        Photography geotagging tool
 Group:          Applications/Internet
@@ -41,6 +41,10 @@ appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/*.appdata.xml
 %{_metainfodir}/%{name}.appdata.xml
 
 %changelog
+* Sat Jul 30 2022 Jozef Mlich <jmlich83@gmail.com> - 0.7.0-1
+- move to qt6, updated jquery and leaflet
+- added Italian translation thanks to Daniele Albrizio
+
 * Sat Dec 04 2021 Jozef Mlich <jmlich83@gmail.com> - 0.6.1-1
 - fix time zone handling while parsing of GPX
 
