@@ -591,8 +591,8 @@
     </message>
     <message>
         <location filename="../imageinfo.cpp" line="219"/>
-        <source>%1</source>
-        <translation>%1m</translation>
+        <source>%1°</source>
+        <translation>%1°</translation>
     </message>
     <message>
         <location filename="../imageinfo.cpp" line="229"/>
