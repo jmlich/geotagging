@@ -255,6 +255,22 @@ void MapWidget::changeMap(int mapI) {
     mapView->page()->runJavaScript(scriptStr.join("\n"), [](const QVariant &result){ qDebug() << result.toString(); });
 }
 
+
+void MapWidget::addObjectMarker(int id, double lat, double lon) {
+    QStringList scriptStr;
+    scriptStr << QString("addObjectMarker(%1, %2, %3, %4); centerInBounds(1,0);")
+                 .arg(id)
+                 .arg(markersVisible)
+                 .arg(QString::number(lat, 'f', 10))
+                 .arg(QString::number(lon, 'f', 10));
+
+    if(!loadIsFinished) {
+         scriptsToRun << scriptStr.join("\n");
+    } else {
+        mapView->page()->runJavaScript(scriptStr.join("\n"), [](const QVariant &result){ qDebug() << result.toString(); });
+    }
+}
+
 void MapWidget::addMarker(int id, double lat, double lon) {
     QStringList scriptStr;
     scriptStr << QString("addMarker(%1, %2, %3, %4); centerInBounds(1,0);")

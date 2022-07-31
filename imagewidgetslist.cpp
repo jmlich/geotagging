@@ -22,6 +22,7 @@ void ImageWidgetsList::addImage(ImageInfo *imageWidget) {
     this->append(imageWidget);
 
     connect( imageWidget, SIGNAL(mapAddMarker(int,double,double)), map, SLOT(addMarker(int,double,double)));
+    connect( imageWidget, SIGNAL(mapAddObjectMarker(int,double,double)), map, SLOT(addObjectMarker(int,double,double)));
 
     connect( imageWidget, SIGNAL(deleteMarker(int)), map, SLOT(deleteMarker(int)));
     connect( imageWidget, SIGNAL(selected(int, bool)), map, SLOT(markerSelected(int,bool)));

@@ -385,6 +385,7 @@ void ImageInfo::setLabels() {
     resizeWidget(iconSize);
     if(imageData->isGps) {
         emit mapAddMarker(imageData->id, imageData->latitude, imageData->longitude);
+        emit mapAddObjectMarker(imageData->id, imageData->objLatitude, imageData->objLongitude);
     }
     markerLabel->setVisible(imageData->isGps);
 }
@@ -452,6 +453,7 @@ void ImageInfo::saveNewData(bool isSaveExif) {
         imageData->gpsSource = 2;
         imageData->isGps = 1;
         emit mapAddMarker(imageData->id, imageData->latitude, imageData->longitude);
+        // FIXME mapAddObjectMarker()s
         //////////
 
         if (isSaveExif) {

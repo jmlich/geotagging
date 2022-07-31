@@ -29,6 +29,7 @@
         <file>js/images/marker-icon-2x.png</file>
         <file>js/images/marker-icon-gold.png</file>
         <file>js/images/marker-icon-red.png</file>
+        <file>js/images/marker-icon-green.png</file>
         <file>js/images/marker-shadow.png</file>
         <file>LICENSE</file>
     </qresource>

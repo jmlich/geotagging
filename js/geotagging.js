@@ -91,12 +91,15 @@ var overlayMaps = {
 
 var mapWidget;
 var map;
-var markers = [];
+var cameraMarkers = [];
+var objectMarkers = [];
+var fowMarkers = [];
 var routes = [];
 var joinedSegments = [];
 var clickListener;
 var yellowMarker;
 var defaultMarker;
+var greenMarker;
 var elevator;
 var lastSelected = -1;
 
@@ -136,11 +139,19 @@ function initialize() {
                                popupAnchor: [1, -34],
                                shadowSize: [41, 41],
                            });
+    greenMarker = L.icon({
+                               iconUrl: "qrc:///js/images/marker-icon-green.png",
+                               shadowUrl: "qrc:///js/images/marker-shadow.png",
+                               iconSize: [25, 41],
+                               iconAnchor: [12, 41],
+                               popupAnchor: [1, -34],
+                               shadowSize: [41, 41],
+                           });
 
     map.on('mousemove', function (e) {
         if (lastSelected !== -1) {
             var mouse_pos = e.latlng;
-            var marker_pos = markers[lastSelected].getLatLng();
+            var marker_pos = cameraMarkers[lastSelected].getLatLng();
             $("#distance").text( Math.round(marker_pos.distanceTo(mouse_pos)) + " m");
         } else {
             $("#distance").text("");
@@ -218,7 +229,6 @@ function setMapType(mapType) {
     return true;
 }
 
-
 function flipRelief(setVisible) {
     if (setVisible) {
         map.addLayer(hill);
@@ -232,15 +242,15 @@ function flipRelief(setVisible) {
 
 function setOldMarkerPosition(id) {
     console.log("setOldMarkerPosition("+id+")")
-    for (var i in markers) {
-        if (id === markers[i].options.id) {
-            var position = markers[i].options.oldPosition;
+    for (var i in cameraMarkers) {
+        if (id === cameraMarkers[i].options.id) {
+            var position = cameraMarkers[i].options.oldPosition;
             if (position === undefined) {
                 console.error("oldPosition is not defined")
                 continue;
             }
 
-            markers[i].setLatLng(position);
+            cameraMarkers[i].setLatLng(position);
             map.panTo(position)
         }
     }
@@ -248,11 +258,11 @@ function setOldMarkerPosition(id) {
 
 function setNewMarkerPosition(id) {
     console.log("setNewMarkerPosition (" + id +")")
-    for (var markerIdx in markers) {
-        if(id === markers[markerIdx].options.id){
-            var position = markers[markerIdx].getLatLng();
-            markers[markerIdx].options.oldPosition = position;
-            map.addLayer(markers[markerIdx]);
+    for (var markerIdx in cameraMarkers) {
+        if(id === cameraMarkers[markerIdx].options.id){
+            var position = cameraMarkers[markerIdx].getLatLng();
+            cameraMarkers[markerIdx].options.oldPosition = position;
+            map.addLayer(cameraMarkers[markerIdx]);
 
             ////////////////////////
 
@@ -298,22 +308,85 @@ function addNewMarkers(coord) {
 
 }
 
+function addObjectMarker(_id, _isVisible, lat, lon) {
+    console.log("addObjectMarker " + _id + _isVisible, lat, lon);
+
+    for (var i in objectMarkers) {
+        if (_id === objectMarkers[i].options.id){
+            if (lat < -90 || lat > 90 || lon < -180 || lon > 180) {
+                map.removeLayer(objectMarkers[i]);
+                objectMarkers.splice(i,1);
+                return;
+            }
+
+            objectMarkers[i].setLatLng(location);
+            objectMarkers[i].options.oldPosition = location;
+            if (_isVisible) {
+                map.addLayer(objectMarkers[i]);
+            }
+            //centerInBounds(1,0);
+            return;
+        }
+    }
+
+    if (lat < -90 || lat > 90 || lon < -180 || lon > 180) {
+        console.log("Marker " + _id + " out of bounds");
+        return;
+    }
+
+    var marker = L.marker([lat, lon], {
+                              draggable: true,
+                              icon: greenMarker,
+                              id: _id,
+                              title: _id,
+                              oldPosition: [lat, lon],
+                          });
+
+    if (_isVisible) {
+        marker.addTo(map);
+    }
+//    marker.on('click', function(e) {
+//        mapWidget.markerClicked(marker.options.id)
+//    });
+//    marker.on('dragstart',function() { // 'dragstart'
+//        //        markerClicked(marker.options.id, false); // FIXME: doesn't work https://github.com/Leaflet/Leaflet/issues/4484
+//    });
+//    marker.on('dragend',function() { // 'dragend'
+//        //        console.log('markerDragged(' + marker.options.id+ ")");
+//        window.mapWidget.markerDragged(marker.options.id);
+//    });
+    objectMarkers.push(marker);
+
+
+}
+
+function deleteObjectMarker(id) {
+    for (var i in objectMarkers) {
+        if (id === objectMarkers[i].options.id){
+            map.removeLayer(objectMarkers[i]);
+            objectMarkers.splice(i,1);
+            break;
+        }
+    }
+}
+
+
 function addMarker(iid, isVisible, lat, lon) {
     console.log("addMarker("+iid+ ", "+ isVisible+ ","+lat+", "+lon+")")
     var location = L.latLng(lat, lon);
 
-    for (var i in markers) {
-        if (iid === markers[i].options.id){
+    for (var i in cameraMarkers) {
+        if (iid === cameraMarkers[i].options.id){
             if (lat < -90 || lat > 90 || lon < -180 || lon > 180) {
-                map.removeLayer(markers[i]);
-                markers.splice(i,1);
+                map.removeLayer(cameraMarkers[i]);
+                cameraMarkers.splice(i,1);
                 return;
             }
 
-            markers[i].setLatLng(location);
-            markers[i].options.oldPosition = location;
+            cameraMarkers[i].setLatLng(location);
+            cameraMarkers[i].options.oldPosition = location;
             if(isVisible) {
-                map.addLayer(markers[i]);
+                map.addLayer(cameraMarkers[i]);
             }
             //centerInBounds(1,0);
             return;
@@ -345,7 +418,7 @@ function addMarker(iid, isVisible, lat, lon) {
         //        console.log('markerDragged(' + marker.options.id+ ")");
         window.mapWidget.markerDragged(marker.options.id);
     });
-    markers.push(marker);
+    cameraMarkers.push(marker);
 
     //centerInBounds(1,0);
 }
@@ -429,14 +502,14 @@ function addRoute(routeCoordinatesList, iid, isVisible, var_color, isValid) {
 function centerInBounds(fitMarkers, fitRoutes) {
     console.log("centerInBounds(fitMarkers, fitRoutes)")
 
-    if ((markers.length === 0) && (routes.length === 0)) {
+    if ((cameraMarkers.length === 0) && (routes.length === 0)) {
         return;
     }
 
     var bounds = L.latLngBounds();
     if (fitMarkers) {
-        for (i in markers) {
-            bounds.extend(markers[i].getLatLng());
+        for (i in cameraMarkers) {
+            bounds.extend(cameraMarkers[i].getLatLng());
         }
     }
 
@@ -455,43 +528,43 @@ function markerSelected(isSelected, i, markersVisible) {
     console.log("markerSelected("+isSelected+", "+i+", "+markersVisible+")")
     if (isSelected) {
         lastSelected = i;
-        map.panTo(markers[i].getLatLng());
-        markers[i].setIcon(yellowMarker);
-        markers[i].setZIndexOffset(1);
+        map.panTo(cameraMarkers[i].getLatLng());
+        cameraMarkers[i].setIcon(yellowMarker);
+        cameraMarkers[i].setZIndexOffset(1);
         if (!markersVisible) {
-            map.addLayer(markers[i]);
+            map.addLayer(cameraMarkers[i]);
         }
     } else {
-        markers[i].setIcon(defaultMarker);
-        markers[i].setZIndexOffset(0);
+        cameraMarkers[i].setIcon(defaultMarker);
+        cameraMarkers[i].setZIndexOffset(0);
         if (!markersVisible) {
-            map.removeLayer(markers[i]);
+            map.removeLayer(cameraMarkers[i]);
         }
     }
 }
 
 function markerClicked(id, isCtrl) {
     console.log("markerClicked("+id+", "+isCtrl+")")
-    for (var i in markers) {
-        if (id === markers[i].options.id){
+    for (var i in cameraMarkers) {
+        if (id === cameraMarkers[i].options.id){
             lastSelected = i;
 
-            markers[i].setIcon(yellowMarker);
-            markers[i].setZIndexOffset(1);
+            cameraMarkers[i].setIcon(yellowMarker);
+            cameraMarkers[i].setZIndexOffset(1);
         } else if(!isCtrl) {
-            markers[i].setIcon(defaultMarker);
-            markers[i].setZIndexOffset(0);
+            cameraMarkers[i].setIcon(defaultMarker);
+            cameraMarkers[i].setZIndexOffset(0);
         }
     }
 }
 
 function setMarkersVisibility(setVisible) {
-    for (var i in markers) {
+    for (var i in cameraMarkers) {
         if (setVisible) {
-            map.addLayer(markers[i]);
+            map.addLayer(cameraMarkers[i]);
         } else {
 //            if( markers[i].getIcon() === defaultMarker) {
-                map.removeLayer(markers[i]);
+                map.removeLayer(cameraMarkers[i]);
 //            }
         }
     }
@@ -509,10 +582,10 @@ function setRoutesVisibility(setVisible) {
 }
 
 function deleteMarker(id) {
-    for (var i in markers) {
-        if (id === markers[i].options.id){
-            map.removeLayer(markers[i]);
-            markers.splice(i,1);
+    for (var i in cameraMarkers) {
+        if (id === cameraMarkers[i].options.id){
+            map.removeLayer(cameraMarkers[i]);
+            cameraMarkers.splice(i,1);
             break;
         }
     }

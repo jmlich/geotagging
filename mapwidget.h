@@ -70,6 +70,7 @@ signals:
     void settingNewMarkerFinished();
 
 public slots:
+    void addObjectMarker(int id, double lat, double lon);
     void addMarker(int id, double lat, double lon);
     void addRoute(GpsRoute *route);
     void markerSelected(int id, bool s);
