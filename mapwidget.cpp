@@ -288,8 +288,8 @@ void MapWidget::addMarker(int id, double lat, double lon) {
 
 void MapWidget::markerSelected(int id, bool isSelected) {
     QStringList scriptStr;
-    scriptStr <<"for (i in markers) {"
-            <<    QString("if(%1 == -1 || %1==markers[i].options.id){").arg(id)
+    scriptStr <<"for (i in cameraMarkers) {"
+            <<    QString("if(%1 == -1 || %1==cameraMarkers[i].options.id){").arg(id)
             <<    QString("markerSelected(%1, i, %2);").arg(isSelected).arg(markersVisible)
             <<  " }"
             << " }";
@@ -322,6 +322,34 @@ void MapWidget::markerDragged(int id) {
         setMarkerLastPosition();
     }
 }
+
+void MapWidget::objectSelected(int id, bool isSelected) {
+    QStringList scriptStr;
+    scriptStr <<"for (i in objectMarkers) {"
+            <<    QString("if(%1 == -1 || %1==objectMarkers[i].options.id){").arg(id)
+            <<    QString("objectSelected(%1, i, %2);").arg(isSelected).arg(markersVisible)
+            <<  " }"
+            << " }";
+    qDebug() << scriptStr;
+    mapView->page()->runJavaScript(scriptStr.join("\n"), [](const QVariant &result){ qDebug() << result.toString(); });
+
+}
+
+void MapWidget::objectClicked(int id) {
+    QStringList scriptStr;
+    scriptStr << QString("objectClicked(%1, %2);").arg(id).arg((QApplication::keyboardModifiers() & Qt::ControlModifier));
+
+    mapView->page()->runJavaScript(scriptStr.join("\n"), [](const QVariant &result){ qDebug() << result.toString(); });
+//    emit mClicked(id, 0, 1); // FIXME
+
+}
+
+void MapWidget::objectDragged(int id) {
+    qDebug() << "objectDragged" << id;
+
+}
+
+
 void MapWidget::setNewGpsInImage() {
     qDebug() << "setNewGpsInImage" << idDragged;
     QString scriptStr = QString("setNewMarkerPosition(%1);").arg(idDragged);

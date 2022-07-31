@@ -102,6 +102,7 @@ var defaultMarker;
 var greenMarker;
 var elevator;
 var lastSelected = -1;
+var lastSelectedType = 0; // 0 marker, 1 object
 
 function initialize() {
 
@@ -272,7 +273,7 @@ function setNewMarkerPosition(id) {
 
         }
     }
-    //return [markers[markerIdx].position.lat(),markers[markerIdx].position.lng(), ele];
+    //return [cameraMarkers[markerIdx].position.lat(),cameraMarkers[markerIdx].position.lng(), ele];
 }
 
 
@@ -345,16 +346,16 @@ function addObjectMarker(_id, _isVisible, lat, lon) {
     if (_isVisible) {
         marker.addTo(map);
     }
-//    marker.on('click', function(e) {
-//        mapWidget.markerClicked(marker.options.id)
-//    });
+    marker.on('click', function(e) {
+        mapWidget.objectClicked(marker.options.id)
+    });
 //    marker.on('dragstart',function() { // 'dragstart'
 //        //        markerClicked(marker.options.id, false); // FIXME: doesn't work https://github.com/Leaflet/Leaflet/issues/4484
 //    });
-//    marker.on('dragend',function() { // 'dragend'
-//        //        console.log('markerDragged(' + marker.options.id+ ")");
-//        window.mapWidget.markerDragged(marker.options.id);
-//    });
+    marker.on('dragend',function() { // 'dragend'
+        //        console.log('markerDragged(' + marker.options.id+ ")");
+        window.mapWidget.objectDragged(marker.options.id);
+    });
     objectMarkers.push(marker);
 
 
@@ -524,8 +525,8 @@ function centerInBounds(fitMarkers, fitRoutes) {
     //map.panToBounds(bounds);
 }
 
-function markerSelected(isSelected, i, markersVisible) {
-    console.log("markerSelected("+isSelected+", "+i+", "+markersVisible+")")
+function markerOrObjectSelected(selType, isSelected, i, markersVisible) {
+
     if (isSelected) {
         lastSelected = i;
         map.panTo(cameraMarkers[i].getLatLng());
@@ -541,13 +542,20 @@ function markerSelected(isSelected, i, markersVisible) {
             map.removeLayer(cameraMarkers[i]);
         }
     }
+
 }
 
-function markerClicked(id, isCtrl) {
-    console.log("markerClicked("+id+", "+isCtrl+")")
+function markerSelected(isSelected, i, markersVisible) {
+    console.log("markerSelected("+isSelected+", "+i+", "+markersVisible+")")
+    markerOrObjectSelected(0, isSelected, i, markersVisible)
+}
+
+function markerOrObjectClicked(objType, id, isCtrl) {
+    console.log("markerOrObjectClicked("+ objType +", "+id+", "+isCtrl+")")
     for (var i in cameraMarkers) {
-        if (id === cameraMarkers[i].options.id){
+        if ((objType === 0) && (id === cameraMarkers[i].options.id)){
             lastSelected = i;
+            lastSelectedType = objType
 
             cameraMarkers[i].setIcon(yellowMarker);
             cameraMarkers[i].setZIndexOffset(1);
@@ -556,6 +564,28 @@ function markerClicked(id, isCtrl) {
             cameraMarkers[i].setZIndexOffset(0);
         }
     }
+
+    for (var i in objectMarkers) {
+        if ((objType === 1) && (id === objectMarkers[i].options.id)){
+            lastSelected = i;
+            lastSelectedType = objType
+
+            objectMarkers[i].setIcon(yellowMarker);
+            objectMarkers[i].setZIndexOffset(1);
+        } else if(!isCtrl) {
+            objectMarkers[i].setIcon(greenMarker);
+            objectMarkers[i].setZIndexOffset(0);
+        }
+    }
+
+}
+
+function objectClicked(id, isCtrl) {
+    markerOrObjectClicked(1, id, isCtrl)
+}
+
+function markerClicked(id, isCtrl) {
+    markerOrObjectClicked(0, id, isCtrl)
 }
 
 function setMarkersVisibility(setVisible) {
@@ -563,7 +593,7 @@ function setMarkersVisibility(setVisible) {
         if (setVisible) {
             map.addLayer(cameraMarkers[i]);
         } else {
-//            if( markers[i].getIcon() === defaultMarker) {
+//            if( cameraMarkers[i].getIcon() === defaultMarker) {
                 map.removeLayer(cameraMarkers[i]);
 //            }
         }

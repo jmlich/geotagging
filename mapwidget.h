@@ -76,6 +76,12 @@ public slots:
     void markerSelected(int id, bool s);
     void markerClicked(int id);
     void markerDragged(int id);
+
+    void objectSelected(int id, bool s);
+    void objectClicked(int id);
+    void objectDragged(int id);
+
+
     void centerMap();
     void setMarkersVisibility();
     //void setMarkersVisibilityC();
