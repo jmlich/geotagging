@@ -593,8 +593,8 @@
     </message>
     <message>
         <location filename="../imageinfo.cpp" line="219"/>
-        <source>%1</source>
-        <translation type="unfinished">%1m {1?}</translation>
+        <source>%1°</source>
+        <translation type="unfinished">%1°m {1°?}</translation>
     </message>
     <message>
         <location filename="../imageinfo.cpp" line="229"/>

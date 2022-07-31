@@ -216,7 +216,7 @@ void ImageInfo::setAltitudeLabel() {
 }
 
 void ImageInfo::setDirectionLabel() {
-    QString directionText = QString(tr("%1")).arg(imageData->direction);
+    QString directionText = QString(tr("%1°")).arg(imageData->direction);
     ui->directionLabel->setText(directionText);
 }
 
