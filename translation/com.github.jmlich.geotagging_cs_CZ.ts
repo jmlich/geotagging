@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="cs_CZ">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="cs_CZ">
 <context>
     <name>AboutDialog</name>
     <message>
@@ -129,13 +127,13 @@
     </message>
     <message>
         <location filename="../exifinfo.cpp" line="20"/>
-        <location filename="../exifinfo.cpp" line="65"/>
+        <location filename="../exifinfo.cpp" line="69"/>
         <source>parameter</source>
         <translation>parametr</translation>
     </message>
     <message>
         <location filename="../exifinfo.cpp" line="20"/>
-        <location filename="../exifinfo.cpp" line="65"/>
+        <location filename="../exifinfo.cpp" line="69"/>
         <source>value</source>
         <translation>hodnota</translation>
     </message>
@@ -176,61 +174,81 @@
     </message>
     <message>
         <location filename="../exifinfo.cpp" line="48"/>
+        <source>Pitch</source>
+        <translation>Náklon</translation>
+    </message>
+    <message>
+        <location filename="../exifinfo.cpp" line="49"/>
+        <source>Roll</source>
+        <translation>Otočení</translation>
+    </message>
+    <message>
+        <location filename="../exifinfo.cpp" line="50"/>
+        <source>Destination Latitude</source>
+        <translation>Cílová zeměpisná šířka</translation>
+    </message>
+    <message>
+        <location filename="../exifinfo.cpp" line="51"/>
+        <source>Destination Longitude</source>
+        <translation>Cílová zeměpisná délka</translation>
+    </message>
+    <message>
+        <location filename="../exifinfo.cpp" line="52"/>
         <source>Camera make</source>
         <translation>Značka fotoaparátu</translation>
     </message>
     <message>
-        <location filename="../exifinfo.cpp" line="49"/>
+        <location filename="../exifinfo.cpp" line="53"/>
         <source>Camera model</source>
         <translation>Model fotoaparátu</translation>
     </message>
     <message>
-        <location filename="../exifinfo.cpp" line="50"/>
+        <location filename="../exifinfo.cpp" line="54"/>
         <source>Exposure time</source>
         <translation>Čas expozice</translation>
     </message>
     <message>
-        <location filename="../exifinfo.cpp" line="51"/>
+        <location filename="../exifinfo.cpp" line="55"/>
         <source>Exposure Bias</source>
         <translation>Odchylka expozice</translation>
     </message>
     <message>
-        <location filename="../exifinfo.cpp" line="52"/>
+        <location filename="../exifinfo.cpp" line="56"/>
         <source>Exposure Program</source>
         <translation>Program expozice</translation>
     </message>
     <message>
-        <location filename="../exifinfo.cpp" line="53"/>
+        <location filename="../exifinfo.cpp" line="57"/>
         <source>Resolution</source>
         <translation>Rozlišení</translation>
     </message>
     <message>
-        <location filename="../exifinfo.cpp" line="54"/>
+        <location filename="../exifinfo.cpp" line="58"/>
         <source>Flash</source>
         <translation>Blesk</translation>
     </message>
     <message>
-        <location filename="../exifinfo.cpp" line="55"/>
+        <location filename="../exifinfo.cpp" line="59"/>
         <source>F-number (F-spot)</source>
         <translation>Clonové číslo</translation>
     </message>
     <message>
-        <location filename="../exifinfo.cpp" line="56"/>
+        <location filename="../exifinfo.cpp" line="60"/>
         <source>Metering mode</source>
         <translation>Režim měření</translation>
     </message>
     <message>
-        <location filename="../exifinfo.cpp" line="57"/>
+        <location filename="../exifinfo.cpp" line="61"/>
         <source>ISO speed</source>
         <translation>Citlivost (ISO)</translation>
     </message>
     <message>
-        <location filename="../exifinfo.cpp" line="58"/>
+        <location filename="../exifinfo.cpp" line="62"/>
         <source>Focal length</source>
         <translation>Ohnisková vzdálenost</translation>
     </message>
     <message>
-        <location filename="../exifinfo.cpp" line="59"/>
+        <location filename="../exifinfo.cpp" line="63"/>
         <source>Exif comment</source>
         <translation>Exif komentář</translation>
     </message>
@@ -238,117 +256,121 @@
 <context>
     <name>ExifReaderWriter</name>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="280"/>
+        <location filename="../exifreaderwriter.cpp" line="289"/>
         <source>unknown</source>
         <translation>neznámý</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="282"/>
+        <location filename="../exifreaderwriter.cpp" line="291"/>
         <source>average</source>
         <translation>průměrný</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="284"/>
+        <location filename="../exifreaderwriter.cpp" line="293"/>
         <source>center weighted average</source>
         <translation>průměrný vyvážený na střed</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="286"/>
+        <location filename="../exifreaderwriter.cpp" line="295"/>
         <source>spot</source>
         <translation>bod</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="288"/>
+        <location filename="../exifreaderwriter.cpp" line="297"/>
         <source>multi-spot</source>
         <translation>více bodů</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="290"/>
+        <location filename="../exifreaderwriter.cpp" line="299"/>
         <source>multi-segment</source>
         <translation>multi-segment</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="292"/>
+        <location filename="../exifreaderwriter.cpp" line="301"/>
         <source>partial</source>
         <translation>částečný</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="294"/>
+        <location filename="../exifreaderwriter.cpp" line="303"/>
         <source>other</source>
         <translation>jiný</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="306"/>
+        <location filename="../exifreaderwriter.cpp" line="315"/>
         <source>manual control</source>
         <translation>manuální kontrola</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="308"/>
+        <location filename="../exifreaderwriter.cpp" line="317"/>
         <source>normal</source>
         <translation>normální program</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="310"/>
+        <location filename="../exifreaderwriter.cpp" line="319"/>
         <source>aperture priority</source>
         <translation>priorita závěrky</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="312"/>
+        <location filename="../exifreaderwriter.cpp" line="321"/>
         <source>shutter priority</source>
         <translation>priorita clony</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="314"/>
+        <location filename="../exifreaderwriter.cpp" line="323"/>
         <source>program creative (slow program)</source>
         <translation>program creative (pomalý režim)</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="316"/>
+        <location filename="../exifreaderwriter.cpp" line="325"/>
         <source>program action(high-speed program)</source>
         <translation>program akce(rychlý režim)</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="318"/>
+        <location filename="../exifreaderwriter.cpp" line="327"/>
         <source>portrait mode</source>
         <translation>režim portrétu</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="320"/>
+        <location filename="../exifreaderwriter.cpp" line="329"/>
         <source>landscape mode</source>
         <translation>režim krajiny</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="357"/>
+        <location filename="../exifreaderwriter.cpp" line="366"/>
         <source>did not fire</source>
         <translation>nepoužit</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="359"/>
+        <location filename="../exifreaderwriter.cpp" line="368"/>
         <source>fired</source>
         <translation>použit</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="421"/>
+        <location filename="../exifreaderwriter.cpp" line="438"/>
+        <location filename="../exifreaderwriter.cpp" line="444"/>
         <source>N</source>
         <translation>S</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="421"/>
+        <location filename="../exifreaderwriter.cpp" line="438"/>
+        <location filename="../exifreaderwriter.cpp" line="444"/>
         <source>S</source>
         <translation>J</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="422"/>
+        <location filename="../exifreaderwriter.cpp" line="439"/>
+        <location filename="../exifreaderwriter.cpp" line="445"/>
         <source>E</source>
         <translation>V</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="422"/>
+        <location filename="../exifreaderwriter.cpp" line="439"/>
+        <location filename="../exifreaderwriter.cpp" line="445"/>
         <source>W</source>
         <translation>Z</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="423"/>
+        <location filename="../exifreaderwriter.cpp" line="440"/>
         <source> m</source>
         <translation> m</translation>
     </message>
@@ -409,37 +431,37 @@
     </message>
     <message>
         <location filename="../gpsroute.cpp" line="108"/>
-        <location filename="../gpsroute.cpp" line="481"/>
+        <location filename="../gpsroute.cpp" line="478"/>
         <source>File path</source>
         <translation>Umístění souboru</translation>
     </message>
     <message>
         <location filename="../gpsroute.cpp" line="109"/>
-        <location filename="../gpsroute.cpp" line="486"/>
+        <location filename="../gpsroute.cpp" line="483"/>
         <source>Start time</source>
         <translation>Čas startu</translation>
     </message>
     <message>
         <location filename="../gpsroute.cpp" line="110"/>
-        <location filename="../gpsroute.cpp" line="491"/>
+        <location filename="../gpsroute.cpp" line="488"/>
         <source>End time</source>
         <translation>Čas konce</translation>
     </message>
     <message>
         <location filename="../gpsroute.cpp" line="112"/>
-        <location filename="../gpsroute.cpp" line="496"/>
+        <location filename="../gpsroute.cpp" line="493"/>
         <source>Start point</source>
         <translation>Výchozí bod</translation>
     </message>
     <message>
         <location filename="../gpsroute.cpp" line="118"/>
-        <location filename="../gpsroute.cpp" line="503"/>
+        <location filename="../gpsroute.cpp" line="500"/>
         <source>End point</source>
         <translation>Cílový bod</translation>
     </message>
     <message>
         <location filename="../gpsroute.cpp" line="123"/>
-        <location filename="../gpsroute.cpp" line="511"/>
+        <location filename="../gpsroute.cpp" line="508"/>
         <source>Total time</source>
         <translation>Celkový čas</translation>
     </message>
@@ -450,7 +472,7 @@
     </message>
     <message>
         <location filename="../gpsroute.cpp" line="138"/>
-        <location filename="../gpsroute.cpp" line="527"/>
+        <location filename="../gpsroute.cpp" line="524"/>
         <source>Route length</source>
         <translation>Délka trasy</translation>
     </message>
@@ -460,29 +482,29 @@
         <translation>%1 kilometrů</translation>
     </message>
     <message>
-        <location filename="../gpsroute.cpp" line="523"/>
+        <location filename="../gpsroute.cpp" line="520"/>
         <source> Days </source>
         <translation> Dní</translation>
     </message>
     <message>
-        <location filename="../gpsroute.cpp" line="529"/>
+        <location filename="../gpsroute.cpp" line="526"/>
         <source>%1 km</source>
         <translation>%1 km</translation>
     </message>
     <message>
-        <location filename="../gpsroute.cpp" line="537"/>
+        <location filename="../gpsroute.cpp" line="534"/>
         <source>%1 segment</source>
         <comment>1</comment>
         <translation>%1 segment</translation>
     </message>
     <message>
-        <location filename="../gpsroute.cpp" line="539"/>
+        <location filename="../gpsroute.cpp" line="536"/>
         <source>%1 segments</source>
         <comment>2-4</comment>
         <translation>%1 segmenty</translation>
     </message>
     <message>
-        <location filename="../gpsroute.cpp" line="541"/>
+        <location filename="../gpsroute.cpp" line="538"/>
         <source>%1 segments</source>
         <comment>jine</comment>
         <translation>%1 segmentů</translation>
@@ -507,19 +529,19 @@
     </message>
     <message>
         <location filename="../imageinfo.ui" line="126"/>
-        <location filename="../imageinfo.cpp" line="302"/>
+        <location filename="../imageinfo.cpp" line="327"/>
         <source>Unknown time</source>
         <translation>Neznámý čas</translation>
     </message>
     <message>
         <location filename="../imageinfo.ui" line="142"/>
-        <location filename="../imageinfo.cpp" line="181"/>
+        <location filename="../imageinfo.cpp" line="186"/>
         <source>Unknown GPS coordinates</source>
         <translation>Neznámé GPS souřadnice</translation>
     </message>
     <message>
         <location filename="../imageinfo.ui" line="149"/>
-        <location filename="../imageinfo.cpp" line="191"/>
+        <location filename="../imageinfo.cpp" line="196"/>
         <source>Unknown altitude</source>
         <translation>Neznámá nadmořská výška</translation>
     </message>
@@ -553,18 +575,29 @@
         <translation>Synchronizovat s GPS trasou</translation>
     </message>
     <message>
-        <location filename="../imageinfo.cpp" line="143"/>
-        <location filename="../imageinfo.cpp" line="190"/>
-        <location filename="../imageinfo.cpp" line="301"/>
+        <location filename="../imageinfo.cpp" line="148"/>
+        <location filename="../imageinfo.cpp" line="195"/>
+        <location filename="../imageinfo.cpp" line="225"/>
+        <location filename="../imageinfo.cpp" line="326"/>
         <source>-</source>
         <translation>-</translation>
     </message>
     <message>
-        <location filename="../imageinfo.cpp" line="196"/>
-        <location filename="../imageinfo.cpp" line="200"/>
-        <location filename="../imageinfo.cpp" line="204"/>
+        <location filename="../imageinfo.cpp" line="201"/>
+        <location filename="../imageinfo.cpp" line="205"/>
+        <location filename="../imageinfo.cpp" line="209"/>
         <source>%1m</source>
         <translation>%1m</translation>
+    </message>
+    <message>
+        <location filename="../imageinfo.cpp" line="219"/>
+        <source>%1</source>
+        <translation>%1m</translation>
+    </message>
+    <message>
+        <location filename="../imageinfo.cpp" line="229"/>
+        <source>Object %1</source>
+        <translation>Objekt %1</translation>
     </message>
 </context>
 <context>
