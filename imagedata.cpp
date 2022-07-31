@@ -32,7 +32,10 @@ ImageData::ImageData(QObject *parent) :
     isDateTimeChanged = 0;
     scaleSize = QSize(288,212);//maximalni zobrazitelne velikost obrazku
     exifRW = new ExifReaderWriter;
-    connect(exifRW, SIGNAL(setGps(double,double, double, double)), this, SLOT(setGps(double,double, double, double)));
+    connect(exifRW, SIGNAL(setGps(double,double, double, double)),
+            this, SLOT(setGps(double,double, double, double)));
+    connect(exifRW, SIGNAL(setObjGps(double,double)),
+            this, SLOT(setObjGps(double,double)));
     connect(exifRW, SIGNAL(setDateTime(QDateTime)), this, SLOT(setDateTime(QDateTime)));
     connect(this, SIGNAL(readExif(QString)), exifRW, SLOT(readExif(QString)));
     connect(watcher, SIGNAL(fileChanged(QString)), this, SLOT(watchedFileChanged(QString)));
@@ -128,6 +131,11 @@ void ImageData::setGps(double _lat, double _lon, double _alt, double _direction)
 
     gpsSource = 1;
     isGps = 1;
+}
+
+void ImageData::setObjGps(double _lat, double _lon) {
+    objLatitude = _lat;
+    objLongitude = _lon;
 }
 
 /**

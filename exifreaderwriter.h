@@ -37,6 +37,7 @@ public:
 
 signals:
     void setGps(double lat, double lon, double alt, double direction);
+    void setObjGps(double lat, double lon);
     void finished();
     void setDateTime(QDateTime dateTime);
 public slots:

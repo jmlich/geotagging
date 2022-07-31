@@ -91,9 +91,17 @@ void ExifReaderWriter::readExif(QString pictureName) {
     double alt = readAltitude("Exif.GPSInfo.GPSAltitude", exifData);
     double direction = readExifItemDouble(exifData, "Exif.GPSInfo.GPSImgDirection");
 
+    double objLat = readLatLon("Exif.GPSInfo.GPSDestLatitude", exifData);
+    double objLon = readLatLon("Exif.GPSInfo.GPSDestLongitude", exifData);
+
+    qDebug() << "loaded exif: " << pictureName << lat << lon << alt << direction << objLat << objLon;
+
 
     if(lat < 1000 && lon<1000) {
         emit setGps(lat, lon, alt, direction);
+    }
+    if (objLat < 1000 && objLon < 1000) {
+        emit setObjGps(objLat, objLon);
     }
 
     ////////////////////////////
@@ -384,6 +392,10 @@ QStringList *ExifReaderWriter::readExifInfo(QString pictureName, FormatHandler *
     double alt = readAltitude("Exif.GPSInfo.GPSAltitude", exifData);
     ////////////////////////////
 
+    double destLat = readLatLon("Exif.GPSInfo.GPSDestLatitude", exifData);
+    double destLon = readLatLon("Exif.GPSInfo.GPSDestLongitude", exifData);
+
+
     //cteni data
     QDateTime *dateTime = NULL;
     if((dateTime = readExifDate(exifData,"Exif.Photo.DateTimeOriginal")) == NULL) {
@@ -396,6 +408,8 @@ QStringList *ExifReaderWriter::readExifInfo(QString pictureName, FormatHandler *
 
 
     double direction = readExifItemDouble(exifData, "Exif.GPSInfo.GPSImgDirection");
+    double pitch = readExifItemDouble(exifData, "Exif.GPSInfo.GPSPitch");
+    double roll = readExifItemDouble(exifData, "Exif.GPSInfo.GPSRoll");
 
 // https://sourceforge.net/p/exiftool/code/ci/master/tree/lib/Image/ExifTool/Exif.pm#l4412
 // https://www.thephotoforum.com/threads/calculate-angle-of-view-from-exif-tags.129742/
@@ -417,12 +431,18 @@ QStringList *ExifReaderWriter::readExifInfo(QString pictureName, FormatHandler *
     QString comment = readExifItem(exifData, "Exif.Photo.UserComment");
     QString exposureBias = getExposureBias(exifData);
     QString exposureProgram = getExposureProgram(exifData);
+
+
     //////////////////
     (*exifList) << ((dateTime != NULL) ? dateTime->toString(formatH->formatDateTime) : "")
             << (lat < 1000 ?(formatH->gpsInFormat(lat) + (lat>=0 ? tr("N") : tr("S"))) : "")
             << (lon < 1000 ?(formatH->gpsInFormat(lon) + (lon>=0 ? tr("E") : tr("W"))) : "")
             << (alt > -999 ?(QString::number(alt) + tr(" m")) : "")
             << (qIsNaN(direction) ? "" : formatH->gpsInFormat(direction))
+            << (qIsNaN(pitch) ? "" : formatH->gpsInFormat(pitch))
+            << (qIsNaN(roll) ? "" : formatH->gpsInFormat(roll))
+            << (destLat < 1000 ?(formatH->gpsInFormat(destLat) + (destLat>=0 ? tr("N") : tr("S"))) : "")
+            << (destLon < 1000 ?(formatH->gpsInFormat(destLon) + (destLon>=0 ? tr("E") : tr("W"))) : "")
             << cameraMake
             << cameraModel
             << exposureTime

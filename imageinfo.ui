@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>202</width>
-    <height>228</height>
+    <height>253</height>
    </rect>
   </property>
   <property name="font">
@@ -19,7 +19,7 @@
    <string>Form</string>
   </property>
   <layout class="QGridLayout" name="gridLayout">
-   <property name="margin">
+   <property name="margin" stdset="0">
     <number>0</number>
    </property>
    <property name="spacing">
@@ -34,7 +34,7 @@
       <enum>QFrame::Raised</enum>
      </property>
      <layout class="QVBoxLayout" name="verticalLayout_2">
-      <property name="margin">
+      <property name="margin" stdset="0">
        <number>5</number>
       </property>
       <item>
@@ -147,6 +147,20 @@
        <widget class="QLabel" name="altitudeLabel">
         <property name="text">
          <string>Unknown altitude</string>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="directionLabel">
+        <property name="text">
+         <string/>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QLabel" name="objectPositionLabel">
+        <property name="text">
+         <string/>
         </property>
        </widget>
       </item>

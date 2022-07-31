@@ -89,6 +89,8 @@ public:
     void setGpsLabel();
     void setTimeLabel();
     void setAltitudeLabel();
+    void setDirectionLabel();
+    void setObjectPositionLabel();
 
     QString gpsString();
     QString gpsCandidadesString();

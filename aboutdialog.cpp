@@ -18,6 +18,5 @@ AboutDialog::AboutDialog(QWidget *parent) : QDialog(parent)
 
     }
 
-
     ui.textBrowser->setText(license_text);
 }
