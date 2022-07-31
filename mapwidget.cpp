@@ -111,7 +111,6 @@ void MapWidget::endSettingNewMarker(QCursor cursor) {
 }
 
 void MapWidget::newMarkerAdded(int id, double lat, double lon, double ele) {
-
     qDebug() << "newMarkerAdded" << id << lat << lon << ele;
 
     emit settingNewMarkerFinished();
@@ -259,10 +258,10 @@ void MapWidget::changeMap(int mapI) {
 void MapWidget::addMarker(int id, double lat, double lon) {
     QStringList scriptStr;
     scriptStr << QString("addMarker(%1, %2, %3, %4); centerInBounds(1,0);")
-                 .arg(QString::number(lat, 'f', 10))
-                 .arg(QString::number(lon, 'f', 10))
                  .arg(id)
-                 .arg(markersVisible);
+                 .arg(markersVisible)
+                 .arg(QString::number(lat, 'f', 10))
+                 .arg(QString::number(lon, 'f', 10));
 
     if(!loadIsFinished) {
          scriptsToRun << scriptStr.join("\n");

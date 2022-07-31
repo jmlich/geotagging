@@ -147,13 +147,14 @@ function initialize() {
 
         }
     })
-    //    test_add_marker();
-    //    test_add_route();
+//        test_add_marker();
+//        test_add_route();
 }
 
 function test_add_marker() {
     var marker_id = 1234;
-    addMarker(49.5, 16.5, marker_id, true);
+    addMarker(marker_id, true, 49.5, 16.5);
+
 }
 
 function test_add_route() {
@@ -287,15 +288,18 @@ function addNewMarkers(coord) {
 
     // FIXME evelation
     for (var i = 0; i < idList.length; i++) {
-        addMarker(coord.lat, coord.lng, idList[i], 1);
+
+        // addMarker(iid, isVisible, lat, lon, dir, fov, objLat, objLon)
+
+        addMarker(idList[i], true, coord.lat, coord.lng);
         markerClicked(idList[i], 1);
         window.mapWidget.newMarkerAdded(idList[i], coord.lat, coord.lng, ele);
     }
 
 }
 
-function addMarker(lat, lon, iid, isVisible) {
-    console.log("addMarker("+lat+", "+lon+", "+iid+ ", "+ isVisible+ ")")
+function addMarker(iid, isVisible, lat, lon) {
+    console.log("addMarker("+iid+ ", "+ isVisible+ ","+lat+", "+lon+")")
     var location = L.latLng(lat, lon);
 
     for (var i in markers) {
