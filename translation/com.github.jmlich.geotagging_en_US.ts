@@ -594,7 +594,7 @@
     <message>
         <location filename="../imageinfo.cpp" line="219"/>
         <source>%1°</source>
-        <translation type="unfinished">%1°m {1°?}</translation>
+        <translation type="unfinished">%1°</translation>
     </message>
     <message>
         <location filename="../imageinfo.cpp" line="229"/>
@@ -833,101 +833,101 @@
     </message>
     <message>
         <location filename="../mapwidget.cpp" line="57"/>
-        <location filename="../mapwidget.cpp" line="131"/>
+        <location filename="../mapwidget.cpp" line="130"/>
         <source>Cyclo-tourist</source>
         <translation>Cyclo-tourist</translation>
     </message>
     <message>
         <location filename="../mapwidget.cpp" line="58"/>
-        <location filename="../mapwidget.cpp" line="132"/>
+        <location filename="../mapwidget.cpp" line="131"/>
         <source>Google Roadmap</source>
         <translation>Google Roadmap</translation>
     </message>
     <message>
         <location filename="../mapwidget.cpp" line="59"/>
-        <location filename="../mapwidget.cpp" line="133"/>
+        <location filename="../mapwidget.cpp" line="132"/>
         <source>Google Terrain</source>
         <translation>Google Terrain</translation>
     </message>
     <message>
         <location filename="../mapwidget.cpp" line="60"/>
-        <location filename="../mapwidget.cpp" line="134"/>
+        <location filename="../mapwidget.cpp" line="133"/>
         <source>Google Satellite</source>
         <translation>Google Satellite</translation>
     </message>
     <message>
         <location filename="../mapwidget.cpp" line="61"/>
-        <location filename="../mapwidget.cpp" line="135"/>
+        <location filename="../mapwidget.cpp" line="134"/>
         <source>Google Hybrid</source>
         <translation>Google Hybrid</translation>
     </message>
     <message>
         <location filename="../mapwidget.cpp" line="62"/>
-        <location filename="../mapwidget.cpp" line="136"/>
+        <location filename="../mapwidget.cpp" line="135"/>
         <source>OSM Mapnik</source>
         <translation>OSM Mapnik</translation>
     </message>
     <message>
         <location filename="../mapwidget.cpp" line="63"/>
-        <location filename="../mapwidget.cpp" line="137"/>
+        <location filename="../mapwidget.cpp" line="136"/>
         <source>Mapy.cz base</source>
         <translation>Mapy.cz base</translation>
     </message>
     <message>
         <location filename="../mapwidget.cpp" line="64"/>
-        <location filename="../mapwidget.cpp" line="138"/>
+        <location filename="../mapwidget.cpp" line="137"/>
         <source>Mapy.cz Orthophoto</source>
         <translation>Mapy.cz Orthophoto</translation>
     </message>
     <message>
         <location filename="../mapwidget.cpp" line="65"/>
-        <location filename="../mapwidget.cpp" line="139"/>
+        <location filename="../mapwidget.cpp" line="138"/>
         <source>ArcGis Topographic</source>
         <translation>ArcGis Topographic</translation>
     </message>
     <message>
         <location filename="../mapwidget.cpp" line="66"/>
-        <location filename="../mapwidget.cpp" line="140"/>
+        <location filename="../mapwidget.cpp" line="139"/>
         <source>ArcGis Satellite</source>
         <translation>ArcGis Satellite</translation>
     </message>
     <message>
         <location filename="../mapwidget.cpp" line="68"/>
-        <location filename="../mapwidget.cpp" line="154"/>
+        <location filename="../mapwidget.cpp" line="153"/>
         <source>Center map to view all</source>
         <translation>Center map to view all</translation>
     </message>
     <message>
         <location filename="../mapwidget.cpp" line="69"/>
-        <location filename="../mapwidget.cpp" line="169"/>
+        <location filename="../mapwidget.cpp" line="168"/>
         <source>Show all markers</source>
         <translation>Show all markers</translation>
     </message>
     <message>
         <location filename="../mapwidget.cpp" line="70"/>
-        <location filename="../mapwidget.cpp" line="185"/>
+        <location filename="../mapwidget.cpp" line="184"/>
         <source>Show routes</source>
         <translation>Show routes</translation>
     </message>
     <message>
         <location filename="../mapwidget.cpp" line="71"/>
-        <location filename="../mapwidget.cpp" line="201"/>
+        <location filename="../mapwidget.cpp" line="200"/>
         <source>Join segments</source>
         <translation>Join segments</translation>
     </message>
     <message>
         <location filename="../mapwidget.cpp" line="72"/>
-        <location filename="../mapwidget.cpp" line="218"/>
+        <location filename="../mapwidget.cpp" line="217"/>
         <source>Show relief</source>
         <translation>Show relief</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="296"/>
+        <location filename="../mapwidget.cpp" line="295"/>
         <source>Change picture location</source>
         <translation>Change picture location</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="297"/>
+        <location filename="../mapwidget.cpp" line="296"/>
         <source>Change picture coordinates to the new position?</source>
         <translation>Change picture coordinates to the new position?</translation>
     </message>
