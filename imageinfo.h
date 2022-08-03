@@ -121,6 +121,7 @@ public slots:
    // void setGps(double lat, double lon);
     void setAltitude(double alt);
     void setGpsFromMap(int id, double lat, double lon, double alt);
+    void setObjectGpsFromMap(int id, double lat, double lon, double alt);
     void setGpsCandidates(double lat, double lon, double altitude, QDateTime pointTime, int method);
     void setCandidateIsCorrect(bool isCorrect);
     void setCandidateRouteName(QString routeName);
@@ -156,7 +157,7 @@ signals:
     void deleteMarker(int id);
     void readExif(QString n);
     void saveExifTime(QString,QDateTime*);
-    void saveExifGps(QString, double, double, double);
+    void saveExifGps(QString, double, double, double, double, double);
 };
 
 #endif // IMAGEINFO_H

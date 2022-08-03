@@ -67,6 +67,7 @@ signals:
     void mClicked(int id, bool clickMarker, bool focus);
     void processEvent(QKeyEvent *event);
     void setGpsInImage(int id, double lat, double lon, double ele);
+    void setObjectGpsInImage(int id, double lat, double lon, double ele);
     void settingNewMarkerFinished();
 
 public slots:
@@ -91,8 +92,10 @@ public slots:
     void changeMap(int mapI);
     void setNewGpsInImage();
     void setMarkerLastPosition();
+    void setNewObjectPositionIntoImage();
     void setObjectMarkerLastPosition();
     void newMarkerAdded(int id, double lat, double lon, double ele);
+    void newObjectMarkerAdded(int id, double lat, double lon, double ele);
     void retranslateUi();
     void changeRouteOpacity(int id, int value);
     void lineWidthChanged(int id, int value);

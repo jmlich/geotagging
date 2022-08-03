@@ -116,6 +116,15 @@ void MapWidget::newMarkerAdded(int id, double lat, double lon, double ele) {
     emit settingNewMarkerFinished();
     emit setGpsInImage(id, lat, lon, ele);
 }
+
+void MapWidget::newObjectMarkerAdded(int id, double lat, double lon, double ele) {
+    qDebug() << "newObjectMarkerAdded" << id << lat << lon << ele;
+
+    emit settingNewMarkerFinished();
+    emit setObjectGpsInImage(id, lat, lon, ele);
+
+}
+
 void MapWidget::setWidgets() {
     iconMarkerVisible = new QIcon(":/icons/markerShowR.png");
     iconRouteVisible = new QIcon(":/icons/chodecMapa.png");
@@ -342,6 +351,20 @@ void MapWidget::objectClicked(int id) {
 
 void MapWidget::objectDragged(int id) {
     qDebug() << "objectDragged" << id;
+    idDragged = id;
+    QMessageBox *mb = new QMessageBox(QMessageBox::Question, tr("Change picture object location"),
+                                      tr("Change picture object coordinates to the new position?"),
+                                      QMessageBox::Yes | QMessageBox::No);
+
+    QPalette pal = mb->palette();
+    pal.setColor(QPalette::Window, "#D0D0E7");
+    mb->setPalette(pal);
+    int ret = mb->exec();
+    if (ret == QMessageBox::Yes) {
+        setNewObjectPositionIntoImage();
+    } else {
+        setObjectMarkerLastPosition();
+    }
 
 }
 
@@ -353,6 +376,16 @@ void MapWidget::setNewGpsInImage() {
 
 //    mapView->page()->mainFrame()->evaluateJavaScript( scriptStr).toList();
 }
+
+
+void MapWidget::setNewObjectPositionIntoImage() {
+    qDebug() << "setNewGpsInImage" << idDragged;
+    QString scriptStr = QString("setNewObjectMarkerPosition(%1);").arg(idDragged);
+    mapView->page()->runJavaScript(scriptStr, [](const QVariant &result){ qDebug() << result.toString(); });
+
+//    mapView->page()->mainFrame()->evaluateJavaScript( scriptStr).toList();
+}
+
 
 void MapWidget::setMarkerLastPosition() {
     QString scriptStr = QString("setOldMarkerPosition(%1);").arg(idDragged);

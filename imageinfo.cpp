@@ -68,7 +68,8 @@ ImageInfo::ImageInfo(ImageData *newImageData,QWidget *parent) :
 
     synchCheckBox = NULL;
 
-    connect(this, SIGNAL(saveExifGps(QString, double, double, double)), imageData->exifRW, SLOT(saveExifGps(QString,double,double, double)));
+    connect(this, SIGNAL(saveExifGps(QString, double, double, double, double, double)),
+            imageData->exifRW, SLOT(saveExifGps(QString,double,double, double, double, double)));
     connect(this, SIGNAL(saveExifTime(QString,QDateTime*)), imageData->exifRW, SLOT(saveExifTime(QString,QDateTime*)));
     connect(openExternaly, SIGNAL(triggered()), this, SLOT(openExternalEditor()));
     connect(imageData, SIGNAL(imageReloadDone()), this, SLOT(imageChanged()));
@@ -258,11 +259,23 @@ void ImageInfo::setAltitude(double alt) {
     imageData->altitude = alt;
 }
 
-void ImageInfo::setGpsFromMap(int iid, double lat, double lon, double alt) {
+void ImageInfo::setObjectGpsFromMap(int id, double lat, double lon, double alt) {
+    if(id == imageData->id) {
+        imageData->objLatitude = lat;
+        imageData->objLongitude = lon;
+        imageData->isGpsSaved = 0;
+        setStyleSheet(currentStyleSheet());
+        setObjectPositionLabel();
+    }
+
+}
+
+
+void ImageInfo::setGpsFromMap(int id, double lat, double lon, double alt) {
 
     //    qDebug()  << "setGpsFromMap" << iid << lat << lon << alt;
 
-    if(iid == imageData->id) {
+    if(id == imageData->id) {
         imageData->latitude = lat;
         imageData->longitude = lon;
         imageData->altitude = alt;
@@ -272,7 +285,6 @@ void ImageInfo::setGpsFromMap(int iid, double lat, double lon, double alt) {
         setStyleSheet(currentStyleSheet());
         setGpsLabel();
         setAltitudeLabel();
-
     }
 }
 
@@ -459,7 +471,7 @@ void ImageInfo::saveNewData(bool isSaveExif) {
         //////////
 
         if (isSaveExif) {
-            emit saveExifGps(imageData->pictureName, imageData->latitude, imageData->longitude, imageData->altitude);
+            emit saveExifGps(imageData->pictureName, imageData->latitude, imageData->longitude, imageData->altitude, imageData->objLatitude, imageData->objLongitude);
         } else {
             imageData->isGpsSaved = 0;
             setStyleSheet(currentStyleSheet());
@@ -471,7 +483,7 @@ void ImageInfo::saveNewData(bool isSaveExif) {
 }
 void ImageInfo::saveGps() {
     if(imageData->isGps) {
-        emit saveExifGps(imageData->pictureName, imageData->latitude, imageData->longitude, imageData->altitude);
+        emit saveExifGps(imageData->pictureName, imageData->latitude, imageData->longitude, imageData->altitude, imageData->objLatitude, imageData->objLongitude);
         imageData->isGpsSaved = 1;
         setStyleSheet(currentStyleSheet());
     }

@@ -42,7 +42,7 @@ signals:
     void setDateTime(QDateTime dateTime);
 public slots:
     void readExif(QString pictureName);
-    void saveExifGps(QString pictureName, double latitude, double longitude, double alitude);
+    void saveExifGps(QString pictureName, double latitude, double longitude, double alitude, double objLatitude, double objLongitude);
     void saveExifTime(QString pictureName, QDateTime *dateTime);
 };
 

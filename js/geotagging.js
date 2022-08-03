@@ -319,6 +319,25 @@ function setNewMarkerPosition(id) {
     //return [cameraMarkers[markerIdx].position.lat(),cameraMarkers[markerIdx].position.lng(), ele];
 }
 
+function setNewObjectMarkerPosition(id) {
+    console.log("setNewObjectMarkerPosition("+id+")")
+    for (var i in objectMarkers) {
+        if(id === objectMarkers[i].options.id){
+            var position = objectMarkers[i].getLatLng();
+            objectMarkers[i].options.oldPosition = position;
+            map.addLayer(objectMarkers[i]);
+
+            ////////////////////////
+
+            var ele = -1000;
+            window.mapWidget.newObjectMarkerAdded(id, position.lat, position.lng, ele);
+            return position;
+
+        }
+    }
+
+}
+
 
 var idList;
 function settingNewMarker(iidList) {

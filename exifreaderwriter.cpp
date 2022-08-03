@@ -175,8 +175,8 @@ QString ExifReaderWriter::exifLatLonString(double l) {
     return QString("%1/1 %2/1 %3/1000").arg(degrees).arg(min).arg(secM);
 }
 
-void ExifReaderWriter::saveExifGps(QString pictureName, double latitude, double longitude, double altitude) {
-    qDebug() << "saveExifGps" << pictureName << latitude << longitude << altitude;
+void ExifReaderWriter::saveExifGps(QString pictureName, double latitude, double longitude, double altitude, double objLatitude, double objLongitude) {
+    qDebug() << "saveExifGps" << pictureName << latitude << longitude << altitude << objLatitude << objLongitude;
     std::unique_ptr<Exiv2::Image> image = openExif(pictureName);
     if (image.get() == 0) {
         return;
@@ -199,8 +199,22 @@ void ExifReaderWriter::saveExifGps(QString pictureName, double latitude, double 
         writeData(exifData, "Exif.GPSInfo.GPSAltitude", (QString("%1/%2").arg(abs(round(altitude * 1000))).arg(1000)));
         writeData(exifData, "Exif.GPSInfo.GPSAltitudeRef", (altitude<0 ? "1" : "0"));
     }
+
+    if (objLatitude != 1000) {
+        qDebug() << "Storing object position";
+        writeData(exifData, "Exif.GPSInfo.GPSDestLatitude", exifLatLonString(objLatitude));
+        writeData(exifData, "Exif.GPSInfo.GPSDestLongitude", exifLatLonString(objLongitude));
+        writeData(exifData, "Exif.GPSInfo.GPSDestLatitudeRef", (objLatitude<0 ? "S" : "N"));
+        writeData(exifData, "Exif.GPSInfo.GPSDestLongitudeRef", (objLongitude<0 ? "W" : "E"));
+    } else {
+        // FIXME remove when not set
+    }
+
+
     image->writeMetadata();
 }
+
+
 
 void ExifReaderWriter::writeData(Exiv2::ExifData &exifData, std::string keyStr, QString str) {
     try{
