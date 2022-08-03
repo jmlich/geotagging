@@ -103,7 +103,6 @@ var marker_object_deselected;
 var marker_object_selected;
 var elevator;
 var lastSelected = -1;
-var lastSelectedType = 0; // 0 marker, 1 object
 
 function initialize() {
 
@@ -161,9 +160,15 @@ function initialize() {
 
     map.on('mousemove', function (e) {
         if (lastSelected !== -1) {
-            var mouse_pos = e.latlng;
-            var marker_pos = cameraMarkers[lastSelected].getLatLng();
-            $("#distance").text( Math.round(marker_pos.distanceTo(mouse_pos)) + " m");
+            for (var i in cameraMarkers) {
+                if (lastSelected === cameraMarkers[i].options.id){
+                    var mouse_pos = e.latlng;
+                    var marker_pos = cameraMarkers[i].getLatLng();
+                    $("#distance").text( Math.round(marker_pos.distanceTo(mouse_pos)) + " m");
+                    break;
+                }
+            }
+
         } else {
             $("#distance").text("");
 
@@ -463,58 +468,74 @@ function addMarker(iid, isVisible, lat, lon) {
 }
 
 /**
-  * @param objType 0 camera 1 object
   * @param isSelected true/false
   * @param i index in array
   * @param markersVisible true/false
   */
 
-function markerOrObjectSelected(objType, isSelected, i, markersVisible) {
+function markerOrObjectSelected(id, isSelected, markersVisible) {
+    console.log("markerOrObjectSelected("+id+", "+isSelected+", "+markersVisible+")")
+    if (id === -1) {
+        return;
+    }
+    lastSelected = id;
 
-    if (isSelected) {
-        lastSelected = i;
-        map.panTo(cameraMarkers[i].getLatLng());
-        cameraMarkers[i].setIcon(marker_camera_selected);
-        cameraMarkers[i].setZIndexOffset(1);
-        objectMarkers[i].setIcon(marker_object_selected);
-        objectMarkers[i].setZIndexOffset(1);
-        if (!markersVisible) {
-            map.addLayer(cameraMarkers[i]);
-            map.addLayer(objectMarkers[i]);
+    for (var i in cameraMarkers) {
+        if (cameraMarkers[i].options.id === id) {
+
+            if (isSelected) {
+                map.panTo(cameraMarkers[i].getLatLng());
+                cameraMarkers[i].setIcon(marker_camera_selected);
+                cameraMarkers[i].setZIndexOffset(1);
+                if (!markersVisible) {
+                    map.addLayer(objectMarkers[i]);
+                }
+            } else {
+                cameraMarkers[i].setIcon(marker_camera_deselected);
+                cameraMarkers[i].setZIndexOffset(0);
+                if (!markersVisible) {
+                    map.removeLayer(cameraMarkers[i]);
+                }
+            }
+            break;
         }
-    } else {
-        cameraMarkers[i].setIcon(marker_camera_deselected);
-        cameraMarkers[i].setZIndexOffset(0);
-        objectMarkers[i].setIcon(marker_object_deselected);
-        objectMarkers[i].setZIndexOffset(0);
-        if (!markersVisible) {
-            map.removeLayer(cameraMarkers[i]);
-            map.removeLayer(objectMarkers[i]);
+    }
+
+    for (var i in objectMarkers) {
+        if (objectMarkers[i].options.id === id) {
+
+            if (isSelected) {
+                map.panTo(objectMarkers[i].getLatLng());
+                objectMarkers[i].setIcon(marker_object_selected);
+                objectMarkers[i].setZIndexOffset(1);
+                if (!objectMarkers) {
+                    map.addLayer(objectMarkers[i]);
+                }
+            } else {
+                objectMarkers[i].setIcon(marker_object_deselected);
+                objectMarkers[i].setZIndexOffset(0);
+                if (!objectMarkers) {
+                    map.removeLayer(objectMarkers[i]);
+                }
+            }
+            break;
         }
     }
 
 }
 
-function markerSelected(isSelected, i, markersVisible) {
-    console.log("markerSelected("+isSelected+", "+i+", "+markersVisible+")")
-    markerOrObjectSelected(0, isSelected, i, markersVisible)
-    markerOrObjectSelected(1, isSelected, i, markersVisible)
-}
-
 /**
   * changes color of selected marker and put into foreground
-  * @param objType 0 camera, 1 object
   * @param id of the photo
   * @param isCtrl previously selected photos will stay highlighted if true,
   *   otherwise will be other photos "deselected"
   */
 
-function markerOrObjectClicked(objType, id, isCtrl) {
-    console.log("markerOrObjectClicked("+ objType +", "+id+", "+isCtrl+")")
+function markerOrObjectClicked(id, isCtrl) {
+    console.log("markerOrObjectClicked("+id+", "+isCtrl+")")
+    lastSelected = id;
     for (var i in cameraMarkers) {
         if (id === cameraMarkers[i].options.id){
-            lastSelected = i;
-            lastSelectedType = objType
 
             cameraMarkers[i].setIcon(marker_camera_selected);
             cameraMarkers[i].setZIndexOffset(1);
@@ -526,8 +547,6 @@ function markerOrObjectClicked(objType, id, isCtrl) {
 
     for (var i in objectMarkers) {
         if (id === objectMarkers[i].options.id){
-            lastSelected = i;
-            lastSelectedType = objType
 
             objectMarkers[i].setIcon(marker_object_selected);
             objectMarkers[i].setZIndexOffset(1);
@@ -537,14 +556,6 @@ function markerOrObjectClicked(objType, id, isCtrl) {
         }
     }
 
-}
-
-function objectClicked(id, isCtrl) {
-    markerOrObjectClicked(1, id, isCtrl)
-}
-
-function markerClicked(id, isCtrl) {
-    markerOrObjectClicked(0, id, isCtrl)
 }
 
 function setMarkersVisibility(setVisible) {

@@ -17,6 +17,9 @@ ImageData::ImageData(QObject *parent) :
     longitude = 1001;
     altitude = -1000;
     direction = qQNaN();
+    objLatitude = 1000;
+    objLongitude = 1001;
+
     dateTime = new QDateTime;
     *dateTime = QDateTime::fromString(QString("0000:00:00 00:00:00"), "yyyy:MM:dd hh:mm:ss");
 

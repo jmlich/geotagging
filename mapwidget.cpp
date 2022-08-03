@@ -288,18 +288,14 @@ void MapWidget::addMarker(int id, double lat, double lon) {
 
 void MapWidget::markerSelected(int id, bool isSelected) {
     QStringList scriptStr;
-    scriptStr <<"for (i in cameraMarkers) {"
-            <<    QString("if(%1 == -1 || %1==cameraMarkers[i].options.id){").arg(id)
-            <<    QString("markerSelected(%1, i, %2);").arg(isSelected).arg(markersVisible)
-            <<  " }"
-            << " }";
+    scriptStr <<    QString("markerOrObjectSelected(%1, %2, %3);").arg(id).arg(isSelected).arg(markersVisible);
 //    qDebug() << scriptStr;
     mapView->page()->runJavaScript(scriptStr.join("\n"), [](const QVariant &result){ qDebug() << result.toString(); });
 }
 
 void MapWidget::markerClicked(int id) {
     QStringList scriptStr;
-    scriptStr << QString("markerClicked(%1, %2);").arg(id).arg((QApplication::keyboardModifiers() & Qt::ControlModifier));
+    scriptStr << QString("markerOrObjectClicked(%1, %2);").arg(id).arg((QApplication::keyboardModifiers() & Qt::ControlModifier));
 
     mapView->page()->runJavaScript(scriptStr.join("\n"), [](const QVariant &result){ qDebug() << result.toString(); });
     emit mClicked(id, 0, 1);
@@ -337,7 +333,7 @@ void MapWidget::objectSelected(int id, bool isSelected) {
 
 void MapWidget::objectClicked(int id) {
     QStringList scriptStr;
-    scriptStr << QString("objectClicked(%1, %2);").arg(id).arg((QApplication::keyboardModifiers() & Qt::ControlModifier));
+    scriptStr << QString("markerOrObjectClicked(%1, %2);").arg(id).arg((QApplication::keyboardModifiers() & Qt::ControlModifier));
 
     mapView->page()->runJavaScript(scriptStr.join("\n"), [](const QVariant &result){ qDebug() << result.toString(); });
 //    emit mClicked(id, 0, 1); // FIXME
@@ -432,6 +428,7 @@ void MapWidget::deleteMarker(int id) {
     scriptStr << QString("deleteMarker(%1);").arg(id);
     mapView->page()->runJavaScript(scriptStr.join("\n"), [](const QVariant &result){ qDebug() << result.toString(); });
 }
+
 void MapWidget::keyPressEvent(QKeyEvent *event) {
     emit processEvent(event);
 }

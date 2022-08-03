@@ -224,7 +224,6 @@ void ImageInfo::setObjectPositionLabel() {
 
     QString objPositionText = tr("-");
     ui->objectPositionLabel->setVisible(imageData->objLatitude != 1000);
-    qDebug() << "imageData->objLatitude" << imageData->objLatitude;
     if (imageData->objLatitude != 1000) {
         objPositionText = QString(tr("Object %1"))
                 .arg(formatHandler->gpsAllInFormat(imageData->objLatitude, imageData->objLongitude));
@@ -385,6 +384,9 @@ void ImageInfo::setLabels() {
     resizeWidget(iconSize);
     if(imageData->isGps) {
         emit mapAddMarker(imageData->id, imageData->latitude, imageData->longitude);
+    }
+    qDebug() << imageData->objLatitude;
+    if (imageData->objLatitude != 1000) {
         emit mapAddObjectMarker(imageData->id, imageData->objLatitude, imageData->objLongitude);
     }
     markerLabel->setVisible(imageData->isGps);
