@@ -132,7 +132,7 @@ function initialize() {
                           });
 
     marker_camera_deselected = L.icon({
-                               iconUrl: "qrc:///js/images/marker-icon-blue.png",
+                               iconUrl: "qrc:///js/images/marker-icon-red.png",
                                shadowUrl: "qrc:///js/images/marker-shadow.png",
                                iconSize: [25, 41],
                                iconAnchor: [12, 41],
@@ -142,7 +142,7 @@ function initialize() {
 
 
     marker_object_deselected = L.icon({
-                               iconUrl: "qrc:///js/images/marker-icon-red.png",
+                               iconUrl: "qrc:///js/images/marker-icon-blue.png",
                                shadowUrl: "qrc:///js/images/marker-shadow.png",
                                iconSize: [25, 41],
                                iconAnchor: [12, 41],
