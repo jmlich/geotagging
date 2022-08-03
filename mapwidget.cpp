@@ -361,7 +361,11 @@ void MapWidget::setNewGpsInImage() {
 void MapWidget::setMarkerLastPosition() {
     QString scriptStr = QString("setOldMarkerPosition(%1);").arg(idDragged);
     mapView->page()->runJavaScript(scriptStr, [](const QVariant &result){ qDebug() << result.toString(); });
+}
 
+void MapWidget::setObjectMarkerLastPosition() {
+    QString scriptStr = QString("setOldObjectMarkerPosition(%1);").arg(idDragged);
+    mapView->page()->runJavaScript(scriptStr, [](const QVariant &result){ qDebug() << result.toString(); });
 }
 
 void MapWidget::addRoute(GpsRoute *route) {

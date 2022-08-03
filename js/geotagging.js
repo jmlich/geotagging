@@ -97,9 +97,10 @@ var fowMarkers = [];
 var routes = [];
 var joinedSegments = [];
 var clickListener;
-var yellowMarker;
-var defaultMarker;
-var greenMarker;
+var marker_camera_selected;
+var marker_camera_deselected;
+var marker_object_deselected;
+var marker_object_selected;
 var elevator;
 var lastSelected = -1;
 var lastSelectedType = 0; // 0 marker, 1 object
@@ -122,7 +123,7 @@ function initialize() {
     //    L.control.layers(baseMaps, overlayMaps).addTo(map);
     $('.leaflet-container').css('cursor','crosshair');
 
-    yellowMarker = L.icon({
+    marker_camera_selected = L.icon({
                               iconUrl: "qrc:///js/images/marker-icon-gold.png",
                               shadowUrl: "qrc:///js/images/marker-shadow.png",
                               iconSize: [25, 41],
@@ -131,8 +132,17 @@ function initialize() {
                               shadowSize: [41, 41],
                           });
 
+    marker_camera_deselected = L.icon({
+                               iconUrl: "qrc:///js/images/marker-icon-blue.png",
+                               shadowUrl: "qrc:///js/images/marker-shadow.png",
+                               iconSize: [25, 41],
+                               iconAnchor: [12, 41],
+                               popupAnchor: [1, -34],
+                               shadowSize: [41, 41],
+                           });
 
-    defaultMarker = L.icon({
+
+    marker_object_deselected = L.icon({
                                iconUrl: "qrc:///js/images/marker-icon-red.png",
                                shadowUrl: "qrc:///js/images/marker-shadow.png",
                                iconSize: [25, 41],
@@ -140,7 +150,7 @@ function initialize() {
                                popupAnchor: [1, -34],
                                shadowSize: [41, 41],
                            });
-    greenMarker = L.icon({
+    marker_object_selected = L.icon({
                                iconUrl: "qrc:///js/images/marker-icon-green.png",
                                shadowUrl: "qrc:///js/images/marker-shadow.png",
                                iconSize: [25, 41],
@@ -159,15 +169,26 @@ function initialize() {
 
         }
     })
-//        test_add_marker();
+//    test_add_marker();
 //        test_add_route();
 }
 
 function test_add_marker() {
-    var marker_id = 1234;
-    addMarker(marker_id, true, 49.5, 16.5);
+    addMarker(1234, true, 49.5, 16.4);
+    addMarker(1235, true, 49.5, 16.5);
+    addMarker(1236, true, 49.5, 16.6);
+    addMarker(1237, true, 49.5, 16.7);
+    addMarker(1238, true, 49.5, 16.8);
 
+    addObjectMarker(1234, true, 49.6, 16.4);
+    addObjectMarker(1235, true, 49.6, 16.5);
+    addObjectMarker(1236, true, 49.6, 16.6);
+    addObjectMarker(1237, true, 49.6, 16.7);
+    addObjectMarker(1239, true, 49.6, 16.9);
+
+    centerInBounds(true, true);
 }
+
 
 function test_add_route() {
     var route_id = 42;
@@ -248,11 +269,28 @@ function setOldMarkerPosition(id) {
             var position = cameraMarkers[i].options.oldPosition;
             if (position === undefined) {
                 console.error("oldPosition is not defined")
-                continue;
+                return;
             }
 
             cameraMarkers[i].setLatLng(position);
             map.panTo(position)
+            return;
+        }
+    }
+}
+
+function setOldObjectMarkerPosition(id) {
+    console.log("setOldObjectMarkerPosition("+id+")")
+    for (var i in objectMarkers) {
+        if (id === objectMarkers[i].options.id) {
+            var position = objectMarkers[i].options.oldPosition;
+            if (position === undefined) {
+                console.error("oldPosition is not defined");
+                return;
+            }
+            objectMarkers[i].setLatLng(position);
+            map.panTo(position)
+            return;
         }
     }
 }
@@ -337,7 +375,7 @@ function addObjectMarker(_id, _isVisible, lat, lon) {
 
     var marker = L.marker([lat, lon], {
                               draggable: true,
-                              icon: greenMarker,
+                              icon: marker_object_deselected,
                               id: _id,
                               title: _id,
                               oldPosition: [lat, lon],
@@ -400,7 +438,7 @@ function addMarker(iid, isVisible, lat, lon) {
 
     var marker = L.marker([lat, lon], {
                               draggable: true,
-                              icon: defaultMarker,
+                              icon: marker_camera_deselected,
                               id: iid,
                               title: iid,
                               oldPosition: [lat, lon],
@@ -423,6 +461,116 @@ function addMarker(iid, isVisible, lat, lon) {
 
     //centerInBounds(1,0);
 }
+
+/**
+  * @param objType 0 camera 1 object
+  * @param isSelected true/false
+  * @param i index in array
+  * @param markersVisible true/false
+  */
+
+function markerOrObjectSelected(objType, isSelected, i, markersVisible) {
+
+    if (isSelected) {
+        lastSelected = i;
+        map.panTo(cameraMarkers[i].getLatLng());
+        cameraMarkers[i].setIcon(marker_camera_selected);
+        cameraMarkers[i].setZIndexOffset(1);
+        objectMarkers[i].setIcon(marker_object_selected);
+        objectMarkers[i].setZIndexOffset(1);
+        if (!markersVisible) {
+            map.addLayer(cameraMarkers[i]);
+            map.addLayer(objectMarkers[i]);
+        }
+    } else {
+        cameraMarkers[i].setIcon(marker_camera_deselected);
+        cameraMarkers[i].setZIndexOffset(0);
+        objectMarkers[i].setIcon(marker_object_deselected);
+        objectMarkers[i].setZIndexOffset(0);
+        if (!markersVisible) {
+            map.removeLayer(cameraMarkers[i]);
+            map.removeLayer(objectMarkers[i]);
+        }
+    }
+
+}
+
+function markerSelected(isSelected, i, markersVisible) {
+    console.log("markerSelected("+isSelected+", "+i+", "+markersVisible+")")
+    markerOrObjectSelected(0, isSelected, i, markersVisible)
+    markerOrObjectSelected(1, isSelected, i, markersVisible)
+}
+
+/**
+  * changes color of selected marker and put into foreground
+  * @param objType 0 camera, 1 object
+  * @param id of the photo
+  * @param isCtrl previously selected photos will stay highlighted if true,
+  *   otherwise will be other photos "deselected"
+  */
+
+function markerOrObjectClicked(objType, id, isCtrl) {
+    console.log("markerOrObjectClicked("+ objType +", "+id+", "+isCtrl+")")
+    for (var i in cameraMarkers) {
+        if (id === cameraMarkers[i].options.id){
+            lastSelected = i;
+            lastSelectedType = objType
+
+            cameraMarkers[i].setIcon(marker_camera_selected);
+            cameraMarkers[i].setZIndexOffset(1);
+        } else if(!isCtrl) {
+            cameraMarkers[i].setIcon(marker_camera_deselected);
+            cameraMarkers[i].setZIndexOffset(0);
+        }
+    }
+
+    for (var i in objectMarkers) {
+        if (id === objectMarkers[i].options.id){
+            lastSelected = i;
+            lastSelectedType = objType
+
+            objectMarkers[i].setIcon(marker_object_selected);
+            objectMarkers[i].setZIndexOffset(1);
+        } else if(!isCtrl) {
+            objectMarkers[i].setIcon(marker_object_deselected);
+            objectMarkers[i].setZIndexOffset(0);
+        }
+    }
+
+}
+
+function objectClicked(id, isCtrl) {
+    markerOrObjectClicked(1, id, isCtrl)
+}
+
+function markerClicked(id, isCtrl) {
+    markerOrObjectClicked(0, id, isCtrl)
+}
+
+function setMarkersVisibility(setVisible) {
+    for (var i in cameraMarkers) {
+        if (setVisible) {
+            map.addLayer(cameraMarkers[i]);
+        } else {
+//            if( cameraMarkers[i].getIcon() === marker_camera_deselected) {
+                map.removeLayer(cameraMarkers[i]);
+//            }
+        }
+    }
+}
+
+function deleteMarker(id) {
+    for (var i in cameraMarkers) {
+        if (id === cameraMarkers[i].options.id){
+            map.removeLayer(cameraMarkers[i]);
+            cameraMarkers.splice(i,1);
+            break;
+        }
+    }
+}
+
+
+//////////////////// routes ////////////////////
 
 function changeRouteOpacity(id, value) {
     for (var i in routes) {
@@ -473,8 +621,6 @@ function setJoinSegments(setVisible) {
     }
 }
 
-//////////
-
 function addRoute(routeCoordinatesList, iid, isVisible, var_color, isValid) {
     console.log("addRoute(routeCoordinatesList, "+iid+", "+isVisible+", "+var_color+", "+isValid+") ")
     path = [];
@@ -500,105 +646,6 @@ function addRoute(routeCoordinatesList, iid, isVisible, var_color, isValid) {
     }
 }
 
-function centerInBounds(fitMarkers, fitRoutes) {
-    console.log("centerInBounds(fitMarkers, fitRoutes)")
-
-    if ((cameraMarkers.length === 0) && (routes.length === 0)) {
-        return;
-    }
-
-    var bounds = L.latLngBounds();
-    if (fitMarkers) {
-        for (i in cameraMarkers) {
-            bounds.extend(cameraMarkers[i].getLatLng());
-        }
-    }
-
-    if (fitRoutes) {
-        for (i in routes) {
-            routes[i].getLatLngs().forEach(function(e) {
-                bounds.extend(e);
-            });
-        }
-    }
-    map.fitBounds(bounds);
-    //map.panToBounds(bounds);
-}
-
-function markerOrObjectSelected(selType, isSelected, i, markersVisible) {
-
-    if (isSelected) {
-        lastSelected = i;
-        map.panTo(cameraMarkers[i].getLatLng());
-        cameraMarkers[i].setIcon(yellowMarker);
-        cameraMarkers[i].setZIndexOffset(1);
-        if (!markersVisible) {
-            map.addLayer(cameraMarkers[i]);
-        }
-    } else {
-        cameraMarkers[i].setIcon(defaultMarker);
-        cameraMarkers[i].setZIndexOffset(0);
-        if (!markersVisible) {
-            map.removeLayer(cameraMarkers[i]);
-        }
-    }
-
-}
-
-function markerSelected(isSelected, i, markersVisible) {
-    console.log("markerSelected("+isSelected+", "+i+", "+markersVisible+")")
-    markerOrObjectSelected(0, isSelected, i, markersVisible)
-}
-
-function markerOrObjectClicked(objType, id, isCtrl) {
-    console.log("markerOrObjectClicked("+ objType +", "+id+", "+isCtrl+")")
-    for (var i in cameraMarkers) {
-        if ((objType === 0) && (id === cameraMarkers[i].options.id)){
-            lastSelected = i;
-            lastSelectedType = objType
-
-            cameraMarkers[i].setIcon(yellowMarker);
-            cameraMarkers[i].setZIndexOffset(1);
-        } else if(!isCtrl) {
-            cameraMarkers[i].setIcon(defaultMarker);
-            cameraMarkers[i].setZIndexOffset(0);
-        }
-    }
-
-    for (var i in objectMarkers) {
-        if ((objType === 1) && (id === objectMarkers[i].options.id)){
-            lastSelected = i;
-            lastSelectedType = objType
-
-            objectMarkers[i].setIcon(yellowMarker);
-            objectMarkers[i].setZIndexOffset(1);
-        } else if(!isCtrl) {
-            objectMarkers[i].setIcon(greenMarker);
-            objectMarkers[i].setZIndexOffset(0);
-        }
-    }
-
-}
-
-function objectClicked(id, isCtrl) {
-    markerOrObjectClicked(1, id, isCtrl)
-}
-
-function markerClicked(id, isCtrl) {
-    markerOrObjectClicked(0, id, isCtrl)
-}
-
-function setMarkersVisibility(setVisible) {
-    for (var i in cameraMarkers) {
-        if (setVisible) {
-            map.addLayer(cameraMarkers[i]);
-        } else {
-//            if( cameraMarkers[i].getIcon() === defaultMarker) {
-                map.removeLayer(cameraMarkers[i]);
-//            }
-        }
-    }
-}
 
 function setRoutesVisibility(setVisible) {
     for (var i in routes) {
@@ -607,16 +654,6 @@ function setRoutesVisibility(setVisible) {
         } else {
             map.removeLayer(routes[i]);
 
-        }
-    }
-}
-
-function deleteMarker(id) {
-    for (var i in cameraMarkers) {
-        if (id === cameraMarkers[i].options.id){
-            map.removeLayer(cameraMarkers[i]);
-            cameraMarkers.splice(i,1);
-            break;
         }
     }
 }
@@ -634,4 +671,34 @@ function deleteRoute(id) {
             joinedSegments.splice(i,1);
         }
     }
+}
+
+//////////////////// ////////////////////
+
+function centerInBounds(fitMarkers, fitRoutes) {
+    console.log("centerInBounds(fitMarkers, fitRoutes)")
+
+    if ((cameraMarkers.length === 0) && (routes.length === 0)) {
+        return;
+    }
+
+    var bounds = L.latLngBounds();
+    if (fitMarkers) {
+        for (i in cameraMarkers) {
+            bounds.extend(cameraMarkers[i].getLatLng());
+        }
+        for (j in objectMarkers) {
+            bounds.extend(objectMarkers[j].getLatLng());
+        }
+    }
+
+    if (fitRoutes) {
+        for (i in routes) {
+            routes[i].getLatLngs().forEach(function(e) {
+                bounds.extend(e);
+            });
+        }
+    }
+    map.fitBounds(bounds);
+    //map.panToBounds(bounds);
 }

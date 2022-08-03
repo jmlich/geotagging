@@ -91,6 +91,7 @@ public slots:
     void changeMap(int mapI);
     void setNewGpsInImage();
     void setMarkerLastPosition();
+    void setObjectMarkerLastPosition();
     void newMarkerAdded(int id, double lat, double lon, double ele);
     void retranslateUi();
     void changeRouteOpacity(int id, int value);
