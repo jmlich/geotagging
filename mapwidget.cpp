@@ -313,8 +313,8 @@ void MapWidget::markerClicked(int id) {
 void MapWidget::markerDragged(int id) {
     qDebug() << "markerDragged" << id;
     idDragged = id;
-    QMessageBox *mb = new QMessageBox(QMessageBox::Question, tr("Change picture location"),
-                                      tr("Change picture coordinates to the new position?"),
+    QMessageBox *mb = new QMessageBox(QMessageBox::Question, tr("Change camera location"),
+                                      tr("Change camera coordinates to the new position?"),
                                       QMessageBox::Yes | QMessageBox::No);
 
     QPalette pal = mb->palette();
