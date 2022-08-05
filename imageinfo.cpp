@@ -225,6 +225,8 @@ void ImageInfo::setAltitudeLabel() {
 void ImageInfo::setDirectionLabel() {
     QString directionText = QString(tr("%1°")).arg(imageData->direction);
     ui->directionLabel->setText(directionText);
+    ui->directionLabel->setVisible(!qIsNaN(imageData->direction));
+
 }
 
 void ImageInfo::setObjectPositionLabel() {
