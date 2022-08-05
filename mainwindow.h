@@ -168,6 +168,8 @@ public slots:
     void saveSynchChanges();
     void addNewMarker();
     void addNewMarkerFinished();
+    void addNewObjectMarker();
+    void addNewObjectMarkerFinished();
     void mousePressEvent( QMouseEvent * event);
     //void switchDateTimeFormat(QAction *action);
     void deleteRoute(int id);

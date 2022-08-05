@@ -346,8 +346,19 @@ function settingNewMarker(iidList) {
     $('#map').css('cursor','crosshair');
 
     map.once('click', function(event){
-        console.log("marker Added" + event.latlng)
+        console.log("camera marker added: " + event.latlng)
         addNewMarkers(event.latlng);
+    });
+}
+function settingNewObjectMarker(iidList) {
+    idList = iidList;
+
+    $('#map').css('cursor','crosshair');
+
+    map.once('click', function(event){
+        console.log("object marker added: " + event.latlng)
+
+        addNewObjectMarkers(event.latlng);
     });
 }
 function endSettingNewMarker() {
@@ -365,11 +376,28 @@ function addNewMarkers(coord) {
         // addMarker(iid, isVisible, lat, lon, dir, fov, objLat, objLon)
 
         addMarker(idList[i], true, coord.lat, coord.lng);
-        markerClicked(idList[i], 1);
+        markerOrObjectClicked(idList[i], 1);
         window.mapWidget.newMarkerAdded(idList[i], coord.lat, coord.lng, ele);
     }
 
 }
+
+function addNewObjectMarkers(coord) {
+    console.log("FIXME addNewObjectMarkers(" + coord + ")")
+    var ele = -1000;
+
+    // FIXME evelation
+    for (var i = 0; i < idList.length; i++) {
+
+        // addMarker(iid, isVisible, lat, lon, dir, fov, objLat, objLon)
+
+        addObjectMarker(idList[i], true, coord.lat, coord.lng);
+        markerOrObjectClicked(idList[i], 1);
+        window.mapWidget.newObjectMarkerAdded(idList[i], coord.lat, coord.lng, ele);
+    }
+
+}
+
 
 function addObjectMarker(_id, _isVisible, lat, lon) {
     console.log("addObjectMarker " + _id + _isVisible, lat, lon);

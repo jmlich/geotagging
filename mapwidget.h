@@ -59,7 +59,9 @@ public:
 
     bool loadIsFinished;
     void settingNewMarker(QCursor cursor, QList<int> idList);
+    void settingNewObjectMarker(QCursor cursor, QList<int> idList);
     void endSettingNewMarker(QCursor cursor);
+    void endSettingNewObjectMarker(QCursor cursor);
     GpsRoutesList *gpsRoutesList;
 
 

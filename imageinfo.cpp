@@ -45,9 +45,13 @@ ImageInfo::ImageInfo(ImageData *newImageData,QWidget *parent) :
     saveDateTimeAction->setIconVisibleInMenu(true);
     this->addAction(saveDateTimeAction);
 
-    newMarkerAction = new QAction(QIcon(":/icons/marker-yellow.png"),tr("Set new location for selected pictures"),this);
-    newMarkerAction->setIconVisibleInMenu(true);
-    this->addAction(newMarkerAction);
+    newCameraMarkerAction = new QAction(QIcon(":/js/images/marker-icon-gold.png"),tr("Set new camera location for selected pictures"),this);
+    newCameraMarkerAction->setIconVisibleInMenu(true);
+    this->addAction(newCameraMarkerAction);
+
+    newObjectMarkerAction = new QAction(QIcon(":/js/images/marker-icon-green.png"),tr("Set new object location for selected pictures"),this);
+    newObjectMarkerAction->setIconVisibleInMenu(true);
+    this->addAction(newObjectMarkerAction);
 
     openExternaly = new QAction(tr("Open Image in External Editor"));
     openExternaly->setIconVisibleInMenu(true);
@@ -81,7 +85,8 @@ void ImageInfo::retranslateUi() {
 
     saveGpsAction->setText(tr("Save GPS coordinates to EXIF data of selected pictures"));
     saveDateTimeAction->setText(tr("Save date and time to EXIF data of selected pictures"));
-    newMarkerAction->setText(tr("Set new location for selected pictures"));
+    newCameraMarkerAction->setText(tr("Set new camera location for selected pictures"));
+    newObjectMarkerAction->setText(tr("Set new object location for selected pictures"));
     synchAction->setText(tr("Synchronize with GPS route"));
 }
 
@@ -92,7 +97,8 @@ ImageInfo::~ImageInfo() {
     delete candidatePointTime;
     delete saveDateTimeAction;
     delete saveGpsAction;
-    delete newMarkerAction;
+    delete newCameraMarkerAction;
+    delete newObjectMarkerAction;
     delete synchAction;
     delete ui;
 }

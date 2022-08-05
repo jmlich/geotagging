@@ -55,7 +55,8 @@ public:
 
     QAction *saveGpsAction;
     QAction *saveDateTimeAction;
-    QAction *newMarkerAction;
+    QAction *newCameraMarkerAction;
+    QAction *newObjectMarkerAction;
     QAction *synchAction;
     QAction *openExternaly;
 

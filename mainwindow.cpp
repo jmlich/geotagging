@@ -300,6 +300,29 @@ void MainWindow::addNewMarkerFinished() {
     isNewMarkerSetting = 0;
 }
 
+void MainWindow::addNewObjectMarker() {
+    QCursor cursor;
+    cursor.setShape(Qt::CrossCursor);
+
+    QList<int> idList = imageWidgetsList->selectedIdList();
+
+    this->setCursor(cursor);
+    map->settingNewObjectMarker(cursor, idList);
+    isNewMarkerSetting = 1;
+
+    qDebug() << "addNewObjectMarker" << idList << cursor;
+
+}
+
+void MainWindow::addNewObjectMarkerFinished() {
+    QCursor cursor;
+    cursor.setShape(Qt::ArrowCursor);
+
+    this->setCursor(cursor);
+    map->endSettingNewObjectMarker(cursor);
+    isNewMarkerSetting = 0;
+}
+
 void MainWindow::importFinished(QStringList *unrecognizedList) {
     if(progressBar != NULL) {
         delete progressBar;
@@ -564,7 +587,8 @@ void MainWindow::addImage(ImageData *imageData) {
     connect(groupGpsFormat, SIGNAL(triggered(QAction*)),imageWidget,SLOT(setGpsFormat(QAction*)));
     connect(groupDateTimeFormat, SIGNAL(triggered(QAction *)), imageWidget, SLOT(setDateTimeFormat(QAction*)));
     connect(keyEH, SIGNAL(selectImage()), imageWidget, SLOT(select()));
-    connect(imageWidget->newMarkerAction, SIGNAL(triggered()), this, SLOT(addNewMarker()));
+    connect(imageWidget->newCameraMarkerAction, SIGNAL(triggered()), this, SLOT(addNewMarker()));
+    connect(imageWidget->newObjectMarkerAction, SIGNAL(triggered()), this, SLOT(addNewObjectMarker()));
     connect(imageWidget->synchAction, SIGNAL(triggered()), this, SLOT(synchronizeSelected()));
     connect(ui->menuDisplayedImageInformations, SIGNAL(triggered(QAction*)),
             imageWidget, SLOT(changeLabelVisibility(QAction*)));

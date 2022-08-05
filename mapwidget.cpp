@@ -110,6 +110,27 @@ void MapWidget::endSettingNewMarker(QCursor cursor) {
 
 }
 
+void MapWidget::settingNewObjectMarker(QCursor cursor, QList<int> idList) {
+    this->setCursor(cursor);
+    QString ids = "[";
+    int i;
+    foreach(i, idList) {
+        ids += QString("%1").arg(i) + ",";
+    }
+    ids.chop(1);
+    ids += "]";
+
+    QString scriptStr = QString("settingNewObjectMarker(%1);").arg(ids);
+    mapView->page()->runJavaScript(scriptStr, [](const QVariant &result){ qDebug() << result.toString(); });
+}
+
+void MapWidget::endSettingNewObjectMarker(QCursor cursor) {
+    this->setCursor(cursor);
+    QString scriptStr = "endSettingNewMarker();";
+    mapView->page()->runJavaScript(scriptStr, [](const QVariant &result){ qDebug() << result.toString(); });
+
+}
+
 void MapWidget::newMarkerAdded(int id, double lat, double lon, double ele) {
     qDebug() << "newMarkerAdded" << id << lat << lon << ele;
 
@@ -124,6 +145,7 @@ void MapWidget::newObjectMarkerAdded(int id, double lat, double lon, double ele)
     emit setObjectGpsInImage(id, lat, lon, ele);
 
 }
+
 
 void MapWidget::setWidgets() {
     iconMarkerVisible = new QIcon(":/icons/markerShowR.png");
