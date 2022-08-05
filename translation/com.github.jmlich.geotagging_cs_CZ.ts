@@ -256,121 +256,121 @@
 <context>
     <name>ExifReaderWriter</name>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="303"/>
+        <location filename="../exifreaderwriter.cpp" line="319"/>
         <source>unknown</source>
         <translation>neznámý</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="305"/>
+        <location filename="../exifreaderwriter.cpp" line="321"/>
         <source>average</source>
         <translation>průměrný</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="307"/>
+        <location filename="../exifreaderwriter.cpp" line="323"/>
         <source>center weighted average</source>
         <translation>průměrný vyvážený na střed</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="309"/>
+        <location filename="../exifreaderwriter.cpp" line="325"/>
         <source>spot</source>
         <translation>bod</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="311"/>
+        <location filename="../exifreaderwriter.cpp" line="327"/>
         <source>multi-spot</source>
         <translation>více bodů</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="313"/>
+        <location filename="../exifreaderwriter.cpp" line="329"/>
         <source>multi-segment</source>
         <translation>multi-segment</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="315"/>
+        <location filename="../exifreaderwriter.cpp" line="331"/>
         <source>partial</source>
         <translation>částečný</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="317"/>
+        <location filename="../exifreaderwriter.cpp" line="333"/>
         <source>other</source>
         <translation>jiný</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="329"/>
+        <location filename="../exifreaderwriter.cpp" line="345"/>
         <source>manual control</source>
         <translation>manuální kontrola</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="331"/>
+        <location filename="../exifreaderwriter.cpp" line="347"/>
         <source>normal</source>
         <translation>normální program</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="333"/>
+        <location filename="../exifreaderwriter.cpp" line="349"/>
         <source>aperture priority</source>
         <translation>priorita závěrky</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="335"/>
+        <location filename="../exifreaderwriter.cpp" line="351"/>
         <source>shutter priority</source>
         <translation>priorita clony</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="337"/>
+        <location filename="../exifreaderwriter.cpp" line="353"/>
         <source>program creative (slow program)</source>
         <translation>program creative (pomalý režim)</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="339"/>
+        <location filename="../exifreaderwriter.cpp" line="355"/>
         <source>program action(high-speed program)</source>
         <translation>program akce(rychlý režim)</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="341"/>
+        <location filename="../exifreaderwriter.cpp" line="357"/>
         <source>portrait mode</source>
         <translation>režim portrétu</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="343"/>
+        <location filename="../exifreaderwriter.cpp" line="359"/>
         <source>landscape mode</source>
         <translation>režim krajiny</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="380"/>
+        <location filename="../exifreaderwriter.cpp" line="396"/>
         <source>did not fire</source>
         <translation>nepoužit</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="382"/>
+        <location filename="../exifreaderwriter.cpp" line="398"/>
         <source>fired</source>
         <translation>použit</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="452"/>
-        <location filename="../exifreaderwriter.cpp" line="458"/>
+        <location filename="../exifreaderwriter.cpp" line="468"/>
+        <location filename="../exifreaderwriter.cpp" line="474"/>
         <source>N</source>
         <translation>S</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="452"/>
-        <location filename="../exifreaderwriter.cpp" line="458"/>
+        <location filename="../exifreaderwriter.cpp" line="468"/>
+        <location filename="../exifreaderwriter.cpp" line="474"/>
         <source>S</source>
         <translation>J</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="453"/>
-        <location filename="../exifreaderwriter.cpp" line="459"/>
+        <location filename="../exifreaderwriter.cpp" line="469"/>
+        <location filename="../exifreaderwriter.cpp" line="475"/>
         <source>E</source>
         <translation>V</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="453"/>
-        <location filename="../exifreaderwriter.cpp" line="459"/>
+        <location filename="../exifreaderwriter.cpp" line="469"/>
+        <location filename="../exifreaderwriter.cpp" line="475"/>
         <source>W</source>
         <translation>Z</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="454"/>
+        <location filename="../exifreaderwriter.cpp" line="470"/>
         <source> m</source>
         <translation> m</translation>
     </message>
@@ -529,73 +529,79 @@
     </message>
     <message>
         <location filename="../imageinfo.ui" line="126"/>
-        <location filename="../imageinfo.cpp" line="338"/>
+        <location filename="../imageinfo.cpp" line="346"/>
         <source>Unknown time</source>
         <translation>Neznámý čas</translation>
     </message>
     <message>
         <location filename="../imageinfo.ui" line="142"/>
-        <location filename="../imageinfo.cpp" line="187"/>
+        <location filename="../imageinfo.cpp" line="193"/>
         <source>Unknown GPS coordinates</source>
         <translation>Neznámé GPS souřadnice</translation>
     </message>
     <message>
         <location filename="../imageinfo.ui" line="149"/>
-        <location filename="../imageinfo.cpp" line="197"/>
+        <location filename="../imageinfo.cpp" line="203"/>
         <source>Unknown altitude</source>
         <translation>Neznámá nadmořská výška</translation>
     </message>
     <message>
         <location filename="../imageinfo.cpp" line="40"/>
-        <location filename="../imageinfo.cpp" line="82"/>
+        <location filename="../imageinfo.cpp" line="86"/>
         <source>Save GPS coordinates to EXIF data of selected pictures</source>
         <translation>Uložit GPS souřadnice do EXIF dat vybraných fotografií</translation>
     </message>
     <message>
         <location filename="../imageinfo.cpp" line="44"/>
-        <location filename="../imageinfo.cpp" line="83"/>
+        <location filename="../imageinfo.cpp" line="87"/>
         <source>Save date and time to EXIF data of selected pictures</source>
         <translation>Uložit datum a čas do EXIF dat vybraných fotografií</translation>
     </message>
     <message>
         <location filename="../imageinfo.cpp" line="48"/>
-        <location filename="../imageinfo.cpp" line="84"/>
-        <source>Set new location for selected pictures</source>
-        <translation>Přiřadit nové souřadnice vybraným fotografiím</translation>
+        <location filename="../imageinfo.cpp" line="88"/>
+        <source>Set new camera location for selected pictures</source>
+        <translation>Nastavit nové souřadnice fotoaparátu pro zvolený obrázek</translation>
     </message>
     <message>
         <location filename="../imageinfo.cpp" line="52"/>
+        <location filename="../imageinfo.cpp" line="89"/>
+        <source>Set new object location for selected pictures</source>
+        <translation>Nastavit nové souřadnice objektu pro zvolený obrázek</translation>
+    </message>
+    <message>
+        <location filename="../imageinfo.cpp" line="56"/>
         <source>Open Image in External Editor</source>
         <translation>Otevřít obrázek externím editorem</translation>
     </message>
     <message>
-        <location filename="../imageinfo.cpp" line="56"/>
-        <location filename="../imageinfo.cpp" line="85"/>
+        <location filename="../imageinfo.cpp" line="60"/>
+        <location filename="../imageinfo.cpp" line="90"/>
         <source>Synchronize with GPS route</source>
         <translation>Synchronizovat s GPS trasou</translation>
     </message>
     <message>
-        <location filename="../imageinfo.cpp" line="149"/>
-        <location filename="../imageinfo.cpp" line="196"/>
-        <location filename="../imageinfo.cpp" line="226"/>
-        <location filename="../imageinfo.cpp" line="337"/>
+        <location filename="../imageinfo.cpp" line="155"/>
+        <location filename="../imageinfo.cpp" line="202"/>
+        <location filename="../imageinfo.cpp" line="234"/>
+        <location filename="../imageinfo.cpp" line="345"/>
         <source>-</source>
         <translation>-</translation>
     </message>
     <message>
-        <location filename="../imageinfo.cpp" line="202"/>
-        <location filename="../imageinfo.cpp" line="206"/>
-        <location filename="../imageinfo.cpp" line="210"/>
+        <location filename="../imageinfo.cpp" line="208"/>
+        <location filename="../imageinfo.cpp" line="212"/>
+        <location filename="../imageinfo.cpp" line="216"/>
         <source>%1m</source>
         <translation>%1m</translation>
     </message>
     <message>
-        <location filename="../imageinfo.cpp" line="220"/>
+        <location filename="../imageinfo.cpp" line="226"/>
         <source>%1°</source>
         <translation>%1˚</translation>
     </message>
     <message>
-        <location filename="../imageinfo.cpp" line="229"/>
+        <location filename="../imageinfo.cpp" line="237"/>
         <source>Object %1</source>
         <translation>Objekt %1</translation>
     </message>
@@ -603,12 +609,12 @@
 <context>
     <name>ImageWidgetsList</name>
     <message>
-        <location filename="../imagewidgetslist.cpp" line="60"/>
+        <location filename="../imagewidgetslist.cpp" line="61"/>
         <source>Save changes</source>
         <translation>Uložit změny</translation>
     </message>
     <message>
-        <location filename="../imagewidgetslist.cpp" line="61"/>
+        <location filename="../imagewidgetslist.cpp" line="62"/>
         <source>Some of the pictures you are trying to close have EXIF metadata that weren&apos;t saved. Do you wish to save them now?</source>
         <translation>Některé z fotografií, které se pokoušíte zavřít, nemají uložená EXIF metadata. Přejete si je uložit nyní?</translation>
     </message>
@@ -756,62 +762,62 @@
         <translation>d.M.yyyy hh:mm:ss</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="335"/>
+        <location filename="../mainwindow.cpp" line="358"/>
         <source>Couldn&apos;t recognize format of some files</source>
         <translation>Nepodařilo se rozpoznat formát některýh souborů</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="356"/>
+        <location filename="../mainwindow.cpp" line="379"/>
         <source>Drag and drop</source>
         <translation>Drag and drop</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="421"/>
+        <location filename="../mainwindow.cpp" line="444"/>
         <source>Save changes</source>
         <translation>Uložit změny</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="422"/>
+        <location filename="../mainwindow.cpp" line="445"/>
         <source>Some changes in EXIF metadata weren&apos;t saved. Do you wish to save them now?</source>
         <translation>Některé změny v EXIF metadatech nebyli uloženy. Přejete si je uložit nyní?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="467"/>
+        <location filename="../mainwindow.cpp" line="490"/>
         <source>Synchronisation</source>
         <translation>Synchronizace</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="468"/>
+        <location filename="../mainwindow.cpp" line="491"/>
         <source>No route selected</source>
         <translation>Nebyla vybrána trasa</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="519"/>
+        <location filename="../mainwindow.cpp" line="542"/>
         <source>Open files</source>
         <translation>Otevřít soubory</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="521"/>
+        <location filename="../mainwindow.cpp" line="544"/>
         <source>Images and routes (*.png *.jpg *.JPG *.jpeg *.JPEG *.tif *.raw *.rw2 *.mrw *.orf *.raf *.arw *.ari *.gpx);;Images (*.png *.jpg *.JPG *.jpeg *.JPEG *.tif *.raw *.rw2 *.mrw *.orf *.raf *.arw *.ari);;GPS files (*.gpx);; All files (*)</source>
         <translation>Obrázky a trasy (*.png *.jpg *.JPG *.jpeg *.JPEG *.tif *.raw *.rw2 *.mrw *.orf *.raf *.arw *.ari *.gpx);;Obrázky (*.png *.jpg *.JPG *.jpeg *.JPEG *.tif *.raw *.rw2 *.mrw *.orf *.raf *.arw *.ari);;GPS soubory (*.gpx);; All files (*)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="537"/>
+        <location filename="../mainwindow.cpp" line="560"/>
         <source>Open GPS File</source>
         <translation>Otevřít GPS soubor</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="538"/>
+        <location filename="../mainwindow.cpp" line="561"/>
         <source>GPS files (*.gpx);; All Files (*)</source>
         <translation>GPS soubory (*.gpx);; Všechny soubory (*)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="591"/>
+        <location filename="../mainwindow.cpp" line="615"/>
         <source>File import</source>
         <translation>Import souborů</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="592"/>
+        <location filename="../mainwindow.cpp" line="616"/>
         <source>Do you wish to synchronize pictures with GPS route?</source>
         <translation>Přejete si synchronizovat fotografie s GPS trasou?</translation>
     </message>
@@ -831,111 +837,111 @@
     </message>
     <message>
         <location filename="../mapwidget.cpp" line="57"/>
-        <location filename="../mapwidget.cpp" line="139"/>
+        <location filename="../mapwidget.cpp" line="161"/>
         <source>Cyclo-tourist</source>
         <translation>Cyklo-turistická</translation>
     </message>
     <message>
         <location filename="../mapwidget.cpp" line="58"/>
-        <location filename="../mapwidget.cpp" line="140"/>
+        <location filename="../mapwidget.cpp" line="162"/>
         <source>Google Roadmap</source>
         <translation>Google Silniční</translation>
     </message>
     <message>
         <location filename="../mapwidget.cpp" line="59"/>
-        <location filename="../mapwidget.cpp" line="141"/>
+        <location filename="../mapwidget.cpp" line="163"/>
         <source>Google Terrain</source>
         <translation>Google Terénní</translation>
     </message>
     <message>
         <location filename="../mapwidget.cpp" line="60"/>
-        <location filename="../mapwidget.cpp" line="142"/>
+        <location filename="../mapwidget.cpp" line="164"/>
         <source>Google Satellite</source>
         <translation>Google Satelitní</translation>
     </message>
     <message>
         <location filename="../mapwidget.cpp" line="61"/>
-        <location filename="../mapwidget.cpp" line="143"/>
+        <location filename="../mapwidget.cpp" line="165"/>
         <source>Google Hybrid</source>
         <translation>Google Hybridní</translation>
     </message>
     <message>
         <location filename="../mapwidget.cpp" line="62"/>
-        <location filename="../mapwidget.cpp" line="144"/>
+        <location filename="../mapwidget.cpp" line="166"/>
         <source>OSM Mapnik</source>
         <translation>OSM Mapnik</translation>
     </message>
     <message>
         <location filename="../mapwidget.cpp" line="63"/>
-        <location filename="../mapwidget.cpp" line="145"/>
+        <location filename="../mapwidget.cpp" line="167"/>
         <source>Mapy.cz base</source>
         <translation>Mapy.cz základní</translation>
     </message>
     <message>
         <location filename="../mapwidget.cpp" line="64"/>
-        <location filename="../mapwidget.cpp" line="146"/>
+        <location filename="../mapwidget.cpp" line="168"/>
         <source>Mapy.cz Orthophoto</source>
         <translation>Mapy.cz Orthofoto</translation>
     </message>
     <message>
         <location filename="../mapwidget.cpp" line="65"/>
-        <location filename="../mapwidget.cpp" line="147"/>
+        <location filename="../mapwidget.cpp" line="169"/>
         <source>ArcGis Topographic</source>
         <translation>ArgGic Topografická</translation>
     </message>
     <message>
         <location filename="../mapwidget.cpp" line="66"/>
-        <location filename="../mapwidget.cpp" line="148"/>
+        <location filename="../mapwidget.cpp" line="170"/>
         <source>ArcGis Satellite</source>
         <translation>ArcGis Satelitní</translation>
     </message>
     <message>
         <location filename="../mapwidget.cpp" line="68"/>
-        <location filename="../mapwidget.cpp" line="162"/>
+        <location filename="../mapwidget.cpp" line="184"/>
         <source>Center map to view all</source>
         <translation>Centrovat mapu pro zobrazení všech pozic fotografií a tras</translation>
     </message>
     <message>
         <location filename="../mapwidget.cpp" line="69"/>
-        <location filename="../mapwidget.cpp" line="177"/>
+        <location filename="../mapwidget.cpp" line="199"/>
         <source>Show all markers</source>
         <translation>Zobrazit všechny značky</translation>
     </message>
     <message>
         <location filename="../mapwidget.cpp" line="70"/>
-        <location filename="../mapwidget.cpp" line="193"/>
+        <location filename="../mapwidget.cpp" line="215"/>
         <source>Show routes</source>
         <translation>Zobrazit všechny trasy</translation>
     </message>
     <message>
         <location filename="../mapwidget.cpp" line="71"/>
-        <location filename="../mapwidget.cpp" line="209"/>
+        <location filename="../mapwidget.cpp" line="231"/>
         <source>Join segments</source>
         <translation>Spojit segmenty</translation>
     </message>
     <message>
         <location filename="../mapwidget.cpp" line="72"/>
-        <location filename="../mapwidget.cpp" line="226"/>
+        <location filename="../mapwidget.cpp" line="248"/>
         <source>Show relief</source>
         <translation>Zobrazit stínovaný reliéf</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="316"/>
+        <location filename="../mapwidget.cpp" line="342"/>
         <source>Change camera location</source>
         <translation>Změna polohy fotoaparátu</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="317"/>
+        <location filename="../mapwidget.cpp" line="343"/>
         <source>Change camera coordinates to the new position?</source>
         <translation>Chcete změnit souřadnice fotoaparátu na novou polohu?</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="355"/>
+        <location filename="../mapwidget.cpp" line="377"/>
         <source>Change picture object location</source>
         <translation>Změna polohy objektu na obrázku</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="356"/>
+        <location filename="../mapwidget.cpp" line="378"/>
         <source>Change picture object coordinates to the new position?</source>
         <translation>Chcete změnit souřadnice objektu na obrázku na novou polohu?</translation>
     </message>
