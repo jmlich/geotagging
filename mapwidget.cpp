@@ -356,11 +356,7 @@ void MapWidget::markerDragged(int id) {
 
 void MapWidget::objectSelected(int id, bool isSelected) {
     QStringList scriptStr;
-    scriptStr <<"for (i in objectMarkers) {"
-            <<    QString("if(%1 == -1 || %1==objectMarkers[i].options.id){").arg(id)
-            <<    QString("objectSelected(%1, i, %2);").arg(isSelected).arg(markersVisible)
-            <<  " }"
-            << " }";
+    scriptStr << QString("markerOrObjectSelected(%1, %2, %3)").arg(id).arg(isSelected).arg(markersVisible);
     qDebug() << scriptStr;
     mapView->page()->runJavaScript(scriptStr.join("\n"), [](const QVariant &result){ qDebug() << result.toString(); });
 
@@ -450,6 +446,8 @@ void MapWidget::addRoute(GpsRoute *route) {
                     << QString("addRoute(routeCoordinatesList2, %1, %2, \"%3\",0);").arg(route->id).arg(routesVisible && joinSegmentsVisible).arg(route->routeColor->name());
 
         }
+
+        qDebug() << scriptStr.join("\n");
 
         if (!loadIsFinished) {
             scriptsToRun << scriptStr.join("\n");
