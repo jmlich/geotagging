@@ -91,14 +91,30 @@ void ExifReaderWriter::readExif(QString pictureName) {
     double alt = readAltitude("Exif.GPSInfo.GPSAltitude", exifData);
     double direction = readExifItemDouble(exifData, "Exif.GPSInfo.GPSImgDirection");
 
+//     (Resolution in pixels/Focal plane resolution in dpi) X 25.4(mm/in)=size in mm
+    double focalPlaneXRes = readExifItemDouble(exifData, "Exif.Photo.FocalPlaneXResolution");
+    double xRes = readExifItemDouble(exifData, "Exif.Image.XResolution");
+    const double inchToMilimeter = 25.4;
+    double sensorWidth = (xRes / focalPlaneXRes) * inchToMilimeter;
+    double focalLength = readExifItemDouble(exifData, "Exif.Photo.FocalLength");
+//     Angle of view (in degrees) = 2 ArcTan( sensor width / (2 X focal length)) * (180/π)
+    double angleOfView = std::atan2( sensorWidth, 2*focalLength) * (180 / M_PI);
+
     double objLat = readLatLon("Exif.GPSInfo.GPSDestLatitude", exifData);
     double objLon = readLatLon("Exif.GPSInfo.GPSDestLongitude", exifData);
 
-    qDebug() << "loaded exif: " << pictureName << lat << lon << alt << direction << objLat << objLon;
+//    qDebug() << "focalPlaneXRes" << focalPlaneXRes
+//             << "xRes " << xRes
+//             << "sensorWidth " << sensorWidth
+//             << "focalLength " << focalLength
+//             << "angleOfView " << angleOfView;
 
+    qDebug() << "loaded exif: " << pictureName << lat << lon << alt
+             << "direction, fov: "<< direction << angleOfView
+             << "object: " << objLat << objLon;
 
     if(lat < 1000 && lon<1000) {
-        emit setGps(lat, lon, alt, direction);
+        emit setGps(lat, lon, alt, direction, angleOfView);
     }
     if (objLat < 1000 && objLon < 1000) {
         emit setObjGps(objLat, objLon);

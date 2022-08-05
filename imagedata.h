@@ -38,6 +38,7 @@ public:
     double longitude;
     double altitude;
     double direction;
+    double angleOfView;
 
     double objLatitude;
     double objLongitude;
@@ -57,7 +58,7 @@ signals:
 
 public slots:
      void setDateTime(QDateTime dateTime);
-     void setGps(double _lat, double _lon, double _alt, double _direction);
+     void setGps(double _lat, double _lon, double _alt, double _direction, double _angleOfView);
      void setObjGps(double _lat, double _lon);
 
      void imageReload();
