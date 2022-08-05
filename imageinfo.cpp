@@ -401,7 +401,7 @@ void ImageInfo::setLabels() {
     setTextLabels();
     resizeWidget(iconSize);
     if(imageData->isGps) {
-        emit mapAddMarker(imageData->id, imageData->latitude, imageData->longitude);
+        emit mapAddCameraMarker(imageData->id, imageData->latitude, imageData->longitude, imageData->direction, imageData->angleOfView);
     }
     qDebug() << imageData->objLatitude;
     if (imageData->objLatitude != 1000) {
@@ -472,7 +472,7 @@ void ImageInfo::saveNewData(bool isSaveExif) {
         imageData->altitude = altitudeCandidate;
         imageData->gpsSource = 2;
         imageData->isGps = 1;
-        emit mapAddMarker(imageData->id, imageData->latitude, imageData->longitude);
+        emit mapAddCameraMarker(imageData->id, imageData->latitude, imageData->longitude, imageData->direction, imageData->angleOfView);
         // FIXME mapAddObjectMarker()s
         //////////
 

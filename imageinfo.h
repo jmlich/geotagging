@@ -151,7 +151,7 @@ public slots:
 
 signals:
     void clicked(int id);
-    void mapAddMarker(int id, double lat, double lon);
+    void mapAddCameraMarker(int id, double lat, double lon, double direction, double angleOfView);
     void mapAddObjectMarker(int id, double lat, double lon);
     void selected(int id, bool s);
     void getFocus(int dy, int widgetHeight);

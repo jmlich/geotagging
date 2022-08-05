@@ -93,7 +93,7 @@ var mapWidget;
 var map;
 var cameraMarkers = [];
 var objectMarkers = [];
-var fowMarkers = [];
+var aovMarkers = [];
 var routes = [];
 var joinedSegments = [];
 var clickListener;
@@ -179,11 +179,11 @@ function initialize() {
 }
 
 function test_add_marker() {
-    addMarker(1234, true, 49.5, 16.4);
-    addMarker(1235, true, 49.5, 16.5);
-    addMarker(1236, true, 49.5, 16.6);
-    addMarker(1237, true, 49.5, 16.7);
-    addMarker(1238, true, 49.5, 16.8);
+    addCameraMarker(1234, true, 49.5, 16.4, 0, 30);
+    addCameraMarker(1235, true, 49.5, 16.5, 90, 30);
+    addCameraMarker(1236, true, 49.5, 16.6, 180, 30);
+    addCameraMarker(1237, true, 49.5, 16.7, 270, 30);
+    addCameraMarker(1238, true, 49.5, 16.8, 45, 30);
 
     addObjectMarker(1234, true, 49.6, 16.4);
     addObjectMarker(1235, true, 49.6, 16.5);
@@ -256,6 +256,39 @@ function setMapType(mapType) {
     return true;
 }
 
+function getCoordByDistanceBearing(latLng, bear, dist) {
+
+    var lat1 = (latLng[0]/180)*Math.PI;
+    var lon1 = (latLng[1]/180)*Math.PI;
+    var brng = (bear/180)*Math.PI;
+
+    var d = dist/6371000;  // uhlova vzdalenost
+
+    var dlat = d * Math.cos ( brng );
+    if (Math.abs(dlat) < 1E-10) {
+        dlat = 0;
+    }
+
+    var lat2 = lat1 + dlat;
+    var dphi = Math.log(Math.tan(lat2/2+Math.PI/4)/Math.tan(lat1/2+Math.PI/4));
+
+
+    var q = (isFinite(dlat/dphi)) ? dlat/dphi : Math.cos(lat1);  // E-W line gives dPhi=0
+
+    var dLon = d*Math.sin(brng)/q;
+
+    if (Math.abs(lat2) > Math.PI/2) {
+        lat2 = (lat2 > 0) ? Math.PI-lat2 : -Math.PI-lat2;
+    }
+
+
+    var lon2 = (lon1+dLon+Math.PI)%(2*Math.PI) - Math.PI;
+
+    return [(180*lat2)/Math.PI, (180*lon2)/Math.PI]
+
+}
+
+
 function flipRelief(setVisible) {
     if (setVisible) {
         map.addLayer(hill);
@@ -311,7 +344,7 @@ function setNewMarkerPosition(id) {
             ////////////////////////
 
             var ele = -1000;
-            window.mapWidget.newMarkerAdded(id, position.lat, position.lng, ele);
+            window.mapWidget.newCameraMarkerAdded(id, position.lat, position.lng, ele);
             return position;
 
         }
@@ -373,11 +406,11 @@ function addNewMarkers(coord) {
     // FIXME evelation
     for (var i = 0; i < idList.length; i++) {
 
-        // addMarker(iid, isVisible, lat, lon, dir, fov, objLat, objLon)
+        // addCameraMarker(iid, isVisible, lat, lon, dir, aov)
 
-        addMarker(idList[i], true, coord.lat, coord.lng);
+        addCameraMarker(idList[i], true, coord.lat, coord.lng, NaN, NaN);
         markerOrObjectClicked(idList[i], 1);
-        window.mapWidget.newMarkerAdded(idList[i], coord.lat, coord.lng, ele);
+        window.mapWidget.newCameraMarkerAdded(idList[i], coord.lat, coord.lng, ele);
     }
 
 }
@@ -388,9 +421,6 @@ function addNewObjectMarkers(coord) {
 
     // FIXME evelation
     for (var i = 0; i < idList.length; i++) {
-
-        // addMarker(iid, isVisible, lat, lon, dir, fov, objLat, objLon)
-
         addObjectMarker(idList[i], true, coord.lat, coord.lng);
         markerOrObjectClicked(idList[i], 1);
         window.mapWidget.newObjectMarkerAdded(idList[i], coord.lat, coord.lng, ele);
@@ -400,7 +430,8 @@ function addNewObjectMarkers(coord) {
 
 
 function addObjectMarker(_id, _isVisible, lat, lon) {
-    console.log("addObjectMarker " + _id + _isVisible, lat, lon);
+    console.log("addObjectMarker("+_id+ ", "+ _isVisible+ ", "+lat+", "+lon+")")
+
 
     for (var i in objectMarkers) {
         if (_id === objectMarkers[i].options.id){
@@ -462,9 +493,13 @@ function deleteObjectMarker(id) {
 }
 
 
-function addMarker(iid, isVisible, lat, lon) {
-    console.log("addMarker("+iid+ ", "+ isVisible+ ","+lat+", "+lon+")")
+function addCameraMarker(iid, isVisible, lat, lon, direction, angle_of_view) {
+    console.log("addCameraMarker("+iid+ ", "+ isVisible+ ", "+lat+", "+lon+", "+direction+", "+angle_of_view+")")
     var location = L.latLng(lat, lon);
+
+    if (isNaN(angle_of_view)) {
+        angle_of_view = 30;
+    }
 
     for (var i in cameraMarkers) {
         if (iid === cameraMarkers[i].options.id){
@@ -483,6 +518,22 @@ function addMarker(iid, isVisible, lat, lon) {
             return;
         }
     }
+
+    for (var i in aovMarkers) {
+        if (iid === aovMarkers[i].options.id){
+            if (lat < -90 || lat > 90 || lon < -180 || lon > 180) {
+                map.removeLayer(aovMarkers[i]);
+                aovMarkers.splice(i,1);
+                return;
+            }
+
+            var A = getCoordByDistanceBearing( [lat, lon], direction-angle_of_view/2, 1000);
+            var B = getCoordByDistanceBearing( [lat, lon], direction+angle_of_view/2, 1000);
+            aovMarkers[i].setLatLngs([A, [ lat, lon ], B])
+            return;
+        }
+    }
+
     
     if (lat < -90 || lat > 90 || lon < -180 || lon > 180) {
         return;
@@ -495,6 +546,24 @@ function addMarker(iid, isVisible, lat, lon) {
                               title: iid,
                               oldPosition: [lat, lon],
                           });
+
+    if (!isNaN(direction)) {
+
+        var A = getCoordByDistanceBearing( [lat, lon], direction-angle_of_view/2, 1000);
+        var B = getCoordByDistanceBearing( [lat, lon], direction+angle_of_view/2, 1000);
+        var line = L.polyline(
+                    [A, [ lat, lon ], B],
+                    {
+                        color: '#2981ca',
+                        id: iid
+                    }
+                    )
+        if (isVisible) {
+            line.addTo(map)
+        }
+        aovMarkers.push(line);
+    }
+
 
     if (isVisible) {
         marker.addTo(map);

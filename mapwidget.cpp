@@ -131,8 +131,8 @@ void MapWidget::endSettingNewObjectMarker(QCursor cursor) {
 
 }
 
-void MapWidget::newMarkerAdded(int id, double lat, double lon, double ele) {
-    qDebug() << "newMarkerAdded" << id << lat << lon << ele;
+void MapWidget::newCameraMarkerAdded(int id, double lat, double lon, double ele) {
+    qDebug() << "newCameraMarkerAdded" << id << lat << lon << ele;
 
     emit settingNewMarkerFinished();
     emit setGpsInImage(id, lat, lon, ele);
@@ -302,13 +302,17 @@ void MapWidget::addObjectMarker(int id, double lat, double lon) {
     }
 }
 
-void MapWidget::addMarker(int id, double lat, double lon) {
+void MapWidget::addCameraMarker(int id, double lat, double lon, double direction, double angleOfView) {
     QStringList scriptStr;
-    scriptStr << QString("addMarker(%1, %2, %3, %4); centerInBounds(1,0);")
+    scriptStr << QString("addCameraMarker(%1, %2, %3, %4, %5, %6); centerInBounds(1,0);")
                  .arg(id)
                  .arg(markersVisible)
                  .arg(QString::number(lat, 'f', 10))
-                 .arg(QString::number(lon, 'f', 10));
+                 .arg(QString::number(lon, 'f', 10))
+                 .arg(qIsNaN(direction) ? "NaN" : QString::number(direction, 'f', 10))
+                 .arg(qIsNaN(angleOfView) ? "NaN" : QString::number(angleOfView, 'f', 10));
+
+    qDebug() << scriptStr;
 
     if(!loadIsFinished) {
          scriptsToRun << scriptStr.join("\n");

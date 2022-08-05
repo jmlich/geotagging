@@ -74,7 +74,7 @@ signals:
 
 public slots:
     void addObjectMarker(int id, double lat, double lon);
-    void addMarker(int id, double lat, double lon);
+    void addCameraMarker(int id, double lat, double lon, double direction, double angleOfView);
     void addRoute(GpsRoute *route);
     void markerSelected(int id, bool s);
     void markerClicked(int id);
@@ -96,7 +96,7 @@ public slots:
     void setMarkerLastPosition();
     void setNewObjectPositionIntoImage();
     void setObjectMarkerLastPosition();
-    void newMarkerAdded(int id, double lat, double lon, double ele);
+    void newCameraMarkerAdded(int id, double lat, double lon, double ele);
     void newObjectMarkerAdded(int id, double lat, double lon, double ele);
     void retranslateUi();
     void changeRouteOpacity(int id, int value);
