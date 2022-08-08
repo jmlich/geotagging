@@ -205,15 +205,24 @@ void ExifReaderWriter::saveExifGps(QString pictureName, double latitude, double 
 
     Exiv2::ExifData &exifData = image->exifData();
 
-    writeData(exifData, "Exif.GPSInfo.GPSLatitude", exifLatLonString(latitude));
-    writeData(exifData, "Exif.GPSInfo.GPSLongitude", exifLatLonString(longitude));
-
-    writeData(exifData, "Exif.GPSInfo.GPSLatitudeRef", (latitude<0 ? "S" : "N"));
-    writeData(exifData, "Exif.GPSInfo.GPSLongitudeRef", (longitude<0 ? "W" : "E"));
+    if (latitude != 1000) {
+        writeData(exifData, "Exif.GPSInfo.GPSLatitude", exifLatLonString(latitude));
+        writeData(exifData, "Exif.GPSInfo.GPSLongitude", exifLatLonString(longitude));
+        writeData(exifData, "Exif.GPSInfo.GPSLatitudeRef", (latitude<0 ? "S" : "N"));
+        writeData(exifData, "Exif.GPSInfo.GPSLongitudeRef", (longitude<0 ? "W" : "E"));
+    } else {
+        removeData(exifData, "Exif.GPSInfo.GPSLatitude");
+        removeData(exifData, "Exif.GPSInfo.GPSLongitude");
+        removeData(exifData, "Exif.GPSInfo.GPSLatitudeRef");
+        removeData(exifData, "Exif.GPSInfo.GPSLongitudeRef");
+    }
 
     if(altitude > -999) {
         writeData(exifData, "Exif.GPSInfo.GPSAltitude", (QString("%1/%2").arg(abs(round(altitude * 1000))).arg(1000)));
         writeData(exifData, "Exif.GPSInfo.GPSAltitudeRef", (altitude<0 ? "1" : "0"));
+    } else {
+        removeData(exifData, "Exif.GPSInfo.GPSAltitude");
+        removeData(exifData, "Exif.GPSInfo.GPSAltitudeRef");
     }
 
     if (objLatitude != 1000) {
@@ -223,7 +232,10 @@ void ExifReaderWriter::saveExifGps(QString pictureName, double latitude, double 
         writeData(exifData, "Exif.GPSInfo.GPSDestLatitudeRef", (objLatitude<0 ? "S" : "N"));
         writeData(exifData, "Exif.GPSInfo.GPSDestLongitudeRef", (objLongitude<0 ? "W" : "E"));
     } else {
-        // FIXME remove when not set
+        removeData(exifData, "Exif.GPSInfo.GPSDestLatitude");
+        removeData(exifData, "Exif.GPSInfo.GPSDestLongitude");
+        removeData(exifData, "Exif.GPSInfo.GPSDestLatitudeRef");
+        removeData(exifData, "Exif.GPSInfo.GPSDestLongitudeRef");
     }
 
 
@@ -246,6 +258,19 @@ void ExifReaderWriter::writeData(Exiv2::ExifData &exifData, std::string keyStr, 
 //        qDebug() << e.what();
     }
 
+}
+
+void ExifReaderWriter::removeData(Exiv2::ExifData &exifData, std::string keyStr) {
+    try {
+        Exiv2::ExifKey key(keyStr);
+        Exiv2::ExifData::iterator pos = exifData.findKey(key);
+        if(pos != exifData.end()){
+            exifData.erase(pos);
+        }
+
+    } catch (Exiv2::Error& e) {
+        qDebug() << e.what();
+    }
 }
 
 double ExifReaderWriter::readExifItemDouble( Exiv2::ExifData &exifData, std::string keyStr ) {

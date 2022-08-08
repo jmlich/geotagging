@@ -19,6 +19,7 @@ class ExifReaderWriter : public QObject
     double readAltitude(QString str, Exiv2::ExifData &exifData);
     double readLatLon(QString str, Exiv2::ExifData &exifData);
     void writeData(Exiv2::ExifData &exifData, std::string keyStr, QString str);
+    void removeData(Exiv2::ExifData &exifData, std::string key);
     QString exifLatLonString(double l);
     std::unique_ptr<Exiv2::Image> openExif(QString pictureName);
     QString readExifItem(Exiv2::ExifData &exifData, std::string keyStr);

@@ -57,6 +57,9 @@ public:
     QAction *saveDateTimeAction;
     QAction *newCameraMarkerAction;
     QAction *newObjectMarkerAction;
+    QAction *removeCameraMarkerAction;
+    QAction *removeObjectMarkerAction;
+    QAction *setDirectionAction;
     QAction *synchAction;
     QAction *openExternaly;
 

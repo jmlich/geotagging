@@ -53,6 +53,18 @@ ImageInfo::ImageInfo(ImageData *newImageData,QWidget *parent) :
     newObjectMarkerAction->setIconVisibleInMenu(true);
     this->addAction(newObjectMarkerAction);
 
+    removeCameraMarkerAction = new QAction(tr("Remove camera marker location"), this);
+    removeCameraMarkerAction->setIconVisibleInMenu(true);
+    this->addAction(removeCameraMarkerAction);
+
+    removeObjectMarkerAction = new QAction(tr("Remove object marker location"), this);
+    removeObjectMarkerAction->setIconVisibleInMenu(true);
+    this->addAction(removeObjectMarkerAction);
+
+    setDirectionAction = new QAction(tr("Set camera direction"), this);
+    setDirectionAction->setIconVisibleInMenu(true);
+    this->addAction(setDirectionAction);
+
     openExternaly = new QAction(tr("Open Image in External Editor"));
     openExternaly->setIconVisibleInMenu(true);
     this->addAction(openExternaly);
