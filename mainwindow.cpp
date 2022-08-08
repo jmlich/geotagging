@@ -276,6 +276,14 @@ void MainWindow::saveSetting()
 
 }
 
+void MainWindow::removeCameraMarker() {
+    QList<int> idList = imageWidgetsList->selectedIdList();
+
+    map->settingRemoveCameraMarker(idList);
+
+    qDebug() << "removeCameraMarker" << idList;
+
+}
 
 void MainWindow::addNewMarker() {
     QCursor cursor;
@@ -299,6 +307,14 @@ void MainWindow::addNewMarkerFinished() {
     map->endSettingNewMarker(cursor);
     isNewMarkerSetting = 0;
 }
+
+void MainWindow::removeObjectMarker() {
+    QList<int> idList = imageWidgetsList->selectedIdList();
+    map->settingRemoveObjectMarker(idList);
+
+    qDebug() << "removeCameraMarker" << idList;
+}
+
 
 void MainWindow::addNewObjectMarker() {
     QCursor cursor;
@@ -589,6 +605,8 @@ void MainWindow::addImage(ImageData *imageData) {
     connect(keyEH, SIGNAL(selectImage()), imageWidget, SLOT(select()));
     connect(imageWidget->newCameraMarkerAction, SIGNAL(triggered()), this, SLOT(addNewMarker()));
     connect(imageWidget->newObjectMarkerAction, SIGNAL(triggered()), this, SLOT(addNewObjectMarker()));
+    connect(imageWidget->removeCameraMarkerAction, SIGNAL(triggered()), this, SLOT(removeCameraMarker()));
+    connect(imageWidget->removeObjectMarkerAction, SIGNAL(triggered()), this, SLOT(removeObjectMarker()));
     connect(imageWidget->synchAction, SIGNAL(triggered()), this, SLOT(synchronizeSelected()));
     connect(ui->menuDisplayedImageInformations, SIGNAL(triggered(QAction*)),
             imageWidget, SLOT(changeLabelVisibility(QAction*)));

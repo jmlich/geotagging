@@ -99,6 +99,9 @@ void ImageInfo::retranslateUi() {
     saveDateTimeAction->setText(tr("Save date and time to EXIF data of selected pictures"));
     newCameraMarkerAction->setText(tr("Set new camera location for selected pictures"));
     newObjectMarkerAction->setText(tr("Set new object location for selected pictures"));
+    removeCameraMarkerAction->setText(tr("Remove camera marker location"));
+    removeObjectMarkerAction->setText(tr("Remove object marker location"));
+    setDirectionAction->setText( tr("Set camera direction"));
     synchAction->setText(tr("Synchronize with GPS route"));
 }
 
@@ -111,6 +114,9 @@ ImageInfo::~ImageInfo() {
     delete saveGpsAction;
     delete newCameraMarkerAction;
     delete newObjectMarkerAction;
+    delete removeCameraMarkerAction;
+    delete removeObjectMarkerAction;
+    delete setDirectionAction;
     delete synchAction;
     delete ui;
 }

@@ -412,6 +412,40 @@ function settingNewObjectMarker(iidList) {
         addNewObjectMarkers(event.latlng);
     });
 }
+
+function settingRemoveCameraMarker(iidlist) {
+    console.log("settingRemoveCameraMarker(" + iidlist+")")
+    for (var j = 0; j < iidlist.length; j++) {
+        var id = iidlist[j];
+        for (var i in cameraMarkers) {
+            if (id === cameraMarkers[i].options.id){
+                map.removeLayer(cameraMarkers[i]);
+                cameraMarkers.splice(i,1);
+                window.mapWidget.newCameraMarkerAdded(id, 1000, 1000, -1000);
+                break;
+            }
+        }
+
+    }
+}
+
+function settingRemoveObjectMarker(iidlist) {
+    console.log("settingRemoveObjectMarker("+ iidlist+")")
+    for (var j = 0; j < iidlist.length; j++) {
+        var id = iidlist[j]
+        for (var i in objectMarkers) {
+            if (id === objectMarkers[i].options.id){
+                map.removeLayer(objectMarkers[i]);
+                objectMarkers.splice(i,1);
+                window.mapWidget.newObjectMarkerAdded(id, 1000, 1000, -1000);
+                break;
+            }
+        }
+
+    }
+}
+
+
 function endSettingNewMarker() {
     $('#map').css('cursor','');
 }

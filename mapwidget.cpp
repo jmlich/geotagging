@@ -124,6 +124,30 @@ void MapWidget::settingNewObjectMarker(QCursor cursor, QList<int> idList) {
     mapView->page()->runJavaScript(scriptStr, [](const QVariant &result){ qDebug() << result.toString(); });
 }
 
+void MapWidget::settingRemoveCameraMarker(QList<int> idList) {
+    QString ids = "[";
+    foreach(int i, idList) {
+        ids += QString("%1").arg(i) + ",";
+    }
+    ids.chop(1);
+    ids += "]";
+
+    QString scriptStr = QString("settingRemoveCameraMarker(%1);").arg(ids);
+    mapView->page()->runJavaScript(scriptStr, [](const QVariant &result){ qDebug() << result.toString(); });
+}
+
+void MapWidget::settingRemoveObjectMarker(QList<int> idList) {
+    QString ids = "[";
+    foreach(int i, idList) {
+        ids += QString("%1").arg(i) + ",";
+    }
+    ids.chop(1);
+    ids += "]";
+
+    QString scriptStr = QString("settingRemoveObjectMarker(%1);").arg(ids);
+    mapView->page()->runJavaScript(scriptStr, [](const QVariant &result){ qDebug() << result.toString(); });
+}
+
 void MapWidget::endSettingNewObjectMarker(QCursor cursor) {
     this->setCursor(cursor);
     QString scriptStr = "endSettingNewMarker();";

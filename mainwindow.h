@@ -166,9 +166,11 @@ public slots:
     //void selectAll();
   //  void deleteSelected();
     void saveSynchChanges();
+    void removeCameraMarker();
     void addNewMarker();
     void addNewMarkerFinished();
     void addNewObjectMarker();
+    void removeObjectMarker();
     void addNewObjectMarkerFinished();
     void mousePressEvent( QMouseEvent * event);
     //void switchDateTimeFormat(QAction *action);
