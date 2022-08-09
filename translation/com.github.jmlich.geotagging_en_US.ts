@@ -258,121 +258,121 @@
 <context>
     <name>ExifReaderWriter</name>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="319"/>
+        <location filename="../exifreaderwriter.cpp" line="344"/>
         <source>unknown</source>
         <translation>unknown</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="321"/>
+        <location filename="../exifreaderwriter.cpp" line="346"/>
         <source>average</source>
         <translation>average</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="323"/>
+        <location filename="../exifreaderwriter.cpp" line="348"/>
         <source>center weighted average</source>
         <translation>center weighted average</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="325"/>
+        <location filename="../exifreaderwriter.cpp" line="350"/>
         <source>spot</source>
         <translation>spot</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="327"/>
+        <location filename="../exifreaderwriter.cpp" line="352"/>
         <source>multi-spot</source>
         <translation>multi-spot</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="329"/>
+        <location filename="../exifreaderwriter.cpp" line="354"/>
         <source>multi-segment</source>
         <translation>multi-segment</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="331"/>
+        <location filename="../exifreaderwriter.cpp" line="356"/>
         <source>partial</source>
         <translation>partial</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="333"/>
+        <location filename="../exifreaderwriter.cpp" line="358"/>
         <source>other</source>
         <translation>other</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="345"/>
+        <location filename="../exifreaderwriter.cpp" line="370"/>
         <source>manual control</source>
         <translation>manual control</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="347"/>
+        <location filename="../exifreaderwriter.cpp" line="372"/>
         <source>normal</source>
         <translation>normal</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="349"/>
+        <location filename="../exifreaderwriter.cpp" line="374"/>
         <source>aperture priority</source>
         <translation>aperture priority</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="351"/>
+        <location filename="../exifreaderwriter.cpp" line="376"/>
         <source>shutter priority</source>
         <translation>shutter priority</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="353"/>
+        <location filename="../exifreaderwriter.cpp" line="378"/>
         <source>program creative (slow program)</source>
         <translation>program creative (slow program)</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="355"/>
+        <location filename="../exifreaderwriter.cpp" line="380"/>
         <source>program action(high-speed program)</source>
         <translation>program action(high-speed program)</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="357"/>
+        <location filename="../exifreaderwriter.cpp" line="382"/>
         <source>portrait mode</source>
         <translation>portrait mode</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="359"/>
+        <location filename="../exifreaderwriter.cpp" line="384"/>
         <source>landscape mode</source>
         <translation>landscape mode</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="396"/>
+        <location filename="../exifreaderwriter.cpp" line="421"/>
         <source>did not fire</source>
         <translation>did not fire</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="398"/>
+        <location filename="../exifreaderwriter.cpp" line="423"/>
         <source>fired</source>
         <translation>fired</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="468"/>
-        <location filename="../exifreaderwriter.cpp" line="474"/>
+        <location filename="../exifreaderwriter.cpp" line="493"/>
+        <location filename="../exifreaderwriter.cpp" line="499"/>
         <source>N</source>
         <translation>N</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="468"/>
-        <location filename="../exifreaderwriter.cpp" line="474"/>
+        <location filename="../exifreaderwriter.cpp" line="493"/>
+        <location filename="../exifreaderwriter.cpp" line="499"/>
         <source>S</source>
         <translation>S</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="469"/>
-        <location filename="../exifreaderwriter.cpp" line="475"/>
+        <location filename="../exifreaderwriter.cpp" line="494"/>
+        <location filename="../exifreaderwriter.cpp" line="500"/>
         <source>E</source>
         <translation>E</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="469"/>
-        <location filename="../exifreaderwriter.cpp" line="475"/>
+        <location filename="../exifreaderwriter.cpp" line="494"/>
+        <location filename="../exifreaderwriter.cpp" line="500"/>
         <source>W</source>
         <translation>W</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="470"/>
+        <location filename="../exifreaderwriter.cpp" line="495"/>
         <source> m</source>
         <translation> m</translation>
     </message>
@@ -531,79 +531,97 @@
     </message>
     <message>
         <location filename="../imageinfo.ui" line="126"/>
-        <location filename="../imageinfo.cpp" line="346"/>
+        <location filename="../imageinfo.cpp" line="364"/>
         <source>Unknown time</source>
         <translation>Unknown time</translation>
     </message>
     <message>
         <location filename="../imageinfo.ui" line="142"/>
-        <location filename="../imageinfo.cpp" line="193"/>
+        <location filename="../imageinfo.cpp" line="211"/>
         <source>Unknown GPS coordinates</source>
         <translation>Unknown GPS coordinates</translation>
     </message>
     <message>
         <location filename="../imageinfo.ui" line="149"/>
-        <location filename="../imageinfo.cpp" line="203"/>
+        <location filename="../imageinfo.cpp" line="221"/>
         <source>Unknown altitude</source>
         <translation>Unknown altitude</translation>
     </message>
     <message>
         <location filename="../imageinfo.cpp" line="40"/>
-        <location filename="../imageinfo.cpp" line="86"/>
+        <location filename="../imageinfo.cpp" line="98"/>
         <source>Save GPS coordinates to EXIF data of selected pictures</source>
         <translation>Save GPS coordinates to EXIF data of selected pictures</translation>
     </message>
     <message>
         <location filename="../imageinfo.cpp" line="44"/>
-        <location filename="../imageinfo.cpp" line="87"/>
+        <location filename="../imageinfo.cpp" line="99"/>
         <source>Save date and time to EXIF data of selected pictures</source>
         <translation>Save date and time to EXIF data of selected pictures</translation>
     </message>
     <message>
         <location filename="../imageinfo.cpp" line="48"/>
-        <location filename="../imageinfo.cpp" line="88"/>
+        <location filename="../imageinfo.cpp" line="100"/>
         <source>Set new camera location for selected pictures</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../imageinfo.cpp" line="52"/>
-        <location filename="../imageinfo.cpp" line="89"/>
+        <location filename="../imageinfo.cpp" line="101"/>
         <source>Set new object location for selected pictures</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../imageinfo.cpp" line="56"/>
+        <location filename="../imageinfo.cpp" line="102"/>
+        <source>Remove camera marker location</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../imageinfo.cpp" line="60"/>
+        <location filename="../imageinfo.cpp" line="103"/>
+        <source>Remove object marker location</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../imageinfo.cpp" line="64"/>
+        <location filename="../imageinfo.cpp" line="104"/>
+        <source>Set camera direction</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../imageinfo.cpp" line="68"/>
         <source>Open Image in External Editor</source>
         <translation>Open Image in External Editor</translation>
     </message>
     <message>
-        <location filename="../imageinfo.cpp" line="60"/>
-        <location filename="../imageinfo.cpp" line="90"/>
+        <location filename="../imageinfo.cpp" line="72"/>
+        <location filename="../imageinfo.cpp" line="105"/>
         <source>Synchronize with GPS route</source>
         <translation>Synchronize with GPS route</translation>
     </message>
     <message>
-        <location filename="../imageinfo.cpp" line="155"/>
-        <location filename="../imageinfo.cpp" line="202"/>
-        <location filename="../imageinfo.cpp" line="234"/>
-        <location filename="../imageinfo.cpp" line="345"/>
+        <location filename="../imageinfo.cpp" line="173"/>
+        <location filename="../imageinfo.cpp" line="220"/>
+        <location filename="../imageinfo.cpp" line="252"/>
+        <location filename="../imageinfo.cpp" line="363"/>
         <source>-</source>
         <translation>-</translation>
     </message>
     <message>
-        <location filename="../imageinfo.cpp" line="208"/>
-        <location filename="../imageinfo.cpp" line="212"/>
-        <location filename="../imageinfo.cpp" line="216"/>
+        <location filename="../imageinfo.cpp" line="226"/>
+        <location filename="../imageinfo.cpp" line="230"/>
+        <location filename="../imageinfo.cpp" line="234"/>
         <source>%1m</source>
         <translation>%1m</translation>
     </message>
     <message>
-        <location filename="../imageinfo.cpp" line="226"/>
+        <location filename="../imageinfo.cpp" line="244"/>
         <source>%1°</source>
         <translation type="unfinished">%1°</translation>
     </message>
     <message>
-        <location filename="../imageinfo.cpp" line="237"/>
+        <location filename="../imageinfo.cpp" line="255"/>
         <source>Object %1</source>
         <translation type="unfinished"></translation>
     </message>
@@ -764,62 +782,62 @@
         <translation>d.M.yyyy hh:mm:ss</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="358"/>
+        <location filename="../mainwindow.cpp" line="374"/>
         <source>Couldn&apos;t recognize format of some files</source>
         <translation>Couldn&apos;t recognize format of some files</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="379"/>
+        <location filename="../mainwindow.cpp" line="395"/>
         <source>Drag and drop</source>
         <translation>Drag and drop</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="444"/>
+        <location filename="../mainwindow.cpp" line="460"/>
         <source>Save changes</source>
         <translation>Save changes</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="445"/>
+        <location filename="../mainwindow.cpp" line="461"/>
         <source>Some changes in EXIF metadata weren&apos;t saved. Do you wish to save them now?</source>
         <translation>Some changes in EXIF metadata weren&apos;t saved. Do you wish to save them now?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="490"/>
+        <location filename="../mainwindow.cpp" line="506"/>
         <source>Synchronisation</source>
         <translation>Synchronisation</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="491"/>
+        <location filename="../mainwindow.cpp" line="507"/>
         <source>No route selected</source>
         <translation>No route selected</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="542"/>
+        <location filename="../mainwindow.cpp" line="558"/>
         <source>Open files</source>
         <translation>Open files</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="544"/>
+        <location filename="../mainwindow.cpp" line="560"/>
         <source>Images and routes (*.png *.jpg *.JPG *.jpeg *.JPEG *.tif *.raw *.rw2 *.mrw *.orf *.raf *.arw *.ari *.gpx);;Images (*.png *.jpg *.JPG *.jpeg *.JPEG *.tif *.raw *.rw2 *.mrw *.orf *.raf *.arw *.ari);;GPS files (*.gpx);; All files (*)</source>
         <translation>Images and routes (*.png *.jpg *.JPG *.jpeg *.JPEG *.tif *.raw *.rw2 *.mrw *.orf *.raf *.arw *.ari *.gpx);;Images (*.png *.jpg *.JPG *.jpeg *.JPEG *.tif *.raw *.rw2 *.mrw *.orf *.raf *.arw *.ari);;GPS files (*.gpx);; All files (*)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="560"/>
+        <location filename="../mainwindow.cpp" line="576"/>
         <source>Open GPS File</source>
         <translation>Open GPS File</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="561"/>
+        <location filename="../mainwindow.cpp" line="577"/>
         <source>GPS files (*.gpx);; All Files (*)</source>
         <translation>GPS files (*.gpx);; All Files (*)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="615"/>
+        <location filename="../mainwindow.cpp" line="633"/>
         <source>File import</source>
         <translation>File import</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="616"/>
+        <location filename="../mainwindow.cpp" line="634"/>
         <source>Do you wish to synchronize pictures with GPS route?</source>
         <translation>Do you wish to synchronize pictures with GPS route?</translation>
     </message>
@@ -839,111 +857,111 @@
     </message>
     <message>
         <location filename="../mapwidget.cpp" line="57"/>
-        <location filename="../mapwidget.cpp" line="161"/>
+        <location filename="../mapwidget.cpp" line="185"/>
         <source>Cyclo-tourist</source>
         <translation>Cyclo-tourist</translation>
     </message>
     <message>
         <location filename="../mapwidget.cpp" line="58"/>
-        <location filename="../mapwidget.cpp" line="162"/>
+        <location filename="../mapwidget.cpp" line="186"/>
         <source>Google Roadmap</source>
         <translation>Google Roadmap</translation>
     </message>
     <message>
         <location filename="../mapwidget.cpp" line="59"/>
-        <location filename="../mapwidget.cpp" line="163"/>
+        <location filename="../mapwidget.cpp" line="187"/>
         <source>Google Terrain</source>
         <translation>Google Terrain</translation>
     </message>
     <message>
         <location filename="../mapwidget.cpp" line="60"/>
-        <location filename="../mapwidget.cpp" line="164"/>
+        <location filename="../mapwidget.cpp" line="188"/>
         <source>Google Satellite</source>
         <translation>Google Satellite</translation>
     </message>
     <message>
         <location filename="../mapwidget.cpp" line="61"/>
-        <location filename="../mapwidget.cpp" line="165"/>
+        <location filename="../mapwidget.cpp" line="189"/>
         <source>Google Hybrid</source>
         <translation>Google Hybrid</translation>
     </message>
     <message>
         <location filename="../mapwidget.cpp" line="62"/>
-        <location filename="../mapwidget.cpp" line="166"/>
+        <location filename="../mapwidget.cpp" line="190"/>
         <source>OSM Mapnik</source>
         <translation>OSM Mapnik</translation>
     </message>
     <message>
         <location filename="../mapwidget.cpp" line="63"/>
-        <location filename="../mapwidget.cpp" line="167"/>
+        <location filename="../mapwidget.cpp" line="191"/>
         <source>Mapy.cz base</source>
         <translation>Mapy.cz base</translation>
     </message>
     <message>
         <location filename="../mapwidget.cpp" line="64"/>
-        <location filename="../mapwidget.cpp" line="168"/>
+        <location filename="../mapwidget.cpp" line="192"/>
         <source>Mapy.cz Orthophoto</source>
         <translation>Mapy.cz Orthophoto</translation>
     </message>
     <message>
         <location filename="../mapwidget.cpp" line="65"/>
-        <location filename="../mapwidget.cpp" line="169"/>
+        <location filename="../mapwidget.cpp" line="193"/>
         <source>ArcGis Topographic</source>
         <translation>ArcGis Topographic</translation>
     </message>
     <message>
         <location filename="../mapwidget.cpp" line="66"/>
-        <location filename="../mapwidget.cpp" line="170"/>
+        <location filename="../mapwidget.cpp" line="194"/>
         <source>ArcGis Satellite</source>
         <translation>ArcGis Satellite</translation>
     </message>
     <message>
         <location filename="../mapwidget.cpp" line="68"/>
-        <location filename="../mapwidget.cpp" line="184"/>
+        <location filename="../mapwidget.cpp" line="208"/>
         <source>Center map to view all</source>
         <translation>Center map to view all</translation>
     </message>
     <message>
         <location filename="../mapwidget.cpp" line="69"/>
-        <location filename="../mapwidget.cpp" line="199"/>
+        <location filename="../mapwidget.cpp" line="223"/>
         <source>Show all markers</source>
         <translation>Show all markers</translation>
     </message>
     <message>
         <location filename="../mapwidget.cpp" line="70"/>
-        <location filename="../mapwidget.cpp" line="215"/>
+        <location filename="../mapwidget.cpp" line="239"/>
         <source>Show routes</source>
         <translation>Show routes</translation>
     </message>
     <message>
         <location filename="../mapwidget.cpp" line="71"/>
-        <location filename="../mapwidget.cpp" line="231"/>
+        <location filename="../mapwidget.cpp" line="255"/>
         <source>Join segments</source>
         <translation>Join segments</translation>
     </message>
     <message>
         <location filename="../mapwidget.cpp" line="72"/>
-        <location filename="../mapwidget.cpp" line="248"/>
+        <location filename="../mapwidget.cpp" line="272"/>
         <source>Show relief</source>
         <translation>Show relief</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="342"/>
+        <location filename="../mapwidget.cpp" line="366"/>
         <source>Change camera location</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="343"/>
+        <location filename="../mapwidget.cpp" line="367"/>
         <source>Change camera coordinates to the new position?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="377"/>
+        <location filename="../mapwidget.cpp" line="401"/>
         <source>Change picture object location</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="378"/>
+        <location filename="../mapwidget.cpp" line="402"/>
         <source>Change picture object coordinates to the new position?</source>
         <translation type="unfinished"></translation>
     </message>
