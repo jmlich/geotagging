@@ -6,6 +6,7 @@
 #include "ui_mainwindow.h"
 #include <QMimeData>
 #include <QActionGroup>
+#include <QInputDialog>
 
 
 MainWindow::MainWindow(QWidget *parent) :
@@ -274,6 +275,14 @@ void MainWindow::saveSetting()
 
     settings.endGroup();
 
+}
+
+void MainWindow::setCameraDirection() {
+    bool ok;
+    double direction = QInputDialog::getDouble(this, tr("Set camera direction"), tr("Camera direction"), 180, -1, 360, 1, &ok, Qt::WindowFlags(), 1);
+    if (ok) {
+        qDebug() << "setCameraDirection " << direction;
+    }
 }
 
 void MainWindow::removeCameraMarker() {
@@ -607,6 +616,7 @@ void MainWindow::addImage(ImageData *imageData) {
     connect(imageWidget->newObjectMarkerAction, SIGNAL(triggered()), this, SLOT(addNewObjectMarker()));
     connect(imageWidget->removeCameraMarkerAction, SIGNAL(triggered()), this, SLOT(removeCameraMarker()));
     connect(imageWidget->removeObjectMarkerAction, SIGNAL(triggered()), this, SLOT(removeObjectMarker()));
+    connect(imageWidget->setDirectionAction, SIGNAL(triggered()), this, SLOT(setCameraDirection()));
     connect(imageWidget->synchAction, SIGNAL(triggered()), this, SLOT(synchronizeSelected()));
     connect(ui->menuDisplayedImageInformations, SIGNAL(triggered(QAction*)),
             imageWidget, SLOT(changeLabelVisibility(QAction*)));
