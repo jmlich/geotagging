@@ -100,6 +100,7 @@ public slots:
     void setObjectMarkerLastPosition();
     void newCameraMarkerAdded(int id, double lat, double lon, double ele);
     void newObjectMarkerAdded(int id, double lat, double lon, double ele);
+    void setttingCameraMarkerDirection(QList<int> idList, double direction);
     void retranslateUi();
     void changeRouteOpacity(int id, int value);
     void lineWidthChanged(int id, int value);

@@ -279,9 +279,20 @@ void MainWindow::saveSetting()
 
 void MainWindow::setCameraDirection() {
     bool ok;
-    double direction = QInputDialog::getDouble(this, tr("Set camera direction"), tr("Camera direction"), 180, -1, 360, 1, &ok, Qt::WindowFlags(), 1);
+
+    double direction = QInputDialog::getDouble(
+                this,
+                tr("Set camera direction"),
+                tr("Camera direction"),
+                180, -1, 360, 1,
+                &ok, Qt::WindowFlags(), 1);
+
     if (ok) {
-        qDebug() << "setCameraDirection " << direction;
+        QList<int> idList = imageWidgetsList->selectedIdList();
+
+        map->setttingCameraMarkerDirection(idList, (direction < 0) ? qQNaN() : direction);
+
+        qDebug() << "setCameraDirection " << idList << " " << direction;
     }
 }
 

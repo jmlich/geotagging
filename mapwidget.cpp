@@ -326,6 +326,28 @@ void MapWidget::addObjectMarker(int id, double lat, double lon) {
     }
 }
 
+void MapWidget::setttingCameraMarkerDirection(QList<int> idList, double direction) {
+
+    QString ids = "[";
+    int i;
+    foreach(i, idList) {
+        ids += QString("%1").arg(i) + ",";
+    }
+    ids.chop(1);
+    ids += "]";
+
+
+    QStringList scriptStr;
+    scriptStr << QString("setNewCameraDirection(%1, %2, %3);")
+                 .arg(ids)
+                 .arg(markersVisible)
+                 .arg(qIsNaN(direction) ? "NaN" : QString::number(direction, 'f', 10));
+    qDebug() << scriptStr.join("\n");
+
+    mapView->page()->runJavaScript(scriptStr.join("\n"), [](const QVariant &result){ qDebug() << result.toString(); });
+
+}
+
 void MapWidget::addCameraMarker(int id, double lat, double lon, double direction, double angleOfView) {
     QStringList scriptStr;
     scriptStr << QString("addCameraMarker(%1, %2, %3, %4, %5, %6); centerInBounds(1,0);")

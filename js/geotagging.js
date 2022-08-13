@@ -370,6 +370,32 @@ function setNewMarkerPosition(id) {
     //return [cameraMarkers[markerIdx].position.lat(),cameraMarkers[markerIdx].position.lng(), ele];
 }
 
+function setNewCameraDirection(id_list, isVisible, direction) {
+    console.log("setNewCameraDirection "+id_list + " " +isVisible + " " + direction)
+    for (var j = 0; j < id_list.length; j++) {
+        var id = id_list[j];
+
+        var postition = [1000, 1000]
+        for (var i in cameraMarkers) {
+            if(id === cameraMarkers[i].options.id){
+                var p = cameraMarkers[i].getLatLng();
+                position = [p.lat, p.lng]
+                break;
+            }
+        }
+        var angle_of_view = 30
+        for (var i in aovMarkers) {
+            if (aovMarkers[i].options.id === id) {
+                angle_of_view = aovMarkers[i].options.angle_of_view
+            }
+        }
+
+        addCameraMarker(id, isVisible, position[0], position[1], direction, angle_of_view)
+
+    }
+
+}
+
 function setNewObjectMarkerPosition(id) {
     console.log("setNewObjectMarkerPosition("+id+")")
     for (var i in objectMarkers) {
