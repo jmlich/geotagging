@@ -356,13 +356,13 @@ function setNewMarkerPosition(id) {
 
     for (var i in aovMarkers) {
         if (id === aovMarkers[i].options.id){
-            position = [ position.lat, position.lng]
-            var direction = aovMarkers[i].options.direction;
-            var angle_of_view = aovMarkers[i].options.angle_of_view
-            var A = getCoordByDistanceBearing( position, direction-angle_of_view/2, 1000);
-            var B = getCoordByDistanceBearing( position, direction+angle_of_view/2, 1000);
             console.log ("Updating angle of view: " + position + " " + direction + " " +angle_of_view)
-            aovMarkers[i].setLatLngs([A, position, B])
+            aovMarkers[i].setLatLngs(
+                        compute_aow_polygon(
+                            [ position.lat, position.lng],
+                            aovMarkers[i].options.direction,
+                            aovMarkers[i].options.angle_of_view
+                            ))
             return;
         }
     }
@@ -370,12 +370,19 @@ function setNewMarkerPosition(id) {
     //return [cameraMarkers[markerIdx].position.lat(),cameraMarkers[markerIdx].position.lng(), ele];
 }
 
+function compute_aow_polygon(position, direction, angle_of_view) {
+    var A = getCoordByDistanceBearing( position, direction-angle_of_view/2, 1000);
+    var B = getCoordByDistanceBearing( position, direction+angle_of_view/2, 1000);
+    return [A, position, B]
+
+}
+
 function setNewCameraDirection(id_list, isVisible, direction) {
     console.log("setNewCameraDirection "+id_list + " " +isVisible + " " + direction)
     for (var j = 0; j < id_list.length; j++) {
         var id = id_list[j];
 
-        var postition = [1000, 1000]
+        var position = [1000, 1000]
         for (var i in cameraMarkers) {
             if(id === cameraMarkers[i].options.id){
                 var p = cameraMarkers[i].getLatLng();
@@ -383,19 +390,48 @@ function setNewCameraDirection(id_list, isVisible, direction) {
                 break;
             }
         }
+        var lat = position[0]
+        var lon = position[1]
+        if (lat < -90 || lat > 90 || lon < -180 || lon > 180) {
+            console.log("Invalid position for " + id + " " + lat + "," + lon)
+            continue;
+        }
+
         var angle_of_view = 30
+        var found = -1;
+
         for (var i in aovMarkers) {
             if (aovMarkers[i].options.id === id) {
-                angle_of_view = aovMarkers[i].options.angle_of_view
-                aovMarkers[i].options.direction = direction;
-                var A = getCoordByDistanceBearing( position, direction-angle_of_view/2, 1000);
-                var B = getCoordByDistanceBearing( position, direction+angle_of_view/2, 1000);
-                console.log ("Updating angle of view: " + position + " " + direction + " " +angle_of_view)
-                aovMarkers[i].setLatLngs([A, position, B])
-                window.mapWidget.directionUpdated(id, direction, angle_of_view)
+                found = i;
                 break;
             }
         }
+
+        console.log("found: " + id + " " + found)
+
+        if (isNaN(direction) && (found != -1)) {
+            map.removeLayer(aovMarkers[found]);
+            aovMarkers.splice(found,1);
+            console.log("remove id:" + id)
+        } else if (found == -1) {
+            var newAov = L.polyline(
+                        compute_aow_polygon(position, direction, angle_of_view),
+                        {
+                             direction: direction,
+                             angle_of_view: angle_of_view,
+                             color: '#2981ca',
+                             id: id
+                        });
+            newAov.addTo(map)
+            console.log ("Adding new angle of view: " + id + " " + position + " " + direction + " " +angle_of_view)
+
+        } else {
+            aovMarkers[found].options.direction = direction;
+            aovMarkers[found].setLatLngs(compute_aow_polygon(position, direction, angle_of_view))
+            console.log ("Updating angle of view: " + id + " " + position + " " + direction + " " +angle_of_view)
+        }
+
+        window.mapWidget.directionUpdated(id, direction, angle_of_view)
 
     }
 

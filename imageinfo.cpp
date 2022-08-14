@@ -149,9 +149,9 @@ QString ImageInfo::currentStyleSheet() {
             + QString("#nameLabel { color:%1;}").arg("#232323")//.arg(pictureName)
             + QString("#timeLabel { color:%1}").arg(imageData->isDateTimeSaved ? "#232323" : "#FF0000")
             + QString("#gpsLabel { color:%1}").arg(imageData->isGpsSaved ? "#232323" : "#FF0000")
-            + QString("#gpsObjLabel { color:%1}").arg(imageData->objLatitude != 1000 ? "#232323" : "#FF0000")
-            + QString("#objectPositionLabel { color:%1}").arg(imageData->objLatitude != 1000 ? "#232323" : "#FF0000")
-            + QString("#directionLabel { color:%1}").arg(!qIsNaN(imageData->direction) ? "#232323" : "#FF0000")
+            + QString("#gpsObjLabel { color:%1}").arg(imageData->isGpsSaved ? "#232323" : "#FF0000")
+            + QString("#objectPositionLabel { color:%1}").arg(imageData->isGpsSaved? "#232323" : "#FF0000")
+            + QString("#directionLabel { color:%1}").arg(imageData->isGpsSaved ? "#232323" : "#FF0000")
             + QString("#altitudeLabel { color:%1}").arg((imageData->altitude < -999 || imageData->isGpsSaved) ? "#232323" : "#FF0000")
 
             + QString("#nameLabel:hover { background-color: #E1ECEC;}")
