@@ -170,6 +170,14 @@ void MapWidget::newObjectMarkerAdded(int id, double lat, double lon, double ele)
 
 }
 
+void MapWidget::directionUpdated(int id, double direction, double angleOfView) {
+    qDebug() << "directionUpdated" << id << direction << angleOfView;
+    emit settingNewMarkerFinished();
+    emit setCameraDirectionInImage(id, direction, angleOfView);
+
+}
+
+
 
 void MapWidget::setWidgets() {
     iconMarkerVisible = new QIcon(":/icons/markerShowR.png");
@@ -342,7 +350,7 @@ void MapWidget::setttingCameraMarkerDirection(QList<int> idList, double directio
                  .arg(ids)
                  .arg(markersVisible)
                  .arg(qIsNaN(direction) ? "NaN" : QString::number(direction, 'f', 10));
-    qDebug() << scriptStr.join("\n");
+//    qDebug() << scriptStr.join("\n");
 
     mapView->page()->runJavaScript(scriptStr.join("\n"), [](const QVariant &result){ qDebug() << result.toString(); });
 

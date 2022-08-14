@@ -37,6 +37,9 @@ void ImageWidgetsList::addImage(ImageInfo *imageWidget) {
     connect( map, SIGNAL(setObjectGpsInImage(int, double, double, double)),
              imageWidget, SLOT(setObjectGpsFromMap(int, double,double, double)));
 
+    connect( map, SIGNAL (setCameraDirectionInImage(int, double, double)),
+             imageWidget, SLOT(setCameraDirectionFromMap(int, double, double))
+             );
 
     connect(imageWidget->saveGpsAction, SIGNAL(triggered()),this,SLOT(saveExifGpsInSelected()) );
     connect(imageWidget->saveDateTimeAction, SIGNAL(triggered()),this,SLOT(saveExifDateTimeInSelected()) );

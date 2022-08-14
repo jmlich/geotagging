@@ -72,6 +72,7 @@ signals:
     void processEvent(QKeyEvent *event);
     void setGpsInImage(int id, double lat, double lon, double ele);
     void setObjectGpsInImage(int id, double lat, double lon, double ele);
+    void setCameraDirectionInImage(int id, double direction, double angleOfView);
     void settingNewMarkerFinished();
 
 public slots:
@@ -100,6 +101,7 @@ public slots:
     void setObjectMarkerLastPosition();
     void newCameraMarkerAdded(int id, double lat, double lon, double ele);
     void newObjectMarkerAdded(int id, double lat, double lon, double ele);
+    void directionUpdated(int id, double direction, double angleOfView);
     void setttingCameraMarkerDirection(QList<int> idList, double direction);
     void retranslateUi();
     void changeRouteOpacity(int id, int value);

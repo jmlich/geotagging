@@ -126,6 +126,7 @@ public slots:
     void setAltitude(double alt);
     void setGpsFromMap(int id, double lat, double lon, double alt);
     void setObjectGpsFromMap(int id, double lat, double lon, double alt);
+    void setCameraDirectionFromMap(int id, double direction, double angleOfView);
     void setGpsCandidates(double lat, double lon, double altitude, QDateTime pointTime, int method);
     void setCandidateIsCorrect(bool isCorrect);
     void setCandidateRouteName(QString routeName);

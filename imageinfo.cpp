@@ -296,6 +296,17 @@ void ImageInfo::setObjectGpsFromMap(int id, double lat, double lon, double alt) 
 
 }
 
+void ImageInfo::setCameraDirectionFromMap(int id, double direction, double angleOfView) {
+    if (id == imageData->id) {
+        imageData->direction = direction;
+        imageData->angleOfView = angleOfView;
+        imageData->isGpsSaved = 0;
+        setStyleSheet(currentStyleSheet());
+        setDirectionLabel();
+    }
+}
+
+
 
 void ImageInfo::setGpsFromMap(int id, double lat, double lon, double alt) {
 

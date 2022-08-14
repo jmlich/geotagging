@@ -387,11 +387,13 @@ function setNewCameraDirection(id_list, isVisible, direction) {
         for (var i in aovMarkers) {
             if (aovMarkers[i].options.id === id) {
                 angle_of_view = aovMarkers[i].options.angle_of_view
+                aovMarkers[i].options.direction = direction;
                 var A = getCoordByDistanceBearing( position, direction-angle_of_view/2, 1000);
                 var B = getCoordByDistanceBearing( position, direction+angle_of_view/2, 1000);
                 console.log ("Updating angle of view: " + position + " " + direction + " " +angle_of_view)
                 aovMarkers[i].setLatLngs([A, position, B])
-
+                window.mapWidget.directionUpdated(id, direction, angle_of_view)
+                break;
             }
         }
 
