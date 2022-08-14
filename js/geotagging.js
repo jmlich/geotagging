@@ -682,14 +682,12 @@ function markerOrObjectSelected(id, isSelected, markersVisible) {
     }
     lastSelected = id;
 
-    var bounds = L.latLngBounds();
-
-
     for (var i in cameraMarkers) {
         if (cameraMarkers[i].options.id === id) {
 
             if (isSelected) {
-                bounds.extend(cameraMarkers[i].getLatLng());
+                map.panTo(cameraMarkers[i].getLatLng());
+
                 cameraMarkers[i].setIcon(marker_camera_selected);
                 cameraMarkers[i].setZIndexOffset(1);
                 if (!markersVisible) {
@@ -710,7 +708,6 @@ function markerOrObjectSelected(id, isSelected, markersVisible) {
         if (objectMarkers[i].options.id === id) {
 
             if (isSelected) {
-                bounds.extend(objectMarkers[i].getLatLng());
                 objectMarkers[i].setIcon(marker_object_selected);
                 objectMarkers[i].setZIndexOffset(1);
                 if (!objectMarkers) {
@@ -726,7 +723,6 @@ function markerOrObjectSelected(id, isSelected, markersVisible) {
             break;
         }
     }
-    map.fitBounds(bounds);
 
 
 }
