@@ -363,7 +363,7 @@ function setNewMarkerPosition(id) {
                             aovMarkers[i].options.direction,
                             aovMarkers[i].options.angle_of_view
                             ))
-            return;
+            break;
         }
     }
 
@@ -423,6 +423,8 @@ function setNewCameraDirection(id_list, isVisible, direction) {
                              id: id
                         });
             newAov.addTo(map)
+            aovMarkers.push(newAov);
+
             console.log ("Adding new angle of view: " + id + " " + position + " " + direction + " " +angle_of_view)
 
         } else {
