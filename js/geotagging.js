@@ -407,12 +407,9 @@ function setNewCameraDirection(id_list, isVisible, direction) {
             }
         }
 
-        console.log("found: " + id + " " + found)
-
         if (isNaN(direction) && (found != -1)) {
             map.removeLayer(aovMarkers[found]);
             aovMarkers.splice(found,1);
-            console.log("remove id:" + id)
         } else if (found == -1) {
             var newAov = L.polyline(
                         compute_aow_polygon(position, direction, angle_of_view),
@@ -424,16 +421,12 @@ function setNewCameraDirection(id_list, isVisible, direction) {
                         });
             newAov.addTo(map)
             aovMarkers.push(newAov);
-
-            console.log ("Adding new angle of view: " + id + " " + position + " " + direction + " " +angle_of_view)
-
         } else {
             aovMarkers[found].options.direction = direction;
             aovMarkers[found].setLatLngs(compute_aow_polygon(position, direction, angle_of_view))
-            console.log ("Updating angle of view: " + id + " " + position + " " + direction + " " +angle_of_view)
         }
 
-        window.mapWidget.directionUpdated(id, direction, angle_of_view)
+        window.mapWidget.directionUpdated(id, isNaN(direction) ? -361 : direction, angle_of_view)
 
     }
 

@@ -284,13 +284,13 @@ void MainWindow::setCameraDirection() {
                 this,
                 tr("Set camera direction"),
                 tr("Camera direction"),
-                180, -1, 360, 1,
+                180, -361, 360, 1,
                 &ok, Qt::WindowFlags(), 1);
 
     if (ok) {
         QList<int> idList = imageWidgetsList->selectedIdList();
 
-        map->setttingCameraMarkerDirection(idList, (direction < 0) ? qQNaN() : direction);
+        map->setttingCameraMarkerDirection(idList, (direction < -360) ? qQNaN() : direction);
 
         qDebug() << "setCameraDirection " << idList << " " << direction;
     }

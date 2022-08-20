@@ -171,6 +171,11 @@ void MapWidget::newObjectMarkerAdded(int id, double lat, double lon, double ele)
 }
 
 void MapWidget::directionUpdated(int id, double direction, double angleOfView) {
+    if (direction < -360) {
+        direction = qQNaN();
+    } else if (direction < 0) {
+        direction += 360.0;
+    }
     qDebug() << "directionUpdated" << id << direction << angleOfView;
     emit settingNewMarkerFinished();
     emit setCameraDirectionInImage(id, direction, angleOfView);
