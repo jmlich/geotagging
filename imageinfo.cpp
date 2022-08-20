@@ -84,8 +84,8 @@ ImageInfo::ImageInfo(ImageData *newImageData,QWidget *parent) :
 
     synchCheckBox = NULL;
 
-    connect(this, SIGNAL(saveExifGps(QString, double, double, double, double, double)),
-            imageData->exifRW, SLOT(saveExifGps(QString,double,double, double, double, double)));
+    connect(this, SIGNAL(saveExifGps(QString, double, double, double, double, double, double)),
+            imageData->exifRW, SLOT(saveExifGps(QString,double,double, double, double, double, double)));
     connect(this, SIGNAL(saveExifTime(QString,QDateTime*)), imageData->exifRW, SLOT(saveExifTime(QString,QDateTime*)));
     connect(openExternaly, SIGNAL(triggered()), this, SLOT(openExternalEditor()));
     connect(imageData, SIGNAL(imageReloadDone()), this, SLOT(imageChanged()));
@@ -508,7 +508,7 @@ void ImageInfo::saveNewData(bool isSaveExif) {
         //////////
 
         if (isSaveExif) {
-            emit saveExifGps(imageData->pictureName, imageData->latitude, imageData->longitude, imageData->altitude, imageData->objLatitude, imageData->objLongitude);
+            emit saveExifGps(imageData->pictureName, imageData->latitude, imageData->longitude, imageData->altitude, imageData->objLatitude, imageData->objLongitude, imageData->direction);
         } else {
             imageData->isGpsSaved = 0;
             setStyleSheet(currentStyleSheet());
@@ -520,7 +520,7 @@ void ImageInfo::saveNewData(bool isSaveExif) {
 }
 void ImageInfo::saveGps() {
     if(imageData->isGps) {
-        emit saveExifGps(imageData->pictureName, imageData->latitude, imageData->longitude, imageData->altitude, imageData->objLatitude, imageData->objLongitude);
+        emit saveExifGps(imageData->pictureName, imageData->latitude, imageData->longitude, imageData->altitude, imageData->objLatitude, imageData->objLongitude, imageData->direction);
         imageData->isGpsSaved = 1;
         setStyleSheet(currentStyleSheet());
     }

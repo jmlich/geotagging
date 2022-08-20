@@ -191,8 +191,8 @@ QString ExifReaderWriter::exifLatLonString(double l) {
     return QString("%1/1 %2/1 %3/1000").arg(degrees).arg(min).arg(secM);
 }
 
-void ExifReaderWriter::saveExifGps(QString pictureName, double latitude, double longitude, double altitude, double objLatitude, double objLongitude) {
-    qDebug() << "saveExifGps" << pictureName << latitude << longitude << altitude << objLatitude << objLongitude;
+void ExifReaderWriter::saveExifGps(QString pictureName, double latitude, double longitude, double altitude, double objLatitude, double objLongitude, double direction) {
+    qDebug() << "saveExifGps" << pictureName << latitude << longitude << altitude << objLatitude << objLongitude << direction;
     std::unique_ptr<Exiv2::Image> image = openExif(pictureName);
     if (image.get() == 0) {
         return;
@@ -215,6 +215,13 @@ void ExifReaderWriter::saveExifGps(QString pictureName, double latitude, double 
         removeData(exifData, "Exif.GPSInfo.GPSLongitude");
         removeData(exifData, "Exif.GPSInfo.GPSLatitudeRef");
         removeData(exifData, "Exif.GPSInfo.GPSLongitudeRef");
+    }
+
+    if (qIsNaN(direction)) {
+        removeData(exifData, "Exif.GPSInfo.GPSImgDirection");
+    } else {
+        qDebug()  << "FIXME write data " << direction;
+//        writeData(exifData, "Exif.GPSInfo.GPSImgDirection", QString("%1").arg(direction));
     }
 
     if(altitude > -999) {

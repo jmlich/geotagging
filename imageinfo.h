@@ -162,7 +162,7 @@ signals:
     void deleteMarker(int id);
     void readExif(QString n);
     void saveExifTime(QString,QDateTime*);
-    void saveExifGps(QString, double, double, double, double, double);
+    void saveExifGps(QString, double, double, double, double, double, double);
 };
 
 #endif // IMAGEINFO_H
