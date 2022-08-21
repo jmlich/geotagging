@@ -221,7 +221,7 @@ void ExifReaderWriter::saveExifGps(QString pictureName, double latitude, double 
         removeData(exifData, "Exif.GPSInfo.GPSImgDirection");
     } else {
         qDebug()  << "FIXME write data " << direction;
-//        writeData(exifData, "Exif.GPSInfo.GPSImgDirection", QString("%1").arg(direction));
+        writeData(exifData, "Exif.GPSInfo.GPSImgDirection", QString("%1/1000").arg(int(direction*1000)));
     }
 
     if(altitude > -999) {
@@ -297,6 +297,7 @@ double ExifReaderWriter::readExifItemDouble( Exiv2::ExifData &exifData, std::str
     return qQNaN();
 
 }
+
 
 QString ExifReaderWriter::readExifItem( Exiv2::ExifData &exifData, std::string keyStr) {
     try{
