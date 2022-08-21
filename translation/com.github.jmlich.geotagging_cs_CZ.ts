@@ -760,82 +760,92 @@
         <translation>F1</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="76"/>
+        <location filename="../mainwindow.cpp" line="77"/>
         <source>Geotagging</source>
         <translation>Geotagging</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="167"/>
+        <location filename="../mainwindow.cpp" line="168"/>
         <source>Local setting</source>
         <translation>Místní - dlouhé</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="175"/>
+        <location filename="../mainwindow.cpp" line="176"/>
         <source>Local setting - short</source>
         <translation>Místní - krátké</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="183"/>
+        <location filename="../mainwindow.cpp" line="184"/>
         <source>d.M.yyyy hh:mm:ss</source>
         <translation>d.M.yyyy hh:mm:ss</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="374"/>
+        <location filename="../mainwindow.cpp" line="282"/>
+        <source>Set camera direction</source>
+        <translation>Nastavit směr fotoaparátu</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="282"/>
+        <source>Camera direction</source>
+        <translation>Směr fotoaparátu</translation>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="383"/>
         <source>Couldn&apos;t recognize format of some files</source>
         <translation>Nepodařilo se rozpoznat formát některýh souborů</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="395"/>
+        <location filename="../mainwindow.cpp" line="404"/>
         <source>Drag and drop</source>
         <translation>Drag and drop</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="460"/>
+        <location filename="../mainwindow.cpp" line="469"/>
         <source>Save changes</source>
         <translation>Uložit změny</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="461"/>
+        <location filename="../mainwindow.cpp" line="470"/>
         <source>Some changes in EXIF metadata weren&apos;t saved. Do you wish to save them now?</source>
         <translation>Některé změny v EXIF metadatech nebyli uloženy. Přejete si je uložit nyní?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="506"/>
+        <location filename="../mainwindow.cpp" line="515"/>
         <source>Synchronisation</source>
         <translation>Synchronizace</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="507"/>
+        <location filename="../mainwindow.cpp" line="516"/>
         <source>No route selected</source>
         <translation>Nebyla vybrána trasa</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="558"/>
+        <location filename="../mainwindow.cpp" line="567"/>
         <source>Open files</source>
         <translation>Otevřít soubory</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="560"/>
+        <location filename="../mainwindow.cpp" line="569"/>
         <source>Images and routes (*.png *.jpg *.JPG *.jpeg *.JPEG *.tif *.raw *.rw2 *.mrw *.orf *.raf *.arw *.ari *.gpx);;Images (*.png *.jpg *.JPG *.jpeg *.JPEG *.tif *.raw *.rw2 *.mrw *.orf *.raf *.arw *.ari);;GPS files (*.gpx);; All files (*)</source>
         <translation>Obrázky a trasy (*.png *.jpg *.JPG *.jpeg *.JPEG *.tif *.raw *.rw2 *.mrw *.orf *.raf *.arw *.ari *.gpx);;Obrázky (*.png *.jpg *.JPG *.jpeg *.JPEG *.tif *.raw *.rw2 *.mrw *.orf *.raf *.arw *.ari);;GPS soubory (*.gpx);; All files (*)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="576"/>
+        <location filename="../mainwindow.cpp" line="585"/>
         <source>Open GPS File</source>
         <translation>Otevřít GPS soubor</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="577"/>
+        <location filename="../mainwindow.cpp" line="586"/>
         <source>GPS files (*.gpx);; All Files (*)</source>
         <translation>GPS soubory (*.gpx);; Všechny soubory (*)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="633"/>
+        <location filename="../mainwindow.cpp" line="643"/>
         <source>File import</source>
         <translation>Import souborů</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="634"/>
+        <location filename="../mainwindow.cpp" line="644"/>
         <source>Do you wish to synchronize pictures with GPS route?</source>
         <translation>Přejete si synchronizovat fotografie s GPS trasou?</translation>
     </message>
