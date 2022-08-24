@@ -356,7 +356,7 @@ function setNewMarkerPosition(id) {
 
     for (var i in aovMarkers) {
         if (id === aovMarkers[i].options.id){
-            console.log ("Updating angle of view: " + position + " " + direction + " " +angle_of_view)
+            console.log ("Updating angle of view: " + position + " " + aovMarkers[i].options.direction + " " +aovMarkers[i].options.angle_of_view)
             aovMarkers[i].setLatLngs(
                         compute_aow_polygon(
                             [ position.lat, position.lng],
