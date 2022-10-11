@@ -1,45 +1,47 @@
 /** @file formathandler.cpp
-  * Soubor s tridou FormatHandler dedici ze trify QObject pro prevadeni gps souradnic a casu
-  * do pozadovaneho formatu
-  */
+ * Soubor s tridou FormatHandler dedici ze trify QObject pro prevadeni gps souradnic a casu
+ * do pozadovaneho formatu
+ */
 
 #include "formathandler.h"
 
-FormatHandler::FormatHandler() :
-        QObject()
+FormatHandler::FormatHandler()
+    : QObject()
 {
     formatGps = "dm";
     formatDateTime = "dd.M.yyyy hh:mm:ss";
 }
 
-
-QString FormatHandler::gpsInFormat(double l) {
+QString FormatHandler::gpsInFormat(double l)
+{
     QString lStr;
-    if(formatGps=="d") {//stupne
-        if(l<0) {
+    if (formatGps == "d") { // stupne
+        if (l < 0) {
             l *= -1;
         }
         lStr = QString::number(l, 'f', 5);
-    } else if(formatGps=="dm") {   //stupne minuty
+    } else if (formatGps == "dm") { // stupne minuty
         lStr = convertDegreeToDM(l);
-    } else {    //stupne minuty sekundy
+    } else { // stupne minuty sekundy
         lStr = convertDegreeToDMS(l);
     }
     return lStr;
 }
 
-QString FormatHandler::gpsAllInFormat(double lat, double lon) {
+QString FormatHandler::gpsAllInFormat(double lat, double lon)
+{
     QString latStr = gpsInFormat(lat);
     QString lonStr = gpsInFormat(lon);
     return QString("%1%2 %3%4")
-            .arg(latStr)
-            .arg(lat>=0 ? tr("N ") : tr("S "))
-            .arg(lonStr)
-            .arg(lon>=0 ? tr("E") : tr("W"));
+        .arg(latStr)
+        .arg(lat >= 0 ? tr("N ") : tr("S "))
+        .arg(lonStr)
+        .arg(lon >= 0 ? tr("E") : tr("W"));
 }
 
-QString FormatHandler::convertDegreeToDM(double l) {
-    if(l < 0) {
+QString FormatHandler::convertDegreeToDM(double l)
+{
+    if (l < 0) {
         l *= -1;
     }
     int degree = l;
@@ -48,7 +50,8 @@ QString FormatHandler::convertDegreeToDM(double l) {
     return QString::number(degree) + "°" + QString::number(min, 'f', 3) + "'";
 }
 
-QString FormatHandler::convertDegreeToDMS(double l){
+QString FormatHandler::convertDegreeToDMS(double l)
+{
     if (l < 0) {
         l = l * (-1);
     }

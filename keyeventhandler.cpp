@@ -1,23 +1,22 @@
 /** @file keyeventhandler.cpp
-  * Soubor s tridou KeyEventHandler dedici ze tridy QObject,
-  * slouzi pro rozpoznani klavesovych zkratek
-  */
+ * Soubor s tridou KeyEventHandler dedici ze tridy QObject,
+ * slouzi pro rozpoznani klavesovych zkratek
+ */
 #include "keyeventhandler.h"
 
-KeyEventHandler::KeyEventHandler(QObject *parent) :
-    QObject(parent)
+KeyEventHandler::KeyEventHandler(QObject* parent)
+    : QObject(parent)
 {
-
 }
 
-void KeyEventHandler::processKeyEvent(QKeyEvent *event) {
+void KeyEventHandler::processKeyEvent(QKeyEvent* event)
+{
 
-    if(event->key() == int('A') && (event->modifiers() & Qt::ControlModifier)){
+    if (event->key() == int('A') && (event->modifiers() & Qt::ControlModifier)) {
         emit selectImage();
-    } else if(event->key() == Qt::Key_Delete) {
+    } else if (event->key() == Qt::Key_Delete) {
         emit deleteSelected();
-    } else if(event->key() == Qt::Key_Escape){
+    } else if (event->key() == Qt::Key_Escape) {
         emit escapePressed();
     }
-
 }

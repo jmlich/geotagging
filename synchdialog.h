@@ -1,34 +1,33 @@
 /** @file synchdialog.h
-  * Hlavickovy soubor tridy SynchDialog dedici ze tridy QDialog,
-  * implementuje dialog s nastavenim parametru synchronizace
-  */
-
+ * Hlavickovy soubor tridy SynchDialog dedici ze tridy QDialog,
+ * implementuje dialog s nastavenim parametru synchronizace
+ */
 
 #ifndef SYNCHDIALOG_H
 #define SYNCHDIALOG_H
 
+#include "changedatetime.h"
+#include "gpsroute.h"
 #include <QDialog>
 #include <QList>
-#include "gpsroute.h"
-#include "changedatetime.h"
 #include <ctime>
 namespace Ui {
-    class SynchDialog;
+class SynchDialog;
 }
 
-class SynchDialog : public QDialog
-{
+class SynchDialog : public QDialog {
     Q_OBJECT
     QStringList zonesList;
+
 public:
-    explicit SynchDialog(QList<GpsRoute*> *gpsRoutes, QWidget *mw, ChangeDateTime *dateTimeChangeWidget, QWidget *parent = 0);
+    explicit SynchDialog(QList<GpsRoute*>* gpsRoutes, QWidget* mw, ChangeDateTime* dateTimeChangeWidget, QWidget* parent = 0);
     ~SynchDialog();
     void showGpsRoutes();
     void init();
 
-QGridLayout * layoutGps;
+    QGridLayout* layoutGps;
     bool isTimeChange();
-    //int timeChange();
+    // int timeChange();
 
     bool isCheckedGpsRoute(int i);
     uint maxRoutesDistM();
@@ -36,7 +35,7 @@ QGridLayout * layoutGps;
     double offset();
     bool isSynchAll();
     QList<int> checkedRoutes();
-    ChangeDateTime *changeDateTimeWidget;
+    ChangeDateTime* changeDateTimeWidget;
     bool isAnyRouteChecked();
     int method();
     void setMethod(int m);
@@ -50,10 +49,10 @@ QGridLayout * layoutGps;
     void setMaxDistM(int m);
 
 private:
-    Ui::SynchDialog *ui;
-    QList<GpsRoute*> *gpsRoutes;
+    Ui::SynchDialog* ui;
+    QList<GpsRoute*>* gpsRoutes;
 public slots:
-    void showEvent(QShowEvent *);
+    void showEvent(QShowEvent*);
     void retranslateUi();
 };
 

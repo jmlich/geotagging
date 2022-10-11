@@ -1,41 +1,43 @@
 /** @file picturesscrollarea.cpp
-  * Soubor s tridou PicturesScrollArea dedici ze tridy QScrollArea,
-  * implementuje skrolovaci plochu do ktere bude umisten ram s fotkami
-  */
+ * Soubor s tridou PicturesScrollArea dedici ze tridy QScrollArea,
+ * implementuje skrolovaci plochu do ktere bude umisten ram s fotkami
+ */
 
 #include "picturesscrollarea.h"
 
-PicturesScrollArea::PicturesScrollArea(QWidget *parent):
-        QScrollArea(parent)
+PicturesScrollArea::PicturesScrollArea(QWidget* parent)
+    : QScrollArea(parent)
 {
     setWidgetResizable(true);
-    setFocusPolicy(Qt::StrongFocus );
+    setFocusPolicy(Qt::StrongFocus);
     this->setFrameShape(QFrame::Panel);
     this->setFrameShadow(QFrame::Sunken);
     this->setBackgroundRole(QPalette::Light);
 
-setAutoFillBackground(true);
-
+    setAutoFillBackground(true);
 }
 
-void PicturesScrollArea::resizeEvent( QResizeEvent *event ) {
+void PicturesScrollArea::resizeEvent(QResizeEvent* event)
+{
     event->accept();
     emit showImages();
 }
 
-QSize PicturesScrollArea::sizeHint() const {
+QSize PicturesScrollArea::sizeHint() const
+{
     return QSize(850, 16777215);
 }
 
-
-void PicturesScrollArea::keyPressEvent ( QKeyEvent * event ) {
+void PicturesScrollArea::keyPressEvent(QKeyEvent* event)
+{
     emit processEvent(event);
 }
 
-void PicturesScrollArea::wheelEvent(QWheelEvent * event) {
-    if(event->modifiers() & Qt::ControlModifier){
+void PicturesScrollArea::wheelEvent(QWheelEvent* event)
+{
+    if (event->modifiers() & Qt::ControlModifier) {
         event->accept();
-        if(event->angleDelta().y() < 0) {
+        if (event->angleDelta().y() < 0) {
             emit changeSize(-1);
         } else {
             emit changeSize(1);
@@ -43,21 +45,20 @@ void PicturesScrollArea::wheelEvent(QWheelEvent * event) {
     } else {
         QScrollArea::wheelEvent(event);
     }
-
 }
 
-
-void PicturesScrollArea::setImageFocus(int dy, int widgetHeight) {
-    if(dy + this->widget()->pos().y() < 0) { //widget je nad scrollAreou
-        QScrollBar *scrollBar = verticalScrollBar();
-        scrollBar->setValue(scrollBar->value() +  (dy + this->widget()->pos().y()));
-    } else if(dy > verticalScrollBar()->value() + this->contentsRect().height()-widgetHeight) { //widget je pod scrollAreou
-        QScrollBar *scrollBar = verticalScrollBar();
-        scrollBar->setValue(scrollBar->value() +  (dy + this->widget()->pos().y()) - (this->contentsRect().height()-widgetHeight));
+void PicturesScrollArea::setImageFocus(int dy, int widgetHeight)
+{
+    if (dy + this->widget()->pos().y() < 0) { // widget je nad scrollAreou
+        QScrollBar* scrollBar = verticalScrollBar();
+        scrollBar->setValue(scrollBar->value() + (dy + this->widget()->pos().y()));
+    } else if (dy > verticalScrollBar()->value() + this->contentsRect().height() - widgetHeight) { // widget je pod scrollAreou
+        QScrollBar* scrollBar = verticalScrollBar();
+        scrollBar->setValue(scrollBar->value() + (dy + this->widget()->pos().y()) - (this->contentsRect().height() - widgetHeight));
     }
 }
 
-void PicturesScrollArea::shiftScrollBar(int dy) {
-    verticalScrollBar()->setValue(verticalScrollBar()->value() +  dy*3);
+void PicturesScrollArea::shiftScrollBar(int dy)
+{
+    verticalScrollBar()->setValue(verticalScrollBar()->value() + dy * 3);
 }
-

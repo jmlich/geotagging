@@ -1,33 +1,32 @@
 /** @file imagedata.h
-  * Hlavickovy soubor tridy ImageData dedici ze tridy QObject obsahujici data nactena z fotografie
-  */
+ * Hlavickovy soubor tridy ImageData dedici ze tridy QObject obsahujici data nactena z fotografie
+ */
 
 #ifndef IMAGEDATA_H
 #define IMAGEDATA_H
 
-#include <QObject>
+#include "exifreaderwriter.h"
 #include <QDateTime>
+#include <QFileSystemWatcher>
 #include <QImage>
 #include <QImageReader>
-#include <QFileSystemWatcher>
+#include <QObject>
 #include <QTimer>
-#include "exifreaderwriter.h"
 
 #define RELOAD_TIMER_INTERVAL 1500
 
-class ImageData : public QObject
-{
+class ImageData : public QObject {
     Q_OBJECT
 public:
-    explicit ImageData(QObject *parent = 0);
+    explicit ImageData(QObject* parent = 0);
     int id;
 
-    int gpsSource;  //1 = z fotografie
-                    //2 = prirazene z trasy
-                    //3 = prirazene rucne
+    int gpsSource; // 1 = z fotografie
+                   // 2 = prirazene z trasy
+                   // 3 = prirazene rucne
 
     QString pictureName;
-    QDateTime *dateTime;
+    QDateTime* dateTime;
     QDateTime originalDateTime;
     QDateTime lastDateTimeSaved;
     bool isDateTimeChanged;
@@ -43,28 +42,26 @@ public:
     double objLatitude;
     double objLongitude;
 
-    QImage *image_small = NULL;
+    QImage* image_small = NULL;
     int loadData(QString pictureFName);
     void scaleImage(QString pictureName);
     QSize scaleSize;
-    ExifReaderWriter *exifRW;
+    ExifReaderWriter* exifRW;
 
-    QFileSystemWatcher *watcher;
-    QTimer *reloadTimer;
+    QFileSystemWatcher* watcher;
+    QTimer* reloadTimer;
 
 signals:
-     void readExif(QString n);
-     void imageReloadDone();
+    void readExif(QString n);
+    void imageReloadDone();
 
 public slots:
-     void setDateTime(QDateTime dateTime);
-     void setGps(double _lat, double _lon, double _alt, double _direction, double _angleOfView);
-     void setObjGps(double _lat, double _lon);
+    void setDateTime(QDateTime dateTime);
+    void setGps(double _lat, double _lon, double _alt, double _direction, double _angleOfView);
+    void setObjGps(double _lat, double _lon);
 
-     void imageReload();
-     void watchedFileChanged(const QString filename);
-
-
+    void imageReload();
+    void watchedFileChanged(const QString filename);
 };
 
 #endif // IMAGEDATA_H

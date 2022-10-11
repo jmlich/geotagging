@@ -1,56 +1,55 @@
 /** @file picturesframe.h
-  * Hlavickovy soubor tridy PicturesFrame dedici ze tridy QFrame,
-  * implementuje ram pro pro umisteni widgetu s fotografiemi
-  */
+ * Hlavickovy soubor tridy PicturesFrame dedici ze tridy QFrame,
+ * implementuje ram pro pro umisteni widgetu s fotografiemi
+ */
 #ifndef PICTURESFRAME_H
 #define PICTURESFRAME_H
 
-#include <QFrame>
-#include <QRubberBand>
-#include <QMouseEvent>
-#include <QScrollArea>
-#include <QAction>
-#include <QCursor>
-#include <QBasicTimer>
 #include "imageinfo.h"
 #include "imagewidgetslist.h"
-class PicturesFrame : public QFrame
-{
+#include <QAction>
+#include <QBasicTimer>
+#include <QCursor>
+#include <QFrame>
+#include <QMouseEvent>
+#include <QRubberBand>
+#include <QScrollArea>
+class PicturesFrame : public QFrame {
     Q_OBJECT
     bool dragEventInProgress;
     int countColCount();
-    QGridLayout * layout;
+    QGridLayout* layout;
 
     int imageSize;
     int maxImageSize;
     int minImageSize;
 
     QBasicTimer timer;
-    void timerEvent(QTimerEvent *event);
+    void timerEvent(QTimerEvent* event);
+
 public:
-    explicit PicturesFrame(QWidget *parent = 0);
-    void mousePressEvent( QMouseEvent * event);
-    void mouseMoveEvent(QMouseEvent *event);
-    void mouseReleaseEvent(QMouseEvent *event);
+    explicit PicturesFrame(QWidget* parent = 0);
+    void mousePressEvent(QMouseEvent* event);
+    void mouseMoveEvent(QMouseEvent* event);
+    void mouseReleaseEvent(QMouseEvent* event);
 
-    void addImage(ImageInfo *imageWidget);
+    void addImage(ImageInfo* imageWidget);
 
-    ImageWidgetsList *imageWidgetsList;
+    ImageWidgetsList* imageWidgetsList;
 
     QPoint origin;
-    QRubberBand *rubberBand;
+    QRubberBand* rubberBand;
     int i;
 
 signals:
     void rubberBandRect(QRect r, bool apply);
 
     void shiftScrollBar(int dy);
-    void mousePress(QMouseEvent*e);
+    void mousePress(QMouseEvent* e);
     void rightClick(QPoint p);
 public slots:
     void showImages();
     void changeImageSize(int s);
-
 };
 
 #endif // PICTURESFRAME_H

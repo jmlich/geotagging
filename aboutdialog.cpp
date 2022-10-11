@@ -1,8 +1,8 @@
-#include <QFile>
 #include "aboutdialog.h"
+#include <QFile>
 
-
-AboutDialog::AboutDialog(QWidget *parent) : QDialog(parent)
+AboutDialog::AboutDialog(QWidget* parent)
+    : QDialog(parent)
 {
     ui.setupUi(this);
     QString verion_string = QString("%1 / %2 %3").arg(GIT_VERSION, __DATE__, __TIME__);
@@ -15,7 +15,6 @@ AboutDialog::AboutDialog(QWidget *parent) : QDialog(parent)
             QByteArray line = file.readLine();
             license_text = license_text + line;
         }
-
     }
 
     ui.textBrowser->setText(license_text);

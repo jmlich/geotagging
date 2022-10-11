@@ -1,23 +1,24 @@
 /** @file gpspanel.h
-  * Hlavickovy soubor tridy GpsPanel dedici ze trify QDockWidget pro zobrazeni otevrenych GPS tras
-  */
+ * Hlavickovy soubor tridy GpsPanel dedici ze trify QDockWidget pro zobrazeni otevrenych GPS tras
+ */
 
 #ifndef GPSPANEL_H
 #define GPSPANEL_H
 
-#include <QTreeWidget>
-#include <QDockWidget>
-#include <QToolButton>
-#include <QLayout>
 #include "gpsroute.h"
+#include <QDockWidget>
+#include <QLayout>
+#include <QToolButton>
+#include <QTreeWidget>
 
 class GpsPanel : public QDockWidget {
     Q_OBJECT
     QSize sizeHint() const;
-    QTreeWidget *treeW;
+    QTreeWidget* treeW;
+
 public:
-    GpsPanel( QWidget * parent = 0);
-    void addGpsWidget(GpsRoute *gpsRouteWidget);
+    GpsPanel(QWidget* parent = 0);
+    void addGpsWidget(GpsRoute* gpsRouteWidget);
 public slots:
     void retranslateUi();
 };

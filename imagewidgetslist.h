@@ -1,25 +1,24 @@
 /** @file imagewidgetslist.h
-  * Hlavickovy soubor tridy ImageWidgetsList dedici ze trid QObject a QList<ImageInfo *>
-  * obsahujici seznam widgetů s fotografiemi
-  */
+ * Hlavickovy soubor tridy ImageWidgetsList dedici ze trid QObject a QList<ImageInfo *>
+ * obsahujici seznam widgetů s fotografiemi
+ */
 
 #ifndef IMAGEWIDGETSLIST_H
 #define IMAGEWIDGETSLIST_H
 
-#include <QObject>
-#include <QList>
 #include "imageinfo.h"
 #include "mapwidget.h"
-class ImageWidgetsList : public QObject, public QList<ImageInfo *>
-{
+#include <QList>
+#include <QObject>
+class ImageWidgetsList : public QObject, public QList<ImageInfo*> {
     Q_OBJECT
 
 public:
-    explicit ImageWidgetsList(QObject *parent = 0);
-    void addImage(ImageInfo *imageWidget);
-    MapWidget *map;
+    explicit ImageWidgetsList(QObject* parent = 0);
+    void addImage(ImageInfo* imageWidget);
+    MapWidget* map;
     QList<int> selectedIdList();
-    //int selectedCount;
+    // int selectedCount;
     bool isNotSaved();
 
 signals:
@@ -38,8 +37,7 @@ public slots:
 
     void selectOne(int id, bool clickMarker, bool focus);
 
-    //void changeLabelsVisibility(QAction*a);
-
+    // void changeLabelsVisibility(QAction*a);
 };
 
 #endif // IMAGEWIDGETSLIST_H

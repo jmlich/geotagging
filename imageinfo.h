@@ -1,81 +1,76 @@
 /** @file imagedinfo.h
-  * Hlavickovy soubor tridy ImageInfo dedici ze tridy QWidget zobrazujici fotografii a popisky
-  */
-
+ * Hlavickovy soubor tridy ImageInfo dedici ze tridy QWidget zobrazujici fotografii a popisky
+ */
 
 #ifndef IMAGEINFO_H
 #define IMAGEINFO_H
 
-#include <QWidget>
-#include <QLabel>
-#include <QImageReader>
-#include <QDateTime>
-#include <QMouseEvent>
-#include <QFileInfo>
-#include "imageview.h"
 #include "exifreaderwriter.h"
 #include "formathandler.h"
 #include "imagedata.h"
-#include <QTreeWidget>
+#include "imageview.h"
 #include <QCheckBox>
-
+#include <QDateTime>
+#include <QFileInfo>
+#include <QImageReader>
+#include <QLabel>
+#include <QMouseEvent>
+#include <QTreeWidget>
+#include <QWidget>
 
 namespace Ui {
-    class ImageInfo;
+class ImageInfo;
 }
 
 class ImageInfo : public QWidget {
     Q_OBJECT
 
     QString exifTimeFormat;
-    QLabel *markerLabel;
-    QLabel *markerSelectedLabel;
-    FormatHandler *formatHandler;
+    QLabel* markerLabel;
+    QLabel* markerSelectedLabel;
+    FormatHandler* formatHandler;
     QString defaultStyleSheet;
     QString selectedStyleSheet;
 
     QSize imageSizeHint();
     QSize sizeHint();
     // void mouseMoveEvent ( QMouseEvent * event );
-    void mouseDoubleClickEvent( QMouseEvent * event );
-   // void mousePressEvent( QMouseEvent * event);
-    //QString convertDegree(double l);
+    void mouseDoubleClickEvent(QMouseEvent* event);
+    // void mousePressEvent( QMouseEvent * event);
+    // QString convertDegree(double l);
     QString currentStyleSheet();
-  //  int gpsSource;  //1 = z fotografie
-                    //2 = prirazene z trasy
-                    //3 = prirazene rucne
-
-
+    //  int gpsSource;  //1 = z fotografie
+    // 2 = prirazene z trasy
+    // 3 = prirazene rucne
 
 public:
-    //ImageInfo(int idd, QWidget *parent = 0);
-    ImageInfo(ImageData *newImageData, QWidget *parent = 0);
+    // ImageInfo(int idd, QWidget *parent = 0);
+    ImageInfo(ImageData* newImageData, QWidget* parent = 0);
     ~ImageInfo();
-    ImageData *imageData;
+    ImageData* imageData;
 
-    QAction *saveGpsAction;
-    QAction *saveDateTimeAction;
-    QAction *newCameraMarkerAction;
-    QAction *newObjectMarkerAction;
-    QAction *removeCameraMarkerAction;
-    QAction *removeObjectMarkerAction;
-    QAction *setDirectionAction;
-    QAction *synchAction;
-    QAction *openExternaly;
+    QAction* saveGpsAction;
+    QAction* saveDateTimeAction;
+    QAction* newCameraMarkerAction;
+    QAction* newObjectMarkerAction;
+    QAction* removeCameraMarkerAction;
+    QAction* removeObjectMarkerAction;
+    QAction* setDirectionAction;
+    QAction* synchAction;
+    QAction* openExternaly;
 
-   /* QString pictureName;
-    QDateTime *dateTime;
-    QDateTime originalDateTime;
-    QDateTime lastDateTimeSaved;
- //   bool isDateTimeChanged;*/
+    /* QString pictureName;
+     QDateTime *dateTime;
+     QDateTime originalDateTime;
+     QDateTime lastDateTimeSaved;
+  //   bool isDateTimeChanged;*/
 
     void setLabels();
     int iconSize;
     QStringList exifInformation();
 
-
-  //  QString gpsInFormat(double lat, double lon);
-   // int formatGps;
+    //  QString gpsInFormat(double lat, double lon);
+    // int formatGps;
 
     bool isClicked;
     bool isClickedOrig;
@@ -85,10 +80,10 @@ public:
     double altitudeCandidate;
     bool candidateIsCorrect;
     int approxMethod;
-    QDateTime *candidatePointTime;
+    QDateTime* candidatePointTime;
     QString routeName;
-    QCheckBox *synchCheckBox;
-    //QTreeWidget *tw;
+    QCheckBox* synchCheckBox;
+    // QTreeWidget *tw;
 
     void setGpsLabel();
     void setTimeLabel();
@@ -98,31 +93,29 @@ public:
 
     QString gpsString();
     QString gpsCandidadesString();
-    //bool loadFile(QString pictureFName);
+    // bool loadFile(QString pictureFName);
     void resizeWidget(int size);
     void setIconSize(int iconS);
-    void setOrigDateTime( bool isSaveTime);
+    void setOrigDateTime(bool isSaveTime);
 
     void changeDateTime(int timeShift, bool isSaveTime);
-
 
     int actualWidth();
     void saveDateTime();
     void saveGps();
-    //void saveExifTime();
-   // void saveExifLatLon();
+    // void saveExifTime();
+    // void saveExifLatLon();
     void saveNewData(bool saveExif);
 
-
 private:
-    Ui::ImageInfo *ui;
+    Ui::ImageInfo* ui;
 
 public slots:
     void scaleFinished(bool);
-    //void testRect(QRect r, bool isCtrl, bool apply);
+    // void testRect(QRect r, bool isCtrl, bool apply);
     void checkMarkerClickedId(int iid);
-    void rescaleFinished(QPixmap *p);
-   // void setGps(double lat, double lon);
+    void rescaleFinished(QPixmap* p);
+    // void setGps(double lat, double lon);
     void setAltitude(double alt);
     void setGpsFromMap(int id, double lat, double lon, double alt);
     void setObjectGpsFromMap(int id, double lat, double lon, double alt);
@@ -131,27 +124,26 @@ public slots:
     void setCandidateIsCorrect(bool isCorrect);
     void setCandidateRouteName(QString routeName);
     void setTextLabels();
-    //void setDegreesFormat();
-    //void setDegreesMinFormat();
-    void setGpsFormat(QAction*action);
-    void setDateTimeFormat(QAction*action);
-//    void setDateTimeFormat();
+    // void setDegreesFormat();
+    // void setDegreesMinFormat();
+    void setGpsFormat(QAction* action);
+    void setDateTimeFormat(QAction* action);
+    //    void setDateTimeFormat();
 
-    //void setDateTime(QString exifTimeFormat , QDateTime dateTime);
+    // void setDateTime(QString exifTimeFormat , QDateTime dateTime);
     void click(bool focus);
     void unclick();
     void unselect();
     void select();
-   // void saveExifGpsIfSelected();
-   // void saveExifDateTimeIfSelected();
+    // void saveExifGpsIfSelected();
+    // void saveExifDateTimeIfSelected();
     void retranslateUi();
-  //  void contextMenuEvent(QContextMenuEvent *event);
+    //  void contextMenuEvent(QContextMenuEvent *event);
 
-    void changeLabelVisibility(QAction *a);
+    void changeLabelVisibility(QAction* a);
     void openExternalEditor();
 
     void imageChanged();
-
 
 signals:
     void clicked(int id);
@@ -161,7 +153,7 @@ signals:
     void getFocus(int dy, int widgetHeight);
     void deleteMarker(int id);
     void readExif(QString n);
-    void saveExifTime(QString,QDateTime*);
+    void saveExifTime(QString, QDateTime*);
     void saveExifGps(QString, double, double, double, double, double, double);
 };
 

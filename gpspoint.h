@@ -1,20 +1,19 @@
 /** @file gpspoint.h
-  * Hlavickovy soubor tridy GpsPoint reprezentujici bod trasy
-  */
+ * Hlavickovy soubor tridy GpsPoint reprezentujici bod trasy
+ */
 
 #ifndef GPSPOINT_H
 #define GPSPOINT_H
-#include<QString>
 #include <QDateTime>
+#include <QString>
 
-class GpsPoint
-{
+class GpsPoint {
 public:
     GpsPoint();
 
     double latitude;
     double longitude;
-    QDateTime *dateTime;
+    QDateTime* dateTime;
     double ele;
 
     void setTime(QString time);

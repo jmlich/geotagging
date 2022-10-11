@@ -1,16 +1,15 @@
 #include "changetime.h"
 #include "ui_changetime.h"
 
-
-ChangeTime::ChangeTime(QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::ChangeTime)
+ChangeTime::ChangeTime(QWidget* parent)
+    : QDialog(parent)
+    , ui(new Ui::ChangeTime)
 {
     ui->setupUi(this);
     setWindowTitle(QApplication::translate("MainWindow", "Set delay", 0));
-    //setWindowTitle(QString::fromWCharArray(static_cast<wchar_t*>("Zmnit as")));
+    // setWindowTitle(QString::fromWCharArray(static_cast<wchar_t*>("Zmnit as")));
 
-    connect(this, SIGNAL(changeDateTime(int,int,int,int,bool)),parent, SLOT(changeDateTime_clicked(int,int,int,int,bool)));
+    connect(this, SIGNAL(changeDateTime(int, int, int, int, bool)), parent, SLOT(changeDateTime_clicked(int, int, int, int, bool)));
     QPalette pal = this->palette();
     pal.setColor(QPalette::Window, "#D0D0E7");
     this->setPalette(pal);
@@ -21,7 +20,7 @@ ChangeTime::~ChangeTime()
     delete ui;
 }
 
-void ChangeTime::changeEvent(QEvent *e)
+void ChangeTime::changeEvent(QEvent* e)
 {
     QDialog::changeEvent(e);
     switch (e->type()) {
@@ -39,8 +38,8 @@ void ChangeTime::on_buttonBox_accepted()
     int month = ui->monthSpinBox->text().toInt();
     int day = ui->daySpinBox->text().toInt();
     int sec = (ui->hourSpinBox->text().toInt() * 3600)
-            + (ui->minuteSpinBox->text().toInt() * 60)
-            + ui->secondSpinBox->text().toInt();
+        + (ui->minuteSpinBox->text().toInt() * 60)
+        + ui->secondSpinBox->text().toInt();
 
     /*if(ui->signComboBox->currentText() == "-")
     {

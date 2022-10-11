@@ -1,15 +1,14 @@
 /** @file synchdialog.h
-  * Soubor s tridou SynchDialog dedici ze tridy QDialog,
-  * implementuje dialog s nastavenim parametru synchronizace
-  */
-
+ * Soubor s tridou SynchDialog dedici ze tridy QDialog,
+ * implementuje dialog s nastavenim parametru synchronizace
+ */
 
 #include "synchdialog.h"
 #include "ui_synchdialog.h"
 
-SynchDialog::SynchDialog(QList<GpsRoute*> *gpsR,QWidget *mw,ChangeDateTime *changeDateTime, QWidget *parent ) :
-        QDialog(parent),
-        ui(new Ui::SynchDialog)
+SynchDialog::SynchDialog(QList<GpsRoute*>* gpsR, QWidget* mw, ChangeDateTime* changeDateTime, QWidget* parent)
+    : QDialog(parent)
+    , ui(new Ui::SynchDialog)
 {
     ui->setupUi(this);
     changeDateTimeWidget = changeDateTime;
@@ -17,7 +16,6 @@ SynchDialog::SynchDialog(QList<GpsRoute*> *gpsR,QWidget *mw,ChangeDateTime *chan
 
     connect(ui->openGpsPushButton, SIGNAL(pressed()), mw, SLOT(openGpsRoutesFromDialog()));
     connect(ui->buttonBox, SIGNAL(accepted()), mw, SLOT(synchronizeImageGps()));
-
 
     QPalette pal = this->palette();
     pal.setColor(QPalette::Window, "#D0D0E7");
@@ -37,13 +35,12 @@ SynchDialog::SynchDialog(QList<GpsRoute*> *gpsR,QWidget *mw,ChangeDateTime *chan
     setWindowTitle(tr("Synchronize pictures with GPS routes"));
     ui->scrollAreaGps->setBackgroundRole(QPalette::Light);
     layoutGps = new QGridLayout;
-    layoutGps->setAlignment(Qt::AlignTop|Qt::AlignLeft);
-    layoutGps->setContentsMargins(QMargins(1,1,1,1));
+    layoutGps->setAlignment(Qt::AlignTop | Qt::AlignLeft);
+    layoutGps->setContentsMargins(QMargins(1, 1, 1, 1));
     layoutGps->setVerticalSpacing(0);
     ui->frameGps->setSizePolicy(QSizePolicy::Minimum, QSizePolicy::Expanding);
     ui->frameGps->setLayout(layoutGps);
-    ui->scrollAreaGps->setAlignment(Qt::AlignTop|Qt::AlignLeft);
-
+    ui->scrollAreaGps->setAlignment(Qt::AlignTop | Qt::AlignLeft);
 
     showGpsRoutes();
 
@@ -64,12 +61,14 @@ SynchDialog::SynchDialog(QList<GpsRoute*> *gpsR,QWidget *mw,ChangeDateTime *chan
     ui->comboBox_zones->addItem(("UTC-1:00  - Azores, Cape Verde"), 1);
     ui->comboBox_zones->addItem(("UTC-0:00  - Iceland, Faroe Islands, United Kingdom, Ireland, Continental Portugal, Madeira, Morocco, Senegal, Ghana, Côte d'Ivoire"), 0);
     ui->comboBox_zones->addItem(("UTC+1:00  - Albania, Slovenia, Macedonia, Norway, Sweden, Denmark, "
-                                   "Germany, the Netherlands, Belgium, Metropolitan France, Switzerland, Austria, Poland, "
-                                   "Czech Republic, Slovakia, Hungary, Continental Spain, Italy, Croatia, Serbia, "
-                                   "Kosovo, Bosnia and Herzegovina, Tunisia, Algeria, Nigeria, Cameroon, Angola, Kinshasa"), -1);
+                                 "Germany, the Netherlands, Belgium, Metropolitan France, Switzerland, Austria, Poland, "
+                                 "Czech Republic, Slovakia, Hungary, Continental Spain, Italy, Croatia, Serbia, "
+                                 "Kosovo, Bosnia and Herzegovina, Tunisia, Algeria, Nigeria, Cameroon, Angola, Kinshasa"),
+        -1);
     ui->comboBox_zones->addItem(("UTC+2:00  - Finland, Lithuania, Latvia, Estonia, Belarus, Ukraine, Romania, Bulgaria, "
-                                   "Greece, Turkey, Cyprus, Syria, Lebanon, Jordan, Palestine, Israel, Egypt, Libya, Mozambique, "
-                                   "Malawi, Zambia, Zimbabwe, South Africa"), -2);
+                                 "Greece, Turkey, Cyprus, Syria, Lebanon, Jordan, Palestine, Israel, Egypt, Libya, Mozambique, "
+                                 "Malawi, Zambia, Zimbabwe, South Africa"),
+        -2);
     ui->comboBox_zones->addItem(("UTC+3:00  - Samara, Iraq, Saudi Arabia, Yemen, Sudan, Ethiopia, Somalia, Kenya, Uganda, Tanzania, Madagascar"), -3);
     ui->comboBox_zones->addItem(("UTC+3:30  - Iran"), -3.5);
     ui->comboBox_zones->addItem(("UTC+4:00  - Georgia, Armenia, Azerbaijan, United Arab Emirates, Oman, Seychelles, Mauritius, Moscow, Saint Petersburg"), -4);
@@ -95,14 +94,14 @@ SynchDialog::SynchDialog(QList<GpsRoute*> *gpsR,QWidget *mw,ChangeDateTime *chan
 
     tzset();
 #ifdef _XOPEN_SOURCE
-    for(int i=0;i<ui->comboBox_zones->count(); i++) {
-        if(ui->comboBox_zones->itemData(i).toDouble()*3600 == timezone)
-            //if(ui->comboBox_zones->itemData(i).toDouble() == timezoneOffset)
+    for (int i = 0; i < ui->comboBox_zones->count(); i++) {
+        if (ui->comboBox_zones->itemData(i).toDouble() * 3600 == timezone)
+        // if(ui->comboBox_zones->itemData(i).toDouble() == timezoneOffset)
         {
             ui->comboBox_zones->setCurrentIndex(i);
         }
     }
-    if(daylight) {
+    if (daylight) {
         ui->checkBoxDST->setChecked(true);
     }
 #endif // _XOPEN_SOURCE
@@ -118,98 +117,103 @@ SynchDialog::~SynchDialog()
 {
     delete ui;
 }
-void SynchDialog::showEvent(QShowEvent *)
+void SynchDialog::showEvent(QShowEvent*)
 {
     ui->groupBox_changeTime->layout()->addWidget(changeDateTimeWidget);
 }
 
 void SynchDialog::showGpsRoutes()
 {
-    for(int i=0, count=layoutGps->count(); i<count;i++)
-    {
+    for (int i = 0, count = layoutGps->count(); i < count; i++) {
         layoutGps->itemAt(0)->widget()->setVisible(0);
         layoutGps->removeItem(layoutGps->itemAt(0));
     }
 
-    for(int i=0; i<gpsRoutes->length(); i++)
-    {
-        QCheckBox *gpsCB = new QCheckBox(gpsRoutes->at(i)->name);
+    for (int i = 0; i < gpsRoutes->length(); i++) {
+        QCheckBox* gpsCB = new QCheckBox(gpsRoutes->at(i)->name);
         gpsCB->setChecked(1);
         gpsCB->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::MinimumExpanding);
         gpsCB->setFixedHeight(22);
         gpsCB->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Maximum);
-        layoutGps->addWidget(gpsCB,i,0);
+        layoutGps->addWidget(gpsCB, i, 0);
     }
 }
-void SynchDialog::init() {
+void SynchDialog::init()
+{
     showGpsRoutes();
 }
 
-bool SynchDialog::isTimeChange() {
+bool SynchDialog::isTimeChange()
+{
     return ui->groupBox_changeTime->isChecked();
 }
 
 bool SynchDialog::isCheckedGpsRoute(int i)
 {
-    if(layoutGps->count() <= i)     {
+    if (layoutGps->count() <= i) {
         return 0;
     }
-    return static_cast<QCheckBox *>(layoutGps->itemAt(i)->widget())->isChecked();
+    return static_cast<QCheckBox*>(layoutGps->itemAt(i)->widget())->isChecked();
 }
 
-uint SynchDialog::maxRoutesDistM() {
+uint SynchDialog::maxRoutesDistM()
+{
     return ui->spinBoxMaxDistM->value();
 }
 
-uint SynchDialog::maxRoutesDistTime() {
+uint SynchDialog::maxRoutesDistTime()
+{
     return ui->spinBoxMaxDistTime->value();
 }
 
-double SynchDialog::offset() {
+double SynchDialog::offset()
+{
     double n = ui->comboBox_zones->itemData(ui->comboBox_zones->currentIndex()).toDouble();
     if (ui->checkBoxDST->isChecked()) {
         n--;
     }
-    return n ;
+    return n;
 }
 bool SynchDialog::isSynchAll()
 {
-    if(ui->radioButton_all->isChecked())
+    if (ui->radioButton_all->isChecked())
         return true;
     else
         return false;
 }
-QList<int>  SynchDialog::checkedRoutes() {
-    QList<int>  list;
-    for(int i = 0; i<layoutGps->count(); i++) {
-        list << static_cast<QCheckBox *>(layoutGps->itemAt(i)->widget())->isChecked();
+QList<int> SynchDialog::checkedRoutes()
+{
+    QList<int> list;
+    for (int i = 0; i < layoutGps->count(); i++) {
+        list << static_cast<QCheckBox*>(layoutGps->itemAt(i)->widget())->isChecked();
     }
     return list;
 }
-bool SynchDialog::isAnyRouteChecked() {
-    for (int i = 0; i<layoutGps->count(); i++) {
-        if (static_cast<QCheckBox *>(layoutGps->itemAt(i)->widget())->isChecked()) {
+bool SynchDialog::isAnyRouteChecked()
+{
+    for (int i = 0; i < layoutGps->count(); i++) {
+        if (static_cast<QCheckBox*>(layoutGps->itemAt(i)->widget())->isChecked()) {
             return 1;
         }
     }
     return 0;
 }
 
-int SynchDialog::method() {
-    if(ui->radioNearestPoint->isChecked()) {
+int SynchDialog::method()
+{
+    if (ui->radioNearestPoint->isChecked()) {
         return 0;
-    } else if(ui->radio2points->isChecked()) {
+    } else if (ui->radio2points->isChecked()) {
         return 1;
     } else {
         return 2;
     }
-
 }
 void SynchDialog::setMethod(int m)
 {
-    if(m == 0) {
+    if (m == 0) {
         ui->radioNearestPoint->setChecked(true);
-    } else if(m == 1) {
+    } else if (m == 1) {
         ui->radio2points->setChecked(true);
     } else {
         ui->radioMorePoints->setChecked(true);
@@ -218,9 +222,9 @@ void SynchDialog::setMethod(int m)
 
 int SynchDialog::existingGpsMode()
 {
-    if(ui->radioIgnoreOld->isChecked()) {
+    if (ui->radioIgnoreOld->isChecked()) {
         return 0;
-    } else if(ui->radiocoordDontCheck->isChecked()) {
+    } else if (ui->radiocoordDontCheck->isChecked()) {
         return 1;
     } else {
         return 2;
@@ -228,9 +232,9 @@ int SynchDialog::existingGpsMode()
 }
 void SynchDialog::setExistGpsMode(int m)
 {
-    if(m == 0)
+    if (m == 0)
         ui->radioIgnoreOld->setChecked(true);
-    else if(m == 1)
+    else if (m == 1)
         ui->radiocoordDontCheck->setChecked(true);
     else
         ui->radioDontShow->setChecked(true);
@@ -244,18 +248,22 @@ void SynchDialog::setSelectedOnly(bool value)
     }
 }
 
-bool SynchDialog::isJoinSeg() {
+bool SynchDialog::isJoinSeg()
+{
     return ui->groupBox_spojeniTras->isChecked();
 }
 
-void SynchDialog::setJoinEnabled(bool value) {
+void SynchDialog::setJoinEnabled(bool value)
+{
     ui->groupBox_spojeniTras->setChecked(value);
 }
 
-void SynchDialog::setMaxDistTime(int t) {
+void SynchDialog::setMaxDistTime(int t)
+{
     ui->spinBoxMaxDistTime->setValue(t);
 }
 
-void SynchDialog::setMaxDistM(int m) {
+void SynchDialog::setMaxDistM(int m)
+{
     ui->spinBoxMaxDistM->setValue(m);
 }
