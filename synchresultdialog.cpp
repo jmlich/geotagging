@@ -111,7 +111,7 @@ void SynchResultDialog::retranslateUi()
     legend->setTitle(tr("Key"));
 
     ltOk->setText(tr("Correctly assigned coordinates, will be saved"));
-    ltFailed->setText(tr("Picture time doesn't fit any route, no coordinatest will be saved"));
+    ltFailed->setText(tr("Picture time doesn't fit any route, no coordinates will be saved"));
     ltOkUnchecked->setText(tr("Correctly assigned coordinates, won't be saved"));
     ltFailedChecked->setText(tr("Picture time doesn't fit any route, will be saved coordinates of nearest known point"));
     ltBold->setText(tr("Picture already has assigned coordinates"));
@@ -156,7 +156,7 @@ QGroupBox* SynchResultDialog::createLegend()
     lFailedC->setPixmap(pixmap);
 
     ltOk = new QLabel(tr("Correctly assigned coordinates, will be saved"));
-    ltFailed = new QLabel(tr("Picture time doesn't fit any route, no coordinatest will be saved"));
+    ltFailed = new QLabel(tr("Picture time doesn't fit any route, no coordinates will be saved"));
     ltOkUnchecked = new QLabel(tr("Correctly assigned coordinates, won't be saved"));
     ltFailedChecked = new QLabel(tr("Picture time doesn't fit any route, will be saved coordinates of nearest known point"));
     ltBoldShow = new QLabel(tr("Bold"));
