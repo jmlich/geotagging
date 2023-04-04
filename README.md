@@ -15,7 +15,7 @@ Geotagging is rather simple tool for manipulating with geographical information 
 
 # Contribute
 
-* Translate to your language at [transifex](https://www.transifex.com/jozef-mlich/geotagging/dashboard/).
+* Translate to your language at [transifex](https://explore.transifex.com/jozef-mlich/geotagging/).
 * Feel free to open issue
 * Feel free to create merge request 
 
