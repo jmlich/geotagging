@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="da_DK">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="da_DK">
 <context>
     <name>AboutDialog</name>
     <message>
@@ -108,14 +106,14 @@
 <context>
     <name>DateTimeDialog</name>
     <message>
-        <location filename="../datetimedialog.cpp" line="21"/>
-        <location filename="../datetimedialog.cpp" line="47"/>
+        <location filename="../datetimedialog.cpp" line="20"/>
+        <location filename="../datetimedialog.cpp" line="46"/>
         <source>All pictures</source>
         <translation>Alle billeder</translation>
     </message>
     <message>
-        <location filename="../datetimedialog.cpp" line="23"/>
-        <location filename="../datetimedialog.cpp" line="48"/>
+        <location filename="../datetimedialog.cpp" line="22"/>
+        <location filename="../datetimedialog.cpp" line="47"/>
         <source>Selected pictures</source>
         <translation>Valgte billeder</translation>
     </message>
@@ -129,13 +127,13 @@
     </message>
     <message>
         <location filename="../exifinfo.cpp" line="20"/>
-        <location filename="../exifinfo.cpp" line="65"/>
+        <location filename="../exifinfo.cpp" line="69"/>
         <source>parameter</source>
         <translation>parametre</translation>
     </message>
     <message>
         <location filename="../exifinfo.cpp" line="20"/>
-        <location filename="../exifinfo.cpp" line="65"/>
+        <location filename="../exifinfo.cpp" line="69"/>
         <source>value</source>
         <translation>værdi</translation>
     </message>
@@ -176,61 +174,81 @@
     </message>
     <message>
         <location filename="../exifinfo.cpp" line="48"/>
+        <source>Pitch</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../exifinfo.cpp" line="49"/>
+        <source>Roll</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../exifinfo.cpp" line="50"/>
+        <source>Destination Latitude</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../exifinfo.cpp" line="51"/>
+        <source>Destination Longitude</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../exifinfo.cpp" line="52"/>
         <source>Camera make</source>
         <translation>Kamerafabrikat</translation>
     </message>
     <message>
-        <location filename="../exifinfo.cpp" line="49"/>
+        <location filename="../exifinfo.cpp" line="53"/>
         <source>Camera model</source>
         <translation>Kameramodel</translation>
     </message>
     <message>
-        <location filename="../exifinfo.cpp" line="50"/>
+        <location filename="../exifinfo.cpp" line="54"/>
         <source>Exposure time</source>
         <translation>Eksponeringstid</translation>
     </message>
     <message>
-        <location filename="../exifinfo.cpp" line="51"/>
+        <location filename="../exifinfo.cpp" line="55"/>
         <source>Exposure Bias</source>
         <translation>Eksponering Bias</translation>
     </message>
     <message>
-        <location filename="../exifinfo.cpp" line="52"/>
+        <location filename="../exifinfo.cpp" line="56"/>
         <source>Exposure Program</source>
         <translation>Eksponeringsprogram</translation>
     </message>
     <message>
-        <location filename="../exifinfo.cpp" line="53"/>
+        <location filename="../exifinfo.cpp" line="57"/>
         <source>Resolution</source>
         <translation>Opløsning</translation>
     </message>
     <message>
-        <location filename="../exifinfo.cpp" line="54"/>
+        <location filename="../exifinfo.cpp" line="58"/>
         <source>Flash</source>
         <translation>Blitz</translation>
     </message>
     <message>
-        <location filename="../exifinfo.cpp" line="55"/>
+        <location filename="../exifinfo.cpp" line="59"/>
         <source>F-number (F-spot)</source>
         <translation>F-nummer (F-spot)</translation>
     </message>
     <message>
-        <location filename="../exifinfo.cpp" line="56"/>
+        <location filename="../exifinfo.cpp" line="60"/>
         <source>Metering mode</source>
         <translation>Målingstilstand</translation>
     </message>
     <message>
-        <location filename="../exifinfo.cpp" line="57"/>
+        <location filename="../exifinfo.cpp" line="61"/>
         <source>ISO speed</source>
         <translation>ISO værdi</translation>
     </message>
     <message>
-        <location filename="../exifinfo.cpp" line="58"/>
+        <location filename="../exifinfo.cpp" line="62"/>
         <source>Focal length</source>
         <translation>Fokuslængde</translation>
     </message>
     <message>
-        <location filename="../exifinfo.cpp" line="59"/>
+        <location filename="../exifinfo.cpp" line="63"/>
         <source>Exif comment</source>
         <translation>Exif kommentar</translation>
     </message>
@@ -238,117 +256,121 @@
 <context>
     <name>ExifReaderWriter</name>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="280"/>
+        <location filename="../exifreaderwriter.cpp" line="348"/>
         <source>unknown</source>
         <translation>ukendt</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="282"/>
+        <location filename="../exifreaderwriter.cpp" line="350"/>
         <source>average</source>
         <translation>gennemsnit</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="284"/>
+        <location filename="../exifreaderwriter.cpp" line="352"/>
         <source>center weighted average</source>
         <translation>centervægtet gennemsnit</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="286"/>
+        <location filename="../exifreaderwriter.cpp" line="354"/>
         <source>spot</source>
         <translation>punkt</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="288"/>
+        <location filename="../exifreaderwriter.cpp" line="356"/>
         <source>multi-spot</source>
         <translation>multi-punkt</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="290"/>
+        <location filename="../exifreaderwriter.cpp" line="358"/>
         <source>multi-segment</source>
         <translation>multisegment</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="292"/>
+        <location filename="../exifreaderwriter.cpp" line="360"/>
         <source>partial</source>
         <translation>delvis</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="294"/>
+        <location filename="../exifreaderwriter.cpp" line="362"/>
         <source>other</source>
         <translation>andet</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="306"/>
+        <location filename="../exifreaderwriter.cpp" line="374"/>
         <source>manual control</source>
         <translation>manuel kontrol</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="308"/>
+        <location filename="../exifreaderwriter.cpp" line="376"/>
         <source>normal</source>
         <translation>normal</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="310"/>
+        <location filename="../exifreaderwriter.cpp" line="378"/>
         <source>aperture priority</source>
         <translation>blændeprioritet</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="312"/>
+        <location filename="../exifreaderwriter.cpp" line="380"/>
         <source>shutter priority</source>
         <translation>lukkerprioritet</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="314"/>
+        <location filename="../exifreaderwriter.cpp" line="382"/>
         <source>program creative (slow program)</source>
         <translation>kreativt program (langsomt)</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="316"/>
+        <location filename="../exifreaderwriter.cpp" line="384"/>
         <source>program action(high-speed program)</source>
         <translation>action program (højhastighed)</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="318"/>
+        <location filename="../exifreaderwriter.cpp" line="386"/>
         <source>portrait mode</source>
         <translation>portrætmodus</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="320"/>
+        <location filename="../exifreaderwriter.cpp" line="388"/>
         <source>landscape mode</source>
         <translation>landskabsmodus</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="357"/>
+        <location filename="../exifreaderwriter.cpp" line="426"/>
         <source>did not fire</source>
         <translation>ikke udløst</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="359"/>
+        <location filename="../exifreaderwriter.cpp" line="428"/>
         <source>fired</source>
         <translation>udløst</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="421"/>
+        <location filename="../exifreaderwriter.cpp" line="494"/>
+        <location filename="../exifreaderwriter.cpp" line="500"/>
         <source>N</source>
         <translation>N</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="421"/>
+        <location filename="../exifreaderwriter.cpp" line="494"/>
+        <location filename="../exifreaderwriter.cpp" line="500"/>
         <source>S</source>
         <translation>S</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="422"/>
+        <location filename="../exifreaderwriter.cpp" line="495"/>
+        <location filename="../exifreaderwriter.cpp" line="501"/>
         <source>E</source>
         <translation>E</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="422"/>
+        <location filename="../exifreaderwriter.cpp" line="495"/>
+        <location filename="../exifreaderwriter.cpp" line="501"/>
         <source>W</source>
         <translation>W</translation>
     </message>
     <message>
-        <location filename="../exifreaderwriter.cpp" line="423"/>
+        <location filename="../exifreaderwriter.cpp" line="496"/>
         <source> m</source>
         <translation> m</translation>
     </message>
@@ -356,22 +378,22 @@
 <context>
     <name>FormatHandler</name>
     <message>
-        <location filename="../formathandler.cpp" line="36"/>
+        <location filename="../formathandler.cpp" line="37"/>
         <source>N </source>
         <translation>N </translation>
     </message>
     <message>
-        <location filename="../formathandler.cpp" line="36"/>
+        <location filename="../formathandler.cpp" line="37"/>
         <source>S </source>
         <translation>S </translation>
     </message>
     <message>
-        <location filename="../formathandler.cpp" line="38"/>
+        <location filename="../formathandler.cpp" line="39"/>
         <source>E</source>
         <translation>E</translation>
     </message>
     <message>
-        <location filename="../formathandler.cpp" line="38"/>
+        <location filename="../formathandler.cpp" line="39"/>
         <source>W</source>
         <translation>W</translation>
     </message>
@@ -380,7 +402,7 @@
     <name>GpsPanel</name>
     <message>
         <location filename="../gpspanel.cpp" line="10"/>
-        <location filename="../gpspanel.cpp" line="30"/>
+        <location filename="../gpspanel.cpp" line="29"/>
         <source>GPS routes</source>
         <translation>GPS ruter</translation>
     </message>
@@ -388,101 +410,101 @@
 <context>
     <name>GpsRoute</name>
     <message>
-        <location filename="../gpsroute.cpp" line="48"/>
+        <location filename="../gpsroute.cpp" line="60"/>
         <source>line color</source>
         <translation>linjefarve</translation>
     </message>
     <message>
-        <location filename="../gpsroute.cpp" line="55"/>
+        <location filename="../gpsroute.cpp" line="67"/>
         <source>line width</source>
         <translation>linjetykkelse</translation>
     </message>
     <message>
-        <location filename="../gpsroute.cpp" line="62"/>
+        <location filename="../gpsroute.cpp" line="74"/>
         <source>line opacity</source>
         <translation>linjens uigennemsigtighed</translation>
     </message>
     <message>
-        <location filename="../gpsroute.cpp" line="69"/>
+        <location filename="../gpsroute.cpp" line="81"/>
         <source>close</source>
         <translation>luk</translation>
     </message>
     <message>
-        <location filename="../gpsroute.cpp" line="108"/>
-        <location filename="../gpsroute.cpp" line="481"/>
+        <location filename="../gpsroute.cpp" line="123"/>
+        <location filename="../gpsroute.cpp" line="496"/>
         <source>File path</source>
         <translation>Filsti</translation>
     </message>
     <message>
-        <location filename="../gpsroute.cpp" line="109"/>
-        <location filename="../gpsroute.cpp" line="486"/>
+        <location filename="../gpsroute.cpp" line="124"/>
+        <location filename="../gpsroute.cpp" line="500"/>
         <source>Start time</source>
         <translation>Start tid</translation>
     </message>
     <message>
-        <location filename="../gpsroute.cpp" line="110"/>
-        <location filename="../gpsroute.cpp" line="491"/>
+        <location filename="../gpsroute.cpp" line="125"/>
+        <location filename="../gpsroute.cpp" line="504"/>
         <source>End time</source>
         <translation>Slut tid</translation>
     </message>
     <message>
-        <location filename="../gpsroute.cpp" line="112"/>
-        <location filename="../gpsroute.cpp" line="496"/>
+        <location filename="../gpsroute.cpp" line="127"/>
+        <location filename="../gpsroute.cpp" line="508"/>
         <source>Start point</source>
         <translation>Startpunkt</translation>
     </message>
     <message>
-        <location filename="../gpsroute.cpp" line="118"/>
-        <location filename="../gpsroute.cpp" line="503"/>
+        <location filename="../gpsroute.cpp" line="132"/>
+        <location filename="../gpsroute.cpp" line="514"/>
         <source>End point</source>
         <translation>Slutpunkt</translation>
     </message>
     <message>
-        <location filename="../gpsroute.cpp" line="123"/>
-        <location filename="../gpsroute.cpp" line="511"/>
+        <location filename="../gpsroute.cpp" line="137"/>
+        <location filename="../gpsroute.cpp" line="522"/>
         <source>Total time</source>
         <translation>Total tid</translation>
     </message>
     <message>
-        <location filename="../gpsroute.cpp" line="136"/>
+        <location filename="../gpsroute.cpp" line="150"/>
         <source>Days </source>
         <translation>Dage </translation>
     </message>
     <message>
-        <location filename="../gpsroute.cpp" line="138"/>
-        <location filename="../gpsroute.cpp" line="527"/>
+        <location filename="../gpsroute.cpp" line="152"/>
+        <location filename="../gpsroute.cpp" line="537"/>
         <source>Route length</source>
         <translation>Rutelængde</translation>
     </message>
     <message>
-        <location filename="../gpsroute.cpp" line="141"/>
+        <location filename="../gpsroute.cpp" line="155"/>
         <source>%1 kilometers</source>
         <translation>%1 kilometer</translation>
     </message>
     <message>
-        <location filename="../gpsroute.cpp" line="523"/>
+        <location filename="../gpsroute.cpp" line="534"/>
         <source> Days </source>
         <translation> Dage </translation>
     </message>
     <message>
-        <location filename="../gpsroute.cpp" line="529"/>
+        <location filename="../gpsroute.cpp" line="539"/>
         <source>%1 km</source>
         <translation>%1 KM/translation</translation>
     </message>
     <message>
-        <location filename="../gpsroute.cpp" line="537"/>
+        <location filename="../gpsroute.cpp" line="546"/>
         <source>%1 segment</source>
         <comment>1</comment>
         <translation>%1 segmenter</translation>
     </message>
     <message>
-        <location filename="../gpsroute.cpp" line="539"/>
+        <location filename="../gpsroute.cpp" line="548"/>
         <source>%1 segments</source>
         <comment>2-4</comment>
         <translation>%1 segmenter</translation>
     </message>
     <message>
-        <location filename="../gpsroute.cpp" line="541"/>
+        <location filename="../gpsroute.cpp" line="550"/>
         <source>%1 segments</source>
         <comment>jine</comment>
         <translation>%1 segmenter</translation>
@@ -507,75 +529,110 @@
     </message>
     <message>
         <location filename="../imageinfo.ui" line="126"/>
-        <location filename="../imageinfo.cpp" line="302"/>
+        <location filename="../imageinfo.cpp" line="389"/>
         <source>Unknown time</source>
         <translation>Ukendt tidspunkt</translation>
     </message>
     <message>
         <location filename="../imageinfo.ui" line="142"/>
-        <location filename="../imageinfo.cpp" line="181"/>
+        <location filename="../imageinfo.cpp" line="215"/>
         <source>Unknown GPS coordinates</source>
         <translation>Ukendte GPS koordinater</translation>
     </message>
     <message>
         <location filename="../imageinfo.ui" line="149"/>
-        <location filename="../imageinfo.cpp" line="191"/>
+        <location filename="../imageinfo.cpp" line="226"/>
         <source>Unknown altitude</source>
         <translation>Ukendt højde</translation>
     </message>
     <message>
         <location filename="../imageinfo.cpp" line="40"/>
-        <location filename="../imageinfo.cpp" line="81"/>
+        <location filename="../imageinfo.cpp" line="99"/>
         <source>Save GPS coordinates to EXIF data of selected pictures</source>
         <translation>Gem GPS koordinater i EXIF data på valgte billeder</translation>
     </message>
     <message>
         <location filename="../imageinfo.cpp" line="44"/>
-        <location filename="../imageinfo.cpp" line="82"/>
+        <location filename="../imageinfo.cpp" line="100"/>
         <source>Save date and time to EXIF data of selected pictures</source>
         <translation>Gem dato og tid i EXIF data på valgte billeder</translation>
     </message>
     <message>
         <location filename="../imageinfo.cpp" line="48"/>
-        <location filename="../imageinfo.cpp" line="83"/>
-        <source>Set new location for selected pictures</source>
-        <translation>Sæt nyt sted for valgte billeder</translation>
+        <location filename="../imageinfo.cpp" line="101"/>
+        <source>Set new camera location for selected pictures</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../imageinfo.cpp" line="52"/>
+        <location filename="../imageinfo.cpp" line="102"/>
+        <source>Set new object location for selected pictures</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../imageinfo.cpp" line="56"/>
+        <location filename="../imageinfo.cpp" line="103"/>
+        <source>Remove camera marker location</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../imageinfo.cpp" line="60"/>
+        <location filename="../imageinfo.cpp" line="104"/>
+        <source>Remove object marker location</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../imageinfo.cpp" line="64"/>
+        <location filename="../imageinfo.cpp" line="105"/>
+        <source>Set camera direction</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../imageinfo.cpp" line="68"/>
         <source>Open Image in External Editor</source>
         <translation>Åben billede i ekstern redigeringsprogram</translation>
     </message>
     <message>
-        <location filename="../imageinfo.cpp" line="56"/>
-        <location filename="../imageinfo.cpp" line="84"/>
+        <location filename="../imageinfo.cpp" line="72"/>
+        <location filename="../imageinfo.cpp" line="106"/>
         <source>Synchronize with GPS route</source>
         <translation>Synkroniser med GPS rute</translation>
     </message>
     <message>
-        <location filename="../imageinfo.cpp" line="143"/>
-        <location filename="../imageinfo.cpp" line="190"/>
-        <location filename="../imageinfo.cpp" line="301"/>
+        <location filename="../imageinfo.cpp" line="175"/>
+        <location filename="../imageinfo.cpp" line="225"/>
+        <location filename="../imageinfo.cpp" line="258"/>
+        <location filename="../imageinfo.cpp" line="388"/>
         <source>-</source>
         <translation>-</translation>
     </message>
     <message>
-        <location filename="../imageinfo.cpp" line="196"/>
-        <location filename="../imageinfo.cpp" line="200"/>
-        <location filename="../imageinfo.cpp" line="204"/>
+        <location filename="../imageinfo.cpp" line="231"/>
+        <location filename="../imageinfo.cpp" line="235"/>
+        <location filename="../imageinfo.cpp" line="239"/>
         <source>%1m</source>
         <translation>%1m</translation>
+    </message>
+    <message>
+        <location filename="../imageinfo.cpp" line="250"/>
+        <source>%1°</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../imageinfo.cpp" line="261"/>
+        <source>Object %1</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>ImageWidgetsList</name>
     <message>
-        <location filename="../imagewidgetslist.cpp" line="55"/>
+        <location filename="../imagewidgetslist.cpp" line="64"/>
         <source>Save changes</source>
         <translation>Gem ændringer</translation>
     </message>
     <message>
-        <location filename="../imagewidgetslist.cpp" line="56"/>
+        <location filename="../imagewidgetslist.cpp" line="65"/>
         <source>Some of the pictures you are trying to close have EXIF metadata that weren&apos;t saved. Do you wish to save them now?</source>
         <translation>Nogle af de billeder, som du forsøger at lukke har EXIF metadata, der ikke er gemt. Ønsker du at gemme dem nu?</translation>
     </message>
@@ -643,9 +700,8 @@
         <translation>Gem dato og tid i billeder</translation>
     </message>
     <message>
-        <location filename="../mainwindow.ui" line="150"/>
         <source>Save gps in pictures</source>
-        <translation>Gem GPS i billeder</translation>
+        <translation type="vanished">Gem GPS i billeder</translation>
     </message>
     <message>
         <location filename="../mainwindow.ui" line="153"/>
@@ -678,6 +734,11 @@
         <translation>grader minutter sekunder</translation>
     </message>
     <message>
+        <location filename="../mainwindow.ui" line="150"/>
+        <source>Save GPS in pictures</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
         <location filename="../mainwindow.ui" line="196"/>
         <source>Date and Time</source>
         <translation>Dato og tid</translation>
@@ -703,198 +764,218 @@
         <translation>F1</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="76"/>
+        <location filename="../mainwindow.cpp" line="74"/>
         <source>Geotagging</source>
         <translation>Geotagging</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="167"/>
+        <location filename="../mainwindow.cpp" line="161"/>
         <source>Local setting</source>
         <translation>Lokal opsætning</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="175"/>
+        <location filename="../mainwindow.cpp" line="170"/>
         <source>Local setting - short</source>
         <translation>Lokal opsætning - kort</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="183"/>
+        <location filename="../mainwindow.cpp" line="179"/>
         <source>d.M.yyyy hh:mm:ss</source>
         <translation>d.M.yyyy hh:mm:ss</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="335"/>
+        <location filename="../mainwindow.cpp" line="282"/>
+        <source>Set camera direction</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="283"/>
+        <source>Camera direction</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../mainwindow.cpp" line="395"/>
         <source>Couldn&apos;t recognize format of some files</source>
         <translation>Kan ikke genkende formatet for visse filer</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="356"/>
+        <location filename="../mainwindow.cpp" line="416"/>
         <source>Drag and drop</source>
         <translation>Træk og slip</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="421"/>
+        <location filename="../mainwindow.cpp" line="483"/>
         <source>Save changes</source>
         <translation>Gem ændringer</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="422"/>
+        <location filename="../mainwindow.cpp" line="484"/>
         <source>Some changes in EXIF metadata weren&apos;t saved. Do you wish to save them now?</source>
         <translation>Nogle ændringer i EXIF metadata blev ikke gemt. Vil du gemme dem nu?</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="467"/>
+        <location filename="../mainwindow.cpp" line="528"/>
         <source>Synchronisation</source>
         <translation>Synkronisering</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="468"/>
+        <location filename="../mainwindow.cpp" line="529"/>
         <source>No route selected</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="519"/>
+        <location filename="../mainwindow.cpp" line="579"/>
         <source>Open files</source>
         <translation>Åben filer</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="521"/>
+        <location filename="../mainwindow.cpp" line="581"/>
         <source>Images and routes (*.png *.jpg *.JPG *.jpeg *.JPEG *.tif *.raw *.rw2 *.mrw *.orf *.raf *.arw *.ari *.gpx);;Images (*.png *.jpg *.JPG *.jpeg *.JPEG *.tif *.raw *.rw2 *.mrw *.orf *.raf *.arw *.ari);;GPS files (*.gpx);; All files (*)</source>
         <translation>Billeder og ruter (*.png *.jpg *.JPG *.jpeg *.JPEG *.tif *.raw *.rw2 *.mrw *.orf *.raf *.arw *.ari *.gpx);;Billeder (*.png *.jpg *.JPG *.jpeg *.JPEG *.tif *.raw *.rw2 *.mrw *.orf *.raf *.arw *.ari);;GPS filer (*.gpx);; Alle filer (*)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="537"/>
+        <location filename="../mainwindow.cpp" line="597"/>
         <source>Open GPS File</source>
         <translation>Åben GPS fil</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="538"/>
+        <location filename="../mainwindow.cpp" line="598"/>
         <source>GPS files (*.gpx);; All Files (*)</source>
         <translation>GPS filer (*.gpx);; Alle filer (*)</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="591"/>
+        <location filename="../mainwindow.cpp" line="658"/>
         <source>File import</source>
         <translation>Filimport</translation>
     </message>
     <message>
-        <location filename="../mainwindow.cpp" line="592"/>
+        <location filename="../mainwindow.cpp" line="659"/>
         <source>Do you wish to synchronize pictures with GPS route?</source>
         <translation>Vil du synkronisere billeder med GPS rute?</translation>
     </message>
     <message>
-        <location filename="../changetime.cpp" line="10"/>
+        <location filename="../changetime.cpp" line="9"/>
         <source>Set delay</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
     <name>MapWidget</name>
     <message>
         <location filename="../mapwidget.cpp" line="12"/>
-        <location filename="../mapwidget.cpp" line="74"/>
+        <location filename="../mapwidget.cpp" line="71"/>
         <source>Map</source>
         <translation>Kort</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="57"/>
-        <location filename="../mapwidget.cpp" line="131"/>
+        <location filename="../mapwidget.cpp" line="54"/>
+        <location filename="../mapwidget.cpp" line="201"/>
         <source>Cyclo-tourist</source>
         <translation>Cykelturist</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="58"/>
-        <location filename="../mapwidget.cpp" line="132"/>
+        <location filename="../mapwidget.cpp" line="55"/>
+        <location filename="../mapwidget.cpp" line="202"/>
         <source>Google Roadmap</source>
         <translation>Google Roadmap</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="59"/>
-        <location filename="../mapwidget.cpp" line="133"/>
+        <location filename="../mapwidget.cpp" line="56"/>
+        <location filename="../mapwidget.cpp" line="203"/>
         <source>Google Terrain</source>
         <translation>Google Terrain</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="60"/>
-        <location filename="../mapwidget.cpp" line="134"/>
+        <location filename="../mapwidget.cpp" line="57"/>
+        <location filename="../mapwidget.cpp" line="204"/>
         <source>Google Satellite</source>
         <translation>Google Satellite</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="61"/>
-        <location filename="../mapwidget.cpp" line="135"/>
+        <location filename="../mapwidget.cpp" line="58"/>
+        <location filename="../mapwidget.cpp" line="205"/>
         <source>Google Hybrid</source>
         <translation>Google Hybrid</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="62"/>
-        <location filename="../mapwidget.cpp" line="136"/>
+        <location filename="../mapwidget.cpp" line="59"/>
+        <location filename="../mapwidget.cpp" line="206"/>
         <source>OSM Mapnik</source>
         <translation>OSM Mapnik</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="63"/>
-        <location filename="../mapwidget.cpp" line="137"/>
+        <location filename="../mapwidget.cpp" line="60"/>
+        <location filename="../mapwidget.cpp" line="207"/>
         <source>Mapy.cz base</source>
         <translation>Mapy.cz base</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="64"/>
-        <location filename="../mapwidget.cpp" line="138"/>
+        <location filename="../mapwidget.cpp" line="61"/>
+        <location filename="../mapwidget.cpp" line="208"/>
         <source>Mapy.cz Orthophoto</source>
         <translation>Mapy.cz Orthophoto</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="65"/>
-        <location filename="../mapwidget.cpp" line="139"/>
+        <location filename="../mapwidget.cpp" line="62"/>
+        <location filename="../mapwidget.cpp" line="209"/>
         <source>ArcGis Topographic</source>
         <translation>ArcGis Topographic</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="66"/>
-        <location filename="../mapwidget.cpp" line="140"/>
+        <location filename="../mapwidget.cpp" line="63"/>
+        <location filename="../mapwidget.cpp" line="210"/>
         <source>ArcGis Satellite</source>
         <translation>ArcGis Satellite</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="68"/>
-        <location filename="../mapwidget.cpp" line="154"/>
+        <location filename="../mapwidget.cpp" line="65"/>
+        <location filename="../mapwidget.cpp" line="224"/>
         <source>Center map to view all</source>
         <translation>Centrer kortet for at vise alle</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="69"/>
-        <location filename="../mapwidget.cpp" line="169"/>
+        <location filename="../mapwidget.cpp" line="66"/>
+        <location filename="../mapwidget.cpp" line="238"/>
         <source>Show all markers</source>
         <translation>Vis alle markører</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="70"/>
-        <location filename="../mapwidget.cpp" line="185"/>
+        <location filename="../mapwidget.cpp" line="67"/>
+        <location filename="../mapwidget.cpp" line="254"/>
         <source>Show routes</source>
         <translation>Vis ruter</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="71"/>
-        <location filename="../mapwidget.cpp" line="201"/>
+        <location filename="../mapwidget.cpp" line="68"/>
+        <location filename="../mapwidget.cpp" line="271"/>
         <source>Join segments</source>
         <translation>Kombiner segmenter</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="72"/>
-        <location filename="../mapwidget.cpp" line="218"/>
+        <location filename="../mapwidget.cpp" line="69"/>
+        <location filename="../mapwidget.cpp" line="289"/>
         <source>Show relief</source>
         <translation>Vis relief</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="296"/>
-        <source>Change picture location</source>
-        <translation>Flyt billedplacering</translation>
+        <location filename="../mapwidget.cpp" line="411"/>
+        <source>Change camera location</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="297"/>
-        <source>Change picture coordinates to the new position?</source>
-        <translation>Flyt billedkoordinater til ny position?</translation>
+        <location filename="../mapwidget.cpp" line="412"/>
+        <source>Change camera coordinates to the new position?</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../mapwidget.cpp" line="447"/>
+        <source>Change picture object location</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../mapwidget.cpp" line="448"/>
+        <source>Change picture object coordinates to the new position?</source>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -1005,8 +1086,8 @@
         <translation>ignorer disse billeder og vis dem ikke i resultater</translation>
     </message>
     <message>
-        <location filename="../synchdialog.cpp" line="37"/>
-        <location filename="../synchdialog.cpp" line="114"/>
+        <location filename="../synchdialog.cpp" line="35"/>
+        <location filename="../synchdialog.cpp" line="113"/>
         <source>Synchronize pictures with GPS routes</source>
         <translation>Synkroniser billeder med GPS ruter</translation>
     </message>
@@ -1015,120 +1096,124 @@
     <name>SynchResultDialog</name>
     <message>
         <location filename="../synchresultdialog.cpp" line="38"/>
-        <location filename="../synchresultdialog.cpp" line="102"/>
+        <location filename="../synchresultdialog.cpp" line="99"/>
         <source>Check</source>
         <translation>Check</translation>
     </message>
     <message>
         <location filename="../synchresultdialog.cpp" line="43"/>
-        <location filename="../synchresultdialog.cpp" line="105"/>
+        <location filename="../synchresultdialog.cpp" line="102"/>
         <source>Save in pictures EXIF data</source>
         <translation>Gem i billedets EXIF data</translation>
     </message>
     <message>
         <location filename="../synchresultdialog.cpp" line="46"/>
-        <location filename="../synchresultdialog.cpp" line="113"/>
+        <location filename="../synchresultdialog.cpp" line="110"/>
         <source>Check pictures with time distance &lt;</source>
         <translation>Check billeder med tidsafstand &lt;</translation>
     </message>
     <message>
         <location filename="../synchresultdialog.cpp" line="70"/>
-        <location filename="../synchresultdialog.cpp" line="107"/>
+        <location filename="../synchresultdialog.cpp" line="104"/>
         <source>Picture</source>
         <translation>Billede</translation>
     </message>
     <message>
         <location filename="../synchresultdialog.cpp" line="71"/>
-        <location filename="../synchresultdialog.cpp" line="108"/>
+        <location filename="../synchresultdialog.cpp" line="105"/>
         <source>Picture Time</source>
         <translation>Billedtid</translation>
     </message>
     <message>
         <location filename="../synchresultdialog.cpp" line="72"/>
-        <location filename="../synchresultdialog.cpp" line="109"/>
+        <location filename="../synchresultdialog.cpp" line="106"/>
         <source>New coordinates</source>
         <translation>Nye koordinater</translation>
     </message>
     <message>
         <location filename="../synchresultdialog.cpp" line="73"/>
-        <location filename="../synchresultdialog.cpp" line="110"/>
+        <location filename="../synchresultdialog.cpp" line="107"/>
         <source>Synchronisation type</source>
         <translation>Synkroniseringstype</translation>
     </message>
     <message>
         <location filename="../synchresultdialog.cpp" line="74"/>
-        <location filename="../synchresultdialog.cpp" line="111"/>
+        <location filename="../synchresultdialog.cpp" line="108"/>
         <source>Time distance</source>
         <translation>Tidsafstand</translation>
     </message>
     <message>
         <location filename="../synchresultdialog.cpp" line="75"/>
-        <location filename="../synchresultdialog.cpp" line="112"/>
+        <location filename="../synchresultdialog.cpp" line="109"/>
         <source>From route</source>
         <translation>Fra rute</translation>
     </message>
     <message>
         <location filename="../synchresultdialog.cpp" line="82"/>
-        <location filename="../synchresultdialog.cpp" line="103"/>
+        <location filename="../synchresultdialog.cpp" line="100"/>
         <source>Check selected</source>
         <translation>Check valgte</translation>
     </message>
     <message>
         <location filename="../synchresultdialog.cpp" line="84"/>
-        <location filename="../synchresultdialog.cpp" line="104"/>
+        <location filename="../synchresultdialog.cpp" line="101"/>
         <source>Uncheck selected</source>
         <translation>Fravælg valgte</translation>
     </message>
     <message>
-        <location filename="../synchresultdialog.cpp" line="95"/>
-        <location filename="../synchresultdialog.cpp" line="101"/>
+        <location filename="../synchresultdialog.cpp" line="93"/>
+        <location filename="../synchresultdialog.cpp" line="98"/>
         <source>Synchronisation</source>
         <translation>Synkronisering</translation>
     </message>
     <message>
-        <location filename="../synchresultdialog.cpp" line="137"/>
-        <source>Legend</source>
-        <translation type="unfinished"></translation>
+        <location filename="../synchresultdialog.cpp" line="114"/>
+        <location filename="../synchresultdialog.cpp" line="159"/>
+        <source>Picture time doesn&apos;t fit any route, no coordinates will be saved</source>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../synchresultdialog.cpp" line="116"/>
-        <location filename="../synchresultdialog.cpp" line="161"/>
+        <location filename="../synchresultdialog.cpp" line="134"/>
+        <source>Legend</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../synchresultdialog.cpp" line="113"/>
+        <location filename="../synchresultdialog.cpp" line="158"/>
         <source>Correctly assigned coordinates, will be saved</source>
         <translation>Korrekt tilføjede koordinater vil blive gemt</translation>
     </message>
     <message>
         <location filename="../synchresultdialog.cpp" line="22"/>
-        <location filename="../synchresultdialog.cpp" line="114"/>
+        <location filename="../synchresultdialog.cpp" line="111"/>
         <source>Key</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../synchresultdialog.cpp" line="117"/>
-        <location filename="../synchresultdialog.cpp" line="162"/>
         <source>Picture time doesn&apos;t fit any route, no coordinatest will be saved</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../synchresultdialog.cpp" line="118"/>
-        <location filename="../synchresultdialog.cpp" line="163"/>
+        <location filename="../synchresultdialog.cpp" line="115"/>
+        <location filename="../synchresultdialog.cpp" line="160"/>
         <source>Correctly assigned coordinates, won&apos;t be saved</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../synchresultdialog.cpp" line="119"/>
-        <location filename="../synchresultdialog.cpp" line="164"/>
+        <location filename="../synchresultdialog.cpp" line="116"/>
+        <location filename="../synchresultdialog.cpp" line="161"/>
         <source>Picture time doesn&apos;t fit any route, will be saved coordinates of nearest known point</source>
         <translation>Billedtid passer ikke med nogen rute og tildeles nærmeste kendte punkt</translation>
     </message>
     <message>
-        <location filename="../synchresultdialog.cpp" line="120"/>
-        <location filename="../synchresultdialog.cpp" line="169"/>
+        <location filename="../synchresultdialog.cpp" line="117"/>
+        <location filename="../synchresultdialog.cpp" line="166"/>
         <source>Picture already has assigned coordinates</source>
         <translation>Billedet har allerede koordinater</translation>
     </message>
     <message>
-        <location filename="../synchresultdialog.cpp" line="121"/>
-        <location filename="../synchresultdialog.cpp" line="165"/>
+        <location filename="../synchresultdialog.cpp" line="118"/>
+        <location filename="../synchresultdialog.cpp" line="162"/>
         <source>Bold</source>
         <translation>Fed</translation>
     </message>
@@ -1136,34 +1221,34 @@
 <context>
     <name>SynchResultItem</name>
     <message>
-        <location filename="../synchresultitem.cpp" line="53"/>
+        <location filename="../synchresultitem.cpp" line="52"/>
         <source>nearest point (</source>
         <translation>nærmeste punkt (</translation>
     </message>
     <message>
-        <location filename="../synchresultitem.cpp" line="64"/>
+        <location filename="../synchresultitem.cpp" line="63"/>
         <source>day</source>
         <translation>dag</translation>
     </message>
     <message>
-        <location filename="../synchresultitem.cpp" line="66"/>
+        <location filename="../synchresultitem.cpp" line="65"/>
         <source>days</source>
         <comment>low</comment>
         <translation>dage</translation>
     </message>
     <message>
-        <location filename="../synchresultitem.cpp" line="68"/>
+        <location filename="../synchresultitem.cpp" line="67"/>
         <source>days</source>
         <comment>high</comment>
         <translation>dage</translation>
     </message>
     <message>
-        <location filename="../synchresultitem.cpp" line="82"/>
+        <location filename="../synchresultitem.cpp" line="81"/>
         <source>from 2 points</source>
         <translation>fra 2 punkter</translation>
     </message>
     <message>
-        <location filename="../synchresultitem.cpp" line="86"/>
+        <location filename="../synchresultitem.cpp" line="85"/>
         <source>from more points</source>
         <translation>fra flere punkter</translation>
     </message>
