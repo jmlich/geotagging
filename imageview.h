@@ -11,7 +11,6 @@
 #include <QLayout>
 #include <QWidget>
 #include <exiv2/exiv2.hpp>
-//#include <QMouseEvent>
 
 class ImageView : public QWidget {
     Q_OBJECT
