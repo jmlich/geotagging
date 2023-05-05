@@ -45,6 +45,7 @@ appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/*.appdata.xml
 - distinguish object and camera position
 - camera direction and angle settings
 - updated translations es, fi, da, nl, it, tr, zh
+- update of jquery and leaflet
 
 * Sat Jul 30 2022 Jozef Mlich <jmlich83@gmail.com> - 0.7.0-1
 - move to qt6, updated jquery and leaflet

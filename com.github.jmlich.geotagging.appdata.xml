@@ -42,6 +42,7 @@
         <p>distinguish object and camera position</p>
         <p>camera direction and angle settings</p>
         <p>updated translations es, fi, da, nl, it, tr, zh</p>
+        <p>update of jquery and leaflet</p>
       </description>
     </release>
     <release version="0.7.0" timestamp="1659162755">
