@@ -13,7 +13,14 @@ MapWidget::MapWidget(QWidget* parent)
 
     mapView = new QWebEngineView(parent);
     QWebEngineProfile* profile = new QWebEngineProfile(mapView);
-    profile->setHttpUserAgent(QString("Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) QtWebEngine/%1 Geotagging/%2").arg(qVersion()).arg(GIT_VERSION));
+    QString agent = QString("Mozilla/5.0 (%1; %2 %3) AppleWebKit/537.36 (KHTML, like Gecko) QtWebEngine/%4 Geotagging/%5")
+                        .arg(QSysInfo::productType())
+                        .arg(QSysInfo::currentCpuArchitecture())
+                        .arg(QGuiApplication::platformName())
+                        .arg(qVersion())
+                        .arg(GIT_VERSION);
+    qDebug() << agent;
+    profile->setHttpUserAgent(agent);
     QWebEnginePage* page = new QWebEnginePage(profile, mapView);
     mapView->setPage(page);
     page->load(QUrl("qrc:///leaflet.html"));
@@ -465,7 +472,7 @@ void MapWidget::setNewGpsInImage()
     QString scriptStr = QString("setNewMarkerPosition(%1);").arg(idDragged);
     mapView->page()->runJavaScript(scriptStr, [](const QVariant& result) { qDebug() << result.toString(); });
 
-    //    mapView->page()->mainFrame()->evaluateJavaScript( scriptStr).toList();
+           //    mapView->page()->mainFrame()->evaluateJavaScript( scriptStr).toList();
 }
 
 void MapWidget::setNewObjectPositionIntoImage()
@@ -474,7 +481,7 @@ void MapWidget::setNewObjectPositionIntoImage()
     QString scriptStr = QString("setNewObjectMarkerPosition(%1);").arg(idDragged);
     mapView->page()->runJavaScript(scriptStr, [](const QVariant& result) { qDebug() << result.toString(); });
 
-    //    mapView->page()->mainFrame()->evaluateJavaScript( scriptStr).toList();
+           //    mapView->page()->mainFrame()->evaluateJavaScript( scriptStr).toList();
 }
 
 void MapWidget::setMarkerLastPosition()
