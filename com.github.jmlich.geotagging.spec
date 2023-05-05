@@ -1,5 +1,5 @@
 Name:           com.github.jmlich.geotagging
-Version:        0.7.0
+Version:        0.7.1
 Release:        %(date +%Y%m%d%H)%{?dist}
 Summary:        Photography geotagging tool
 Group:          Applications/Internet
@@ -41,6 +41,11 @@ appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/*.appdata.xml
 %{_metainfodir}/%{name}.appdata.xml
 
 %changelog
+* Fri May 05 2023 Jozef Mlich <jmlich83@gmail.com> - 0.7.0-1
+- distinguish object and camera position
+- camera direction and angle settings
+- updated translations es, fi, da, nl, it, tr, zh
+
 * Sat Jul 30 2022 Jozef Mlich <jmlich83@gmail.com> - 0.7.0-1
 - move to qt6, updated jquery and leaflet
 - added Italian translation thanks to Daniele Albrizio

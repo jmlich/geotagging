@@ -37,6 +37,13 @@
   </keywords>
   <content_rating type="oars-1.1"/>
   <releases>
+    <release version="0.7.1" timestamp="1683267461">
+      <description>
+        <p>distinguish object and camera position</p>
+        <p>camera direction and angle settings</p>
+        <p>updated translations es, fi, da, nl, it, tr, zh</p>
+      </description>
+    </release>
     <release version="0.7.0" timestamp="1659162755">
       <description>
         <p>migration to qt6, updated jquery and leaflet</p>
