@@ -34,5 +34,5 @@ Makefile*
 *.qmlproject.user
 *.qmlproject.user.*
 
-CMakeLists.txt.user
+CMakeLists.txt.user*
 .flatpak-builder
