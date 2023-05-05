@@ -472,7 +472,7 @@ void MapWidget::setNewGpsInImage()
     QString scriptStr = QString("setNewMarkerPosition(%1);").arg(idDragged);
     mapView->page()->runJavaScript(scriptStr, [](const QVariant& result) { qDebug() << result.toString(); });
 
-           //    mapView->page()->mainFrame()->evaluateJavaScript( scriptStr).toList();
+    //    mapView->page()->mainFrame()->evaluateJavaScript( scriptStr).toList();
 }
 
 void MapWidget::setNewObjectPositionIntoImage()
@@ -481,7 +481,7 @@ void MapWidget::setNewObjectPositionIntoImage()
     QString scriptStr = QString("setNewObjectMarkerPosition(%1);").arg(idDragged);
     mapView->page()->runJavaScript(scriptStr, [](const QVariant& result) { qDebug() << result.toString(); });
 
-           //    mapView->page()->mainFrame()->evaluateJavaScript( scriptStr).toList();
+    //    mapView->page()->mainFrame()->evaluateJavaScript( scriptStr).toList();
 }
 
 void MapWidget::setMarkerLastPosition()
