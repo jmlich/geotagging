@@ -700,10 +700,6 @@
         <translation>Tarih ve saatleri resimlere kaydet</translation>
     </message>
     <message>
-        <source>Save gps in pictures</source>
-        <translation type="vanished">GPS koordinatlarını resimlere kaydet</translation>
-    </message>
-    <message>
         <location filename="../mainwindow.ui" line="153"/>
         <source>Ctrl+S</source>
         <translation>Ctrl+S</translation>
@@ -863,117 +859,117 @@
     <name>MapWidget</name>
     <message>
         <location filename="../mapwidget.cpp" line="12"/>
-        <location filename="../mapwidget.cpp" line="71"/>
+        <location filename="../mapwidget.cpp" line="78"/>
         <source>Map</source>
         <translation>Harita</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="54"/>
-        <location filename="../mapwidget.cpp" line="201"/>
+        <location filename="../mapwidget.cpp" line="61"/>
+        <location filename="../mapwidget.cpp" line="208"/>
         <source>Cyclo-tourist</source>
         <translation>Bisikletli turist</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="55"/>
-        <location filename="../mapwidget.cpp" line="202"/>
+        <location filename="../mapwidget.cpp" line="62"/>
+        <location filename="../mapwidget.cpp" line="209"/>
         <source>Google Roadmap</source>
         <translation>Google Yol Haritası</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="56"/>
-        <location filename="../mapwidget.cpp" line="203"/>
+        <location filename="../mapwidget.cpp" line="63"/>
+        <location filename="../mapwidget.cpp" line="210"/>
         <source>Google Terrain</source>
         <translation>Google Arazi</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="57"/>
-        <location filename="../mapwidget.cpp" line="204"/>
+        <location filename="../mapwidget.cpp" line="64"/>
+        <location filename="../mapwidget.cpp" line="211"/>
         <source>Google Satellite</source>
         <translation>Google Uydu</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="58"/>
-        <location filename="../mapwidget.cpp" line="205"/>
+        <location filename="../mapwidget.cpp" line="65"/>
+        <location filename="../mapwidget.cpp" line="212"/>
         <source>Google Hybrid</source>
         <translation>Google Hibrit</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="59"/>
-        <location filename="../mapwidget.cpp" line="206"/>
+        <location filename="../mapwidget.cpp" line="66"/>
+        <location filename="../mapwidget.cpp" line="213"/>
         <source>OSM Mapnik</source>
         <translation>OSM Mapnik</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="60"/>
-        <location filename="../mapwidget.cpp" line="207"/>
+        <location filename="../mapwidget.cpp" line="67"/>
+        <location filename="../mapwidget.cpp" line="214"/>
         <source>Mapy.cz base</source>
         <translation>Mapy.cz temel</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="61"/>
-        <location filename="../mapwidget.cpp" line="208"/>
+        <location filename="../mapwidget.cpp" line="68"/>
+        <location filename="../mapwidget.cpp" line="215"/>
         <source>Mapy.cz Orthophoto</source>
         <translation>Mapy.cz Orthophoto</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="62"/>
-        <location filename="../mapwidget.cpp" line="209"/>
+        <location filename="../mapwidget.cpp" line="69"/>
+        <location filename="../mapwidget.cpp" line="216"/>
         <source>ArcGis Topographic</source>
         <translation>ArcGis Topografik</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="63"/>
-        <location filename="../mapwidget.cpp" line="210"/>
+        <location filename="../mapwidget.cpp" line="70"/>
+        <location filename="../mapwidget.cpp" line="217"/>
         <source>ArcGis Satellite</source>
         <translation>ArcGis Uydu</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="65"/>
-        <location filename="../mapwidget.cpp" line="224"/>
+        <location filename="../mapwidget.cpp" line="72"/>
+        <location filename="../mapwidget.cpp" line="231"/>
         <source>Center map to view all</source>
         <translation>Tümünü göstermek için haritayı ortala</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="66"/>
-        <location filename="../mapwidget.cpp" line="238"/>
+        <location filename="../mapwidget.cpp" line="73"/>
+        <location filename="../mapwidget.cpp" line="245"/>
         <source>Show all markers</source>
         <translation>Tüm işaretçileri göster</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="67"/>
-        <location filename="../mapwidget.cpp" line="254"/>
+        <location filename="../mapwidget.cpp" line="74"/>
+        <location filename="../mapwidget.cpp" line="261"/>
         <source>Show routes</source>
         <translation>Rotaları göster</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="68"/>
-        <location filename="../mapwidget.cpp" line="271"/>
+        <location filename="../mapwidget.cpp" line="75"/>
+        <location filename="../mapwidget.cpp" line="278"/>
         <source>Join segments</source>
         <translation>Parçaları birleştir</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="69"/>
-        <location filename="../mapwidget.cpp" line="289"/>
+        <location filename="../mapwidget.cpp" line="76"/>
+        <location filename="../mapwidget.cpp" line="296"/>
         <source>Show relief</source>
         <translation>Rölyefleri göster</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="411"/>
+        <location filename="../mapwidget.cpp" line="418"/>
         <source>Change camera location</source>
         <translation>Kamera konumunu değiştir</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="412"/>
+        <location filename="../mapwidget.cpp" line="419"/>
         <source>Change camera coordinates to the new position?</source>
         <translation>Kamera koordinatları yeni konumla değiştirilsin mi?</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="447"/>
+        <location filename="../mapwidget.cpp" line="454"/>
         <source>Change picture object location</source>
         <translation>Resim nesnesi konumunu değiştir</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="448"/>
+        <location filename="../mapwidget.cpp" line="455"/>
         <source>Change picture object coordinates to the new position?</source>
         <translation>Resim nesnesi koordinatları yeni konuma değiştirilsin mi?</translation>
     </message>
@@ -1188,10 +1184,6 @@
         <location filename="../synchresultdialog.cpp" line="111"/>
         <source>Key</source>
         <translation>Anahtar</translation>
-    </message>
-    <message>
-        <source>Picture time doesn&apos;t fit any route, no coordinatest will be saved</source>
-        <translation type="vanished">Resim saati hiçbir rotaya uymuyor, koordinat bilgisi kaydedilmeyecek</translation>
     </message>
     <message>
         <location filename="../synchresultdialog.cpp" line="115"/>
