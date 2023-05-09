@@ -700,10 +700,6 @@
         <translation>Uložit datum a čas do fotografií</translation>
     </message>
     <message>
-        <source>Save gps in pictures</source>
-        <translation type="vanished">Uložit GPS souřadnice do fotografií</translation>
-    </message>
-    <message>
         <location filename="../mainwindow.ui" line="153"/>
         <source>Ctrl+S</source>
         <translation>Ctrl+S</translation>
@@ -863,117 +859,117 @@
     <name>MapWidget</name>
     <message>
         <location filename="../mapwidget.cpp" line="12"/>
-        <location filename="../mapwidget.cpp" line="71"/>
+        <location filename="../mapwidget.cpp" line="78"/>
         <source>Map</source>
         <translation>Mapa</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="54"/>
-        <location filename="../mapwidget.cpp" line="201"/>
+        <location filename="../mapwidget.cpp" line="61"/>
+        <location filename="../mapwidget.cpp" line="208"/>
         <source>Cyclo-tourist</source>
         <translation>Cyklo-turistická</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="55"/>
-        <location filename="../mapwidget.cpp" line="202"/>
+        <location filename="../mapwidget.cpp" line="62"/>
+        <location filename="../mapwidget.cpp" line="209"/>
         <source>Google Roadmap</source>
         <translation>Google Silniční</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="56"/>
-        <location filename="../mapwidget.cpp" line="203"/>
+        <location filename="../mapwidget.cpp" line="63"/>
+        <location filename="../mapwidget.cpp" line="210"/>
         <source>Google Terrain</source>
         <translation>Google Terénní</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="57"/>
-        <location filename="../mapwidget.cpp" line="204"/>
+        <location filename="../mapwidget.cpp" line="64"/>
+        <location filename="../mapwidget.cpp" line="211"/>
         <source>Google Satellite</source>
         <translation>Google Satelitní</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="58"/>
-        <location filename="../mapwidget.cpp" line="205"/>
+        <location filename="../mapwidget.cpp" line="65"/>
+        <location filename="../mapwidget.cpp" line="212"/>
         <source>Google Hybrid</source>
         <translation>Google Hybridní</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="59"/>
-        <location filename="../mapwidget.cpp" line="206"/>
+        <location filename="../mapwidget.cpp" line="66"/>
+        <location filename="../mapwidget.cpp" line="213"/>
         <source>OSM Mapnik</source>
         <translation>OSM Mapnik</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="60"/>
-        <location filename="../mapwidget.cpp" line="207"/>
+        <location filename="../mapwidget.cpp" line="67"/>
+        <location filename="../mapwidget.cpp" line="214"/>
         <source>Mapy.cz base</source>
         <translation>Mapy.cz základní</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="61"/>
-        <location filename="../mapwidget.cpp" line="208"/>
+        <location filename="../mapwidget.cpp" line="68"/>
+        <location filename="../mapwidget.cpp" line="215"/>
         <source>Mapy.cz Orthophoto</source>
         <translation>Mapy.cz Orthofoto</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="62"/>
-        <location filename="../mapwidget.cpp" line="209"/>
+        <location filename="../mapwidget.cpp" line="69"/>
+        <location filename="../mapwidget.cpp" line="216"/>
         <source>ArcGis Topographic</source>
         <translation>ArgGic Topografická</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="63"/>
-        <location filename="../mapwidget.cpp" line="210"/>
+        <location filename="../mapwidget.cpp" line="70"/>
+        <location filename="../mapwidget.cpp" line="217"/>
         <source>ArcGis Satellite</source>
         <translation>ArcGis Satelitní</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="65"/>
-        <location filename="../mapwidget.cpp" line="224"/>
+        <location filename="../mapwidget.cpp" line="72"/>
+        <location filename="../mapwidget.cpp" line="231"/>
         <source>Center map to view all</source>
         <translation>Centrovat mapu pro zobrazení všech pozic fotografií a tras</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="66"/>
-        <location filename="../mapwidget.cpp" line="238"/>
+        <location filename="../mapwidget.cpp" line="73"/>
+        <location filename="../mapwidget.cpp" line="245"/>
         <source>Show all markers</source>
         <translation>Zobrazit všechny značky</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="67"/>
-        <location filename="../mapwidget.cpp" line="254"/>
+        <location filename="../mapwidget.cpp" line="74"/>
+        <location filename="../mapwidget.cpp" line="261"/>
         <source>Show routes</source>
         <translation>Zobrazit všechny trasy</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="68"/>
-        <location filename="../mapwidget.cpp" line="271"/>
+        <location filename="../mapwidget.cpp" line="75"/>
+        <location filename="../mapwidget.cpp" line="278"/>
         <source>Join segments</source>
         <translation>Spojit segmenty</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="69"/>
-        <location filename="../mapwidget.cpp" line="289"/>
+        <location filename="../mapwidget.cpp" line="76"/>
+        <location filename="../mapwidget.cpp" line="296"/>
         <source>Show relief</source>
         <translation>Zobrazit stínovaný reliéf</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="411"/>
+        <location filename="../mapwidget.cpp" line="418"/>
         <source>Change camera location</source>
         <translation>Změna polohy fotoaparátu</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="412"/>
+        <location filename="../mapwidget.cpp" line="419"/>
         <source>Change camera coordinates to the new position?</source>
         <translation>Chcete změnit souřadnice fotoaparátu na novou polohu?</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="447"/>
+        <location filename="../mapwidget.cpp" line="454"/>
         <source>Change picture object location</source>
         <translation>Změna polohy objektu na obrázku</translation>
     </message>
     <message>
-        <location filename="../mapwidget.cpp" line="448"/>
+        <location filename="../mapwidget.cpp" line="455"/>
         <source>Change picture object coordinates to the new position?</source>
         <translation>Chcete změnit souřadnice objektu na obrázku na novou polohu?</translation>
     </message>
@@ -1188,10 +1184,6 @@
         <location filename="../synchresultdialog.cpp" line="111"/>
         <source>Key</source>
         <translation>Legenda</translation>
-    </message>
-    <message>
-        <source>Picture time doesn&apos;t fit any route, no coordinatest will be saved</source>
-        <translation type="vanished">Čas fotografie neodpovídá trase, nebudou uloženy nové souřadnice</translation>
     </message>
     <message>
         <location filename="../synchresultdialog.cpp" line="115"/>
