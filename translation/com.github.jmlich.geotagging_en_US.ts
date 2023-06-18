@@ -324,8 +324,8 @@
     </message>
     <message>
         <location filename="../exifreaderwriter.cpp" line="384"/>
-        <source>program action(high-speed program)</source>
-        <translation>program action(high-speed program)</translation>
+        <source>program action (high-speed program)</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../exifreaderwriter.cpp" line="386"/>

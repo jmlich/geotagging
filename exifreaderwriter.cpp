@@ -381,7 +381,7 @@ QString ExifReaderWriter::getExposureProgram(Exiv2::ExifData& exifData)
     case 5:
         return tr("program creative (slow program)");
     case 6:
-        return tr("program action(high-speed program)");
+        return tr("program action (high-speed program)");
     case 7:
         return tr("portrait mode");
     case 8:
