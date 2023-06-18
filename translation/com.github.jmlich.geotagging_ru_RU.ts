@@ -1166,7 +1166,7 @@
         <location filename="../synchresultdialog.cpp" line="114"/>
         <location filename="../synchresultdialog.cpp" line="159"/>
         <source>Picture time doesn&apos;t fit any route, no coordinates will be saved</source>
-        <translation>Время съемки не соответствует ни одному маршруту, координаты сохранены не будут</translation>
+        <translation>Время съёмки не соответствует ни одному маршруту, координаты сохранены не будут</translation>
     </message>
     <message>
         <location filename="../synchresultdialog.cpp" line="134"/>
