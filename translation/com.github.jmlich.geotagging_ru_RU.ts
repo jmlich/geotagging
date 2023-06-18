@@ -474,7 +474,7 @@
         <location filename="../gpsroute.cpp" line="152"/>
         <location filename="../gpsroute.cpp" line="537"/>
         <source>Route length</source>
-        <translation>Длина пути</translation>
+        <translation>Длина маршрута</translation>
     </message>
     <message>
         <location filename="../gpsroute.cpp" line="155"/>
