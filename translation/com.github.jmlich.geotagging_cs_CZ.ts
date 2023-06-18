@@ -322,8 +322,8 @@
     </message>
     <message>
         <location filename="../exifreaderwriter.cpp" line="384"/>
-        <source>program action(high-speed program)</source>
-        <translation>program akce(rychlý režim)</translation>
+        <source>program action (high-speed program)</source>
+        <translation>program akce (rychlý režim)</translation>
     </message>
     <message>
         <location filename="../exifreaderwriter.cpp" line="386"/>
