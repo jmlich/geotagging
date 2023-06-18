@@ -322,7 +322,7 @@
     </message>
     <message>
         <location filename="../exifreaderwriter.cpp" line="384"/>
-        <source>program action(high-speed program)</source>
+        <source>program action (high-speed program)</source>
         <translation>eylem programı (yüksek hızlı program)</translation>
     </message>
     <message>
