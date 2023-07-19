@@ -229,7 +229,7 @@
     </message>
     <message>
         <location filename="../exifinfo.cpp" line="59"/>
-        <source>F-number (F-spot)</source>
+        <source>F-number (F-stop)</source>
         <translation>Clonové číslo</translation>
     </message>
     <message>
