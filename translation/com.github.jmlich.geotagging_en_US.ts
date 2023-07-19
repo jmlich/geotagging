@@ -231,8 +231,8 @@
     </message>
     <message>
         <location filename="../exifinfo.cpp" line="59"/>
-        <source>F-number (F-spot)</source>
-        <translation>F-number (F-spot)</translation>
+        <source>F-number (F-stop)</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../exifinfo.cpp" line="60"/>
