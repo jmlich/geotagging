@@ -37,6 +37,12 @@
   </keywords>
   <content_rating type="oars-1.1"/>
   <releases>
+    <release version="0.7.2" timestamp="1702811200">
+      <description>
+        <p>update translations</p>
+        <p>rebuild with new flatpak runtime</p>
+      </description>
+    </release>
     <release version="0.7.1" timestamp="1683267461">
       <description>
         <p>distinguish object and camera position</p>
