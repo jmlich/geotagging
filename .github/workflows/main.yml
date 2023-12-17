@@ -20,7 +20,7 @@ jobs:
         target: 'desktop'
         arch: 'win64_msvc2019_64'
         modules: 'qtwebengine qtwebchannel qtpositioning'
-        tools: 'tools_openssl_x64,qt.tools.openssl.win_x64'
+        tools: 'tools_opensslv3_x64,qt.tools.opensslv3.win_x64'
 
     - name: Download exiv2
       if: startsWith(matrix.os, 'windows')
