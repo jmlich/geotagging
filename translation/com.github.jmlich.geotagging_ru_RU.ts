@@ -229,8 +229,8 @@
     </message>
     <message>
         <location filename="../exifinfo.cpp" line="59"/>
-        <source>F-number (F-spot)</source>
-        <translation>F-число (Относительное отверстие объектива)</translation>
+        <source>F-number (F-stop)</source>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../exifinfo.cpp" line="60"/>
