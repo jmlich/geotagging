@@ -25,6 +25,7 @@ MapWidget::MapWidget(QWidget* parent)
     mapView->setPage(page);
     page->load(QUrl("qrc:///leaflet.html"));
     markersVisible = 1;
+    objectsVisible = 1;
     routesVisible = 1;
     joinSegmentsVisible = 0;
     reliefVisible = 0;
@@ -196,6 +197,7 @@ void MapWidget::directionUpdated(int id, double direction, double angleOfView)
 void MapWidget::setWidgets()
 {
     iconMarkerVisible = new QIcon(":/icons/markerShowR.png");
+    iconObjectVisible = new QIcon(":/icons/markerShowB.png");
     iconRouteVisible = new QIcon(":/icons/chodecMapa.png");
     iconRelief = new QIcon(":/icons/relief.png");
     iconJoinSegments = new QIcon(":/icons/routeFull.png");
@@ -253,6 +255,23 @@ void MapWidget::setWidgets()
     connect(bMarkersVisibility, SIGNAL(clicked()), cMarkersVisibility, SLOT(toggle()));
     gl->addWidget(bMarkersVisibility, 0, wCount);
     wCount++;
+
+    bObjectsVisibility = new QToolButton;
+    bObjectsVisibility->setMaximumSize(iconSize);
+    bObjectsVisibility->setIcon(*iconObjectVisible);
+    bObjectsVisibility->setIconSize(bObjectsVisibility->size());
+    bObjectsVisibility->setToolTip(tr("Show all Objects"));
+    cObjectsVisibility = new QCheckBox(bObjectsVisibility);
+    cObjectsVisibility->setChecked(objectsVisible);
+    cObjectsVisibility->setMaximumSize(QSize(15, 20));
+
+    bObjectsVisibility->setContentsMargins(QMargins(0, 0, 0, 0));
+    connect(cObjectsVisibility, SIGNAL(clicked()), this, SLOT(setObjectsVisibility()));
+    connect(bObjectsVisibility, SIGNAL(clicked()), this, SLOT(setObjectsVisibility()));
+    connect(bObjectsVisibility, SIGNAL(clicked()), cObjectsVisibility, SLOT(toggle()));
+    gl->addWidget(bObjectsVisibility, 0, wCount);
+    wCount++;
+
 
     bRoutesVisibility = new QToolButton;
     bRoutesVisibility->setMaximumSize(iconSize);
@@ -546,6 +565,14 @@ void MapWidget::setMarkersVisibility()
     QStringList scriptStr;
     markersVisible = !markersVisible;
     scriptStr << QString("setMarkersVisibility(%1);").arg(markersVisible);
+    mapView->page()->runJavaScript(scriptStr.join("\n"), [](const QVariant& result) { qDebug() << result.toString(); });
+}
+
+void MapWidget::setObjectsVisibility()
+{
+    QStringList scriptStr;
+    objectsVisible = !objectsVisible;
+    scriptStr << QString("setObjectsVisibility(%1);").arg(objectsVisible);
     mapView->page()->runJavaScript(scriptStr.join("\n"), [](const QVariant& result) { qDebug() << result.toString(); });
 }
 

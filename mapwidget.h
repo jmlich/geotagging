@@ -21,17 +21,20 @@ class MapWidget : public QDockWidget {
     Q_OBJECT
     QToolButton* bCenter;
     QToolButton* bMarkersVisibility;
+    QToolButton* bObjectsVisibility;
     QToolButton* bRoutesVisibility;
     QToolButton* bJoinSegments;
     QToolButton* bRelief;
 
     QCheckBox* cMarkersVisibility;
+    QCheckBox* cObjectsVisibility;
     QCheckBox* cRoutesVisibility;
     QCheckBox* cJoinSegments;
     QCheckBox* cRelief;
 
     QComboBox* mapSelect;
     QIcon* iconMarkerVisible;
+    QIcon* iconObjectVisible;
     // QIcon *iconMarkerHidden;
     QIcon* iconRouteVisible;
     // QIcon *iconRouteHidden;
@@ -50,6 +53,7 @@ public:
     QWebEngineView* mapView;
     QWebEnginePage* mapPage;
     bool markersVisible;
+    bool objectsVisible;
     bool routesVisible;
     bool newMarkerCandidade;
     bool joinSegmentsVisible;
@@ -86,6 +90,7 @@ public slots:
 
     void centerMap();
     void setMarkersVisibility();
+    void setObjectsVisibility();
     // void setMarkersVisibilityC();
     void setRoutesVisibility();
     // void setRoutesVisibilityC();

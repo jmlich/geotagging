@@ -815,6 +815,18 @@ function setMarkersVisibility(setVisible) {
     }
 }
 
+function setObjectsVisibility(setVisible) {
+    for (var i in objectMarkers) {
+        if (setVisible) {
+            map.addLayer(objectMarkers[i]);
+        } else {
+//            if( cameraMarkers[i].getIcon() === marker_camera_deselected) {
+                map.removeLayer(objectMarkers[i]);
+//            }
+        }
+    }
+}
+
 function deleteMarker(id) {
     for (var i in cameraMarkers) {
         if (id === cameraMarkers[i].options.id){
