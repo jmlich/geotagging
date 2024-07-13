@@ -398,7 +398,7 @@ void MapWidget::markerSelected(int id, bool isSelected)
 {
     QStringList scriptStr;
     scriptStr << QString("markerOrObjectSelected(%1, %2, %3);").arg(id).arg(isSelected).arg(markersVisible);
-    //    qDebug() << scriptStr;
+       qDebug() << scriptStr;
     mapView->page()->runJavaScript(scriptStr.join("\n"), [](const QVariant& result) { qDebug() << result.toString(); });
 }
 
@@ -433,7 +433,7 @@ void MapWidget::markerDragged(int id)
 void MapWidget::objectSelected(int id, bool isSelected)
 {
     QStringList scriptStr;
-    scriptStr << QString("markerOrObjectSelected(%1, %2, %3)").arg(id).arg(isSelected).arg(markersVisible);
+    scriptStr << QString("markerOrObjectSelected(%1, %2, %3);").arg(id).arg(isSelected).arg(markersVisible);
     qDebug() << scriptStr;
     mapView->page()->runJavaScript(scriptStr.join("\n"), [](const QVariant& result) { qDebug() << result.toString(); });
 }

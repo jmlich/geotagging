@@ -159,20 +159,29 @@ function initialize() {
                            });
 
     map.on('mousemove', function (e) {
+        var mouse_pos = e.latlng;
+        var distance_camera_str = '';
+        var distance_object_str = '';
         if (lastSelected !== -1) {
             for (var i in cameraMarkers) {
                 if (lastSelected === cameraMarkers[i].options.id){
-                    var mouse_pos = e.latlng;
                     var marker_pos = cameraMarkers[i].getLatLng();
-                    $("#distance").text( Math.round(marker_pos.distanceTo(mouse_pos)) + " m");
+                    distance_camera_str = Math.round(marker_pos.distanceTo(mouse_pos)) + " m"
                     break;
                 }
             }
-
-        } else {
-            $("#distance").text("");
-
+            for (var j in objectMarkers) {
+                if (lastSelected === objectMarkers[j].options.id){
+                    var object_pos = objectMarkers[j].getLatLng();
+                    distance_object_str = Math.round(object_pos.distanceTo(mouse_pos)) + " m"
+                    break;
+                }
+            }
         }
+
+        $("#distance_camera").text(distance_camera_str);
+        $("#distance_object").text(distance_object_str);
+
     })
 //    test_add_marker();
 //        test_add_route();
@@ -583,6 +592,7 @@ function addObjectMarker(_id, _isVisible, lat, lon) {
     }
     marker.on('click', function(e) {
         mapWidget.objectClicked(marker.options.id)
+        console.log("mapWidget.objectClicked("+marker.options.id+")")
     });
 //    marker.on('dragstart',function() { // 'dragstart'
 //        //        markerClicked(marker.options.id, false); // FIXME: doesn't work https://github.com/Leaflet/Leaflet/issues/4484
@@ -687,6 +697,7 @@ function addCameraMarker(iid, isVisible, lat, lon, direction, angle_of_view) {
     }
     marker.on('click', function(e) {
         mapWidget.markerClicked(marker.options.id)
+        console.log("mapWidget.marker(" + marker.options.id + ")")
     });
     marker.on('dragstart',function() { // 'dragstart'
         //        markerClicked(marker.options.id, false); // FIXME: doesn't work https://github.com/Leaflet/Leaflet/issues/4484
