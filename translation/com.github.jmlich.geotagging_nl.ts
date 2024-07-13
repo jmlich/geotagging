@@ -230,7 +230,7 @@
     <message>
         <location filename="../exifinfo.cpp" line="59"/>
         <source>F-number (F-stop)</source>
-        <translation type="unfinished"/>
+        <translation>F-getal (F-stop)</translation>
     </message>
     <message>
         <location filename="../exifinfo.cpp" line="60"/>
