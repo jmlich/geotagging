@@ -118,6 +118,7 @@ MainWindow::MainWindow(QWidget* parent)
         imageWidgetsList, SLOT(rubberBandSelection(QRect, bool)));
     connect(imageWidgetsList, SIGNAL(setExifInfo(QStringList)), exifInfo, SLOT(setNewInfo(QStringList)));
     connect(map, SIGNAL(mClicked(int, bool, bool)), imageWidgetsList, SLOT(selectOne(int, bool, bool)));
+    connect(map, SIGNAL(oClicked(int, bool, bool)), imageWidgetsList, SLOT(selectOne(int, bool, bool)));
 
     connect(ui->actionSave_Gps, SIGNAL(triggered()), imageWidgetsList, SLOT(saveExifGpsInAll()));
     connect(ui->actionSave_Datetime, SIGNAL(triggered()), imageWidgetsList, SLOT(saveExifDateTimeInAll()));

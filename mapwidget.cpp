@@ -462,7 +462,7 @@ void MapWidget::objectClicked(int id)
     scriptStr << QString("markerOrObjectClicked(%1, %2);").arg(id).arg((QApplication::keyboardModifiers() & Qt::ControlModifier));
 
     mapView->page()->runJavaScript(scriptStr.join("\n"), [](const QVariant& result) { qDebug() << result.toString(); });
-    //    emit mClicked(id, 0, 1); // FIXME
+    emit oClicked(id, 0, 1);
 }
 
 void MapWidget::objectDragged(int id)

@@ -70,6 +70,7 @@ public:
 
 signals:
     void mClicked(int id, bool clickMarker, bool focus);
+    void oClicked(int id, bool clickMarker, bool focus);
     void processEvent(QKeyEvent* event);
     void setGpsInImage(int id, double lat, double lon, double ele);
     void setObjectGpsInImage(int id, double lat, double lon, double ele);
