@@ -272,7 +272,6 @@ void MapWidget::setWidgets()
     gl->addWidget(bObjectsVisibility, 0, wCount);
     wCount++;
 
-
     bRoutesVisibility = new QToolButton;
     bRoutesVisibility->setMaximumSize(iconSize);
     bRoutesVisibility->setIcon(*iconRouteVisible);
@@ -417,7 +416,7 @@ void MapWidget::markerSelected(int id, bool isSelected)
 {
     QStringList scriptStr;
     scriptStr << QString("markerOrObjectSelected(%1, %2, %3);").arg(id).arg(isSelected).arg(markersVisible);
-       qDebug() << scriptStr;
+    qDebug() << scriptStr;
     mapView->page()->runJavaScript(scriptStr.join("\n"), [](const QVariant& result) { qDebug() << result.toString(); });
 }
 
