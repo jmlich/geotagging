@@ -592,6 +592,7 @@ function addObjectMarker(_id, _isVisible, lat, lon) {
     }
     marker.on('click', function(e) {
         mapWidget.objectClicked(marker.options.id)
+        lastSelected = marker.options.id
         console.log("mapWidget.objectClicked("+marker.options.id+")")
     });
 //    marker.on('dragstart',function() { // 'dragstart'
@@ -697,6 +698,7 @@ function addCameraMarker(iid, isVisible, lat, lon, direction, angle_of_view) {
     }
     marker.on('click', function(e) {
         mapWidget.markerClicked(marker.options.id)
+        lastSelected = marker.options.id
         console.log("mapWidget.marker(" + marker.options.id + ")")
     });
     marker.on('dragstart',function() { // 'dragstart'
@@ -722,12 +724,12 @@ function markerOrObjectSelected(id, isSelected, markersVisible) {
     if (id === -1) {
         return;
     }
-    lastSelected = id;
 
     for (var i in cameraMarkers) {
         if (cameraMarkers[i].options.id === id) {
 
             if (isSelected) {
+                lastSelected = id;
                 map.panTo(cameraMarkers[i].getLatLng());
 
                 cameraMarkers[i].setIcon(marker_camera_selected);
