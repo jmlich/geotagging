@@ -752,6 +752,7 @@ function markerOrObjectSelected(id, isSelected, markersVisible) {
         if (objectMarkers[i].options.id === id) {
 
             if (isSelected) {
+                lastSelected = id;
                 objectMarkers[i].setIcon(marker_object_selected);
                 objectMarkers[i].setZIndexOffset(1);
                 if (!objectMarkers) {
