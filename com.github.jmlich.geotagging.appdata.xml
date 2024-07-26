@@ -46,6 +46,14 @@
   </keywords>
   <content_rating type="oars-1.1"/>
   <releases>
+    <release version="0.7.4" timestamp="1722008566">
+      <description>
+        <p>Fixed bug: The application now triggers selection when clicking on an object coordinate in the map.</p>
+        <p>The application now computes the distance between the cursor and both the object coordinate and the camera coordinate.</p>
+        <p>The selection now highlights the image when an object pin is clicked on the map.</p>
+        <p>Updated the Dutch (nl) translation for the application.</p>
+      </description>
+    </release>
     <release version="0.7.3" timestamp="1713077165">
       <description>
         <p>Rebuild due to abi breakage</p>
