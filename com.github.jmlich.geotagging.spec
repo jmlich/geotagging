@@ -1,5 +1,5 @@
 Name:           com.github.jmlich.geotagging
-Version:        0.7.2
+Version:        0.7.4
 Release:        %(date +%Y%m%d%H)%{?dist}
 Summary:        Photography geotagging tool
 Group:          Applications/Internet
@@ -41,6 +41,12 @@ appstream-util validate-relax --nonet %{buildroot}%{_metainfodir}/*.appdata.xml
 %{_metainfodir}/%{name}.appdata.xml
 
 %changelog
+* Fri Jul 26 2024 Jozef Mlich <jmlich83@gmail.com> - 0.7.4-1
+- Fixed bug: The application now triggers selection when clicking on an object coordinate in the map.
+- The application now computes the distance between the cursor and both the object coordinate and the camera coordinate.
+- The selection now highlights the image when an object pin is clicked on the map.
+- Updated the Dutch (nl) translation for the application.
+
 * Sun Dec 17 2023 Jozef Mlich <jmlich83@gmail.com> - 0.7.2-1
 - update translations
 
