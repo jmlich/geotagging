@@ -22,6 +22,7 @@
     <color type="primary" scheme_preference="dark">#0e232e</color>
   </branding>
   <url type="homepage">https://github.com/jmlich/geotagging</url>
+  <url type="vcs-browser">https://github.com/jmlich/geotagging</url>
   <url type="bugtracker">https://github.com/jmlich/geotagging/issues</url>
   <url type="translate">https://www.transifex.com/jozef-mlich/geotagging/dashboard/</url>
   <url type="donation">https://liberapay.com/jmlich/</url>
