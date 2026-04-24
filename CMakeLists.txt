@@ -21,16 +21,30 @@ enable_testing()
 find_package(Git QUIET REQUIRED)
 find_package(exiv2 REQUIRED CONFIG NAMES exiv2)
 
-execute_process(COMMAND
-  "${GIT_EXECUTABLE}" describe --dirty --broken --always --tags
-  WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}"
-  OUTPUT_VARIABLE GIT_VERSION
-  ERROR_QUIET OUTPUT_STRIP_TRAILING_WHITESPACE
-)
+# Allow manual override via cmake -DGIT_VERSION=v2.9.0
+set(GIT_VERSION "" CACHE STRING "Override git version string")
 
-set(VERSION "${GIT_VERSION}" CACHE STRING "Manaly defined version string")
+if(GIT_VERSION STREQUAL "")
+    find_program(GIT_EXECUTABLE git)
+    if(GIT_EXECUTABLE)
+        execute_process(
+            COMMAND ${GIT_EXECUTABLE} describe --tags --always --long --dirty
+            WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
+            OUTPUT_VARIABLE GIT_VERSION
+            RESULT_VARIABLE GIT_DESCRIBE_RESULT
+            ERROR_QUIET
+            OUTPUT_STRIP_TRAILING_WHITESPACE
+        )
+        if(NOT GIT_DESCRIBE_RESULT EQUAL 0)
+            set(GIT_VERSION "unknown")
+        endif()
+    else()
+        set(GIT_VERSION "unknown")
+    endif()
+endif()
 
-add_definitions( -DGIT_VERSION="${VERSION}" )
+message(STATUS "Git version: ${GIT_VERSION}")
+add_compile_definitions(GIT_VERSION="${GIT_VERSION}")
 
 find_package(Qt6 COMPONENTS Core Gui Network Widgets WebEngineWidgets WebChannel LinguistTools REQUIRED)
 
