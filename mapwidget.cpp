@@ -423,7 +423,7 @@ void MapWidget::markerSelected(int id, bool isSelected)
 void MapWidget::markerClicked(int id)
 {
     QStringList scriptStr;
-    scriptStr << QString("markerOrObjectClicked(%1, %2);").arg(id).arg((QApplication::keyboardModifiers() & Qt::ControlModifier));
+    scriptStr << QString("markerOrObjectClicked(%1, %2);").arg(id).arg(int(QApplication::keyboardModifiers() & Qt::ControlModifier));
 
     mapView->page()->runJavaScript(scriptStr.join("\n"), [](const QVariant& result) { qDebug() << result.toString(); });
     emit mClicked(id, 0, 1);
@@ -459,7 +459,7 @@ void MapWidget::objectSelected(int id, bool isSelected)
 void MapWidget::objectClicked(int id)
 {
     QStringList scriptStr;
-    scriptStr << QString("markerOrObjectClicked(%1, %2);").arg(id).arg((QApplication::keyboardModifiers() & Qt::ControlModifier));
+    scriptStr << QString("markerOrObjectClicked(%1, %2);").arg(id).arg(int(QApplication::keyboardModifiers() & Qt::ControlModifier));
 
     mapView->page()->runJavaScript(scriptStr.join("\n"), [](const QVariant& result) { qDebug() << result.toString(); });
     emit oClicked(id, 0, 1);
