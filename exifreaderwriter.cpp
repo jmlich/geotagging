@@ -284,9 +284,10 @@ double ExifReaderWriter::readExifItemDouble(Exiv2::ExifData& exifData, std::stri
         Exiv2::ExifKey key(keyStr);
         Exiv2::ExifData::iterator pos = exifData.findKey(key);
 
-        if (pos != exifData.end()) {
-            return exifData[keyStr].toFloat();
+        if (pos == exifData.end()) {
+            return qQNaN();
         }
+        return pos->toFloat();
     } catch (Exiv2::Error& e) {
         Q_UNUSED(e);
         //        qDebug() << e.what();
