@@ -287,6 +287,19 @@ double ExifReaderWriter::readExifItemDouble(Exiv2::ExifData& exifData, std::stri
         if (pos == exifData.end()) {
             return qQNaN();
         }
+
+        if (pos->typeId() == Exiv2::unsignedRational || pos->typeId() == Exiv2::signedRational) {
+
+            Exiv2::Rational r = pos->toRational();
+
+            if (r.second == 0) {
+                qDebug() << "Invalid rational";
+                return qQNaN();
+            }
+
+            return static_cast<double>(r.first) / r.second;
+        }
+
         return pos->toFloat();
     } catch (Exiv2::Error& e) {
         Q_UNUSED(e);
