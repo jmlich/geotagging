@@ -221,7 +221,7 @@ void ImageInfo::setGpsLabel()
 
 void ImageInfo::setAltitudeLabel()
 {
-    if (imageData->altitude < -999) {
+    if (imageData->altitude < -999 || qIsNaN(imageData->altitude)) {
         ui->altitudeLabel->setText(tr("-"));
         ui->altitudeLabel->setToolTip(tr("Unknown altitude"));
         return;
