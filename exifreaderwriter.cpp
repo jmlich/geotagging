@@ -293,7 +293,7 @@ double ExifReaderWriter::readExifItemDouble(Exiv2::ExifData& exifData, std::stri
             Exiv2::Rational r = pos->toRational();
 
             if (r.second == 0) {
-                qDebug() << "Invalid rational";
+                qDebug() << "Invalid rational" << QString::fromStdString(keyStr);
                 return qQNaN();
             }
 
