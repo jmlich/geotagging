@@ -36,3 +36,5 @@ Makefile*
 
 CMakeLists.txt.user*
 .flatpak-builder
+
+build
