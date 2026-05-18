@@ -15,7 +15,7 @@ class ExifReaderWriter : public QObject {
     Q_OBJECT
 
     QDateTime* readExifDate(Exiv2::ExifData& exifData, std::string keyStr);
-    double readAltitude(QString str, Exiv2::ExifData& exifData);
+    double readAltitude(Exiv2::ExifData& exifData);
     double readLatLon(QString str, Exiv2::ExifData& exifData);
     void writeData(Exiv2::ExifData& exifData, std::string keyStr, QString str);
     void removeData(Exiv2::ExifData& exifData, std::string key);

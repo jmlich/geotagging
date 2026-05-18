@@ -32,21 +32,27 @@ std::unique_ptr<Exiv2::Image> ExifReaderWriter::openExif(QString pictureName)
     return image;
 }
 
-double ExifReaderWriter::readAltitude(QString str, Exiv2::ExifData& exifData)
+double ExifReaderWriter::readAltitude(Exiv2::ExifData& exifData)
 {
-    QString altStr = readExifItem(exifData, str.toStdString());
-    QString altStrRef = readExifItem(exifData, str.toStdString() + "Ref");
-    if (!altStr.isEmpty()) {
-        QRegularExpression rx("^(\\d+)/(\\d+)$");
-        QRegularExpressionMatch match = rx.match(altStr);
-        double alt = match.captured(1).toDouble() / match.captured(2).toDouble();
-        if (altStrRef == "1") {
-            alt *= -1;
-        }
-        return alt;
-    } else {
-        return -1000;
+    const std::string keyStr = "Exif.GPSInfo.GPSAltitude";
+    Exiv2::ExifData::const_iterator pos = exifData.findKey(Exiv2::ExifKey(keyStr));
+    if (pos == exifData.end()) {
+        return qQNaN();
     }
+
+    Exiv2::Rational r = pos->toRational();
+    if (r.second == 0) {
+        qDebug() << "Invalid rational" << QString::fromStdString(keyStr);
+        return qQNaN();
+    }
+    double alt = static_cast<double>(r.first) / r.second;
+
+    Exiv2::ExifData::const_iterator refPos = exifData.findKey(Exiv2::ExifKey("Exif.GPSInfo.GPSAltitudeRef"));
+    if (refPos != exifData.end() && refPos->toString() == "1") {
+        alt *= -1;
+    }
+
+    return alt;
 }
 
 double ExifReaderWriter::readLatLon(QString str, Exiv2::ExifData& exifData)
@@ -86,7 +92,7 @@ void ExifReaderWriter::readExif(QString pictureName)
     // cteniGPS souradnic
     double lat = readLatLon("Exif.GPSInfo.GPSLatitude", exifData);
     double lon = readLatLon("Exif.GPSInfo.GPSLongitude", exifData);
-    double alt = readAltitude("Exif.GPSInfo.GPSAltitude", exifData);
+    double alt = readAltitude(exifData);
     double direction = readExifItemDouble(exifData, "Exif.GPSInfo.GPSImgDirection");
 
     //     (Resolution in pixels/Focal plane resolution in dpi) X 25.4(mm/in)=size in mm
@@ -462,7 +468,7 @@ QStringList* ExifReaderWriter::readExifInfo(QString pictureName, FormatHandler* 
     // cteniGPS souradnic
     double lat = readLatLon("Exif.GPSInfo.GPSLatitude", exifData);
     double lon = readLatLon("Exif.GPSInfo.GPSLongitude", exifData);
-    double alt = readAltitude("Exif.GPSInfo.GPSAltitude", exifData);
+    double alt = readAltitude(exifData);
     ////////////////////////////
 
     double destLat = readLatLon("Exif.GPSInfo.GPSDestLatitude", exifData);
