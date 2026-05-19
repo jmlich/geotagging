@@ -108,7 +108,7 @@ void ImageInfo::retranslateUi()
 
 ImageInfo::~ImageInfo()
 {
-    if (imageData->isGps) {
+    if (imageData->isGps || imageData->objLatitude != 1000) {
         emit deleteMarker(imageData->id);
     }
     delete candidatePointTime;

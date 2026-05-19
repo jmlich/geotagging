@@ -488,15 +488,19 @@ function settingRemoveCameraMarker(iidlist) {
     console.log("settingRemoveCameraMarker(" + iidlist+")")
     for (var j = 0; j < iidlist.length; j++) {
         var id = iidlist[j];
-        for (var i in cameraMarkers) {
+        for (var i = cameraMarkers.length - 1; i >= 0; i--) {
             if (id === cameraMarkers[i].options.id){
                 map.removeLayer(cameraMarkers[i]);
                 cameraMarkers.splice(i,1);
                 window.mapWidget.newCameraMarkerAdded(id, 1000, 1000, -1000);
-                break;
             }
         }
-
+        for (var i = aovMarkers.length - 1; i >= 0; i--) {
+            if (id === aovMarkers[i].options.id){
+                map.removeLayer(aovMarkers[i]);
+                aovMarkers.splice(i,1);
+            }
+        }
     }
 }
 
@@ -504,12 +508,11 @@ function settingRemoveObjectMarker(iidlist) {
     console.log("settingRemoveObjectMarker("+ iidlist+")")
     for (var j = 0; j < iidlist.length; j++) {
         var id = iidlist[j]
-        for (var i in objectMarkers) {
+        for (var i = objectMarkers.length - 1; i >= 0; i--) {
             if (id === objectMarkers[i].options.id){
                 map.removeLayer(objectMarkers[i]);
                 objectMarkers.splice(i,1);
                 window.mapWidget.newObjectMarkerAdded(id, 1000, 1000, -1000);
-                break;
             }
         }
 
@@ -831,11 +834,22 @@ function setObjectsVisibility(setVisible) {
 }
 
 function deleteMarker(id) {
-    for (var i in cameraMarkers) {
+    for (var i = cameraMarkers.length - 1; i >= 0; i--) {
         if (id === cameraMarkers[i].options.id){
             map.removeLayer(cameraMarkers[i]);
             cameraMarkers.splice(i,1);
-            break;
+        }
+    }
+    for (var i = aovMarkers.length - 1; i >= 0; i--) {
+        if (id === aovMarkers[i].options.id){
+            map.removeLayer(aovMarkers[i]);
+            aovMarkers.splice(i,1);
+        }
+    }
+    for (var i = objectMarkers.length - 1; i >= 0; i--) {
+        if (id === objectMarkers[i].options.id){
+            map.removeLayer(objectMarkers[i]);
+            objectMarkers.splice(i,1);
         }
     }
 }
