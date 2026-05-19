@@ -31,6 +31,9 @@ QSize PicturesScrollArea::sizeHint() const
 void PicturesScrollArea::keyPressEvent(QKeyEvent* event)
 {
     emit processEvent(event);
+    if (!event->isAccepted()) {
+        QScrollArea::keyPressEvent(event);
+    }
 }
 
 void PicturesScrollArea::wheelEvent(QWheelEvent* event)

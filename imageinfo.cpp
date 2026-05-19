@@ -3,6 +3,7 @@
  */
 
 #include "imageinfo.h"
+#include "picturesframe.h"
 #include "ui_imageinfo.h"
 #include <QAction>
 #include <QDebug>
@@ -286,6 +287,21 @@ void ImageInfo::mouseDoubleClickEvent(QMouseEvent* event)
     event->accept();
     ImageView* i = new ImageView;
     i->setImage(imageData->pictureName);
+
+    QWidget* w = parentWidget();
+    while (w && !qobject_cast<PicturesFrame*>(w)) {
+        w = w->parentWidget();
+    }
+    PicturesFrame* frame = qobject_cast<PicturesFrame*>(w);
+    if (frame && frame->imageWidgetsList) {
+        for (int n = 0; n < frame->imageWidgetsList->length(); n++) {
+            if (frame->imageWidgetsList->at(n)->imageData->id == imageData->id) {
+                i->setNavigation(frame->imageWidgetsList, n);
+                break;
+            }
+        }
+    }
+
     i->show();
 }
 
@@ -461,10 +477,10 @@ void ImageInfo::setLabels()
     markerLabel->setVisible(imageData->isGps);
 }
 
-void ImageInfo::select()
+void ImageInfo::select(bool focus)
 {
     isClickedOrig = 1;
-    click(0);
+    click(focus);
     if (imageData->isGps) {
         emit selected(imageData->id, 1);
     }

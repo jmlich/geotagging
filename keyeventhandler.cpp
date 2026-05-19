@@ -18,5 +18,26 @@ void KeyEventHandler::processKeyEvent(QKeyEvent* event)
         emit deleteSelected();
     } else if (event->key() == Qt::Key_Escape) {
         emit escapePressed();
+    } else if (!(event->modifiers() & Qt::ControlModifier)) {
+        switch (event->key()) {
+        case Qt::Key_Left:
+            emit selectAdjacent(-1);
+            event->accept();
+            return;
+        case Qt::Key_Right:
+            emit selectAdjacent(1);
+            event->accept();
+            return;
+        case Qt::Key_Up:
+            emit selectAdjacentRow(-1);
+            event->accept();
+            return;
+        case Qt::Key_Down:
+            emit selectAdjacentRow(1);
+            event->accept();
+            return;
+        default:
+            break;
+        }
     }
 }

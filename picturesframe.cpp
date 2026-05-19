@@ -74,6 +74,8 @@ void PicturesFrame::showImages()
     }
     int colCount = countColCount();
 
+    imageWidgetsList->setGridColumnCount(colCount);
+
     for (int i = 0; i < imageWidgetsList->length(); i++) {
         if (i % colCount == 0) {
             numberLine++;

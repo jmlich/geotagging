@@ -4,12 +4,17 @@
  */
 
 #include "imageview.h"
+#include "imagewidgetslist.h"
 #include <QDebug>
+#include <QKeyEvent>
 #include <QScroller>
+#include <QShowEvent>
 
 ImageView::ImageView(QWidget* parent)
     : QWidget(parent)
+    , img(nullptr)
 {
+    setFocusPolicy(Qt::StrongFocus);
     imageL = new QLabel;
     scrollArea = new ScrollArea;
     this->setLayout(new QHBoxLayout);
@@ -32,8 +37,50 @@ QSize ImageView::sizeHint() const
     return QSize(1024, 768);
 }
 
+void ImageView::setNavigation(ImageWidgetsList* list, int index)
+{
+    imageList = list;
+    currentIndex = index;
+}
+
+void ImageView::showAdjacentImage(int delta)
+{
+    if (!imageList || imageList->isEmpty()) {
+        return;
+    }
+    const int newIndex = imageList->selectRelative(delta, currentIndex);
+    if (newIndex < 0) {
+        return;
+    }
+    currentIndex = newIndex;
+    setImage(imageList->at(currentIndex)->imageData->pictureName);
+}
+
+void ImageView::showAdjacentRow(int rowDelta)
+{
+    if (!imageList || imageList->isEmpty()) {
+        return;
+    }
+    const int newIndex = imageList->selectRelativeRow(rowDelta, currentIndex);
+    if (newIndex < 0) {
+        return;
+    }
+    currentIndex = newIndex;
+    setImage(imageList->at(currentIndex)->imageData->pictureName);
+}
+
+void ImageView::showEvent(QShowEvent* event)
+{
+    QWidget::showEvent(event);
+    setFocus();
+}
+
 void ImageView::setImage(QString pictureName)
 {
+    if (img) {
+        delete img;
+        img = nullptr;
+    }
 
     this->setWindowTitle(pictureName);
     img = new QImage(pictureName);
@@ -95,6 +142,9 @@ void ImageView::setImage(QString pictureName)
 void ImageView::resizeEvent(QResizeEvent* event)
 {
     event->accept();
+    if (!img || img->isNull()) {
+        return;
+    }
     currentSize = QSize(this->size().width() - 2, this->size().height() - 2);
     imageL->setPixmap(QPixmap::fromImage((img->scaled(currentSize, Qt::KeepAspectRatio))));
 
@@ -143,7 +193,28 @@ void ImageView::changeImageSize(int delta)
 
 void ImageView::keyPressEvent(QKeyEvent* ev)
 {
-    if (ev->key() == Qt::Key_Escape) {
-        this->close();
+    switch (ev->key()) {
+    case Qt::Key_Escape:
+        close();
+        ev->accept();
+        return;
+    case Qt::Key_Left:
+        showAdjacentImage(-1);
+        ev->accept();
+        return;
+    case Qt::Key_Right:
+        showAdjacentImage(1);
+        ev->accept();
+        return;
+    case Qt::Key_Up:
+        showAdjacentRow(-1);
+        ev->accept();
+        return;
+    case Qt::Key_Down:
+        showAdjacentRow(1);
+        ev->accept();
+        return;
+    default:
+        QWidget::keyPressEvent(ev);
     }
 }

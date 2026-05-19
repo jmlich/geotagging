@@ -17,6 +17,8 @@ signals:
     void deleteSelected();
     void selectImage();
     void escapePressed();
+    void selectAdjacent(int indexOffset);
+    void selectAdjacentRow(int rowOffset);
 public slots:
     void processKeyEvent(QKeyEvent* event);
 };

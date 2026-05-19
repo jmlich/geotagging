@@ -103,6 +103,49 @@ QList<int> ImageWidgetsList::selectedIdList()
     }
     return idList;
 }
+
+int ImageWidgetsList::selectedIndex() const
+{
+    for (int i = 0; i < length(); i++) {
+        if (at(i)->isClicked) {
+            return i;
+        }
+    }
+    return -1;
+}
+
+void ImageWidgetsList::setGridColumnCount(int cols)
+{
+    gridColumnCount = cols > 0 ? cols : 1;
+}
+
+int ImageWidgetsList::selectRelative(int indexOffset, int anchorIndex)
+{
+    if (isEmpty() || indexOffset == 0) {
+        return -1;
+    }
+
+    int currentIndex = selectedIndex();
+    if (currentIndex < 0 && anchorIndex >= 0 && anchorIndex < length()) {
+        currentIndex = anchorIndex;
+    }
+    if (currentIndex < 0) {
+        currentIndex = indexOffset > 0 ? -1 : length();
+    }
+
+    const int newIndex = currentIndex + indexOffset;
+    if (newIndex < 0 || newIndex >= length()) {
+        return -1;
+    }
+
+    selectOne(at(newIndex)->imageData->id, 1, 1);
+    return newIndex;
+}
+
+int ImageWidgetsList::selectRelativeRow(int rowOffset, int anchorIndex)
+{
+    return selectRelative(rowOffset * gridColumnCount, anchorIndex);
+}
 void ImageWidgetsList::saveExifGpsInSelected()
 {
     for (int i = 0; i < this->length(); i++) {
@@ -164,7 +207,7 @@ void ImageWidgetsList::selectOne(int id, bool clickMarker, bool focus)
         if (id == at(i)->imageData->id) {
             iSelected = i;
             if (clickMarker) {
-                at(i)->select();
+                at(i)->select(focus);
             } else {
                 at(i)->click(focus);
             }

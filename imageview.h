@@ -12,6 +12,8 @@
 #include <QWidget>
 #include <exiv2/exiv2.hpp>
 
+class ImageWidgetsList;
+
 class ImageView : public QWidget {
     Q_OBJECT
 
@@ -23,11 +25,18 @@ class ImageView : public QWidget {
 
     double scaleFactor = 1.0;
 
+    ImageWidgetsList* imageList = nullptr;
+    int currentIndex = -1;
+    void showAdjacentImage(int delta);
+    void showAdjacentRow(int rowDelta);
+    void showEvent(QShowEvent* event) override;
+
 public:
     ImageView(QWidget* parent = 0);
     ~ImageView();
     // ImageView(QWidget *parent = 0,QImage *image = 0);
     void setImage(QString pictureName);
+    void setNavigation(ImageWidgetsList* list, int index);
     void wheelEvent(QWheelEvent* event);
     virtual QSize sizeHint() const;
 

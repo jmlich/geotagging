@@ -135,6 +135,8 @@ MainWindow::MainWindow(QWidget* parent)
     connect(ui->scrollAreaPictures, SIGNAL(processEvent(QKeyEvent*)), keyEH, SLOT(processKeyEvent(QKeyEvent*)));
     connect(map, SIGNAL(processEvent(QKeyEvent*)), keyEH, SLOT(processKeyEvent(QKeyEvent*)));
     connect(keyEH, SIGNAL(deleteSelected()), imageWidgetsList, SLOT(deleteSelected()));
+    connect(keyEH, SIGNAL(selectAdjacent(int)), imageWidgetsList, SLOT(selectRelative(int)));
+    connect(keyEH, SIGNAL(selectAdjacentRow(int)), imageWidgetsList, SLOT(selectRelativeRow(int)));
 
     connect(map, SIGNAL(settingNewMarkerFinished()), this, SLOT(addNewMarkerFinished()));
 

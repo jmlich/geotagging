@@ -134,7 +134,7 @@ public slots:
     void click(bool focus);
     void unclick();
     void unselect();
-    void select();
+    void select(bool focus = false);
     // void saveExifGpsIfSelected();
     // void saveExifDateTimeIfSelected();
     void retranslateUi();

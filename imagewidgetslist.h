@@ -18,8 +18,13 @@ public:
     void addImage(ImageInfo* imageWidget);
     MapWidget* map;
     QList<int> selectedIdList();
+    int selectedIndex() const;
+    void setGridColumnCount(int cols);
     // int selectedCount;
     bool isNotSaved();
+
+private:
+    int gridColumnCount = 1;
 
 signals:
     void showImages();
@@ -36,6 +41,8 @@ public slots:
     void rubberBandSelection(QRect r, bool apply);
 
     void selectOne(int id, bool clickMarker, bool focus);
+    int selectRelative(int indexOffset, int anchorIndex = -1);
+    int selectRelativeRow(int rowOffset, int anchorIndex = -1);
 
     // void changeLabelsVisibility(QAction*a);
 };
