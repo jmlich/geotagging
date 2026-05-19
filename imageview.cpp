@@ -5,10 +5,14 @@
 
 #include "imageview.h"
 #include "imagewidgetslist.h"
+#include <QCloseEvent>
 #include <QDebug>
 #include <QKeyEvent>
 #include <QScroller>
 #include <QShowEvent>
+
+QSize ImageView::rememberedWindowSize;
+bool ImageView::hasRememberedWindowSize = false;
 
 ImageView::ImageView(QWidget* parent)
     : QWidget(parent)
@@ -135,8 +139,22 @@ void ImageView::setImage(QString pictureName)
 
     scrollArea->setWidget(imageL);
     scrollArea->resize(this->size());
-    resize(scrollArea->widget()->width() + 2, scrollArea->widget()->height() + 2);
+    if (hasRememberedWindowSize) {
+        resize(rememberedWindowSize);
+    } else {
+        resize(scrollArea->widget()->width() + 2, scrollArea->widget()->height() + 2);
+    }
     imageL->setAlignment(Qt::AlignCenter);
+}
+
+void ImageView::closeEvent(QCloseEvent* event)
+{
+    const QSize windowSize = size();
+    if (windowSize.isValid() && !windowSize.isEmpty()) {
+        rememberedWindowSize = windowSize;
+        hasRememberedWindowSize = true;
+    }
+    QWidget::closeEvent(event);
 }
 
 void ImageView::resizeEvent(QResizeEvent* event)

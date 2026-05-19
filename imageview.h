@@ -7,6 +7,7 @@
 #define IMAGEVIEW_H
 
 #include "scrollarea.h"
+#include <QCloseEvent>
 #include <QLabel>
 #include <QLayout>
 #include <QWidget>
@@ -30,6 +31,10 @@ class ImageView : public QWidget {
     void showAdjacentImage(int delta);
     void showAdjacentRow(int rowDelta);
     void showEvent(QShowEvent* event) override;
+    void closeEvent(QCloseEvent* event) override;
+
+    static QSize rememberedWindowSize;
+    static bool hasRememberedWindowSize;
 
 public:
     ImageView(QWidget* parent = 0);
