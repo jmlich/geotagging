@@ -35,6 +35,10 @@
       <image>https://raw.githubusercontent.com/jmlich/geotagging/master/data/screenshot2.png</image>
       <caption>Main window with two gpx files loaded</caption>
     </screenshot>
+    <screenshot>
+      <image>https://raw.githubusercontent.com/jmlich/geotagging/master/data/screenshot3.png</image>
+      <caption>Exif information, detail picture window, and map with Camera position, Object position, and angle of view marker</caption>
+    </screenshot>
   </screenshots>
   <categories>
     <category>Graphics</category>
