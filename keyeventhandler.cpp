@@ -21,10 +21,12 @@ void KeyEventHandler::processKeyEvent(QKeyEvent* event)
     } else if (!(event->modifiers() & Qt::ControlModifier)) {
         switch (event->key()) {
         case Qt::Key_Left:
+        case Qt::Key_Backspace:
             emit selectAdjacent(-1);
             event->accept();
             return;
         case Qt::Key_Right:
+        case Qt::Key_Space:
             emit selectAdjacent(1);
             event->accept();
             return;

@@ -217,10 +217,12 @@ void ImageView::keyPressEvent(QKeyEvent* ev)
         ev->accept();
         return;
     case Qt::Key_Left:
+    case Qt::Key_Backspace:
         showAdjacentImage(-1);
         ev->accept();
         return;
     case Qt::Key_Right:
+    case Qt::Key_Space:
         showAdjacentImage(1);
         ev->accept();
         return;
