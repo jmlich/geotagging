@@ -8,7 +8,7 @@ jobs:
     strategy:
       matrix:
         os: [windows-latest]
-        version: ['6.6.1']
+        version: ['6.8.1']
     steps:
     - uses: actions/checkout@v1
 
@@ -18,15 +18,15 @@ jobs:
         version: ${{ matrix.version }}
         host: 'windows'
         target: 'desktop'
-        arch: 'win64_msvc2019_64'
+        arch: 'win64_msvc2022_64'
         modules: 'qtwebengine qtwebchannel qtpositioning'
         tools: 'tools_opensslv3_x64,qt.tools.opensslv3.win_x64'
 
     - name: Download exiv2
       if: startsWith(matrix.os, 'windows')
       run: |
-        curl -L https://github.com/Exiv2/exiv2/releases/download/v0.27.5/exiv2-0.27.5-2019msvc64.zip --output exiv2-0.27.5-2019msvc64.zip
-        7z x exiv2-0.27.5-2019msvc64.zip -oc:/
+        curl -L https://github.com/Exiv2/exiv2/releases/download/v0.28.8/exiv2-0.28.8-2022msvc-AMD64.zip --output exiv2-0.28.8-2022msvc-AMD64.zip
+        7z x exiv2-0.28.8-2022msvc-AMD64.zip -oc:/
 
       shell: cmd
 
@@ -34,10 +34,10 @@ jobs:
     - name: Build
       if: startsWith(matrix.os, 'windows')
       run: |
-        call "%programfiles(x86)%\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
+        call "%programfiles(x86)%\Microsoft Visual Studio\2022\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
         mkdir build
         cd build
-        cmake -DCMAKE_PREFIX_PATH="C:\Qt\6.6.1\msvc2019_64" -Dexiv2_DIR="C:\exiv2-0.27.5-2019msvc64\lib\cmake\exiv2" -DCMAKE_GENERATOR_PLATFORM=x64 -DCMAKE_BUILD_TYPE=RELEASE -DDEPLOY_QT_LIBRARIES=ON -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON ..
+        cmake -DCMAKE_PREFIX_PATH="C:\Qt\6.6.1\msvc2022_64" -Dexiv2_DIR="C:\exiv2-0.28.8-2022msvc-AMD64\lib\cmake\exiv2" -DCMAKE_GENERATOR_PLATFORM=x64 -DCMAKE_BUILD_TYPE=RELEASE -DDEPLOY_QT_LIBRARIES=ON -DCMAKE_VERBOSE_MAKEFILE:BOOL=ON ..
         if %errorlevel% neq 0 exit /b %errorlevel%
         cmake --build . --config Release
         if %errorlevel% neq 0 exit /b %errorlevel%
