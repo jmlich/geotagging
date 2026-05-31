@@ -819,6 +819,13 @@ function setMarkersVisibility(setVisible) {
 //            }
         }
     }
+    for (var i in aovMarkers) {
+        if (setVisible) {
+            map.addLayer(aovMarkers[i]);
+        } else {
+            map.removeLayer(aovMarkers[i]);
+        }
+    }
 }
 
 function setObjectsVisibility(setVisible) {
