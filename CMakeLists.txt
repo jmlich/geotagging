@@ -18,7 +18,6 @@ include(FeatureSummary)
 
 enable_testing()
 
-find_package(Git QUIET REQUIRED)
 find_package(exiv2 REQUIRED CONFIG NAMES exiv2)
 
 # Allow manual override via cmake -DGIT_VERSION=v2.9.0
