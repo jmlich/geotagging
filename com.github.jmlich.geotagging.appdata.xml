@@ -15,7 +15,7 @@
     </p>
   </description>
   <developer id="@jmlich@fosstodon.org">
-      <name>Jozef Mlich</name>
+    <name>Jozef Mlich</name>
   </developer>
   <branding>
     <color type="primary" scheme_preference="light">#e2f4ff</color>
@@ -47,7 +47,18 @@
   </keywords>
   <content_rating type="oars-1.1"/>
   <releases>
-    <release version="0.7.4" timestamp="1722008566">
+    <release version="0.7.6" timestamp="1780215030">
+      <description>
+        <ul>
+          <li>Improved picture browsing with keyboard shortcuts and remembered window size</li>
+          <li>Fixed visibility of the angle-of-view marker</li>
+          <li>Fixed handling of invalid altitude and direction values (NaN)</li>
+          <li>Fixed Qt 6 build compatibility</li>
+          <li>Added Russian translation</li>
+        </ul>
+      </description>
+    </release>
+    <release version="0.7.5" timestamp="1722008566">
       <description>
         <p>Fixed bug: The application now triggers selection when clicking on an object coordinate in the map.</p>
         <p>The application now computes the distance between the cursor and both the object coordinate and the camera coordinate.</p>
