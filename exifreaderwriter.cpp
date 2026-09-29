@@ -40,7 +40,18 @@ double ExifReaderWriter::readAltitude(Exiv2::ExifData& exifData)
         return qQNaN();
     }
 
-    Exiv2::Rational r = pos->toRational();
+    if (pos->count() == 0) {
+        qDebug() << "Empty EXIF value:" << QString::fromStdString(keyStr);
+        return qQNaN();
+    }
+    Exiv2::Rational r;
+    try {
+        r = pos->toRational();
+    } catch (const std::exception& e) {
+        qDebug() << "Invalid EXIF rational:" << QString::fromStdString(keyStr)
+                 << e.what();
+        return qQNaN();
+    }
     if (r.second == 0) {
         qDebug() << "Invalid rational" << QString::fromStdString(keyStr);
         return qQNaN();
