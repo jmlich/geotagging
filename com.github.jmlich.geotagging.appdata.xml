@@ -51,6 +51,14 @@
   </keywords>
   <content_rating type="oars-1.1"/>
   <releases>
+    <release version="0.7.7" timestamp="1790688608">
+      <description>
+        <ul>
+          <li>Fixed a crash when a photo has an empty or malformed altitude in its EXIF data</li>
+          <li>Added a screenshot of the EXIF information, picture detail and map</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.7.6" timestamp="1780215030">
       <description>
         <ul>
