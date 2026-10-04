@@ -56,6 +56,7 @@ public:
     QAction* removeCameraMarkerAction;
     QAction* removeObjectMarkerAction;
     QAction* setDirectionAction;
+    QAction* removeDirectionAction;
     QAction* synchAction;
     QAction* openExternaly;
 

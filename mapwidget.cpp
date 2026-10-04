@@ -371,7 +371,7 @@ void MapWidget::addObjectMarker(int id, double lat, double lon)
     }
 }
 
-void MapWidget::setttingCameraMarkerDirection(QList<int> idList, double direction)
+void MapWidget::settingCameraMarkerDirection(QList<int> idList, double direction)
 {
 
     QString ids = "[";
@@ -387,6 +387,25 @@ void MapWidget::setttingCameraMarkerDirection(QList<int> idList, double directio
                      .arg(ids)
                      .arg(markersVisible)
                      .arg(qIsNaN(direction) ? "NaN" : QString::number(direction, 'f', 10));
+    //    qDebug() << scriptStr.join("\n");
+
+    mapView->page()->runJavaScript(scriptStr.join("\n"), [](const QVariant& result) { qDebug() << result.toString(); });
+}
+
+void MapWidget::settingRemoveCameraMarkerDirection(QList<int> idList)
+{
+    QString ids = "[";
+    int i;
+    foreach (i, idList) {
+        ids += QString("%1").arg(i) + ",";
+    }
+    ids.chop(1);
+    ids += "]";
+    QStringList scriptStr;
+    scriptStr << QString("setNewCameraDirection(%1, %2, %3);")
+                     .arg(ids)
+                     .arg(markersVisible)
+                     .arg("NaN");
     //    qDebug() << scriptStr.join("\n");
 
     mapView->page()->runJavaScript(scriptStr.join("\n"), [](const QVariant& result) { qDebug() << result.toString(); });

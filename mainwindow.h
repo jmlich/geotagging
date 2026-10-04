@@ -169,6 +169,7 @@ public slots:
     void removeObjectMarker();
     void addNewObjectMarkerFinished();
     void setCameraDirection();
+    void removeCameraDirection();
     void mousePressEvent(QMouseEvent* event);
     // void switchDateTimeFormat(QAction *action);
     void deleteRoute(int id);

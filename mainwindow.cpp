@@ -290,10 +290,17 @@ void MainWindow::setCameraDirection()
     if (ok) {
         QList<int> idList = imageWidgetsList->selectedIdList();
 
-        map->setttingCameraMarkerDirection(idList, (direction < -360) ? qQNaN() : direction);
+        map->settingCameraMarkerDirection(idList, (direction < -360) ? qQNaN() : direction);
 
         qDebug() << "setCameraDirection " << idList << " " << direction;
     }
+}
+
+void MainWindow::removeCameraDirection()
+{
+    QList<int> idList = imageWidgetsList->selectedIdList();
+    map->settingRemoveCameraMarkerDirection(idList);
+    qDebug() << "removeCameraDirection" << idList;
 }
 
 void MainWindow::removeCameraMarker()
@@ -634,6 +641,7 @@ void MainWindow::addImage(ImageData* imageData)
     connect(imageWidget->removeCameraMarkerAction, SIGNAL(triggered()), this, SLOT(removeCameraMarker()));
     connect(imageWidget->removeObjectMarkerAction, SIGNAL(triggered()), this, SLOT(removeObjectMarker()));
     connect(imageWidget->setDirectionAction, SIGNAL(triggered()), this, SLOT(setCameraDirection()));
+    connect(imageWidget->removeDirectionAction, SIGNAL(triggered()), this, SLOT(removeCameraDirection()));
     connect(imageWidget->synchAction, SIGNAL(triggered()), this, SLOT(synchronizeSelected()));
     connect(ui->menuDisplayedImageInformations, SIGNAL(triggered(QAction*)),
         imageWidget, SLOT(changeLabelVisibility(QAction*)));
