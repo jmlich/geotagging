@@ -51,6 +51,13 @@
   </keywords>
   <content_rating type="oars-1.1"/>
   <releases>
+    <release version="0.7.8" timestamp="1791269958">
+      <description>
+        <ul>
+          <li>Fix GPS altitude values being incorrectly formatted and saved to image EXIF data.</li>
+        </ul>
+      </description>
+    </release>
     <release version="0.7.7" timestamp="1790688608">
       <description>
         <ul>
