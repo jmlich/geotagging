@@ -242,7 +242,7 @@ void ExifReaderWriter::saveExifGps(QString pictureName, double latitude, double 
     }
 
     if (altitude > -999) {
-        writeData(exifData, "Exif.GPSInfo.GPSAltitude", (QString("%1/%2").arg(abs(round(altitude * 1000))).arg(1000)));
+        writeData(exifData, "Exif.GPSInfo.GPSAltitude", (QString("%1/%2").arg(abs(qRound64(altitude * 1000))).arg(1000)));
         writeData(exifData, "Exif.GPSInfo.GPSAltitudeRef", (altitude < 0 ? "1" : "0"));
     } else {
         removeData(exifData, "Exif.GPSInfo.GPSAltitude");
